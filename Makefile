@@ -1,12 +1,17 @@
 DOTFILES = $(HOME)/dotfiles
 _INCL = nvim zsh bin desktop kitty i3status-rust \
-	ranger misc sway mako
+	ranger misc sway mako fontconfig
+
 ifndef LN_FLAGS
   LN_FLAGS = -sf
 endif
+
 PARTS = $(patsubst %, %/Makefile, $(_INCL))
-BUILDS = $(patsubst %, build_%, $(_INCL))
 LINKS = $(patsubst %, link_%, $(_INCL))
+
+AUR_HELPER = paru
+
+.DEFAULT_GOAL = dotfiles
 
 parse:
 	@set -a
@@ -19,3 +24,7 @@ parse:
 include $(PARTS)
 
 dotfiles: $(LINKS)
+
+
+install:
+	$(AUR_HELPER) -Syu `cat deps/pkgs`

@@ -9,7 +9,7 @@ endif
 set shortmess=aoO
 badd +3 i3status-rust/config.toml
 badd +117 zsh/zshrc
-badd +21 Makefile
+badd +13 Makefile
 badd +1 mako/Makefile
 badd +7 mako/config
 badd +1 sway/Makefile
@@ -25,9 +25,13 @@ badd +4 kitty/Makefile
 badd +1 ranger/Makefile
 badd +1 desktop/Makefile
 badd +21 kitty/colors
+badd +9 README.md
+badd +2 fontconfig/Makefile
+badd +7 nvim/misc.vim
+badd +1 nvim/lua/options.lua
 argglobal
 %argdel
-edit Makefile
+edit nvim/lua/options.lua
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -38,7 +42,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 argglobal
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
@@ -48,17 +53,17 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 21 - ((20 * winheight(0) + 26) / 53)
+let s:l = 30 - ((29 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-21
-normal! 09|
+30
+normal! 014|
 wincmd w
 argglobal
-if bufexists("nvim/Makefile") | buffer nvim/Makefile | else | edit nvim/Makefile | endif
+if bufexists("nvim/misc.vim") | buffer nvim/misc.vim | else | edit nvim/misc.vim | endif
 if &buftype ==# 'terminal'
-  silent file nvim/Makefile
+  silent file nvim/misc.vim
 endif
 setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
@@ -68,15 +73,15 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 26) / 53)
+let s:l = 12 - ((11 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 010|
+12
+normal! 0
 wincmd w
-2wincmd w
-wincmd =
+exe 'vert 1resize ' . ((&columns * 106 + 106) / 213)
+exe 'vert 2resize ' . ((&columns * 106 + 106) / 213)
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

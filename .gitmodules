@@ -7,3 +7,6 @@
 [submodule "bin/lule_src"]
 	path = bin/lule_src
 	url = git@github.com:warpwm/lule.git
+[submodule "bin/src/lule"]
+	path = bin/src/lule
+	url = git@github.com:warpwm/lule.git

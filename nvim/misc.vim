@@ -3,10 +3,6 @@ set expandtab
 set softtabstop=2
 set shiftwidth=2
 
-" Weird options
-filetype plugin on
-syntax on
-
 function BigComment()
     let text = input("Comment: ")
     let end = repeat('~', 79 - len(text) - len(&commentstring))
