@@ -31,7 +31,7 @@ format_swap = "{SUp}%"
 
 [[block]]
 block = "custom"
-command = "/home/loric/dotfiles/status cpu"
+command = "/home/loric/bin/status cpu"
 interval = 1
 json = true
 

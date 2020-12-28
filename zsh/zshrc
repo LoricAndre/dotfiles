@@ -4,7 +4,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 
 # lule
-export LULE_S=$HOME/dotfiles/lule_s
+export LULE_S=$HOME/bin/lule_s
 lule_colors
 
 # Fix keys
@@ -114,4 +114,4 @@ export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/nu
 zplug load
 set -o monitor
 
-. $HOME/dotfiles/aliases.zsh
+. $HOME/.zshaliases

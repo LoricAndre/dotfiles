@@ -162,22 +162,25 @@ bar top {
   status_command i3status-rs
   strip_workspace_numbers yes
   tray_output none
-  colors {
-    background #080808
-    statusline #B2B2B2
-    separator #E3C78A
+  # colors {
+  #   background %{{background}}
+  #   statusline %{{foreground}}
+  #   separator 
 
-    focused_workspace  #080808 #080808 #8CC85F
-    active_workspace   #080808 #080808 #B2B2B2
-    inactive_workspace #080808 #080808 #B2B2B2
-    urgent_workspace   #080808 #080808 #FF5454
-  }
+  #   focused_workspace  #080808 #080808 #8CC85F
+  #   active_workspace   #080808 #080808 #B2B2B2
+  #   inactive_workspace #080808 #080808 #B2B2B2
+  #   urgent_workspace   #080808 #080808 #FF5454
+  # }
 }
 
-client.focused          #D183E8 #080808 #B2B2B2 #D183E8   #AE81FF
-client.focused_inactive #79DAC8 #080808 #B2B2B2 #79DAC8   #36C692
-client.unfocused        #80A0FF #7C8F8F #9E9E9E #80A0FF   #78C2FF
-client.urgent           #2F343a #900000 #B2B2B2 #900000   #900000
-client.placeholder      #080808 #0C0C0C #B2B2B2 #080808   #0c0c0c
 
-client.background       #B2B2B2
+
+<colorclass>            <border> <background> <text>  <indicator> <child_border>
+client.focused          %{{color1}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}
+client.focused_inactive %{{color5}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}
+client.unfocused        %{{color7}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}
+client.urgent           %{{color13}} %{{background}}  %{{foreground}} %{{background}}     %{{background}}
+client.placeholder      %{{background}}  %{{background}}      %{{foreground}} %{{background}} %{{background}}
+
+client.background       %{{foreground}}
