@@ -13,7 +13,7 @@ AUR_HELPER = paru
 
 .DEFAULT_GOAL = dotfiles
 
-parse:
+parse_%:
 	@set -a
 	@. $(VAR_FILE)
 	@set +a
