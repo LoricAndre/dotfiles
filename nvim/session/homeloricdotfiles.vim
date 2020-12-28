@@ -25,7 +25,7 @@ badd +4 kitty/Makefile
 badd +1 ranger/Makefile
 badd +1 desktop/Makefile
 badd +1 kitty/colors
-badd +10 README.md
+badd +19 README.md
 badd +2 fontconfig/Makefile
 badd +12 nvim/misc.vim
 badd +1 nvim/lua/options.lua
@@ -48,12 +48,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 10 - ((9 * winheight(0) + 26) / 53)
+let s:l = 19 - ((18 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-10
-normal! 083|
+19
+normal! 04|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -16,6 +16,6 @@ build-xxxxx: VAR_FILE = $(HOME)/.cache/wal/colors.sh # This file will be sourced
 build-xxxxx: DIR = $(DOTFILES)/xxxxx # The base dir for this dependency
 build-xxxxx: FILE = config # The path to the file from the base dir
 
-bulid-xxxxx: parse_xxxxx
+build-xxxxx: parse_xxxxx
 ```
 the `parse_%` target, defined in the main makefile, replaces all occurences of `%{{var}}` by the shell variable `var`. This variable can either be an environment variable or defined in the `VAR_FILE`. This is useful for color definitions for example.
