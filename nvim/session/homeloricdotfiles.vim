@@ -9,30 +9,30 @@ endif
 set shortmess=aoO
 badd +3 i3status-rust/config.toml
 badd +117 zsh/zshrc
-badd +16 Makefile
-badd +6 mako/Makefile
+badd +22 Makefile
+badd +4 mako/Makefile
 badd +7 mako/config
-badd +5 sway/Makefile
+badd +4 sway/Makefile
 badd +168 sway/config
 badd +5 ~/.cache/wal/colors.sh
-badd +10 i3status-rust/Makefile
+badd +4 i3status-rust/Makefile
 badd +14 i3status-rust/lule.toml
 badd +1 ~/bin/lule_s
 badd +1 zsh/Makefile
 badd +1 misc/Makefile
 badd +1 nvim/Makefile
-badd +5 kitty/Makefile
+badd +4 kitty/Makefile
 badd +1 ranger/Makefile
 badd +1 desktop/Makefile
 badd +1 kitty/colors
-badd +21 README.md
+badd +10 README.md
 badd +2 fontconfig/Makefile
 badd +12 nvim/misc.vim
 badd +1 nvim/lua/options.lua
 badd +6 kitty/conf
 argglobal
 %argdel
-edit mako/Makefile
+edit README.md
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -48,12 +48,12 @@ setlocal fdl=0
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 1 - ((0 * winheight(0) + 26) / 53)
+let s:l = 10 - ((9 * winheight(0) + 26) / 53)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-1
-normal! 0
+10
+normal! 083|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf
@@ -65,7 +65,6 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
-nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost

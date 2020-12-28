@@ -19,6 +19,7 @@ parse_%:
 	@set +a
 	@perl -p -e 's/%\{\{(\w+)\}\}/(exists $$ENV{$$1}?$$ENV{$$1}:"missing variable $$1")/eg' \
 	  < $(DIR)/$(FILE) > $(DIR)/parsed/$(FILE)
+	@echo "$@ done"
 
 
 include $(PARTS)
