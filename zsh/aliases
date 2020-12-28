@@ -1,0 +1,130 @@
+alias parin="paru -Sy"
+alias parem="paru -R"
+# f() {
+#   find $@ 2>/dev/null | fzf
+# }
+alias c=clear
+alias ls="ls --color"
+alias ll="ls --color -al"
+mcd() {
+  mkdir -p $@ && cd $@
+}
+compdef _files mcd
+
+
+dotadd() {
+  for f in "$@"
+  do
+    i=$(echo $f | rev | cut -d'/' -f1 | rev)
+    mv $f ~/dotfiles/ &&
+    ln -s "/home/loric/dotfiles/$i" "$f" &&
+    echo "Moved $f to ~/dotfiles/$i and softlinked it back"
+  done
+}
+
+dotlink() {
+  ln -s "$(pwd)/$1" $2
+}
+
+nalias() {
+  echo "alias $1='$2'" >> $HOME/dotfiles/aliases.zsh
+}
+alias h='history'
+
+alias ..='cd ..'
+alias ...='cd ...'
+alias ...='cd ../..'
+alias top='btm'
+alias applywal='feh --bg-fill ~/.wallpapers/active.jpg'
+alias s='status'
+alias :qa='exit'
+alias :q='clear'
+alias reboot='sudo reboot'
+alias shutdown='sudo shutdown'
+alias mkdir="mkdir -p"
+
+alias cbplay='mpv `xclip -out -selection clipboard`'
+data() {
+  pid=$(pgrep openvpn)
+  if [ ! -z $pid ]; then
+    read -k 1 "k?VPN is running. Terminate ?[Y/n] "
+    if [[ "$k" =~ "^[^Nn]" ]]; then
+      sudo kill "$pid"
+    fi
+  else
+    echo "Launching ovpn"
+    sudo openvpn --config "$HOME/projects/data.ovpn" --daemon
+  fi
+}
+
+alias py='python3'
+alias cat='bat'
+
+
+wallset() {
+  f=$(ls $HOME/.wallpapers | grep -v "active.jpg" | fzf)
+  cp "$HOME/.wallpapers/$f" "$HOME/.wallpapers/active.jpg"
+  lule -n --color=~/.wallpapers/active.jpg --palette=convert set
+}
+
+fmpv() {
+  if [ -z "$1" ]; then
+    mpv "$(find $HOME/Videos/* | rofi -dmenu)"
+  else
+    mpv "$(find "$1" | rofi -dmenu)"
+  fi
+}
+alias mongod='mongod --fork --syslog'
+alias mkdir='mkdir -p'
+fullPush() {
+  git add .
+  git commit -m "$@"
+  git push
+}
+alias ssh="kitty +kitten ssh -i ~/.ssh/data"
+alias icat="kitty +kitten icat"
+n() {
+  if [ -d $@ ]; then
+    p=$HOME/.config/nvim/session/$(echo `cd $@ && pwd` | sed -e 's#/##g').vim
+    nvim -S "$p" -c "silent! Obsess $p"
+  else
+    nvim $@
+  fi
+}
+
+
+N() {
+  file=$(ls ~/Dropbox/notes | fzf)
+  n=$(echo $file | sed 's/\.txt//')
+  echo $n >> ~/.log
+  nvim "note:$n"
+}
+eval $(thefuck --alias)
+alias f=fuck
+alias t='todo.sh'
+alias dkc='docker-compose'
+alias dk='docker'
+j() {
+    if [[ "$#" -ne 0 ]]; then
+        cd $(autojump $@)
+        return
+    fi
+    cd "$(autojump -s | sort -k1gr | awk '$1 ~ /[0-9]:/ && $2 ~ /^\// { for (i=2; i<=NF; i++) { print $(i) } }' |  fzf --height 40% --reverse --inline-info)" 
+}
+
+packadd() {
+  for arg in "$@"; do
+    echo $arg >> $HOME/dotfiles/packages
+  done
+}
+
+open() {
+  for a in "$@"; do
+    xdg-open $a >/dev/null 2>&1
+  done
+}
+alias spotify='LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer'
+nohd() {
+  nohup $@ >/dev/null 2>&1 &
+}
+alias rbl='brl'

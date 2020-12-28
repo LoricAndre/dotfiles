@@ -1,0 +1,196 @@
+#!/bin/bash
+
+bat() {
+    dir="/sys/class/power_supply/BAT0"
+    if [ -d "$dir" ]; then
+        label=$(cat "$dir/capacity")
+        status=$(cat "$dir/status")
+    else
+        return 2
+    fi
+    if [[ $status != Charging ]]; then
+        if (( $label == 100 )); then
+            icon=" "
+        elif (( $label >= 90 )); then
+            icon=" "
+        elif (( $label >= 80 )); then
+            icon=" "
+        elif (( $label >= 70 )); then
+            icon=" "
+        elif (( $label >= 60 )); then
+            icon=" "
+        elif (( $label >= 50 )); then
+            icon=" "
+        elif (( $label >= 40 )); then
+            icon=" "
+        elif (( $label >= 30 )); then
+            icon=" "
+        elif (( $label >= 20 )); then
+            icon=" "
+        elif (( $label >= 10 )); then
+            icon=" "
+        else icon=" "
+        fi
+    else
+        icon=" "
+    fi
+    printf "%s%s%%" "$icon" "$label"
+}
+net() {
+    conn=$(nmcli device | grep " connected ")
+    if [ -z "$conn" ]; then
+        printf "睊 "
+        return 0
+    fi
+    type=$(echo $conn | awk '{print $2}')
+    if [[ $type == wifi ]]; then
+        icon="直 "
+        ssid="$(echo $conn | awk '{for(i=4;i<=NF;++i)print $4}' | grep -e '[a-zA-Z0-9]+')"
+    elif [[ $type == ethernet ]]; then
+        icon=" "
+    else
+        icon="ﯳ "
+    fi
+    device=$(echo $conn | cut -d' ' -f1)
+    ip=$(nmcli device show $device | grep "IP4.ADDRESS\[1\]" | awk '{print $2}' | cut -d'/' -f1)
+    if [ -z $ssid ]; then
+        printf "%s%s" "$icon" "$ip"
+    else
+        printf "%s%s@%s" "$icon" "$ip" "$ssid"
+    fi
+}
+
+clock() {
+    d=$(date "+%a %d %b - %H:%M:%S")
+    printf "%s" "$d"
+}
+
+bright() {
+    curr=$(brightnessctl g)
+    max=$(brightnessctl m)
+    percent=$(( 100*curr/max ))
+    printf "%s%s%%" " " "$percent"
+}
+
+volume() {
+    vol=$(pamixer --get-volume)
+    # vol="$(amixer get Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print substr($2, 1, length($2)-1) }')"
+    if ((vol < 30)); then
+        icon="奄"
+    elif ((vol < 80)); then
+        icon="奔"
+    else
+        icon="墳"
+    fi
+    if [[ $(amixer get Master | awk -F 'Left:|[][]' 'BEGIN {RS=""}{ print $6 }') == off ]]; then
+        icon="婢"
+    fi
+    printf "%s%s%%" "$icon" "$vol"
+}
+
+net_wpa() {
+    d=$(iw dev)
+    inet=$(iw dev | grep Interface | awk '{printf $2}' | grep ".")
+    ssid=$(iw dev | grep ssid | awk '{printf $2}')
+    if [ -z $inet ]; then
+        printf "睊 "
+    else
+        ip=$(ip route | head -n 1 | awk '{print $3}')
+        if [ -z $ssid ]; then 
+            printf " %s" "$ip"
+        else
+            printf "直 %s : %s" "$ssid" "$ip"
+        fi
+    fi
+}
+
+pkg() {
+    n=$(xbps-install -Su -n | wc -l)
+    printf "%s" "$n"
+}
+
+hpmor_quote() {
+    quote="$(shuf -n 1 $HOME/dotfiles/hpmor/book.txt)"
+    printf "%s" "$quote"
+}
+
+mem() {
+    printf " %s" "$(free | tail -n2 | head -n1 | awk '{printf(100*$3/$2)}' | cut -d'.' -f1)%"
+}
+
+cpuc() {
+    if [ "$1" -lt 10 ]
+    then
+        icon="▁"
+    elif [ "$1" -lt 20 ]
+    then
+        icon="▂"
+    elif [ "$1" -lt 30 ]
+    then
+        icon="▃"
+    elif [ "$1" -lt 40 ]
+    then
+        icon="▄"
+    elif [ "$1" -lt 50 ]
+    then
+        icon="▅"
+    elif [ "$1" -lt 60 ]
+    then
+        icon="▆"
+    elif [ "$1" -lt 80 ]
+    then
+        icon="▇"
+    else 
+        icon="█"
+    fi
+    echo $icon
+}
+
+cpus() {
+    if [ "$1" -lt 20 ]
+    then
+        echo "Good"
+    elif [ "$1" -lt 50 ]
+    then
+        echo "Idle"
+    elif [ "$1" -lt 70 ]
+    then
+        echo "Info"
+    elif [ "$1" -lt 90 ]
+    then
+        echo "Warning"
+    else 
+        echo "Critical"
+    fi
+}
+
+cpu() {
+  f="/tmp/cpu_usage"
+  cpu_usage=$(cat $f || echo '____')
+  # ([[ -f "$f" ]] && cpu_usage="$(cat $f)") || cpu_usage="____"
+  usage=$(top -b -d 1 -n 1|grep Cpu | awk '{print $2}' | cut -d'.' -f1)
+  c=$(cpuc $usage)
+  state=$(cpus $usage)
+  cpu_usage=${cpu_usage:1}$c
+  if ((${#cpu_usage} == 4)); then
+    echo "$cpu_usage" > "$f"
+    echo "{\"icon\": \"cpu\", \"text\": \"$cpu_usage\", \"state\": \"$state\"}"
+  else
+    echo "{\"text\": \"\"}"
+  fi
+}
+
+sep='::'
+i=0
+if [ -z $1 ]; then
+  while true; do
+      (( $i == 5 )) && cpu && i=0
+      echo "$(bright) $sep $cpu_usage $sep $(mem) $sep $(clock) $sep $(bat)"
+      sleep 0.1
+      i=$(( i + 1 ))
+  done
+else
+  if [[ $1 == cpu ]]; then
+      cpu
+  fi
+fi

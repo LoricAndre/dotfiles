@@ -1,0 +1,9 @@
+[submodule "lule_src"]
+	path = lule_src
+	url = ./bin/lule_src
+[submodule "i3lock-color"]
+	path = i3lock-color
+	url = git@github.com:LoricAndre/i3lock-color.git
+[submodule "bin/lule_src"]
+	path = bin/lule_src
+	url = git@github.com:warpwm/lule.git

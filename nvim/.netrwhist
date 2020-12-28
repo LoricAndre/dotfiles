@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =5
+let g:netrw_dirhist_5='/tmp/scp12'
+let g:netrw_dirhist_4='/tmp/scp8'
+let g:netrw_dirhist_3='/tmp/scp7'
+let g:netrw_dirhist_2='/tmp/scp6'
+let g:netrw_dirhist_1='/tmp/scp5'
+let g:netrw_dirhist_0='/tmp/scp4'
+let g:netrw_dirhist_9='/tmp/scp3'
+let g:netrw_dirhist_8='/tmp/scp2'
+let g:netrw_dirhist_7='scp://data-user@10.11.12.101/discord-bot/'
+let g:netrw_dirhist_6='scp://data-user@10.11.12.101/'

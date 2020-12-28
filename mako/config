@@ -1,0 +1,10 @@
+font=monospace:10
+default-timeout=2500
+background-color=#080808
+text-color=#B2B2b2
+width=400
+height=300
+border-color=#D183E9
+border-radius=2
+border-size=1
+layer=overlay

@@ -1,0 +1,6 @@
+include ~/.config/kitty/kitty.colors
+font_size 11
+enable_audio_bell no
+font_family SauceCodePro Nerd Font
+map ctrl+shift+m next_tab
+map ctrl+shift+j previous_tab

@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=NAME
+Exec=EXEC
+Terminal=TERM
+Type=Application
+Categories=Aliases;

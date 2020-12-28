@@ -1,0 +1,183 @@
+input "type:keyboard" {
+    xkb_layout fr
+    xkb_options caps:escape,shift:both_capslock
+}
+
+input "type:touchpad" {
+    tap enabled
+    natural_scroll enabled
+    pointer_accel 0.4
+}
+
+output * bg ~/.wallpapers/active.jpg fill
+output eDP-1 pos 0 0
+output 'Unknown HP 24ea 3CM8231ZG7' pos 1920 0
+
+font pango:Nerd Font Source Code Mono 11
+
+# Variables ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+set $ws10 "10:₀"
+set $ws1 "1:₁"
+set $ws2 "2:₂"
+set $ws3 "3:₃"
+set $ws4 "4:₄"
+set $ws5 "5:₅"
+set $ws6 "6:₆"
+set $ws7 "7:₇"
+set $ws8 "8:₈"
+set $ws9 "9:₉"
+
+set $mod Mod4
+set $term kitty
+set $browser firefox
+
+set $up l
+set $down k
+set $left j
+set $right m
+
+# Startup ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+exec_always lule_colors
+exec kitty --class scratchterm
+exec udiskie
+exec_always pkill status
+exec_always pkill layout.sh && $HOME/bin/layout.sh
+exec_always pkill mako && mako
+bindsym XF86AudioRaiseVolume exec pamixer -i 10
+bindsym XF86AudioLowerVolume exec pamixer -d 10
+bindsym XF86AudioMute exec pamixer -t
+bindsym XF86MonBrightnessUp exec brightnessctl set 10%+
+bindsym XF86MonBrightnessDown exec brightnessctl set 10%-
+bindsym Print exec slurp | grim -g - - | tee "/home/loric/Files/Images/$(date +%d.%m.%y_%T).png" | wl-copy --type "image/png"
+bindsym Shift+Print exec grim - | tee "/home/loric/Files/Images/$(date +%d.%m.%y_%T).png" | wl-copy --type "image/png"
+
+# Bindings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+floating_modifier $mod
+bindsym $mod+Return exec $term
+bindsym $mod+b exec $browser
+bindsym $mod+d exec bemenu-run
+bindsym $mod+q kill
+bindsym $mod+t [app_id="scratchterm"] scratchpad show, move position 0 0, resize set 1920px 600px
+bindsym $mod+Shift+t exec kitty --class scratchterm
+bindsym Mod1+Ctrl+l exec $HOME/bin/lock.sh wayland
+bindsym $mod+c exec kitty --class bw $HOME/bin/fbw
+for_window [app_id=bw] floating enable, resize set 500px 300px, move center, border pixel 3
+
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
+
+bindsym $mod+Shift+$left move left
+bindsym $mod+Shift+$down move down
+bindsym $mod+Shift+$up move up
+bindsym $mod+Shift+$right move right
+
+bindsym $mod+Ctrl+$left move workspace to output left
+bindsym $mod+Ctrl+$right move workspace to output right
+bindsym $mod+Ctrl+$up move workspace to output up
+bindsym $mod+Ctrl+$down move workspace to output down
+
+bindsym twosuperior workspace back_and_forth
+
+bindsym $mod+u resize shrink width 10 px or 10 ppt
+bindsym $mod+i resize grow height 10 px or 10 ppt
+bindsym $mod+o resize shrink height 10 px or 10 ppt
+bindsym $mod+p resize grow width 10 px or 10 ppt
+
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+bindsym $mod+z fullscreen toggle
+bindsym $mod+f floating toggle
+
+bindsym Prior exec
+bindsym Next exec
+
+bindsym $mod+space focus mode_toggle
+bindsym $mod+a focus parent
+
+# focus the child container
+#bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+# bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+# bindsym $mod+minus scratchpad show
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+
+# switch to workspace
+bindsym $mod+ampersand workspace $ws1
+bindsym $mod+eacute workspace $ws2
+bindsym $mod+quotedbl workspace $ws3
+bindsym $mod+apostrophe workspace $ws4
+bindsym $mod+parenleft workspace $ws5
+bindsym $mod+minus workspace $ws6
+bindsym $mod+egrave workspace $ws7
+bindsym $mod+underscore workspace $ws8
+bindsym $mod+ccedilla workspace $ws9
+bindsym $mod+agrave workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+ampersand move container to workspace $ws1
+bindsym $mod+Shift+eacute move container to workspace $ws2
+bindsym $mod+Shift+quotedbl move container to workspace $ws3
+bindsym $mod+Shift+apostrophe move container to workspace $ws4
+bindsym $mod+Shift+parenleft move container to workspace $ws5
+bindsym $mod+Shift+minus move container to workspace $ws6
+bindsym $mod+Shift+egrave move container to workspace $ws7
+bindsym $mod+Shift+underscore move container to workspace $ws8
+bindsym $mod+Shift+ccedilla move container to workspace $ws9
+bindsym $mod+Shift+agrave move container to workspace $ws10
+
+bindsym $mod+Left move container to output left
+bindsym $mod+Right move container to output right
+bindsym $mod+Down move container to output down
+bindsym $mod+Up move container to output up
+
+
+# reload the configuration file
+bindsym $mod+Shift+r reload
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exit
+# Settings ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+default_orientation horizontal
+default_border pixel 2
+hide_edge_borders smart
+focus_follows_mouse yes
+workspace_auto_back_and_forth yes
+gaps inner 5
+smart_gaps on
+# Rules ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+for_window [app_id="scratchterm"] floating enable, move scratchpad, opacity 0.9;
+
+bar top {
+  position top
+  binding_mode_indicator no
+  status_command i3status-rs
+  strip_workspace_numbers yes
+  tray_output none
+  colors {
+    background #080808
+    statusline #B2B2B2
+    separator #E3C78A
+
+    focused_workspace  #080808 #080808 #8CC85F
+    active_workspace   #080808 #080808 #B2B2B2
+    inactive_workspace #080808 #080808 #B2B2B2
+    urgent_workspace   #080808 #080808 #FF5454
+  }
+}
+
+client.focused          #D183E8 #080808 #B2B2B2 #D183E8   #AE81FF
+client.focused_inactive #79DAC8 #080808 #B2B2B2 #79DAC8   #36C692
+client.unfocused        #80A0FF #7C8F8F #9E9E9E #80A0FF   #78C2FF
+client.urgent           #2F343a #900000 #B2B2B2 #900000   #900000
+client.placeholder      #080808 #0C0C0C #B2B2B2 #080808   #0c0c0c
+
+client.background       #B2B2B2
