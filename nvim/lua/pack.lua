@@ -20,6 +20,7 @@ require('packer').startup(function()
     config = function() require'plugins.misc'.dap() end
   }
   use 'tpope/vim-surround'
+  use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter

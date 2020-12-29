@@ -162,21 +162,21 @@ bar top {
   status_command i3status-rs
   strip_workspace_numbers yes
   tray_output none
-  # colors {
-  #   background %{{background}}
-  #   statusline %{{foreground}}
-  #   separator 
+   colors {
+     background %{{background}}
+     statusline %{{foreground}}
+     separator %{{foreground}}
 
-  #   focused_workspace  #080808 #080808 #8CC85F
-  #   active_workspace   #080808 #080808 #B2B2B2
-  #   inactive_workspace #080808 #080808 #B2B2B2
-  #   urgent_workspace   #080808 #080808 #FF5454
-  # }
+     focused_workspace  %{{background}} %{{background}} %{{color1}}
+     active_workspace   %{{background}} %{{background}} %{{color2}}
+     inactive_workspace %{{background}} %{{background}} %{{color3}}
+     urgent_workspace   %{{background}} %{{background}} %{{color4}}
+   }
 }
 
 
 
-<colorclass>            <border> <background> <text>  <indicator> <child_border>
+# <colorclass>            <border> <background> <text>  <indicator> <child_border>
 client.focused          %{{color1}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}
 client.focused_inactive %{{color5}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}
 client.unfocused        %{{color7}}  %{{background}}  %{{foreground}} %{{color3}}     %{{color5}}

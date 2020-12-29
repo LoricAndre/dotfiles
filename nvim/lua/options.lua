@@ -39,7 +39,7 @@ local statusline = [[
 %#Cursor#
 %m
 %#CursorLine# 
-%{luaeval('require"options"()')}
+%f
  %=
 %#CursorLine#
  %{WebDevIconsGetFileTypeSymbol()}
@@ -50,41 +50,3 @@ local statusline = [[
 ]]
 
 vim.o.statusline = statusline:gsub('\n', '')
-return function()
-  local res = ""
-  local raw_buffers = vim.api.nvim_exec("ls", true)
-  local buffers = {}
-  for line in string.gmatch(raw_buffers,'[^\r\n]+') do
-    local attrs = {}
-    for token in string.gmatch(line, "[^%s]+") do
-      table.insert(attrs, token)
-    end
-    
-    local n = attrs[1]
-    local name = attrs[2]
-    local current = false
-    if attrs[2]:sub(1, 1) == "%" then
-      name = attrs[3]
-      current = true
-    elseif attrs[2]:len() <= 2 then
-      name = attrs[3]
-    end
-    name = name:gsub('"', '')
-    table.insert(buffers, {name = name, number = n, current = current})
-  end
-
-  local buf_len = vim.api.nvim_win_get_width(0) - 50
-  buf_len = buf_len / #buffers
-  for _,buf in pairs(buffers) do
-    local name = buf.name:match("([^/%.]+)%..+$") or buf.name:match("([^/]+)$") or buf.name
-    if name:len() == 0 then
-      name = buf.name
-    end
-    if buf.current then
-      buf.number = "["..buf.number
-      name = name .. "]"
-    end
-    res = res .. ' | ' .. buf.number .. ': ' .. name:sub(-(buf_len-5))
-  end
-  return res
-end

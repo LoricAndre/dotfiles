@@ -78,4 +78,11 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
 end
 
 
+
+
+-- Vimwiki ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+M.vimwiki = function()
+  vim.g.vimwiki_list = {{path = '~/Files/vimwiki/'}}
+end
+
 return M

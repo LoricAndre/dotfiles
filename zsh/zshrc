@@ -3,8 +3,6 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
 
-# lule
-export LULE_S=$HOME/bin/lule_s
 lule_colors
 
 # Fix keys

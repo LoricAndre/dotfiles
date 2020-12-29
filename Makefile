@@ -1,3 +1,4 @@
+.ONESHELL:
 DOTFILES = $(HOME)/dotfiles
 _INCL = nvim zsh bin desktop kitty i3status-rust \
 	ranger misc sway mako fontconfig

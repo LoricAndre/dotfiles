@@ -64,7 +64,7 @@ alias cat='bat'
 wallset() {
   f=$(ls $HOME/.wallpapers | grep -v "active.jpg" | fzf)
   cp "$HOME/.wallpapers/$f" "$HOME/.wallpapers/active.jpg"
-  lule -n --color=~/.wallpapers/active.jpg --palette=convert set
+  lule -n --image=/home/loric/.wallpapers/active.jpg --palette=convert set
 }
 
 fmpv() {
