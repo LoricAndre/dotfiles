@@ -8,8 +8,6 @@ vim.o.swapfile = false
 vim.o.scrolloff = 3
 vim.o.splitbelow = true
 vim.o.splitright = true
-vim.o.t_Co = "256"
--- vim.o.termguicolors = true
 vim.o.smartindent = true
 vim.o.clipboard = "unnamedplus"
 vim.o.hidden = true
@@ -25,8 +23,7 @@ vim.o.mouse = "a"
 vim.o.wildoptions = ""
 vim.g.loaded_netrw = 1
 -- Colorscheme
-vim.g.nvcode_termcolor = 256
-vim.cmd('colorscheme lule')
+vim.cmd('colorscheme disco')
 vim.cmd('hi LineNr ctermbg=NONE ctermfg=NONE')
 -- Statusline
 local statusline = [[

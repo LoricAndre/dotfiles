@@ -3,8 +3,6 @@ export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
 
-lule_colors
-
 # Fix keys
 typeset -g -A key
 set -o emacs

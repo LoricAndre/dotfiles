@@ -14,6 +14,10 @@ AUR_HELPER = paru
 
 .DEFAULT_GOAL = dotfiles
 
+ifndef VAR_FILE
+  VAR_FILE = $(DOTFILES)/deps/vars.sh
+endif
+
 parse_%:
 	@set -a
 	@. $(VAR_FILE)

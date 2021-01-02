@@ -1,4 +1,3 @@
-build_sway: VAR_FILE = $(HOME)/.cache/wal/colors.sh
 build_sway: DIR = $(DOTFILES)/sway
 build_sway: FILE = config
 build_sway: parse_sway

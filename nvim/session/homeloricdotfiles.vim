@@ -7,14 +7,46 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
   let s:wipebuf = bufnr('%')
 endif
 set shortmess=aoO
+badd +6 zsh/zshrc
+badd +27 bin/lule_colors
+badd +26 Makefile
+badd +6 mako/Makefile
+badd +1 sway/Makefile
+badd +1 kitty/Makefile
+badd +2 i3status-rust/Makefile
+badd +183 sway/config
+badd +2 i3status-rust/config.toml
+badd +4 deps/vars.sh
+badd +1 nvim/lua/options.lua
+badd +4 kitty/conf
+badd +31 ~/dotfiles/nvim/lua/pack.lua
+badd +4 ~/dotfiles/nvim/init.lua
+badd +1 nvim/Makefile
+badd +7 nvim/misc.vim
 argglobal
 %argdel
+edit ~/dotfiles/nvim/init.lua
 set splitbelow splitright
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
+argglobal
+setlocal fdm=expr
+setlocal fde=nvim_treesitter#foldexpr()
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 4 - ((3 * winheight(0) + 26) / 53)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+4
+normal! 013|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

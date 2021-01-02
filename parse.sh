@@ -1,1 +1,0 @@
-/home/loric/dotfiles/i3status-rust/parse.sh

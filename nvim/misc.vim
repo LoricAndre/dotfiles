@@ -2,6 +2,7 @@
 set expandtab
 set softtabstop=2
 set shiftwidth=2
+hi link NormalFloat Normal
 
 function BigComment()
     let text = input("Comment: ")

@@ -28,6 +28,7 @@ require('packer').startup(function()
   use 'git@github.com:bluz71/vim-moonfly-colors'
   use 'dylanaraps/wal.vim'
   use 'LoricAndre/lule.nvim'
+  use 'jsit/disco.vim'
   -- Classes
   use {'git@github.com:tyru/eskk.vim', config = function() require'plugins.classes'.eskk() end}
   use {'git@github.com:xolox/vim-notes', requires = 'xolox/vim-misc', config = function() require'plugins.classes'.notes() end}

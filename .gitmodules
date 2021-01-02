@@ -10,3 +10,6 @@
 [submodule "bin/src/lule"]
 	path = bin/src/lule
 	url = git@github.com:warpwm/lule.git
+[submodule "deps/base16"]
+	path = deps/base16
+	url = git@github.com:kdrag0n/base16-termux.git

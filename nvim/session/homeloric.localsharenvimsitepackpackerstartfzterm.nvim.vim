@@ -8,14 +8,14 @@ if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
 endif
 set shortmess=aoO
 badd +127 lua/fzterm/init.lua
-badd +125 lua/fzterm/utils.lua
+badd +118 lua/fzterm/utils.lua
 badd +58 lua/fzterm/main.lua
 badd +18 plugin/fzterm.vim
 badd +1 ~/.local/share/nvim/site/pack/packer/start/fzterm.nvim/ftplugin/fzterm.vim
 badd +29 README.md
 argglobal
 %argdel
-edit lua/fzterm/utils.lua
+edit lua/fzterm/main.lua
 set splitbelow splitright
 wincmd t
 set winminheight=0
@@ -27,24 +27,18 @@ setlocal fdm=expr
 setlocal fde=nvim_treesitter#foldexpr()
 setlocal fmr={{{,}}}
 setlocal fdi=#
-setlocal fdl=5
+setlocal fdl=4
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-57
+3
 normal! zo
-73
-normal! zo
-117
-normal! zo
-118
-normal! zo
-let s:l = 125 - ((44 * winheight(0) + 26) / 53)
+let s:l = 19 - ((3 * winheight(0) + 14) / 29)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-125
-normal! 022|
+19
+normal! 03|
 tabnext 1
 if exists('s:wipebuf') && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

@@ -1,5 +1,5 @@
 [theme]
-file = "lule.toml"
+file = "theme.toml"
 [icons]
 name = "awesome"
 [icons.overrides]
