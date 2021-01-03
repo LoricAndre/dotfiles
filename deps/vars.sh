@@ -1,1 +1,1 @@
-/home/loric/dotfiles/deps/base16/colors/base16-3024-256.properties
+/home/loric/dotfiles/deps/base16/colors/base16-google-dark.properties

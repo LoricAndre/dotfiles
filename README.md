@@ -12,7 +12,6 @@ The root Makefile lists all dependencies, exposes the main targets and the `pars
 The level 2 makefiles are dependency-specific. They have to expose the `link-xxxxx` target, which is a dependency for the `dotfiles` one.
 Some of them have a `build-xxxxx` target, required by the `link-xxxxx`. This one usually has the following syntax : 
 ```make
-build-xxxxx: VAR_FILE = $(HOME)/.cache/wal/colors.sh # This file will be sourced to get variables
 build-xxxxx: DIR = $(DOTFILES)/xxxxx # The base dir for this dependency
 build-xxxxx: FILE = config # The path to the file from the base dir
 
