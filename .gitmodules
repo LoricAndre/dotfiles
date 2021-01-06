@@ -10,3 +10,15 @@
 [submodule "bin/src/st"]
 	path = bin/src/st
 	url = git@github.com:LoricAndre/st.git
+[submodule "bin/src/river"]
+	path = bin/src/river
+	url = git@github.com:ifreund/river.git
+[submodule "bin/src/wtftw"]
+	path = bin/src/wtftw
+	url = git@github.com:Kintaro/wtftw.git
+[submodule "bin/src/leftwm"]
+	path = bin/src/leftwm
+	url = git@github.com:leftwm/leftwm.git
+[submodule "bin/src/dwm"]
+	path = bin/src/dwm
+	url = https://git.suckless.org/dwm

@@ -18,6 +18,7 @@ abbr -a -g cat bat
 abbr -a -g mkdir mkdir -p
 abbr -a -g ssh ssh -i ~/.ssh/data
 abbr -a -g spotify LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify
+abbr -a -g !! $history[1]
 
 # Z
 # abbr -a -g fz cd (z -l | fzf | sed 's/^[^\/]*\(\/.*\)$/\1/')

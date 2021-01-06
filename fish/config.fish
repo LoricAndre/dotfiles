@@ -5,4 +5,11 @@ set -x VISUAL nvim
 
 bind [P delete-char
 
+
+set -x MOZ_ENABLE_WAYLAND 1
+# If running from tty1 start sway
+if [ "(tty)" = "/dev/tty1" ]
+  exec sway
+end
+
 source $HOME/.config/fish/abbr.fish

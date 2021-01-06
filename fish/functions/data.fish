@@ -1,5 +1,5 @@
 function data
-  pid=$(pgrep openvpn)
+  set pid (pgrep openvpn)
   if set -q pid
     read -n 1 "VPN is running. Terminate ?[Y/n] " k
     switch $k

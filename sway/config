@@ -28,7 +28,7 @@ set $ws8 "8:₈"
 set $ws9 "9:₉"
 
 set $mod Mod4
-set $term kitty
+set $term st
 set $browser firefox
 
 set $up l
@@ -58,7 +58,7 @@ bindsym $mod+b exec $browser
 bindsym $mod+d exec bemenu-run
 bindsym $mod+q kill
 bindsym $mod+t [app_id="scratchterm"] scratchpad show, move position 0 0, resize set 1920px 600px
-bindsym $mod+Shift+t exec kitty --class scratchterm
+bindsym $mod+Shift+t exec st -c scratchterm
 bindsym Mod1+Ctrl+l exec $HOME/bin/lock.sh wayland
 bindsym $mod+c exec kitty --class bw $HOME/bin/fbw
 for_window [app_id=bw] floating enable, resize set 500px 300px, move center, border pixel 3
