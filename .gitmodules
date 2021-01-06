@@ -1,15 +1,12 @@
-[submodule "lule_src"]
-	path = lule_src
-	url = ./bin/lule_src
 [submodule "i3lock-color"]
 	path = i3lock-color
 	url = git@github.com:LoricAndre/i3lock-color.git
-[submodule "bin/lule_src"]
-	path = bin/lule_src
-	url = git@github.com:warpwm/lule.git
 [submodule "bin/src/lule"]
 	path = bin/src/lule
 	url = git@github.com:warpwm/lule.git
 [submodule "deps/base16"]
 	path = deps/base16
 	url = git@github.com:kdrag0n/base16-termux.git
+[submodule "bin/src/st"]
+	path = bin/src/st
+	url = git@github.com:LoricAndre/st.git

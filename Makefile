@@ -1,7 +1,7 @@
 .ONESHELL:
 DOTFILES = $(HOME)/dotfiles
-_INCL = nvim zsh bin desktop kitty i3status-rust \
-	ranger misc sway mako fontconfig
+_INCL = nvim bin desktop i3status-rust \
+	ranger misc sway mako fontconfig suckless fish
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf

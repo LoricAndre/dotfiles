@@ -30,7 +30,6 @@ M.lsp = function()
   map('n', '<leader>lr', '<cmd>silent! lua vim.lsp.buf.references()<CR>', {})
   map('n', '<leader>la', '<cmd>silent! lua vim.lsp.buf.code_action()<CR>', {})
   map('n', '<leader>lf', '<cmd>silent! lua vim.lsp.buf.formatting()<CR>', {})
-  au("CursorHold", "*", "silent! lua vim.lsp.buf.hover()")
   -- Diags
   vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
