@@ -21,4 +21,4 @@
 	url = git@github.com:leftwm/leftwm.git
 [submodule "bin/src/dwm"]
 	path = bin/src/dwm
-	url = https://git.suckless.org/dwm
+	url = git@github.com:bakkeby/dwm-flexipatch.git
