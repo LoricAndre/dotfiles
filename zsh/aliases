@@ -99,9 +99,6 @@ N() {
   echo $n >> ~/.log
   nvim "note:$n"
 }
-eval $(thefuck --alias)
-alias f=fuck
-alias t='todo.sh'
 alias dkc='docker-compose'
 alias dk='docker'
 j() {

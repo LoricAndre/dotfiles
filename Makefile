@@ -1,7 +1,7 @@
 .ONESHELL:
 DOTFILES = $(HOME)/dotfiles
-_INCL = nvim bin desktop i3status-rust \
-	ranger misc mako fontconfig suckless fish dwm
+_INCL = nvim bin desktop zsh dwm suckless \
+	ranger misc mako fontconfig polybar
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
@@ -34,3 +34,21 @@ dotfiles: $(LINKS)
 
 install:
 	$(AUR_HELPER) -Syu `cat deps/pkgs`
+
+add_%:
+	@cd $(DOTFILES)
+	mkdir -p $*
+	@echo "Enter config file name:"
+	@read file
+	@touch $*/config
+	@echo "build_$*: DIR = \$$(DOTFILES)/$*" > $*/Makefile
+	@echo "build_$*: FILE = $$file" >> $*/Makefile
+	@echo "build_$*: parse_$*" >> $*/Makefile
+	@echo "" >> $*/Makefile
+	@echo "link_$*: build_$*" >> $*/Makefile
+	@echo "Enter destination file name relative to \$$HOME:"
+	@read dest
+	@mkdir -p $$HOME/$$dest && rmdir $$HOME/$$dest
+	@echo "	ln \$$(LN_FLAGS) \$$(DOTFILES)/$*/$$file \$$(HOME)/$$dest" >> $*/Makefile
+	@git add $*
+	@echo "Don't forget to add $* to the _INCL variable."

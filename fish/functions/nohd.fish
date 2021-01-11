@@ -1,16 +1,3 @@
-function data
-  pid=$(pgrep openvpn)
-  if set -q pid
-    read -n 1 "VPN is running. Terminate ?[Y/n] " k
-    switch $k
-      case y Y ''
-        sudo kill "$pid"
-      case n N
-        echo "VPN left running."
-    end
-  else
-    echo "Launching ovpn"
-    sudo openvpn --config "$HOME/projects/data.ovpn" --daemon
-  end
+function nohd
+  nohup $argv >/dev/null 2>&1 &
 end
-

@@ -22,3 +22,6 @@
 [submodule "bin/src/dwm"]
 	path = bin/src/dwm
 	url = git@github.com:bakkeby/dwm-flexipatch.git
+[submodule "bin/src/polybar-dwm"]
+	path = bin/src/polybar-dwm
+	url = git@github.com:mihirlad55/polybar-dwm-module.git

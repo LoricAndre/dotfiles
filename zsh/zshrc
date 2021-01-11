@@ -69,19 +69,19 @@ compinit
 
 fpath=($fpath "/home/loric/.zfunctions")
 autoload -U promptinit; promptinit
-# source /etc/profile.d/autojump.sh
 source /usr/share/fzf/key-bindings.zsh
-# Zplug
-export ZPLUG_HOME=$HOME/.zplug
-source $HOME/.zplug/init.zsh
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
-zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "zsh-users/zsh-completions"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "plugins/git",   from:oh-my-zsh
-export ZSH_CACHE_DIR=$HOME/.cache/zsh && zplug "plugins/last-working-dir",   from:oh-my-zsh
-# Prompt
+# Antigen
+. ~/.antigen.zsh
+antigen use oh-my-zsh
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-completions
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle git
+antigen bundle z
+antigen apply
+
+# Prompt & more
 function preexec() {
   timer=$(($(date +%s%3N)))
 }
@@ -106,11 +106,11 @@ function precmd() {
   else
     export RPROMPT=""
   fi
+  echo "cd $PWD" > ~/.cache/zsh/lwd
 }
 
 set -o PROMPT_SUBST
 export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/null) %(?.%F{green}.%F{red}✗)%f%b '
-zplug load
 set -o monitor
 
 . $HOME/.zshaliases
