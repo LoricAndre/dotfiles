@@ -84,11 +84,16 @@ fullPush() {
 alias ssh="kitty +kitten ssh -i ~/.ssh/data"
 alias icat="kitty +kitten icat"
 n() {
-  if [ -d $@ ]; then
-    p=$HOME/.config/nvim/session/$(echo `cd $@ && pwd` | sed -e 's#/##g').vim
+  if [ -z $@ ]; then
+    arg=$PWD;
+  else
+    arg=$@
+  fi
+  if [ -d $arg ]; then
+    p=$HOME/.config/nvim/session/$(echo `cd $arg && pwd` | sed -e 's#/##g').vim
     nvim -S "$p" -c "silent! Obsess $p"
   else
-    nvim $@
+    nvim $arg
   fi
 }
 
