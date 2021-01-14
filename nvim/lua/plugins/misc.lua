@@ -18,6 +18,39 @@ M.fzterm = function()
   }
 end
 
+-- Telescope
+M.telescope = function()
+  -- local actions = require'telescope.actions'
+  -- require'telescope'.setup{
+  --   defaults = {
+  --     vimgrep_arguments = {
+  --       'ag',
+  --       '--color',
+  --       '--filename',
+  --       '--column',
+  --       '--vimgrep' },
+  --     prompt_prefix = '>>',
+  --   }
+  -- }
+  local function tsmap(k, f)
+    return map("n", "<leader>"..k, "<cmd>lua require'telescope.builtin'."..f.."()<CR>", {noremap = true})
+  end
+  tsmap("F", "find_files")
+  tsmap("f", "git_files")
+  tsmap("r", "live_grep")
+  tsmap("b", "buffers")
+  tsmap("R", "registers")
+  tsmap("/", "current_buffer_fuzzy_find")
+  tsmap("lr", "lsp_references")
+  tsmap("ls", "lsp_document_symbols")
+  tsmap("lw", "lsp_workspace_symbols")
+  tsmap("a", "lsp_code_actions")
+  tsmap("gc", "git_bcommits")
+  tsmap("gC", "git_commits")
+  tsmap("gb", "git_branches")
+  tsmap("ts", "treesitter")
+end
+
 -- Pear tree
 M.pearTree = function()
   vim.g.pear_tree_smart_openers = true

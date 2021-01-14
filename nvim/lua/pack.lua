@@ -21,6 +21,7 @@ require('packer').startup(function()
   }
   use 'tpope/vim-surround'
   use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
+  -- use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require'plugins.misc'.telescope() end}
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter
