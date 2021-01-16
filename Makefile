@@ -1,7 +1,8 @@
 .ONESHELL:
 DOTFILES = $(HOME)/dotfiles
-_INCL = nvim bin desktop zsh dwm suckless \
-	ranger misc mako fontconfig polybar
+_INCL = nvim bin desktop zsh \
+	ranger misc mako fontconfig polybar \
+	kitty conky bspwm
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
@@ -37,10 +38,11 @@ install:
 
 add_%:
 	@cd $(DOTFILES)
-	mkdir -p $*
+	@mkdir -p $*
+	@mkdir -p $*/parsed
 	@echo "Enter config file name:"
 	@read file
-	@touch $*/config
+	@touch $*/$$file
 	@echo "build_$*: DIR = \$$(DOTFILES)/$*" > $*/Makefile
 	@echo "build_$*: FILE = $$file" >> $*/Makefile
 	@echo "build_$*: parse_$*" >> $*/Makefile

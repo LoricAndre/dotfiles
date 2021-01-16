@@ -22,6 +22,7 @@ require('packer').startup(function()
   use 'tpope/vim-surround'
   use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
   -- use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require'plugins.misc'.telescope() end}
+  use {'glacambre/firenvim', run = ':call firenvim#install(0)'}
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter

@@ -1,4 +1,3 @@
 #!/bin/zsh
 
-(sleep 5 && bar.sh) &
-exec dwm
+exec dbus-run-session bspwm

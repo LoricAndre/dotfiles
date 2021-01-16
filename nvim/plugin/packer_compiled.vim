@@ -139,8 +139,8 @@ end
 
 -- Pre-load configuration
 -- Post-load configuration
--- Config for: fzterm.nvim
-loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0")()
+-- Config for: nvim-lspconfig
+loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0")()
 -- Config for: completion-nvim
 loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0")()
 -- Config for: vimwiki
@@ -149,8 +149,8 @@ loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1
 loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.treesitter\frequire\0")()
 -- Config for: echodoc.vim
 loadstring("\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0")()
--- Config for: nvim-lspconfig
-loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0")()
+-- Config for: fzterm.nvim
+loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0")()
 -- Config for: nvim-dap-virtual-text
 loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0")()
 -- Config for: eskk.vim

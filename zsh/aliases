@@ -27,7 +27,7 @@ dotlink() {
 }
 
 nalias() {
-  echo "alias $1='$2'" >> $HOME/dotfiles/aliases.zsh
+  echo "alias $1='$2'" >> $HOME/dotfiles/zsh/aliases
 }
 alias h='history'
 
@@ -130,3 +130,6 @@ nohd() {
   nohup $@ >/dev/null 2>&1 &
 }
 alias rbl='brl'
+alias wthr='curl https://wtrr.in'
+alias wthr='curl https://wttr.in'
+alias lwd='source ~/.cacche/zsh/lwd'

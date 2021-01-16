@@ -1,4 +1,4 @@
-export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.npm-packages/bin:/usr/lib/ruby/gems/2.7.0:/home/loric/.gem/ruby/2.7.0:/home/loric/.cargo/bin
+export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.npm-packages/bin:/usr/lib/ruby/gems/2.7.0:/home/loric/.gem/ruby/2.7.0:/home/loric/.cargo/bin:$HOME/.emacs.d/bin
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
@@ -82,6 +82,10 @@ antigen bundle z
 antigen apply
 
 # Prompt & more
+function chpwd() {
+  echo "cd $PWD" > ~/.cache/zsh/lwd
+}
+source ~/.cache/zsh/lwd
 function preexec() {
   timer=$(($(date +%s%3N)))
 }
@@ -106,7 +110,6 @@ function precmd() {
   else
     export RPROMPT=""
   fi
-  echo "cd $PWD" > ~/.cache/zsh/lwd
 }
 
 set -o PROMPT_SUBST
