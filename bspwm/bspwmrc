@@ -20,3 +20,5 @@ bspc config gapless_monocle      true
 
 bspc rule -a dropdown sticky=on state=floating hidden=on rectangle=1916x600+0+0
 kitty --class dropdown &
+
+xsetroot -cursor_name left_ptr &
