@@ -24,10 +24,7 @@ lockx() {
     --insidewrongcolor="$color1" --ringvercolor="$color4" \
     --ringwrongcolor="$color1" --ringcolor="$color6" \
     --line-uses-inside --keyhlcolor="$color4" \
-    --timecolor="$color0" --veriftext="" \
-    --wrongtext="" --radius=100 \
-    --veriftext="" --noinputtext="" \
-    --locktext="" --redraw-thread
+    --timecolor="$color0" --radius=100
 }
 
 waylock() {
