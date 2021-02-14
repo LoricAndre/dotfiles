@@ -7,174 +7,176 @@ if !has('nvim-0.5')
   finish
 endif
 
+packadd packer.nvim
+
+try
+
 lua << END
-local plugins = {
+local package_path_str = "/home/loric/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/loric/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/loric/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/loric/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/loric/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
+if not string.find(package.path, package_path_str, 1, true) then
+  package.path = package.path .. ';' .. package_path_str
+end
+
+if not string.find(package.cpath, install_cpath_pattern, 1, true) then
+  package.cpath = package.cpath .. ';' .. install_cpath_pattern
+end
+
+local function try_loadstring(s, component, name)
+  local success, result = pcall(loadstring(s))
+  if not success then
+    print('Error running ' .. component .. ' for ' .. name)
+    error(result)
+  end
+  return result
+end
+
+_G.packer_plugins = {
+  colorizer = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/colorizer"
+  },
+  ["completion-nvim"] = {
+    config = { "\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/completion-nvim"
+  },
+  ["completion-treesitter"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/completion-treesitter"
+  },
+  ["disco.vim"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/disco.vim"
+  },
+  ["echodoc.vim"] = {
+    config = { "\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/echodoc.vim"
+  },
+  ["eskk.vim"] = {
+    config = { "\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\teskk\20plugins.classes\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/eskk.vim"
+  },
+  firenvim = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/firenvim"
+  },
+  ["fzterm.nvim"] = {
+    config = { "\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/fzterm.nvim"
+  },
+  ["lule.nvim"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/lule.nvim"
+  },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
+  ["nvim-dap"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-dap"
+  },
+  ["nvim-dap-virtual-text"] = {
+    config = { "\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
+  },
+  ["nvim-lspconfig"] = {
+    config = { "\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+  },
+  ["nvim-treesitter"] = {
+    config = { "\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.treesitter\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+  },
   ["packer.nvim"] = {
     loaded = false,
-    only_sequence = false,
-    only_setup = false,
     path = "/home/loric/.local/share/nvim/site/pack/packer/opt/packer.nvim"
+  },
+  ["pear-tree"] = {
+    config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rpearTree\17plugins.misc\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/pear-tree"
+  },
+  ["seoul256.vim"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/seoul256.vim"
+  },
+  ["vim-arduino"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-arduino"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-devicons"
+  },
+  ["vim-misc"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-misc"
+  },
+  ["vim-moonfly-colors"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-moonfly-colors"
+  },
+  ["vim-notes"] = {
+    config = { "\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nnotes\20plugins.classes\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-notes"
+  },
+  ["vim-obsession"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-obsession"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  vimwiki = {
+    config = { "\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vimwiki"
+  },
+  ["wal.vim"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/wal.vim"
   }
 }
 
-local function handle_bufread(names)
-  for _, name in ipairs(names) do
-    local path = plugins[name].path
-    for _, dir in ipairs({ 'ftdetect', 'ftplugin', 'after/ftdetect', 'after/ftplugin' }) do
-      if #vim.fn.finddir(dir, path) > 0 then
-        vim.cmd('doautocmd BufRead')
-        return
-      end
-    end
-  end
-end
-
-_packer_load = nil
-
-local function handle_after(name, before)
-  local plugin = plugins[name]
-  plugin.load_after[before] = nil
-  if next(plugin.load_after) == nil then
-    _packer_load({name}, {})
-  end
-end
-
-_packer_load = function(names, cause)
-  local some_unloaded = false
-  for _, name in ipairs(names) do
-    if not plugins[name].loaded then
-      some_unloaded = true
-      break
-    end
-  end
-
-  if not some_unloaded then return end
-
-  local fmt = string.format
-  local del_cmds = {}
-  local del_maps = {}
-  for _, name in ipairs(names) do
-    if plugins[name].commands then
-      for _, cmd in ipairs(plugins[name].commands) do
-        del_cmds[cmd] = true
-      end
-    end
-
-    if plugins[name].keys then
-      for _, key in ipairs(plugins[name].keys) do
-        del_maps[key] = true
-      end
-    end
-  end
-
-  for cmd, _ in pairs(del_cmds) do
-    vim.cmd('silent! delcommand ' .. cmd)
-  end
-
-  for key, _ in pairs(del_maps) do
-    vim.cmd(fmt('silent! %sunmap %s', key[1], key[2]))
-  end
-
-  for _, name in ipairs(names) do
-    if not plugins[name].loaded then
-      vim.cmd('packadd ' .. name)
-      if plugins[name].config then
-        for _i, config_line in ipairs(plugins[name].config) do
-          loadstring(config_line)()
-        end
-      end
-
-      if plugins[name].after then
-        for _, after_name in ipairs(plugins[name].after) do
-          handle_after(after_name, name)
-          vim.cmd('redraw')
-        end
-      end
-
-      plugins[name].loaded = true
-    end
-  end
-
-  handle_bufread(names)
-
-  if cause.cmd then
-    local lines = cause.l1 == cause.l2 and '' or (cause.l1 .. ',' .. cause.l2)
-    vim.cmd(fmt('%s%s%s %s', lines, cause.cmd, cause.bang, cause.args))
-  elseif cause.keys then
-    local keys = cause.keys
-    local extra = ''
-    while true do
-      local c = vim.fn.getchar(0)
-      if c == 0 then break end
-      extra = extra .. vim.fn.nr2char(c)
-    end
-
-    if cause.prefix then
-      local prefix = vim.v.count ~= 0 and vim.v.count or ''
-      prefix = prefix .. '"' .. vim.v.register .. cause.prefix
-      if vim.fn.mode('full') == 'no' then
-        if vim.v.operator == 'c' then
-          prefix = '' .. prefix
-        end
-
-        prefix = prefix .. vim.v.operator
-      end
-
-      vim.fn.feedkeys(prefix, 'n')
-    end
-
-    local formatted_plug_key = string.format('%c%c%c', 0x80, 253, 83)
-    local keys = string.gsub(cause.keys, '^<Plug>', formatted_plug_key) .. extra
-    local escaped_keys = string.gsub(keys, '<[cC][rR]>', '\r')
-    vim.fn.feedkeys(escaped_keys)
-  elseif cause.event then
-    vim.cmd(fmt('doautocmd <nomodeline> %s', cause.event))
-  elseif cause.ft then
-    vim.cmd(fmt('doautocmd <nomodeline> %s FileType %s', 'filetypeplugin', cause.ft))
-    vim.cmd(fmt('doautocmd <nomodeline> %s FileType %s', 'filetypeindent', cause.ft))
-  end
-end
-
--- Runtimepath customization
-
--- Pre-load configuration
--- Post-load configuration
 -- Config for: nvim-lspconfig
-loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0")()
--- Config for: completion-nvim
-loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0")()
--- Config for: vimwiki
-loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0")()
--- Config for: nvim-treesitter
-loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.treesitter\frequire\0")()
--- Config for: echodoc.vim
-loadstring("\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0")()
--- Config for: fzterm.nvim
-loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0")()
--- Config for: nvim-dap-virtual-text
-loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0")()
--- Config for: eskk.vim
-loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\teskk\20plugins.classes\frequire\0")()
--- Config for: vim-notes
-loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nnotes\20plugins.classes\frequire\0")()
+try_loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
 -- Config for: pear-tree
-loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rpearTree\17plugins.misc\frequire\0")()
--- Conditional loads
--- Load plugins in order defined by `after`
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rpearTree\17plugins.misc\frequire\0", "config", "pear-tree")
+-- Config for: vimwiki
+try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0", "config", "vimwiki")
+-- Config for: vim-notes
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nnotes\20plugins.classes\frequire\0", "config", "vim-notes")
+-- Config for: echodoc.vim
+try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0", "config", "echodoc.vim")
+-- Config for: nvim-treesitter
+try_loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: nvim-dap-virtual-text
+try_loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0", "config", "nvim-dap-virtual-text")
+-- Config for: eskk.vim
+try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\teskk\20plugins.classes\frequire\0", "config", "eskk.vim")
+-- Config for: completion-nvim
+try_loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0", "config", "completion-nvim")
+-- Config for: fzterm.nvim
+try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0", "config", "fzterm.nvim")
 END
 
-function! s:load(names, cause) abort
-call luaeval('_packer_load(_A[1], _A[2])', [a:names, a:cause])
-endfunction
-
-
-" Command lazy-loads
-
-" Keymap lazy-loads
-
-augroup packer_load_aucmds
-  au!
-  " Filetype lazy-loads
-  " Event lazy-loads
-  " Function lazy-loads
-augroup END
+catch
+  echohl ErrorMsg
+  echom "Error in packer_compiled: " .. v:exception
+  echom "Please check your config for correctness"
+  echohl None
+endtry

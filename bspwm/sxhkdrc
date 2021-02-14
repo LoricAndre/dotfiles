@@ -14,10 +14,10 @@ super + t
 # super + d
 #   rofi -show drun
 super + d
-    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.activateLauncherMenu
+    krunner
 
 super + r
-    rofi -show run
+    krunner
 
 super + equal
   rofi -show calc -modi calc -no-show-match -no-sort
@@ -83,7 +83,7 @@ super + ctrl + {m,x,y,z}
 
 # focus the node in the given direction
 super + {_,shift + }{j,k,l,m}
-  bspc node -{f,s} {west,south,north,east}
+  bspc node -{f,m} {west,south,north,east}
 
 # focus the node for the given path jump
 super + {comma,question,semicolon,period}

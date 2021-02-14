@@ -1,18 +1,12 @@
-#! /bin/sh
+#! /bin/bash
+. $HOME/dotfiles/deps/vars.sh
 
-# pgrep -x sxhkd > /dev/null || sxhkd &
-# pgrep -x conky > /dev/null || (conky && \
-#   # conky -c ~/.config/conky/gcal.conf && \
-#   conky -c ~/.config/conky/bspwm.conf && \
-#   conky -c ~/.config/conky/pscircle.conf && \
-#   conky -c ~/.config/conky/clock.conf &)
-# pgrep -x picom > /dev/null || picom &
-# feh --bg-fill ~/.wallpapers/active.jpg
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10 99
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 
 bspc config border_width         2
 bspc config window_gap          12
+# bspc config bottom_padding      40
 
 bspc config split_ratio          0.52
 bspc config borderless_monocle   true
@@ -24,3 +18,15 @@ bspc rule -a dropdown sticky=on state=floating hidden=on rectangle=1916x600+0+0
 kitty --class dropdown &
 
 xsetroot -cursor_name left_ptr &
+
+sleep 3
+pgrep -x sxhkd > /dev/null || sxhkd &
+pgrep -x polybar > /dev/null || polybar top &
+pgrep -x alttab > /dev/null || alttab -w 1 -d 1 -bg $background -fg $foreground -frame $color1 -font xft:monospace-10 -t 128x150 -i 127x64 &
+# pgrep -x conky > /dev/null || (conky && \
+#   # conky -c ~/.config/conky/gcal.conf && \
+#   conky -c ~/.config/conky/bspwm.conf && \
+#   conky -c ~/.config/conky/pscircle.conf && \
+#   conky -c ~/.config/conky/clock.conf &)
+# pgrep -x picom > /dev/null || picom &
+# feh --bg-fill ~/.wallpapers/active.jpg
