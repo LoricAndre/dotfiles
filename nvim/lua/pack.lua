@@ -23,6 +23,8 @@ require('packer').startup(function()
   use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
   -- use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require'plugins.misc'.telescope() end}
   use {'glacambre/firenvim', run = ':call firenvim#install(0)'}
+  use {'kkoomen/vim-doge', run = ":call doge#install()", config = function() vim.g.doge_mapping = '<Leader>g' end}
+  use {'hrsh7th/vim-vsnip', config = function() require'plugins.misc'.vsnip() end, requires = 'hrsh7th/vim-vsnip-integ'}
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter
@@ -41,6 +43,11 @@ require('packer').startup(function()
   use {'git@github.com:nvim-treesitter/completion-treesitter'}
   -- LSP
   use {'git@github.com:neovim/nvim-lspconfig', config = function() require'plugins.lsp'.lsp() end}
+  use {'mfussenegger/nvim-jdtls', config = function() require'plugins.lsp'.jdtls() end}
+  use {'glepnir/lspsaga.nvim', config = function() require'plugins.lsp'.saga() end}
+
   -- Completion
-  use {'git@github.com:nvim-lua/completion-nvim', config = function() require'plugins.completion'() end}
+  -- use {'git@github.com:nvim-lua/completion-nvim', config = function() require'plugins.completion'.completion() end}
+  use {'hrsh7th/nvim-compe', config = function() require'plugins.completion'.compe() end}
+  use {'tzachar/compe-tabnine'}
 end)

@@ -25,3 +25,9 @@
 [submodule "bin/src/polybar-dwm"]
 	path = bin/src/polybar-dwm
 	url = git@github.com:mihirlad55/polybar-dwm-module.git
+[submodule "deps/eclipse.jdt.ls"]
+	path = deps/eclipse.jdt.ls
+	url = https://github.com/eclipse/eclipse.jdt.ls.git
+[submodule "deps/java-debug"]
+	path = deps/java-debug
+	url = git@github.com:microsoft/java-debug.git

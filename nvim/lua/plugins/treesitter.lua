@@ -41,7 +41,7 @@ return function()
             python = "(function_definition) @function",
             cpp = "(function_definition) @function",
             c = "(function_definition) @function",
-            java = "(method_declaration) @function"
+            java = "(metheclaration) @function"
           },
           -- or you use the queries from supported languages with textobjects.scm
           ["af"] = "@function.outer",
@@ -64,6 +64,4 @@ return function()
       ensure_installed = "all" -- one of "all", "language", or a list of languages
   }
 
-  vim.api.nvim_set_option('foldmethod', 'expr')
-  vim.api.nvim_set_option('foldexpr', 'nvim_treesitter#foldexpr()')
 end

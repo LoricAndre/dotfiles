@@ -36,10 +36,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/colorizer"
   },
-  ["completion-nvim"] = {
-    config = { "\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0" },
+  ["compe-tabnine"] = {
     loaded = true,
-    path = "/home/loric/.local/share/nvim/site/pack/packer/start/completion-nvim"
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/compe-tabnine"
   },
   ["completion-treesitter"] = {
     loaded = true,
@@ -68,6 +67,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/fzterm.nvim"
   },
+  ["lspsaga.nvim"] = {
+    config = { "\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\tsaga\16plugins.lsp\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+  },
   ["lule.nvim"] = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/lule.nvim"
@@ -75,6 +79,11 @@ _G.packer_plugins = {
   ["nvcode-color-schemes.vim"] = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
+  },
+  ["nvim-compe"] = {
+    config = { "\27LJ\1\2@\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\ncompe\23plugins.completion\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-dap"] = {
     loaded = true,
@@ -84,6 +93,11 @@ _G.packer_plugins = {
     config = { "\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0" },
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
+  },
+  ["nvim-jdtls"] = {
+    config = { "\27LJ\1\0029\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\njdtls\16plugins.lsp\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/nvim-jdtls"
   },
   ["nvim-lspconfig"] = {
     config = { "\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0" },
@@ -97,6 +111,7 @@ _G.packer_plugins = {
   },
   ["packer.nvim"] = {
     loaded = false,
+    needs_bufread = false,
     path = "/home/loric/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["pear-tree"] = {
@@ -120,6 +135,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-devicons"
   },
+  ["vim-doge"] = {
+    config = { "\27LJ\1\0028\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\14<Leader>g\17doge_mapping\6g\bvim\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-doge"
+  },
   ["vim-misc"] = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-misc"
@@ -141,6 +161,15 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
+  ["vim-vsnip"] = {
+    config = { "\27LJ\1\2:\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nvsnip\17plugins.misc\frequire\0" },
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = true,
+    path = "/home/loric/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ"
+  },
   vimwiki = {
     config = { "\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0" },
     loaded = true,
@@ -152,26 +181,34 @@ _G.packer_plugins = {
   }
 }
 
--- Config for: nvim-lspconfig
-try_loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
--- Config for: pear-tree
-try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rpearTree\17plugins.misc\frequire\0", "config", "pear-tree")
--- Config for: vimwiki
-try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0", "config", "vimwiki")
--- Config for: vim-notes
-try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nnotes\20plugins.classes\frequire\0", "config", "vim-notes")
--- Config for: echodoc.vim
-try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0", "config", "echodoc.vim")
+-- Config for: nvim-jdtls
+try_loadstring("\27LJ\1\0029\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\njdtls\16plugins.lsp\frequire\0", "config", "nvim-jdtls")
 -- Config for: nvim-treesitter
 try_loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+-- Config for: vim-notes
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nnotes\20plugins.classes\frequire\0", "config", "vim-notes")
+-- Config for: vimwiki
+try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\fvimwiki\17plugins.misc\frequire\0", "config", "vimwiki")
+-- Config for: nvim-compe
+try_loadstring("\27LJ\1\2@\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\ncompe\23plugins.completion\frequire\0", "config", "nvim-compe")
+-- Config for: echodoc.vim
+try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0054\0\0\0007\0\1\0'\1ÿÿ:\1\2\0G\0\1\0\30echodoc#enable_at_startup\6g\bvim\0", "config", "echodoc.vim")
+-- Config for: vim-vsnip
+try_loadstring("\27LJ\1\2:\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nvsnip\17plugins.misc\frequire\0", "config", "vim-vsnip")
+-- Config for: fzterm.nvim
+try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0", "config", "fzterm.nvim")
+-- Config for: vim-doge
+try_loadstring("\27LJ\1\0028\0\0\2\0\4\0\0054\0\0\0007\0\1\0%\1\3\0:\1\2\0G\0\1\0\14<Leader>g\17doge_mapping\6g\bvim\0", "config", "vim-doge")
+-- Config for: lspsaga.nvim
+try_loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\tsaga\16plugins.lsp\frequire\0", "config", "lspsaga.nvim")
 -- Config for: nvim-dap-virtual-text
 try_loadstring("\27LJ\1\0028\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\bdap\17plugins.misc\frequire\0", "config", "nvim-dap-virtual-text")
 -- Config for: eskk.vim
 try_loadstring("\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\teskk\20plugins.classes\frequire\0", "config", "eskk.vim")
--- Config for: completion-nvim
-try_loadstring("\27LJ\1\0026\0\0\2\0\2\0\0054\0\0\0%\1\1\0>\0\2\2>\0\1\1G\0\1\0\23plugins.completion\frequire\0", "config", "completion-nvim")
--- Config for: fzterm.nvim
-try_loadstring("\27LJ\1\2;\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\vfzterm\17plugins.misc\frequire\0", "config", "fzterm.nvim")
+-- Config for: nvim-lspconfig
+try_loadstring("\27LJ\1\0027\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\blsp\16plugins.lsp\frequire\0", "config", "nvim-lspconfig")
+-- Config for: pear-tree
+try_loadstring("\27LJ\1\2=\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\rpearTree\17plugins.misc\frequire\0", "config", "pear-tree")
 END
 
 catch

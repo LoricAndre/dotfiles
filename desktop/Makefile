@@ -1,2 +1,2 @@
 link_desktop:
-	ln $(LN_FLAGS) $(DOTFILES)/desktop/*.desktop $(HOME)/.local/share/applications/
+	@ln $(LN_FLAGS) $(DOTFILES)/desktop/*.desktop $(HOME)/.local/share/applications/

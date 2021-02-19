@@ -21,7 +21,7 @@ vim.o.ttimeoutlen = 300
 vim.o.autowrite = true
 vim.o.mouse = "a"
 vim.o.wildoptions = ""
-vim.g.loaded_netrw = 1
+vim.g.lo_netrw = 1
 -- Colorscheme
 vim.cmd('colorscheme disco')
 vim.cmd('hi LineNr ctermbg=NONE ctermfg=NONE')

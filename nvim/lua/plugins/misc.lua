@@ -8,47 +8,14 @@ M.fzterm = function()
   map("n", "<leader>a", ":silent! Ag<CR>", {})
   map("n", "<leader>r", ":silent! Rg<CR>", {})
   map("n", "<leader>b", ":silent! Buffers<CR>", {})
-  map("n", "<leader>ls", ":silent! DocumentSymbols<CR>", {})
-  map("n", "<leader>lw", ":silent! WorkspaceSymbols<CR>", {})
-  map("n", "<leader>lr", ":silent! References<CR>", {})
+  -- map("n", "<leader>ls", ":silent! DocumentSymbols<CR>", {})
+  -- map("n", "<leader>lw", ":silent! WorkspaceSymbols<CR>", {})
+  -- map("n", "<leader>lr", ":silent! References<CR>", {})
   map("n", "<leader>r", ":silent! Ranger<CR>", {})
   vim.g.fzterm_ignore = {
     ".git",
     ".node_modules"
   }
-end
-
--- Telescope
-M.telescope = function()
-  -- local actions = require'telescope.actions'
-  -- require'telescope'.setup{
-  --   defaults = {
-  --     vimgrep_arguments = {
-  --       'ag',
-  --       '--color',
-  --       '--filename',
-  --       '--column',
-  --       '--vimgrep' },
-  --     prompt_prefix = '>>',
-  --   }
-  -- }
-  local function tsmap(k, f)
-    return map("n", "<leader>"..k, "<cmd>lua require'telescope.builtin'."..f.."()<CR>", {noremap = true})
-  end
-  tsmap("F", "find_files")
-  tsmap("f", "git_files")
-  tsmap("r", "live_grep")
-  tsmap("b", "buffers")
-  tsmap("R", "registers")
-  tsmap("/", "current_buffer_fuzzy_find")
-  tsmap("lr", "lsp_references")
-  tsmap("ls", "lsp_document_symbols")
-  tsmap("lw", "lsp_workspace_symbols")
-  tsmap("a", "lsp_code_actions")
-  tsmap("gc", "git_bcommits")
-  tsmap("gC", "git_commits")
-  tsmap("gb", "git_branches")
-  tsmap("ts", "treesitter")
 end
 
 -- Pear tree
@@ -74,12 +41,14 @@ M.dap = function()
     name = 'lldb'
   }
   vim.g.dap_virtual_text = true
-  map("n", "<F5>", ":lua require'dap'.toggle_breakpoint()<CR>", {noremap = true, silent = true})
-  map("n", "<F6>", ":lua require'dap'.step_over()<CR>", {noremap = true, silent = true})
-  map("n", "<F18>", ":lua require'dap'.step_back()<CR>", {noremap = true, silent = true})
-  map("n", "<F30>", ":lua require'dap'.goto_()<CR>", {noremap = true, silent = true})
-  map("n", "<F4>", ":DbgC ", {noremap = true, silent = true})
-  map("n", "<F16>", ":lua require'dap'.repl.close()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>db", ":lua require'dap'.toggle_breakpoint()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>ds", ":lua require'dap'.step_over()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>dS", ":lua require'dap'.step_back()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>dg", ":lua require'dap'.goto_()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>dc", ":lua require'dap'.continue()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>dr", ":lua require'dap'.repl.open()<CR>", {noremap = true, silent = true})
+  map("n", "<leader>dC", ":DbgC ", {noremap = true, silent = true})
+  map("n", "<leader>dq", ":lua require'dap'.repl.close()<CR>", {noremap = true, silent = true})
   vim.cmd("command! -nargs=1 DbgC lua require'plugins.misc'.start_c_debugger({<f-args>})")
 end
 
@@ -114,6 +83,27 @@ end
 -- Vimwiki ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 M.vimwiki = function()
   vim.g.vimwiki_list = {{path = '~/Files/vimwiki/'}}
+end
+
+-- Clap
+M.clap = function()
+  map("n", "<leader>f", ":silent! Clap gfiles<CR>", {})
+  map("n", "<leader>F", ":silent! Clap files<CR>", {})
+  map("n", "<leader>a", ":silent! Clap grep2<CR>", {})
+  map("n", "<leader>r", ":silent! Clap grep<CR>", {})
+  map("n", "<leader>b", ":silent! Clap buffers<CR>", {})
+  -- map("n", "<leader>ls", ":silent! DocumentSymbols<CR>", {})
+  -- map("n", "<leader>lw", ":silent! WorkspaceSymbols<CR>", {})
+  -- map("n", "<leader>lr", ":silent! References<CR>", {})
+  map("n", "<leader>r", ":silent! Clap filer<CR>", {})
+  map("n", "<leader>y", ":silent! Clap yanks<CR>", {})
+  map("n", "<leader>l", ":silent! Clap blines<CR>", {})
+end
+
+-- VSnip
+M.vsnip = function ()
+  map('i', '<C-l>', 'vsnip#available(1)  ? "<Plug>(vsnip-expand-or-jump)" : compe#confirm()', {noremap = true, expr = true})
+  map('s', '<C-l>', 'vsnip#available(1)  ? "<Plug>(vsnip-expand-or-jump)" : compe#confirm()', {noremap = true, expr = true})
 end
 
 return M

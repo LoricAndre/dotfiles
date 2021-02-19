@@ -23,8 +23,8 @@ build_conky_clock: FILE = clock.conf
 build_conky_clock: parse_conky_clock
 	@sed -ie 's/#\([0-9a-f]\{6\}\)/\1/' $(DOTFILES)/conky/parsed/clock.conf
 
-link_conky: build_conky build_conky_gcal build_conky_bspwm build_conky_pscircle build_conky_clock
-	ln $(LN_FLAGS) $(DOTFILES)/conky/parsed/conky.conf $(HOME)/.config/conky/conky.conf
+link_conky: build_conky build_conky_gcal build_conky_bspwm build_conky_pscircle build_conky_clock mkdir_$(HOME)/.config/conky
+	@ln $(LN_FLAGS) $(DOTFILES)/conky/parsed/conky.conf $(HOME)/.config/conky/conky.conf
 	ln $(LN_FLAGS) $(DOTFILES)/conky/parsed/gcal.conf $(HOME)/.config/conky/gcal.conf
 	ln $(LN_FLAGS) $(DOTFILES)/conky/parsed/bspwm.conf $(HOME)/.config/conky/bspwm.conf
 	ln $(LN_FLAGS) $(DOTFILES)/conky/parsed/pscircle.conf $(HOME)/.config/conky/pscircle.conf
