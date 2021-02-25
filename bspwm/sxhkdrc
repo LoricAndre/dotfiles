@@ -8,13 +8,13 @@ super + Return
 
 # Scratchpad
 super + t
-  scratch.sh dropdown
+  bspc node `xdotool search --class dropdown | head -n1` --flag hidden -f
 
 # program launcher
 # super + d
 #   rofi -show drun
 super + d
-    krunner
+    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.activateLauncherMenu
 
 super + r
     krunner
@@ -108,8 +108,11 @@ super + {n,comma}
 #   bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
-  bspc {desktop -f,node -d} '^{1-9,10}'
+super + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+    /home/loric/bin/focus_all.sh {1-9,10}
+
+super + shift + {ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+    bspc node -d '^{1-9,10}'
 
 #
 # move/resize
