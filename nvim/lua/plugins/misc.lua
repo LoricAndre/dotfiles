@@ -79,25 +79,16 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
     dap.repl.open()
 end
 
-
--- Vimwiki ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-M.vimwiki = function()
-  vim.g.vimwiki_list = {{path = '~/Files/vimwiki/'}}
-end
-
--- Clap
-M.clap = function()
-  map("n", "<leader>f", ":silent! Clap gfiles<CR>", {})
-  map("n", "<leader>F", ":silent! Clap files<CR>", {})
-  map("n", "<leader>a", ":silent! Clap grep2<CR>", {})
-  map("n", "<leader>r", ":silent! Clap grep<CR>", {})
-  map("n", "<leader>b", ":silent! Clap buffers<CR>", {})
-  -- map("n", "<leader>ls", ":silent! DocumentSymbols<CR>", {})
-  -- map("n", "<leader>lw", ":silent! WorkspaceSymbols<CR>", {})
-  -- map("n", "<leader>lr", ":silent! References<CR>", {})
-  map("n", "<leader>r", ":silent! Clap filer<CR>", {})
-  map("n", "<leader>y", ":silent! Clap yanks<CR>", {})
-  map("n", "<leader>l", ":silent! Clap blines<CR>", {})
+M.telescope = function()
+  map("n", "<leader>f", ":Telescope git_files<CR>", {})
+  map("n", "<leader>F", ":Telescope find_files<CR>", {})
+  map("n", "<leader>a", ":Telescope grep_string<CR>", {})
+  map("n", "<leader>r", ":Telescope live_grep<CR>", {})
+  map("n", "<leader>b", ":Telescope buffers<CR>", {})
+  map("n", "<leader>ls", ":Telescope lsp_document_symbols<CR>", {})
+  map("n", "<leader>lw", ":Telescope lsp_workspace_symbols<CR>", {})
+  map("n", "<leader>lr", ":Telescope lsp_references<CR>", {})
+  map("n", "<leader>y", ":Telescope registers<CR>", {})
 end
 
 -- VSnip

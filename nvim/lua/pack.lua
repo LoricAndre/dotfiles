@@ -20,7 +20,7 @@ require('packer').startup(function()
     config = function() require'plugins.misc'.dap() end
   }
   use 'tpope/vim-surround'
-  use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
+  -- use {'vimwiki/vimwiki', config = function() require'plugins.misc'.vimwiki() end}
   -- use {'nvim-telescope/telescope.nvim', requires = {'nvim-lua/popup.nvim', 'nvim-lua/plenary.nvim'}, config = function() require'plugins.misc'.telescope() end}
   use {'glacambre/firenvim', run = ':call firenvim#install(0)'}
   use {'kkoomen/vim-doge', run = ":call doge#install()", config = function() vim.g.doge_mapping = '<Leader>g' end}
