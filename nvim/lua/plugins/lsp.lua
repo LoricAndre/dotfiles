@@ -4,7 +4,9 @@ require'utils'
 M = {}
 M.lsp = function()
   local lsp = require'lspconfig'
-  lsp.clangd.setup{}
+  lsp.clangd.setup{
+    cmd = {"clangd", "--compile-commands-dir=<(echo '[{\"arguments\": \"-std=c++17\"}]')"}
+  }
   lsp.cmake.setup{}
   lsp.html.setup{}
   lsp.jedi_language_server.setup{}
