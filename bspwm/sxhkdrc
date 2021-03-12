@@ -11,13 +11,8 @@ super + t
   bspc node `xdotool search --class dropdown | head -n1` --flag hidden -f
 
 # program launcher
-# super + d
-#   rofi -show drun
 super + d
-    qdbus org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.activateLauncherMenu
-
-super + r
-    krunner
+  rofi -show drun
 
 super + equal
   rofi -show calc -modi calc -no-show-match -no-sort
@@ -25,8 +20,8 @@ super + equal
 super + b
   firefox
 
-# ctrl + alt + l
-#   lock.sh
+ctrl + alt + l
+  slock
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -47,7 +42,7 @@ super + shift + r
   bspc wm -r
 
 super + shift + q
-  qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+  bspc quit
 
 # close and kill
 super + {_,ctrl + }q

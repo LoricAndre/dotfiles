@@ -35,7 +35,6 @@ alias ..='cd ..'
 alias ...='cd ...'
 alias ...='cd ../..'
 alias top='btm'
-alias applywal='feh --bg-fill ~/.wallpapers/active.jpg'
 alias s='status'
 alias :qa='exit'
 alias :q='clear'
@@ -43,7 +42,6 @@ alias reboot='sudo reboot'
 alias shutdown='sudo shutdown'
 alias mkdir="mkdir -p"
 
-alias cbplay='mpv `xclip -out -selection clipboard`'
 data() {
   pid=$(pgrep openvpn)
   if [ ! -z $pid ]; then
@@ -125,12 +123,12 @@ open() {
     xdg-open $a >/dev/null 2>&1
   done
 }
-alias spotify='LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer'
+alias spotify='LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer'
 nohd() {
   nohup $@ >/dev/null 2>&1 &
 }
 alias rbl='brl'
 alias wthr='curl https://wtrr.in'
 alias wthr='curl https://wttr.in'
-alias lwd='source ~/.cacche/zsh/lwd'
+alias lwd='source ~/.cache/zsh/lwd'
 alias bashupload='curl https://bashupload.com -T'

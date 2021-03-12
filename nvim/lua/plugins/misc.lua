@@ -94,7 +94,13 @@ end
 -- VSnip
 M.vsnip = function ()
   map('i', '<C-l>', 'vsnip#available(1)  ? "<Plug>(vsnip-expand-or-jump)" : compe#confirm()', {noremap = true, expr = true})
-  map('s', '<C-l>', 'vsnip#available(1)  ? "<Plug>(vsnip-expand-or-jump)" : compe#confirm()', {noremap = true, expr = true})
+  map('s', '<C-l>', 'UltiSnips#CanJumpForwards() ? UltiSnips#JumpForwards() : vsnip#available(1)  ? "<Plug>(vsnip-expand-or-jump)" : compe#confirm()', {noremap = true, expr = true})
+end
+
+M.ultisnips = function()
+  vim.g.UltiSnipsExpandTrigger="<NUL>"
+  vim.g.UltiSnipsJumpForwardTrigger="<C-l>"
+  vim.g.UltiSnipsJumpBackwardTrigger="<C-k>"
 end
 
 return M

@@ -4,7 +4,7 @@ Name=Spotify (adblock)
 GenericName=Music Player
 Icon=spotify-client
 TryExec=spotify
-Exec=env LD_PRELOAD=/usr/local/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer %U
+Exec=env LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer %U
 Terminal=false
 MimeType=x-scheme-handler/spotify;
 Categories=Audio;Music;Player;AudioVideo;

@@ -50,7 +50,8 @@ return {
       tags = false;
       snippets_nvim = true;
       treesitter = true;
-      tabnine = true
+      tabnine = true;
+      ultisnips = true
     };
   }
   vim.o.completeopt = "menuone,noselect"

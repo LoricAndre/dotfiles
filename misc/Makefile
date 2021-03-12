@@ -4,4 +4,4 @@ link_networkmanager_dmenu: mkdir_$(HOME)/.config/networkmanager_dmenu
 link_xinitrc:
 	@ln $(LN_FLAGS) $(DOTFILES)/misc/xinitrc $(HOME)/.xinitrc
 
-link_misc: link_networkmanager_dmenu link_xinitrc
+link_misc: link_xinitrc

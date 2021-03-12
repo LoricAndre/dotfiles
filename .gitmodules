@@ -1,15 +1,6 @@
 [submodule "i3lock-color"]
 	path = i3lock-color
 	url = git@github.com:LoricAndre/i3lock-color.git
-[submodule "bin/src/lule"]
-	path = bin/src/lule
-	url = git@github.com:warpwm/lule.git
-[submodule "deps/base16"]
-	path = deps/base16
-	url = git@github.com:kdrag0n/base16-termux.git
-[submodule "bin/src/st"]
-	path = bin/src/st
-	url = git@github.com:LoricAndre/st.git
 [submodule "bin/src/river"]
 	path = bin/src/river
 	url = git@github.com:ifreund/river.git
@@ -19,15 +10,18 @@
 [submodule "bin/src/leftwm"]
 	path = bin/src/leftwm
 	url = git@github.com:leftwm/leftwm.git
-[submodule "bin/src/dwm"]
-	path = bin/src/dwm
-	url = git@github.com:bakkeby/dwm-flexipatch.git
-[submodule "bin/src/polybar-dwm"]
-	path = bin/src/polybar-dwm
-	url = git@github.com:mihirlad55/polybar-dwm-module.git
 [submodule "deps/eclipse.jdt.ls"]
 	path = deps/eclipse.jdt.ls
 	url = https://github.com/eclipse/eclipse.jdt.ls.git
 [submodule "deps/java-debug"]
 	path = deps/java-debug
 	url = git@github.com:microsoft/java-debug.git
+[submodule "bin/src/neovim"]
+	path = bin/src/neovim
+	url = git@github.com:neovim/neovim.git
+[submodule "bin/src/lua-language-server"]
+	path = bin/src/lua-language-server
+	url = https://github.com/sumneko/lua-language-server
+[submodule "bin/src/z"]
+	path = bin/src/z
+	url = git@github.com:rupa/z.git

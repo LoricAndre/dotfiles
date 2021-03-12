@@ -1,8 +1,8 @@
 .ONESHELL:
 DOTFILES = $(HOME)/dotfiles
 _INCL = nvim bin desktop zsh \
-	ranger misc mako fontconfig polybar \
-	kitty conky bspwm
+	ranger misc fontconfig polybar \
+	kitty bspwm
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
@@ -16,7 +16,7 @@ AUR_HELPER = paru
 .DEFAULT_GOAL = dotfiles
 
 ifndef VAR_FILE
-  VAR_FILE = $(DOTFILES)/deps/vars.sh
+  VAR_FILE = $(DOTFILES)/deps/gruv.sh
 endif
 
 parse_%:

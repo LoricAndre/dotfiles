@@ -25,6 +25,7 @@ require('packer').startup(function()
   use {'glacambre/firenvim', run = ':call firenvim#install(0)'}
   use {'kkoomen/vim-doge', run = ":call doge#install()", config = function() vim.g.doge_mapping = '<Leader>g' end}
   use {'hrsh7th/vim-vsnip', config = function() require'plugins.misc'.vsnip() end, requires = 'hrsh7th/vim-vsnip-integ'}
+  use {'SirVer/ultisnips', requires = 'honza/vim-snippets', config = function() require'plugins.misc'.ultisnips() end}
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter

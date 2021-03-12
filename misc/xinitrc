@@ -1,5 +1,4 @@
 #!/bin/zsh
 
-# export DESKTOP_SESSION=plasma
-export KDEWM=/usr/bin/bspwm
-exec dbus-run-session startplasma-x11
+setxkbmap fr -option caps:escape
+exec dbus-run-session bspwm

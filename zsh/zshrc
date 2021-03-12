@@ -2,6 +2,7 @@ export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
+export VIMRUNTIME=/usr/local/share/nvim/runtime
 
 # Fix keys
 typeset -g -A key
@@ -69,7 +70,6 @@ compinit
 
 fpath=($fpath "/home/loric/.zfunctions")
 autoload -U promptinit; promptinit
-source /usr/share/fzf/key-bindings.zsh
 # Antigen
 . ~/.antigen.zsh
 antigen use oh-my-zsh
@@ -78,7 +78,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle zsh-users/zsh-completions
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle git
-antigen bundle z
+antigen bundle agkozak/zsh-z
 antigen apply
 
 # Prompt & more
