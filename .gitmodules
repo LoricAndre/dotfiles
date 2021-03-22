@@ -25,3 +25,6 @@
 [submodule "deps/java-language-server"]
 	path = deps/java-language-server
 	url = git@github.com:georgewfraser/java-language-server.git
+[submodule "bin/src/emmet-ls"]
+	path = bin/src/emmet-ls
+	url = git@github.com:windwp/emmet-ls.git
