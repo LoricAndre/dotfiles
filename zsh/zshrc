@@ -2,7 +2,8 @@ export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
-export VIMRUNTIME=/usr/local/share/nvim/runtime
+export VIMRUNTIME=/usr/share/nvim/runtime
+
 
 # Fix keys
 typeset -g -A key
