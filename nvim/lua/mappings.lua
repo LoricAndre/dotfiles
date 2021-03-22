@@ -47,3 +47,5 @@ map('n', '<PageDown>', '<Nop>', {noremap = true, silent = true})
 
 map('i', '<expr> <Tab>', 'pumvisible() ? "<C-n>" : "<Tab>"', {noremap = true, silent = true})
 map('i', '<expr> <S-Tab>', ' pumvisible() ? "<C-p>" : "<S-Tab>"', {noremap = true, silent = true})
+map('i', 'jk', '<Esc>:w<CR>', {noremap = true, silent = true})
+

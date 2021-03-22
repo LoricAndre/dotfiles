@@ -27,6 +27,8 @@ require('packer').startup(function()
   use {'hrsh7th/vim-vsnip', config = function() require'plugins.misc'.vsnip() end, requires = 'hrsh7th/vim-vsnip-integ'}
   use {'SirVer/ultisnips', requires = 'honza/vim-snippets', config = function() require'plugins.misc'.ultisnips() end}
   use {'aurieh/discord.nvim'}
+  use {'mattn/emmet-vim', config = function() vim.g.user_emmet_leader_key = 'e,' end}
+  use 'Odie/gitabra'
 
   -- Colorschemes
   use 'git@github.com:christianchiarulli/nvcode-color-schemes.vim' -- has treesitter
