@@ -12,7 +12,7 @@
 	url = git@github.com:leftwm/leftwm.git
 [submodule "deps/eclipse.jdt.ls"]
 	path = deps/eclipse.jdt.ls
-	url = https://github.com/eclipse/eclipse.jdt.ls.git
+	url = git@github.com:eclipse/eclipse.jdt.ls.git
 [submodule "deps/java-debug"]
 	path = deps/java-debug
 	url = git@github.com:microsoft/java-debug.git

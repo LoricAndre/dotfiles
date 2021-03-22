@@ -16,7 +16,7 @@ AUR_HELPER = paru
 .DEFAULT_GOAL = dotfiles
 
 ifndef VAR_FILE
-  VAR_FILE = $(DOTFILES)/deps/gruv.sh
+  VAR_FILE = $(DOTFILES)/deps/nord.sh
 endif
 
 parse_%:
