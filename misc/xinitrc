@@ -1,4 +1,5 @@
 #!/bin/zsh
 
-setxkbmap fr -option caps:escape
+# export DESKTOP_SESSION=plasma
+setxkbmap fr
 exec dbus-run-session bspwm

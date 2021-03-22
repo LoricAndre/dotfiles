@@ -16,12 +16,12 @@
 [submodule "deps/java-debug"]
 	path = deps/java-debug
 	url = git@github.com:microsoft/java-debug.git
-[submodule "bin/src/neovim"]
-	path = bin/src/neovim
-	url = git@github.com:neovim/neovim.git
 [submodule "bin/src/lua-language-server"]
 	path = bin/src/lua-language-server
 	url = https://github.com/sumneko/lua-language-server
 [submodule "bin/src/z"]
 	path = bin/src/z
 	url = git@github.com:rupa/z.git
+[submodule "deps/java-language-server"]
+	path = deps/java-language-server
+	url = git@github.com:georgewfraser/java-language-server.git
