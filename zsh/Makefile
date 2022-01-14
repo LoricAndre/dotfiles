@@ -1,6 +1,5 @@
 zsh:
-	@[ -d $(HOME)/.cache/zsh ] && mkdir -p $(HOME)/.cache/zsh
-	@mkdir $(HOME)/.cache/zsh
+	@[ -d $(HOME)/.cache/zsh ] || mkdir -p $(HOME)/.cache/zsh
 	@ln $(LN_FLAGS) $(DOTFILES)/zsh/zshrc $(HOME)/.zshrc
 	ln $(LN_FLAGS) $(DOTFILES)/zsh/aliases $(HOME)/.zshaliases
 	ln $(LN_FLAGS) $(DOTFILES)/zsh/profile $(HOME)/.zprofile
