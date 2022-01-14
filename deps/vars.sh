@@ -1,1 +1,0 @@
-/home/loric/dotfiles/deps/base16/colors/

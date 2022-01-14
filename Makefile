@@ -1,8 +1,9 @@
 .ONESHELL:
-DOTFILES = $(HOME)/dotfiles
+# DOTFILES = $(HOME)/dotfiles
+DOTFILES = /tmp/dotfiles
 _INCL = nvim bin desktop zsh \
-	ranger misc fontconfig polybar \
-	kitty bspwm
+	ranger misc fontconfig \
+	kitty
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
