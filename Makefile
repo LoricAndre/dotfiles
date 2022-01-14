@@ -1,6 +1,5 @@
 .ONESHELL:
-# DOTFILES = $(HOME)/dotfiles
-DOTFILES = /tmp/dotfiles
+DOTFILES = $(HOME)/dotfiles
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
 	kitty
