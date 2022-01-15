@@ -17,9 +17,8 @@ dashboard.section.header.val = {
 dashboard.section.buttons.val = {
     dashboard.button("e", "  > New file" , "<CMD>ene <BAR> startinsert <CR>"),
     dashboard.button("f", "  > Find file", "<CMD>OneTerm files_or_git_files<CR>"),
-    dashboard.button("l", "  > Load Session", "<CMD>OneTerm sessions<CR>"),
+    dashboard.button("s", "  > Load Session", "<CMD>OneTerm sessions<CR>"),
     dashboard.button("r", "  > Recent"   , "<CMD>OneTerm oldfiles<CR>"),
-    dashboard.button("s", "  > Settings" , "<CMD>cd " .. vim.fn.expand(vim.fn.stdpath('config')) .. "<CR><BAR><CMD>lua require'persistence'.load()<CR>"),
     dashboard.button("q", "  > Quit NVIM", "<CMD>qa<CR>"),
 }
 
@@ -36,7 +35,7 @@ dashboard.section.buttons.val = {
 --       }
 --   end)
 --   ```
--- local fortune = require("alpha.fortune") 
+-- local fortune = require("alpha.fortune")
 -- dashboard.section.footer.val = fortune()
 
 -- Send config to alpha
