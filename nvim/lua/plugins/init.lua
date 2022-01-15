@@ -103,4 +103,37 @@ return require'packer'.startup(function(use)
   use {
     'neomake/neomake'
   }
+
+  use {
+    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    config = function()
+      require("lsp_lines").register_lsp_virtual_lines()
+      vim.diagnostic.config({
+        virtual_text = false,
+      })
+    end
+  }
+
+  use {
+    "folke/twilight.nvim",
+    config = function()
+      require("twilight").setup {
+      }
+    end
+  }
+
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    config = function()
+      require("indent_blankline").setup {
+        show_current_context = true,
+        show_current_context_start = true,
+      }
+    end
+  }
+
+  use {
+    "LudoPinelli/comment-box.nvim",
+    config = function() require "plugins.comment-box" end
+  }
 end)

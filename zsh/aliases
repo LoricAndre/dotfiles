@@ -79,7 +79,7 @@ fullPush() {
   git commit -m "$@"
   git push
 }
-alias ssh="kitty +kitten ssh -i ~/.ssh/data"
+alias ssh="kitty +kitten ssh"
 alias icat="kitty +kitten icat"
 n() {
   if [ -z $@ ]; then

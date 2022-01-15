@@ -2,7 +2,7 @@
 DOTFILES = $(HOME)/dotfiles
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
-	kitty
+	kitty wezterm
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
