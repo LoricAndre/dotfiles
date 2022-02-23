@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "$@" | sed 's/^\([^ ]*\) \([^@]*\)@\([^ ]*\)\(.*\)$/Host \1\n\tUser \2\n\tHostname \3\n\tIdentityFile\4\n\t/' > $HOME/.ssh/config
