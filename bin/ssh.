@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+rsync -az --info=progress2 $DOTS $@:/tmp/dotfiles
+ssh $@ 'DOTFILES=/tmp/dotfiles make -BC /tmp/dotfiles nvim zsh'
+ssh $@
