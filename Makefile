@@ -1,5 +1,7 @@
 .ONESHELL:
-DOTFILES = $(HOME)/dotfiles
+ifndef DOTFILES
+  DOTFILES = $(HOME)/dotfiles
+endif
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
 	kitty wezterm
@@ -10,8 +12,9 @@ endif
 
 PARTS = $(patsubst %, %/Makefile, $(_INCL))
 LINKS = $(patsubst %, link_%, $(_INCL))
-
-AUR_HELPER = paru
+ifndef AUR_HELPER
+  AUR_HELPER = paru
+endif
 
 .DEFAULT_GOAL = dotfiles
 
