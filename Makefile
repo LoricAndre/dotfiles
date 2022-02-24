@@ -39,7 +39,7 @@ dotfiles: $(LINKS)
 
 
 install:
-	$(AUR_HELPER) -Syu `cat deps/pkgs`
+	$(AUR_HELPER) -S `cat deps/pkgs` --needed --noconfirm
 
 add_%:
 	@cd $(DOTFILES)
