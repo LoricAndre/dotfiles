@@ -123,4 +123,5 @@ set -o PROMPT_SUBST
 export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/null) %(?.%F{green}.%F{red}✗)%f%b '
 set -o monitor
 
+[ -z $ZDOTDIR ] && ZDOTDIR=$HOME
 . $ZDOTDIR/.zshaliases
