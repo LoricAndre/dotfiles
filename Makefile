@@ -1,5 +1,7 @@
 .ONESHELL:
-DOTFILES = $(HOME)/dotfiles
+ifndef DOTFILES
+  DOTFILES = $(HOME)/dotfiles
+endif
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
 	kitty neofetch
@@ -10,8 +12,9 @@ endif
 
 PARTS = $(patsubst %, %/Makefile, $(_INCL))
 LINKS = $(patsubst %, link_%, $(_INCL))
-
-AUR_HELPER = paru
+ifndef AUR_HELPER
+  AUR_HELPER = paru
+endif
 
 .DEFAULT_GOAL = dotfiles
 
@@ -36,7 +39,7 @@ dotfiles: $(LINKS)
 
 
 install:
-	$(AUR_HELPER) -Syu `cat deps/pkgs`
+	$(AUR_HELPER) -S `cat deps/pkgs` --needed --noconfirm
 
 add_%:
 	@cd $(DOTFILES)

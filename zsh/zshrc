@@ -72,21 +72,27 @@ compinit
 fpath=($fpath "/home/loric/.zfunctions")
 autoload -U promptinit; promptinit
 # Antigen
-. ~/.antigen.zsh
-antigen use oh-my-zsh
-antigen bundle zsh-users/zsh-autosuggestions
-antigen bundle zsh-users/zsh-syntax-highlighting
-antigen bundle zsh-users/zsh-completions
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle git
-antigen bundle agkozak/zsh-z
-antigen apply
+if [ -f $HOME/.antigen.zsh ]; then
+  . $HOME/.antigen.zsh
+  antigen use oh-my-zsh
+  antigen bundle zsh-users/zsh-autosuggestions
+  antigen bundle zsh-users/zsh-syntax-highlighting
+  antigen bundle zsh-users/zsh-completions
+  antigen bundle zsh-users/zsh-history-substring-search
+  antigen bundle git
+  antigen bundle agkozak/zsh-z
+  antigen apply
+else
+  read -k 1 "install_antigen?Antigen is not installed, do you wish to install it [Yn]? "
+  [[ $install_antigen =~ "[Nn]" ]] || curl -L git.io/antigen > $HOME/.antigen.zsh
+fi
 
 # Prompt & more
+LWD=~/.cache/zsh/lwd
 function chpwd() {
-  echo "cd \"$PWD\"" > ~/.cache/zsh/lwd
+  [ -f $LWD ] && echo "cd $PWD" > $LWD
 }
-source ~/.cache/zsh/lwd
+[ -f $LWD ] && source $LWD
 function preexec() {
   timer=$(($(date +%s%3N)))
 }
@@ -117,5 +123,6 @@ set -o PROMPT_SUBST
 export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/null) %(?.%F{green}.%F{red}✗)%f%b '
 set -o monitor
 
-. $HOME/.zshaliases
-. $HOME/.zshcompletions
+[ -z $ZDOTDIR ] && ZDOTDIR=$HOME
+. $ZDOTDIR/.zshaliases
+. $ZDOTDIR/.zshcompletions
