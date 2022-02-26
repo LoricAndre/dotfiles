@@ -6,24 +6,9 @@ alias parem="paru -R"
 alias c=clear
 alias ls="ls --color"
 alias ll="ls --color -al"
+
 mcd() {
   mkdir -p $@ && cd $@
-}
-compdef _files mcd
-
-
-dotadd() {
-  for f in "$@"
-  do
-    i=$(echo $f | rev | cut -d'/' -f1 | rev)
-    mv $f ~/dotfiles/ &&
-    ln -s "/home/loric/dotfiles/$i" "$f" &&
-    echo "Moved $f to ~/dotfiles/$i and softlinked it back"
-  done
-}
-
-dotlink() {
-  ln -s "$(pwd)/$1" $2
 }
 
 nalias() {
@@ -58,52 +43,17 @@ data() {
 alias py='python3'
 alias cat='bat'
 
-
-wallset() {
-  f=$(ls $HOME/.wallpapers | grep -v "active.jpg" | fzf)
-  cp "$HOME/.wallpapers/$f" "$HOME/.wallpapers/active.jpg"
-  lule -n --image=/home/loric/.wallpapers/active.jpg --palette=convert set
-}
-
-fmpv() {
-  if [ -z "$1" ]; then
-    mpv "$(find $HOME/Videos/* | rofi -dmenu)"
-  else
-    mpv "$(find "$1" | rofi -dmenu)"
-  fi
-}
-alias mongod='mongod --fork --syslog'
 alias mkdir='mkdir -p'
+
 fullPush() {
   git add .
   git commit -m "$@"
   git push
 }
-alias ssh="kitty +kitten ssh"
-alias icat="kitty +kitten icat"
-n() {
-  if [ -z $@ ]; then
-    arg=$PWD;
-  else
-    arg=$@
-  fi
-  if [ -d $arg ]; then
-    p=$HOME/.config/nvim/session/$(echo `cd $arg && pwd` | sed -e 's#/##g').vim
-    nvim -S "$p" -c "silent! Obsess $p"
-  else
-    nvim $arg
-  fi
-}
 
-
-N() {
-  file=$(ls ~/Dropbox/notes | fzf)
-  n=$(echo $file | sed 's/\.txt//')
-  echo $n >> ~/.log
-  nvim "note:$n"
-}
 alias dkc='docker-compose'
 alias dk='docker'
+
 j() {
     if [[ "$#" -ne 0 ]]; then
         cd $(autojump $@)
@@ -112,23 +62,16 @@ j() {
     cd "$(autojump -s | sort -k1gr | awk '$1 ~ /[0-9]:/ && $2 ~ /^\// { for (i=2; i<=NF; i++) { print $(i) } }' |  fzf --height 40% --reverse --inline-info)" 
 }
 
-packadd() {
-  for arg in "$@"; do
-    echo $arg >> $HOME/dotfiles/packages
-  done
-}
-
 open() {
   for a in "$@"; do
     xdg-open $a >/dev/null 2>&1
   done
 }
-alias spotify='LD_PRELOAD=/usr/lib/spotify-adblock.so spotify --disable-gpu --disable-software-rasterizer'
+
 nohd() {
   nohup $@ >/dev/null 2>&1 &
 }
-alias rbl='brl'
-alias wthr='curl https://wtrr.in'
+
 alias wthr='curl https://wttr.in'
 alias lwd='source ~/.cache/zsh/lwd'
 alias bashupload='curl https://bashupload.com -T'

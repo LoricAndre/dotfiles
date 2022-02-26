@@ -64,7 +64,7 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 
 # Compinit
-fpath=(/usr/share/zsh/site-functions $fpath)
+fpath=($HOME/bin /usr/share/zsh/site-functions $fpath)
 autoload -Uz compinit
 compinit
 
@@ -84,7 +84,7 @@ antigen apply
 
 # Prompt & more
 function chpwd() {
-  echo "cd $PWD" > ~/.cache/zsh/lwd
+  echo "cd \"$PWD\"" > ~/.cache/zsh/lwd
 }
 source ~/.cache/zsh/lwd
 function preexec() {
@@ -118,3 +118,4 @@ export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/nu
 set -o monitor
 
 . $HOME/.zshaliases
+. $HOME/.zshcompletions

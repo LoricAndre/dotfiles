@@ -1,0 +1,25 @@
+#!/usr/bin/env zsh
+
+action=$1
+n=${#@[@]} # get number of args
+
+[[ $n -lt 1 ]] && sv --help && exit
+
+for i in {2..$n}; do
+  name="${@[$i]}"
+  case "$action" in
+    "enable")
+      sudo ln -s "/etc/runit/sv/$name" /run/runit/service/ || sudo rm "/etc/runit/sv/$name/down" 2>&1
+      ;;
+    "disable")
+      sudo touch "/etc/runit/sv/$name/down"
+      ;;
+    "status")
+      sudo sv status $name
+      bat --pager="less -FR +G" "/etc/runit/sv/$name/log/current"
+      ;;
+    *)
+      sudo sv $action $name
+      ;;
+  esac
+done

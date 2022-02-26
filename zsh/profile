@@ -1,2 +1,3 @@
 EDITOR=nvim
 VISUAL=nvim
+export DESKTOP_LOCKED=yes

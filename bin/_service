@@ -1,0 +1,7 @@
+#compdef service
+
+services="$(ls /etc/runit/sv/)"
+_arguments -C \
+  "-h[Show help info]" \
+  "1: :(up down restart status enable disable)" \
+  "*: :($services)"
