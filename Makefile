@@ -4,14 +4,14 @@ ifndef DOTFILES
 endif
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
-	kitty neofetch
+	kitty neofetch bspwm sxhkd polybar picom
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
 endif
 
 PARTS = $(patsubst %, %/Makefile, $(_INCL))
-LINKS = $(patsubst %, link_%, $(_INCL))
+LINKS = $(patsubst %, %, $(_INCL))
 ifndef AUR_HELPER
   AUR_HELPER = paru
 endif

@@ -1,0 +1,164 @@
+# bspwm hotkeys
+#
+# Cleanly quit bspwm
+super + shift + {q,r}
+	bspc {quit 1,wm -r}
+
+# rload sxhkd
+super + Escape
+  pkill -SIGUSR1 sxhkd
+  
+#
+# Window manipulation
+# ______________
+
+# Close window
+super + q
+	bspc node -c
+
+# Toggle tiling mode of window
+super + h
+	[ -z "$(bspc query --nodes --node focused.floating)" ] && bspc node --state floating || bspc node --state tiled
+	
+# Toggle fullscreen
+super + {_, shift +} z
+	bspc node -t {fullscreen,tiled}	
+
+# Make window sticky
+super + shift + s
+	bspc node -g sticky
+
+#
+# Window moving and splitting
+# ______________    
+
+# Create a new "master area", splitting the whole desktop instead of just windows.
+alt + Return
+	bspc node -n @/
+	
+# go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
+super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+    bspc {desktop -f,node -d} ^{1-9,10}.local
+
+# Select previous / next desktop
+super + {_,shift + }Tab
+	bspc desktop -f {prev.occupied,next.occupied} 
+
+# cycle windows
+alt + {_,shift + }Tab
+    bspc node -f {next,prev}.local
+
+super +  {j,k,l,m}
+    focusmover {west,south,north,east}
+
+# Move tiled windows. Moving a tiled window to 
+# preselected one moves into preselection instead. 
+# Moving out of the screen should move the window to next monitor if possible
+super + shift + {j,k,l,m}
+	windowgrabber {west,south,north,east}
+
+#resize windows
+super + ctrl + {u,i,o,p}
+	bspwm_resize.sh {west,south,north,east}
+
+#
+# Layout manipulation/desktop level controls
+# ______________    
+
+# Toggle monocle mode
+super + z 
+	bspc desktop -l next
+	
+# Balance tree
+# super + b
+# 	bspc node @/ -B
+
+# Balance brother node. If you do this on biggest window of the desktop, it usually means balancing all windows with except the biggest.
+super + alt + b
+	bspc node @brother -B
+	
+# Undo balancing (equalize windows)
+super + ctrl + b
+	bspc node @/ -E
+
+# Toggle automatic balancing of windows
+alt + b
+	euclid_balancer
+
+# Mirror and flip leaves of tree
+super + {comma,period}
+	bspc node @/ -F {horizontal,vertical}
+	
+# Rotate leaves of tree
+super + shift + {comma,period}
+	bspc node @/ -R {90,270}
+
+#
+# spawn programs
+#
+super + Return
+  kitty
+
+super + b
+  opera
+
+super + d
+  rofi -show drun
+
+super + r
+  rofi -show run
+
+Print
+	scrot '/home/loric/Files/Images/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
+
+@super + Print
+  scrot -s -l style=solid,width=3,color=#D9D9D9 -f '/home/loric/Files/Images/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
+
+	
+#
+# Media keys
+#
+
+XF86AudioRaiseVolume
+	amixer set Master 5%+
+
+XF86AudioLowerVolume
+	amixer set Master 5%-
+
+XF86AudioMute
+	amixer set Master toggle
+	
+XF86MonBrightnessDown
+  brightnessctl set 5%-
+
+XF86MonBrightnessUp
+  brightnessctl set 5%+
+ 
+
+XF86Sleep
+	systemctl suspend
+
+# make sxhkd reload its configuration files:
+super + shift + Escape
+	pkill -USR1 -x sxhkd
+
+# In case bspwmrc fails to execute/you wish have plugged in a new monitor
+super + ctrl + r
+	bspwmrc
+
+#edit this file
+alt + ctrl + space
+	xdg-open ~/.config/sxhkd/sxhkdrc
+
+# Remove receptacles
+super + BackSpace
+  for i in $(bspc query -N -n .leaf.!window.local); do bspc node $i -k; done
+
+super + t
+  /home/loric/bin/scratch.sh scratchterm
+
+ctrl + alt + l
+  i3lock-fancy
+
+super + s
+  sh /home/loric/bin/status

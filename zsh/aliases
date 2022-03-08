@@ -75,3 +75,7 @@ nohd() {
 alias wthr='curl https://wttr.in'
 alias lwd='source ~/.cache/zsh/lwd'
 alias bashupload='curl https://bashupload.com -T'
+
+alias k=kubectl
+alias ktx=kubectx
+alias kns=kubens

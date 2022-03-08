@@ -127,4 +127,9 @@ return require'packer'.startup(function(use)
     "LudoPinelli/comment-box.nvim",
     config = function() require "plugins.comment-box" end
   }
+
+  use {
+    "glacambre/firenvim",
+    run = function() vim.fn['firenvim#install'](0) end 
+  }
 end)
