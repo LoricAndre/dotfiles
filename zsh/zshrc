@@ -81,6 +81,9 @@ if [ -f $HOME/.antigen.zsh ]; then
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle git
   antigen bundle agkozak/zsh-z
+  antigen bundle MichaelAquilina/zsh-auto-notify
+  antigen bundle birdhackor/zsh-exa-ls-plugin@main
+  antigen bundle 3v1n0/zsh-bash-completions-fallback
   antigen apply
 else
   read -k 1 "install_antigen?Antigen is not installed, do you wish to install it [Yn]? "

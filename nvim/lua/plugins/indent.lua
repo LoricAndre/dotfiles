@@ -5,6 +5,7 @@ require'indent_blankline'.setup {
   show_current_context_start = true,
   use_treesitter = true,
   filetype_exclude = {
-    'alpha'
+    'alpha',
+    'oneterm'
   }
 }
