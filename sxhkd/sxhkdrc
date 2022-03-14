@@ -17,13 +17,9 @@ super + q
 	bspc node -c
 
 # Toggle tiling mode of window
-super + h
-	[ -z "$(bspc query --nodes --node focused.floating)" ] && bspc node --state floating || bspc node --state tiled
+# super + h
+# 	[ -z "$(bspc query --nodes --node focused.floating)" ] && bspc node --state floating || bspc node --state tiled
 	
-# Toggle fullscreen
-super + {_, shift +} z
-	bspc node -t {fullscreen,tiled}	
-
 # Make window sticky
 super + shift + s
 	bspc node -g sticky
@@ -93,6 +89,12 @@ super + {comma,period}
 super + shift + {comma,period}
 	bspc node @/ -R {90,270}
 
+super + h
+  bspc node focused --flag hidden=on
+
+super + shift + h
+  for id in $(bspc query -N -d focused); do bspc node $id --flag hidden=false; done && scratch.sh scratchterm
+
 #
 # spawn programs
 #
@@ -158,7 +160,7 @@ super + t
   /home/loric/bin/scratch.sh scratchterm
 
 ctrl + alt + l
-  i3lock-fancy
+  betterlockscreen -l
 
 super + s
   sh /home/loric/bin/status

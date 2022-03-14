@@ -1,0 +1,8 @@
+
+for f in $@; do
+  md=$f
+  html=$(echo $md | sed 's/^\(.*\).md$/\1.html/')
+
+  pandoc $md -o "/tmp/$html"
+  xdg-open "/tmp/$html"
+done

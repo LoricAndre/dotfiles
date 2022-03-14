@@ -58,7 +58,7 @@ function icon {
     \"scratchterm\")
       ;;
     *)
-      printf "$1"
+      printf ""
       # printf " "
       ;;
   esac

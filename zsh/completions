@@ -1,1 +1,2 @@
 compdef _service service
+compdef _mdp mdp

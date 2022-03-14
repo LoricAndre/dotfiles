@@ -1,2 +1,2 @@
 #!/bin/bash
-for d in {1..10}; do [[ -z $(bspc query -N -n .window -d $d) ]] || echo "├--$d" && echo "$(xtitle $(bspc query -N -n .window -d $d))"; done | sed 's/\(^[^├].*\)/│   ├--\1/'
+for d in $(bspc query -D --names); do [[ -z $(bspc query -N -n .window -d "$d") ]] || echo "├--$d" && echo "$(xtitle $(bspc query -N -n .window -d "$d"))"; done | sed 's/\(^[^├].*\)/│   ├--\1/'

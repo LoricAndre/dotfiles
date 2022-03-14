@@ -1,0 +1,6 @@
+#compdef mdp
+
+mds=$(ls *.md)
+_arguments -C \
+  "*: :($mds)"
+
