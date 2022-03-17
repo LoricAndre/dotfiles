@@ -37,4 +37,8 @@ vim.cmd [[
     au!
     autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
   augroup end
+  augroup format
+    au!
+    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+  augroup end
 ]]

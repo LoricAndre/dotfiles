@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+spinner() {
+  curr=$1
+  spinstr='┤┘┴└├┌┬┐'
+  len=${#spinstr}
+  i=$((curr%len))
+  printf "%s" "${spinstr:i:1}"
+}
+
+spinner $@

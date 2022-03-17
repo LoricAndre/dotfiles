@@ -4,8 +4,6 @@ alias parem="paru -R"
 #   find $@ 2>/dev/null | fzf
 # }
 alias c=clear
-alias ls="ls --color"
-alias ll="ls --color -al"
 
 mcd() {
   mkdir -p $@ && cd $@
@@ -80,3 +78,4 @@ alias bashupload='curl https://bashupload.com -T'
 alias k=kubectl
 alias ktx=kubectx
 alias kns=kubens
+alias tf='terraform'

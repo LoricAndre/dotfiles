@@ -138,7 +138,12 @@ return require'packer'.startup(function(use)
   }
 
   use {
-    'sbdchd/neoformat',
-    config = function() require'plugins.neoformat' end
+    'simrat39/symbols-outline.nvim',
+    config = function() require'plugins.symbols-outline' end
+  }
+
+  use {
+    'stevearc/aerial.nvim',
+    config = function() require'plugins.aerial' end
   }
 end)

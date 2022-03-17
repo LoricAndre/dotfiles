@@ -4,7 +4,8 @@ ifndef DOTFILES
 endif
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
-	kitty neofetch bspwm sxhkd polybar picom
+	kitty neofetch bspwm sxhkd polybar picom \
+	lazygit
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
@@ -19,7 +20,7 @@ endif
 .DEFAULT_GOAL = dotfiles
 
 ifndef VAR_FILE
-  VAR_FILE = $(DOTFILES)/deps/nord.sh
+  VAR_FILE = $(DOTFILES)/deps/base16-google.sh
 endif
 
 parse_%:
