@@ -9,8 +9,8 @@ The structure is as follows :
 
 The root Makefile lists all dependencies, exposes the main targets and the `parse_%` target, used by the dependency-specific makefiles. Modifying this one should be enough when setting them up on a new system for example.
 
-The level 2 makefiles are dependency-specific. They have to expose the `link_xxxxx` target, which is a dependency for the `dotfiles` one.
-Some of them have a `build_xxxxx` target, required by the `link_xxxxx`. This one usually has the following syntax : 
+The level 2 makefiles are dependency-specific. They have to expose the `xxxxx` target, which is a dependency for the `dotfiles` one.
+Some of them have a `build_xxxxx` target, required by the `xxxxx`. This one usually has the following syntax : 
 ```make
 build_xxxxx: DIR = $(DOTFILES)/xxxxx # The base dir for this dependency
 build_xxxxx: FILE = config # The path to the file from the base dir
