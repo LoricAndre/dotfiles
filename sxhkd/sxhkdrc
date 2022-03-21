@@ -34,7 +34,7 @@ alt + Return
 	
 # go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
 super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
-    bspc {desktop -f,node -d} ^{1-9,10}.local
+    bspc {desktop -f,node -d} {1-9,10}.local
 
 # Select previous / next desktop
 super + {_,shift + }Tab
@@ -129,6 +129,9 @@ XF86AudioLowerVolume
 
 XF86AudioMute
 	amixer set Master toggle
+
+XF86AudioPlay
+  playerctl play-pause
 	
 XF86MonBrightnessDown
   brightnessctl set 5%-
