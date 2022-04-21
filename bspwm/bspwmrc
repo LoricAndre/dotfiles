@@ -24,6 +24,10 @@ bspc config focus_follows_pointer true
 #Settings for manual splitting
 bspc config split_ratio         0.55
 
+setxkbmap fr -option caps:escape,shift:both_capslock
+xsetroot -cursor_name left_ptr
+xrandr --auto && autorandr --change
+
 bspc monitor eDP1 -d 1 2 3 4 5 6 7 8 9 10
 bspc monitor DP1 -d 1 2 3 4 5 6 7 8 9 10
 bspc config top_padding 25
@@ -31,17 +35,16 @@ bspc rule -a scratchterm sticky=on state=floating hidden=on rectangle=1918x600+0
 
 bspc rule -a KeePass2 desktop=^10
 
-setxkbmap fr -option caps:escape,shift:both_capslock
-xsetroot -cursor_name left_ptr
 [ -z $(pgrep sxhkd) ] && sxhkd &
 pkill polybar
 for m in $(bspc query -M --names); do
     MONITOR=$m polybar top &
 done
 [ -z $(bspc query -T -d | grep "scratchterm") ] && kitty --class scratchterm &
-pkill bspwm_wins.sh && bspwm_wins.sh & 
+pkill bspwm_wins.sh; bspwm_wins.sh & 
 udiskie &
 dunst &
 picom &
 feh --bg-fill ~/wallpaper.png
+xautolock -time 10 -locker "betterlockscreen -l" -detectsleep
 # pulseaudio --start

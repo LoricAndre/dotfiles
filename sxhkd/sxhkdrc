@@ -34,7 +34,7 @@ alt + Return
 	
 # go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
 super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
-    bspc {desktop -f,node -d} {1-9,10}.local
+    bspc {desktop -f,node -d} ^{1-9,10}.local
 
 # Select previous / next desktop
 super + {_,shift + }Tab
@@ -102,7 +102,7 @@ super + Return
   kitty
 
 super + b
-  opera
+  firefox
 
 super + d
   rofi -show drun
