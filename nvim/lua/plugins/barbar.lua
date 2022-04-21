@@ -1,9 +1,8 @@
-local maps = require'nest'.applyKeymaps
-local m = require'mappings.constants'
+local map = require'utils'.map
 
-maps {
-  {mode = 'n', {
+map {
+  n = {
     {'<Tab>', '<CMD>BufferNext<CR>'},
     {'<S-Tab>', '<CMD>BufferPrevious<CR>'},
-  }}
+  }
 }

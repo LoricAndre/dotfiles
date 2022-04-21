@@ -1,0 +1,13 @@
+plugins:
+- wfxr/minimap.vim
+- github/copilot.vim
+options: []
+globals:
+  minimap_width: 10
+  minimap_auto_start: true
+  minimap_auto_start_win_enter: true
+mappings:
+  n:
+    <Tab>: <CMD>bn<CR>
+    <S-Tab>: <CMD>bp<CR>
+colorscheme: catppuccin

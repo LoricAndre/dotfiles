@@ -56,6 +56,13 @@ n() {
   [[ -d $1 ]] && cd $1 && nvim && cd - || nvim $@
 }
 
+fn() {
+  d=$(z | fzf --tac | awk '{print $2}')
+  [[ -z $d ]] && return
+  echo $d
+  n $d
+}
+
 open() {
   for a in "$@"; do
     xdg-open $a >/dev/null 2>&1
@@ -78,4 +85,10 @@ alias bashupload='curl https://bashupload.com -T'
 alias k=kubectl
 alias ktx=kubectx
 alias kns=kubens
+kgt() {
+  res=`kubectl get $1 -o wide --no-headers=true | fzf --preview "kubectl get $1 {1} -o yaml" | awk '{print $1}'`
+  kubectl get "$1" "$res" -o yaml | cat
+}
+
 alias tf='terraform'
+alias nvim='TERM=xterm nvim'

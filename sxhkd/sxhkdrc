@@ -34,7 +34,7 @@ alt + Return
 	
 # go (Shift=move) to desktop (and focus the monitor that the desktop is located on. Bspwm style)
 super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
-    bspc {desktop -f,node -d} ^{1-9,10}.local
+    bspc {desktop -f,node -d} focused:^{1-9,10}
 
 # Select previous / next desktop
 super + {_,shift + }Tab
@@ -99,7 +99,7 @@ super + shift + h
 # spawn programs
 #
 super + Return
-  kitty
+  xst
 
 super + b
   firefox
@@ -111,10 +111,10 @@ super + r
   rofi -show run
 
 Print
-	scrot '/home/loric/Files/Images/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
+	scrot '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
 
 @super + Print
-  scrot -s -l style=solid,width=3,color=#D9D9D9 -f '/home/loric/Files/Images/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
+  scrot -s -l style=solid,width=3,color=#D9D9D9 -f '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'
 
 	
 #

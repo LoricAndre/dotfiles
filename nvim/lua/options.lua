@@ -1,4 +1,8 @@
-local options = {
+local vim = vim
+local set = require'utils'.set
+local config = require'config'
+
+local default = {
   hidden = true,
   autoindent = true,
   backspace = 'indent,eol,start',
@@ -21,9 +25,11 @@ local options = {
   undodir = vim.fn.stdpath('data') .. '/undodir',
   undofile = true,
   timeoutlen = 300,
-  clipboard = 'unnamedplus'
+  clipboard = 'unnamedplus',
+  ignorecase = true,
 }
 
-for key, val in pairs(options) do
-  vim.o[key] = val
-end
+set(default)
+set(config.options)
+
+vim.api.nvim_command('colorscheme ' .. config.colorscheme)

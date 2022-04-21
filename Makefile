@@ -5,7 +5,7 @@ endif
 _INCL = nvim bin desktop zsh \
 	ranger misc fontconfig \
 	kitty neofetch bspwm sxhkd polybar picom \
-	lazygit
+	lazygit xresources
 
 ifndef LN_FLAGS
   LN_FLAGS = -sf
@@ -20,13 +20,14 @@ endif
 .DEFAULT_GOAL = dotfiles
 
 ifndef VAR_FILE
-  VAR_FILE = $(DOTFILES)/deps/base16-google.sh
+  VAR_FILE = $(DOTFILES)/deps/catpuccin.sh
 endif
 
 parse_%:
 	@set -a
 	. $(VAR_FILE)
 	set +a
+	[ -d $(DIR)/parsed ] || mkdir $(DIR)/parsed
 	perl -p -e 's/%\{\{(\w+)\}\}/(exists $$ENV{$$1}?$$ENV{$$1}:"missing variable $$1")/eg' \
 	 < $(DIR)/$(FILE) > $(DIR)/parsed/$(FILE)
 	echo "$@ done"

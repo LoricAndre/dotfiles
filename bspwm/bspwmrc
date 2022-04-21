@@ -34,17 +34,19 @@ bspc config top_padding 25
 bspc rule -a scratchterm sticky=on state=floating hidden=on rectangle=1918x600+0+25
 
 bspc rule -a KeePass2 desktop=^10
+bspc rule -a Slack desktop=^1
 
 [ -z $(pgrep sxhkd) ] && sxhkd &
 pkill polybar
 for m in $(bspc query -M --names); do
     MONITOR=$m polybar top &
 done
-[ -z $(bspc query -T -d | grep "scratchterm") ] && kitty --class scratchterm &
+[ -z $(bspc query -T -d | grep "scratchterm") ] && xst -c scratchterm &
 pkill bspwm_wins.sh; bspwm_wins.sh & 
 udiskie &
 dunst &
 picom &
 feh --bg-fill ~/wallpaper.png
 xautolock -time 10 -locker "betterlockscreen -l" -detectsleep
+pgrep slack || slack &
 # pulseaudio --start

@@ -1,17 +1,12 @@
-local maps = require'nest'.applyKeymaps
-local m = require'mappings.constants'
+local map = require'utils'.map
 local sr = require'sniprun'
 
-maps {
-  {mode = 'n', {
+map {
+  n = {
     {'<Esc>', '<CMD>noh | SnipClose<CR>'},
-    {'<leader>', {
-      {m.r, sr.run}
-    }}
-  }},
-  {mode = 'v', {
-    {'<leader>', {
-      {m.r, sr.run}
-    }}
-  }}
+    {'<leader>r', sr.run}
+  },
+  v = {
+    {'<leader>r', sr.run}
+  }
 }

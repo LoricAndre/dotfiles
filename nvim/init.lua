@@ -1,4 +1,6 @@
 vim.g.mapleader = " "
 
-require'plugins'
+require'impatient'
 require'options'
+require'mappings'
+require'plugins'
