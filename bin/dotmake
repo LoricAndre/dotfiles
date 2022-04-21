@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+dotmake() {
+  if [ -z $1 ]; then
+    make -C ~/dotfiles
+  else
+    make -C ~/dotfiles -B $@
+  fi
+}
+
+dotmake $@

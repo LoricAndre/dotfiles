@@ -1,0 +1,6 @@
+#compdef dotmake
+
+dirs=$(find ~/dotfiles -maxdepth 1 -type d -not -name . -printf '%f ' | sed 's/^\.\///')
+_arguments -C \
+  "*: :($dirs)"
+

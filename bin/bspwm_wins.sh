@@ -28,10 +28,10 @@ function rec {
 
 function icon {
   case $1 in
-    \"Firefox\")
+    \"firefox\")
       printf " "
       ;;
-    \"kitty\")
+    \"kitty\"|\"xst-256color\")
       printf " "
       ;;
     \"st\")

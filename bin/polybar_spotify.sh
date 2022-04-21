@@ -20,16 +20,18 @@ scroll() {
   while true; do
     data=$(eval "$cmd")
     len=${#data}
-    if [ $((i+max_len)) -gt $len ]; then
-      data="$data | $data"
-    fi
+    if [ $len -gt 0 ]; then 
+      if [ $((i+max_len)) -gt $len ]; then
+        data="$data | $data"
+      fi
 
-    prefix=$(eval "$prefix_cmd")
-    if [[ $prefix == " " ]]; then
-      i=0
+      prefix=$(eval "$prefix_cmd")
+      if [[ $prefix == " " ]]; then
+        i=0
+      fi
+      echo "$prefix${data:i:max_len}"
+      i=$(((i+1)%len))
     fi
-    echo "$prefix${data:i:max_len}"
-    i=$(((i+1)%len))
     sleep 0.5
   done
 }
