@@ -31,7 +31,7 @@ local defaults = {
   alpha = 'goolord/alpha-nvim',
   'haringsrob/nvim_context_vt',
   'ggandor/lightspeed.nvim',
-  'folke/persistence.nvim',
+  persistence = 'folke/persistence.nvim',
   'neomake/neomake',
   'lewis6991/impatient.nvim',
   'shaunsingh/nord.nvim',

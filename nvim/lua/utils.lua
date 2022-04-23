@@ -76,6 +76,25 @@ M.paq = function(plugins)
   return require'paq'(config)
 end
 
+M.packer = function(plugins)
+  local packer = require'packer'
+  for name, desc in pairs(plugins) do
+    local plugin = desc
+    if type(desc) == 'string' then
+      plugin = {desc}
+    end
+    if type(name) == 'string' then
+      plugin.as = name
+      if vim.api.nvim_get_runtime_file("*/plugins/" .. name ..".lua", true) ~= {} then
+        if not pcall(function() require('plugins.' .. name) end) then
+          print("Error while sourcing config for " .. name)
+        end
+      end
+    end
+    packer.use(plugin)
+  end
+end
+
 M.let = function(variables)
   for name, value in pairs(variables) do
     vim.api.nvim_set_var(name, value)

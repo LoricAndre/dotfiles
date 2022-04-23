@@ -12,9 +12,18 @@
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
 term="kitty"
+browser="firefox"
+drun="wofi --show drun"
+run="wofi --show run"
+lock="swaylock"
 
 
-riverctl map normal Super Return spawn $term
+riverctl map normal Super Return spawn "$term"
+riverctl map normal Super B spawn "$browser"
+riverctl map normal Super D spawn "$drun"
+riverctl map normal Super R spawn "$run"
+riverctl map normal Super E spawn neovide
+riverctl map normal Ctrl+Mod1 L spawn "$lock"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -23,21 +32,21 @@ riverctl map normal Super Q close
 riverctl map normal Super+Shift E exit
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
-riverctl map normal Super K focus-view next
-riverctl map normal Super L focus-view previous
+riverctl map normal Super M focus-view next
+riverctl map normal Super J focus-view previous
 
 # Super+Shift+J and Super+Shift+K to swap the focused view with the next/previous
 # view in the layout stack
-riverctl map normal Super+Shift K swap next
-riverctl map normal Super+Shift L swap previous
+riverctl map normal Super+Shift M swap next
+riverctl map normal Super+Shift J swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super M focus-output next
-riverctl map normal Super J focus-output previous
+riverctl map normal Super L focus-output next
+riverctl map normal Super K focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift M send-to-output next
-riverctl map normal Super+Shift J send-to-output previous
+riverctl map normal Super+Shift L send-to-output next
+riverctl map normal Super+Shift K send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super Space zoom
@@ -74,21 +83,21 @@ riverctl map-pointer normal Super BTN_LEFT move-view
 # Super + Right Mouse Button to resize views
 riverctl map-pointer normal Super BTN_RIGHT resize-view
 
-tags=($(seq 1 10))
 keys=("ampersand" "eacute" "quotedbl" "apostrophe" "parenleft" "minus" "egrave" "underscore" "ccedilla" "agrave")
 for i in $(seq 0 9)
 do
+    tag=$((1 << $i))
     # Super+[1-9] to focus tag [0-8]
-    riverctl map normal Super ${keys[$i]} set-focused-tags ${tags[$i]}
+    riverctl map normal Super ${keys[$i]} set-focused-tags $tag
 
     # Super+Shift+[1-9] to tag focused view with tag [0-8]
-    riverctl map normal Super+Shift ${keys[$i]} set-view-tags ${tags[$i]}
+    riverctl map normal Super+Shift ${keys[$i]} set-view-tags $tag
 
     # Super+Ctrl+[1-9] to toggle focus of tag [0-8]
-    riverctl map normal Super+Control ${keys[$i]} toggle-focused-tags ${tags[$i]}
+    riverctl map normal Super+Control ${keys[$i]} toggle-focused-tags $tag
 
     # Super+Shift+Ctrl+[1-9] to toggle tag [0-8] of focused view
-    riverctl map normal Super+Shift+Control ${keys[$i]} toggle-view-tags ${tags[$i]}
+    riverctl map normal Super+Shift+Control ${keys[$i]} toggle-view-tags $tag
 done
 
 # Super+0 to focus all tags
@@ -137,6 +146,8 @@ do
     # Control screen backlight brighness with light (https://github.com/haikarainen/light)
     riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
+    riverctl map $mode None Print "scrot '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'"
+    riverctl map $mode Super Print "scrot -s -l style=solid,width=3,color=#D9D9D9 -f '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'"
 done
 
 # Set background and border color
@@ -144,15 +155,19 @@ riverctl background-color 0x002b36
 riverctl border-color-focused 0x93a1a1
 riverctl border-color-unfocused 0x586e75
 
+# Config
+riverctl focus-follows-cursor normal
+input="$(riverctl list-inputs | grep Touchpad)"
+riverctl input $input accel-profile adaptive
+riverctl input $input click-method clickfinger
+riverctl input $input disable-while-typing disabled
+riverctl input $input natural-scroll enabled
+riverctl input $input tap enabled
+
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-# Make certain views start floating
-riverctl float-filter-add app-id float
-riverctl float-filter-add title "popup title with spaces"
-
-# Set app-ids and titles of views which should use client side decorations
-# riverctl csd-filter-add app-id "gedit"
+pkill waybar; waybar &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
