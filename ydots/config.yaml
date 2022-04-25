@@ -60,6 +60,7 @@ modules:
       target: kitty.conf
     - source: colors
       target: kitty.colors
+      parse: true
   lazygit:
     packageName: lazygit
   misc:
