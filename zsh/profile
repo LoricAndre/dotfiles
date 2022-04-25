@@ -1,3 +1,4 @@
 EDITOR=nvim
 VISUAL=nvim
+export XDG_CURRENT_DESKTOP=Unity
 export XKB_DEFAULT_LAYOUT=fr

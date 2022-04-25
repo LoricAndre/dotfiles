@@ -15,7 +15,7 @@ term="kitty"
 browser="firefox"
 drun="wofi --show drun"
 run="wofi --show run"
-lock="swaylock"
+lock="waylock --init-color '#000000'"
 
 
 riverctl map normal Super Return spawn "$term"
@@ -157,6 +157,7 @@ riverctl border-color-unfocused 0x586e75
 
 # Config
 riverctl focus-follows-cursor normal
+riverctl set-cursor-warp normal
 input="$(riverctl list-inputs | grep Touchpad)"
 riverctl input $input accel-profile adaptive
 riverctl input $input click-method clickfinger
@@ -168,6 +169,8 @@ riverctl input $input tap enabled
 riverctl set-repeat 50 300
 
 pkill waybar; waybar &
+pkill mako; mako &
+pkill swayidle; swayidle -w timeout 600 "$lock" before-sleep "$lock" &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
