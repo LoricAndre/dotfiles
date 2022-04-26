@@ -48,7 +48,7 @@ modules:
     files:
       - source: eDP-1.config.yaml
         parse: true
-      - source: DP-2.config.yaml
+      - source: DP-1.config.yaml
         parse: true
   bin:
     targetDir: ~/bin

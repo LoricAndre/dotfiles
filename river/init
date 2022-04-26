@@ -15,7 +15,7 @@ term="kitty"
 browser="firefox"
 drun="wofi --show drun"
 run="wofi --show run"
-lock="waylock --init-color '#000000'"
+lock="waylock --init-color '%{{background}}' --fail-color '%{{color4}}' --input-color '%{{color5}}'"
 
 
 riverctl map normal Super Return spawn "$term"
@@ -151,9 +151,9 @@ do
 done
 
 # Set background and border color
-riverctl background-color '#1E1E2E'
-riverctl border-color-focused '#FAE3B0'
-riverctl border-color-unfocused '#C3BAC6'
+riverctl background-color '%{{background}}'
+riverctl border-color-focused '%{{color5}}'
+riverctl border-color-unfocused '%{{color9}}'
 
 # Config
 riverctl focus-follows-cursor normal
@@ -170,7 +170,7 @@ riverctl set-repeat 50 300
 
 # pkill waybar; waybar &
 pkill yambar; yambar -c ~/.config/yambar/eDP-1.config.yaml &
-yambar -c ~/.config/yambar/DP-2.config.yaml &
+yambar -c ~/.config/yambar/DP-1.config.yaml &
 pkill mako; mako &
 pkill swayidle; swayidle -w timeout 60 "$lock" before-sleep "$lock" &
 
