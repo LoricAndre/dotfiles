@@ -1,6 +1,38 @@
 plugins:
-- wfxr/minimap.vim
-- github/copilot.vim
+  oneterm: LoricAndre/OneTerm.nvim
+  treesitter:
+    1: nvim-treesitter/nvim-treesitter
+    run: :TSUpdate
+  comment: numToStr/Comment.nvim
+  sniprun:
+    1: michaelb/sniprun
+    run: bash ./install.sh
+  indent: lukas-reineke/indent-blankline.nvim
+  sidebar: sidebar-nvim/sidebar.nvim
+  commentBox: LudoPinelli/comment-box.nvim
+  feline:
+    1: famiu/feline.nvim
+    requires:
+    - kyazdani42/nvim-web-devicons
+    - lewis6991/gitsigns.nvim
+  coq:
+    1: ms-jpq/coq_nvim
+    requires:
+      - 1: ms-jpq/coq.artifacts
+        branch: artifacts
+      - 1: ms-jpq/coq.thirdparty
+  lightspeed: ggandor/lightspeed.nvim
+  persistence: folke/persistence.nvim
+  neomake: neomake/neomake
+  impatient: lewis6991/impatient.nvim
+  nord: shaunsingh/nord.nvim
+  tokyonight: folke/tokyonight.nvim
+  tokyodark: tiagovla/tokyodark.nvim
+  catpuccin: catppuccin/nvim
+  copilot: github/copilot.vim
+  context-vt:
+    1: haringsrob/nvim_context_vt 
+    enabled: false
 options:
   guifont: mono:h10
 globals:

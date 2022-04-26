@@ -1,6 +1,6 @@
 global:
-  installCommand: paru -S %s
-  dotfiles: ~/dots
+  installCommand: paru -S --needed %s
+  dotfiles: ~/dotfiles
 variables:
   background: '#1E1E2E'
   foreground: '#D9E0EE'
@@ -35,15 +35,25 @@ modules:
     - xclip
     - python-neovim
     - nvim-packer-git
+    - lua51-lyaml
   waybar:
+    enabled: false
     packageName: waybar
     files:
     - source: style.css
       parse: true
     - config
+  yambar:
+    packageName: yambar
+    files:
+      - source: eDP-1.config.yaml
+        parse: true
+      - source: DP-2.config.yaml
+        parse: true
   bin:
     targetDir: ~/bin
   bspwm:
+    enabled: false
     packageName: bspwm
     files:
     - source: bspwmrc
@@ -71,8 +81,10 @@ modules:
   neofetch:
     packageName: neofetch
   picom:
+    enabled: false
     packageName: picom-tryone-git
   polybar:
+    enabled: false
     packageName: polybar
     files:
     - source: polybar.conf
@@ -83,7 +95,11 @@ modules:
     packageName: river
     customSteps: 
     - chmod +x ~/.config/river/init
+    files:
+      - source: init
+        parse: true
   sxhkd:
+    enabled: false
     packageName: sxhkd
   xresources:
     targetDir: '~'

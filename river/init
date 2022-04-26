@@ -23,7 +23,7 @@ riverctl map normal Super B spawn "$browser"
 riverctl map normal Super D spawn "$drun"
 riverctl map normal Super R spawn "$run"
 riverctl map normal Super E spawn neovide
-riverctl map normal Ctrl+Mod1 L spawn "$lock"
+riverctl map normal Control+Mod1 L spawn "$lock"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -146,14 +146,14 @@ do
     # Control screen backlight brighness with light (https://github.com/haikarainen/light)
     riverctl map $mode None XF86MonBrightnessUp   spawn 'light -A 5'
     riverctl map $mode None XF86MonBrightnessDown spawn 'light -U 5'
-    riverctl map $mode None Print "scrot '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'"
-    riverctl map $mode Super Print "scrot -s -l style=solid,width=3,color=#D9D9D9 -f '/home/loric/Pictures/%d.%m.%y_%T.png' -e 'cat $f | xclip -selection clipboard -t image/png'"
+    riverctl map $mode None Print 'grim - | tee "/home/loric/Pictures/$(date +%Y-%m-%d-%H-%M-%S).png" | wl-copy'
+    riverctl map $mode Super Print 'grim -g - | tee "/home/loric/Pictures/$(date +%Y-%m-%d-%H-%M-%S).png" | wl-copy'
 done
 
 # Set background and border color
-riverctl background-color 0x002b36
-riverctl border-color-focused 0x93a1a1
-riverctl border-color-unfocused 0x586e75
+riverctl background-color '#1E1E2E'
+riverctl border-color-focused '#FAE3B0'
+riverctl border-color-unfocused '#C3BAC6'
 
 # Config
 riverctl focus-follows-cursor normal
@@ -168,9 +168,11 @@ riverctl input $input tap enabled
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-pkill waybar; waybar &
+# pkill waybar; waybar &
+pkill yambar; yambar -c ~/.config/yambar/eDP-1.config.yaml &
+yambar -c ~/.config/yambar/DP-2.config.yaml &
 pkill mako; mako &
-pkill swayidle; swayidle -w timeout 600 "$lock" before-sleep "$lock" &
+pkill swayidle; swayidle -w timeout 60 "$lock" before-sleep "$lock" &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.
