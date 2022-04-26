@@ -56,6 +56,10 @@ n() {
   [[ -d $1 ]] && cd $1 && nvim && cd - || nvim $@
 }
 
+fcd() {
+  cd "$(z | fzf --preview='exa -l {+2}' --nth=2 | awk '{print $2}')"
+}
+
 fn() {
   d=$(z | fzf --tac | awk '{print $2}')
   [[ -z $d ]] && return
