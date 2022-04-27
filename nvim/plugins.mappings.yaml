@@ -15,23 +15,10 @@ plugins:
       - ["<leader>sy", "<CMD>:OneTerm yanks<CR>"]
       - ["<leader>t", "<CMD>:OneTerm term<CR>"]
       - ["<leader>r", "<CMD>:OneTerm ranger<CR>"]
-      - ["<leader>f", "<CMD>:OneTerm files_or_git_files<CR>"] # TODO: allow lua functions
+      - ["<leader>f", "<CMD>:OneTerm files_or_git_files<CR>"]
       - ["<leader>b", "<CMD>:OneTerm buffers<CR>"]
       - ["<leader>g", "<CMD>:OneTerm git<CR>"]
       - ["<leader>z", "<CMD>:OneTerm z<CR>"]
-  lsp: 
-    mappings:
-      n:
-      - ["<leader>ld", "<CMD>lua vim.lsp.buf.definition<CR>"]
-      - ["<leader>lD", "<CMD>lua vim.lsp.buf.declaration<CR>"]
-      - ["<leader>lK", "<CMD>lua vim.lsp.buf.hover<CR>"]
-      - ["<leader>li", "<CMD>lua vim.lsp.buf.implementation<CR>"]
-      - ["<leader>ls", "<CMD>lua vim.lsp.buf.signature_help<CR>"]
-      - ["<leader>lt", "<CMD>lua vim.lsp.buf.type_definition<CR>"]
-      - ["<leader>lR", "<CMD>lua vim.lsp.buf.rename<CR>"]
-      - ["<leader>la", "<CMD>CodeActionMenu<CR>"]
-      - ["<leader>lr", "<CMD>lua vim.lsp.buf.references<CR>"]
-      - ["<leader>lf", "<CMD>lua vim.lsp.buf.formatting<CR>"]
   sniprun:
     mappings:
       n:

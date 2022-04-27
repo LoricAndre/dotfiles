@@ -1,4 +1,5 @@
 plugins:
+  ynvim: LoricAndre/ynvim
   oneterm: 
     _: LoricAndre/OneTerm.nvim
     globals:
@@ -13,19 +14,6 @@ plugins:
     setup:
       nvim-treesitter.configs:
         ensure_installed: all
-  lsp:
-    _: williamboman/nvim-lsp-installer
-    requires:
-    -  neovim/nvim-lspconfig
-    -  jubnzv/virtual-types.nvim
-    -  weilbith/nvim-code-action-menu
-    -  kosayoda/nvim-lightbulb
-    -  https://git.sr.ht/~whynothugo/lsp_lines.nvim
-    autocmds:
-    - Filetype code-action-menu-* nnoremap <buffer> k j
-    - Filetype code-action-menu-* nnoremap <buffer> l k
-    - CursorHold * lua require'nvim-lightbulb'.update_lightbulb
-    - CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb
   comment: 
     _: numToStr/Comment.nvim
     setup:

@@ -1,0 +1,27 @@
+plugins:
+  lsp:
+    _: williamboman/nvim-lsp-installer
+    requires:
+    -  neovim/nvim-lspconfig
+    -  jubnzv/virtual-types.nvim
+    -  weilbith/nvim-code-action-menu
+    -  kosayoda/nvim-lightbulb
+    -  https://git.sr.ht/~whynothugo/lsp_lines.nvim
+    autocmds:
+    - Filetype code-action-menu-* nnoremap <buffer> k j
+    - Filetype code-action-menu-* nnoremap <buffer> l k
+    - CursorHold * lua require'nvim-lightbulb'.update_lightbulb
+    - CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb
+    mappings:
+      n:
+      - ["<leader>ld", "<CMD>lua vim.lsp.buf.definition<CR>"]
+      - ["<leader>lD", "<CMD>lua vim.lsp.buf.declaration<CR>"]
+      - ["<leader>lK", "<CMD>lua vim.lsp.buf.hover<CR>"]
+      - ["<leader>li", "<CMD>lua vim.lsp.buf.implementation<CR>"]
+      - ["<leader>ls", "<CMD>lua vim.lsp.buf.signature_help<CR>"]
+      - ["<leader>lt", "<CMD>lua vim.lsp.buf.type_definition<CR>"]
+      - ["<leader>lR", "<CMD>lua vim.lsp.buf.rename<CR>"]
+      - ["<leader>la", "<CMD>CodeActionMenu<CR>"]
+      - ["<leader>lr", "<CMD>lua vim.lsp.buf.references<CR>"]
+      - ["<leader>lf", "<CMD>lua vim.lsp.buf.formatting<CR>"]
+
