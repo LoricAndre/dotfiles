@@ -1,72 +1,11 @@
-plugins:
-  oneterm: LoricAndre/OneTerm.nvim
-  treesitter:
-    _: nvim-treesitter/nvim-treesitter
-    run: :TSUpdate
-  comment: numToStr/Comment.nvim
-  sniprun:
-    _: michaelb/sniprun
-    run: bash ./install.sh
-  indent: lukas-reineke/indent-blankline.nvim
-  sidebar: sidebar-nvim/sidebar.nvim
-  commentBox: LudoPinelli/comment-box.nvim
-  feline:
-    _: famiu/feline.nvim
-    requires:
-    - kyazdani42/nvim-web-devicons
-    - lewis6991/gitsigns.nvim
-  coq:
-    _: ms-jpq/coq_nvim
-    requires:
-    - _: ms-jpq/coq.artifacts
-      branch: artifacts
-    - _: ms-jpq/coq.thirdparty
-  lightspeed: ggandor/lightspeed.nvim
-  persistence: folke/persistence.nvim
-  neomake: neomake/neomake
-  impatient: lewis6991/impatient.nvim
-  nord: shaunsingh/nord.nvim
-  tokyonight: folke/tokyonight.nvim
-  tokyodark: tiagovla/tokyodark.nvim
-  catpuccin: catppuccin/nvim
-  copilot: github/copilot.vim
-  context-vt:
-    _: haringsrob/nvim_context_vt
-    enabled: false
-options:
-  guifont: mono:h10
-  hidden: true
-  autoindent: true
-  backspace: "indent,eol,start"
-  smarttab: true
-  incsearch: true
-  wildmenu: true
-  ruler: true
-  scrolloff: 4
-  shiftwidth: 2
-  expandtab: true
-  softtabstop: 2
-  termguicolors: true
-  number: true
-  relativenumber: true
-  splitbelow: true
-  splitright: true
-  showmode: true
-  mouse: "a"
-  completeopt: "menuone,noselect"
-  undodir:
-    lua: 'vim.fn.stdpath("data") .. "/undodir"'
-  undofile: true
-  timeoutlen: 300
-  clipboard: "unnamedplus"
-  ignorecase: true
+includes:
+- plugins.yaml
+- options.yaml
+- plugins.lsp.yaml
+- plugins.mappings.yaml
+- plugins.alpha.yaml
 globals:
   mapleader: " "
-  oneterm_yank: true
-  oneterm_options:
-    border: "rounded"
-  oneterm_sessions_path:
-    lua: 'vim.fn.expand(vim.fn.stdpath("data") .. "/sessions/")'
 mappings:
   n:
   - ["<Tab>", "<CMD>bn<CR>"]
@@ -84,23 +23,6 @@ mappings:
   - ["<leader><Space>", "<CMD>b#<CR>"]
   - ["<leader>Q", "<CMD>q<CR>"]
   - ["<leader>q", "<CMD>bd<CR>"]
-  - ["<leader>sf", "<CMD>:OneTerm files_or_git_files<CR>"]
-  - ["<leader>sF", "<CMD>:OneTerm files<CR>"]
-  - ["<leader>sl", "<CMD>:OneTerm lines<CR>"]
-  - ["<leader>sa", "<CMD>:OneTerm ag<CR>"]
-  - ["<leader>sg", "<CMD>:OneTerm git<CR>"]
-  - ["<leader>sr", "<CMD>:OneTerm references<CR>"]
-  - ["<leader>sR", "<CMD>:OneTerm workspace_references<CR>"]
-  - ["<leader>ss", "<CMD>:OneTerm symbols<CR>"]
-  - ["<leader>sS", "<CMD>:OneTerm ws_symbols<CR>"]
-  - ["<leader>sb", "<CMD>:OneTerm buffers<CR>"]
-  - ["<leader>sy", "<CMD>:OneTerm yanks<CR>"]
-  - ["<leader>t", "<CMD>:OneTerm term<CR>"]
-  - ["<leader>r", "<CMD>:OneTerm ranger<CR>"]
-  - ["<leader>f", "<CMD>:OneTerm files_or_git_files<CR>"]
-  - ["<leader>b", "<CMD>:OneTerm buffers<CR>"]
-  - ["<leader>g", "<CMD>:OneTerm git<CR>"]
-  - ["<leader>z", "<CMD>:OneTerm z<CR>"]
   v:
   - ["m", "l"]
   - ["l", "k"]
