@@ -169,10 +169,17 @@ riverctl input $input tap enabled
 riverctl set-repeat 50 300
 
 # pkill waybar; waybar &
-pkill yambar; yambar -c ~/.config/yambar/eDP-1.config.yaml &
-yambar -c ~/.config/yambar/DP-1.config.yaml &
+displays="$(wayland-info | sed -n 's/^.*\(e\?DP-[0-9]\).*$/\1/p' | sort --uniq)"
+echo "Displays: $displays"
+pkill yambar
+for display in $displays; do
+  echo $display
+  (echo "monitor: &monitor $display" && cat ~/.config/yambar/config.yaml) > /tmp/yambar.yaml
+  yambar -c /tmp/yambar.yaml
+done
 pkill mako; mako &
 pkill swayidle; swayidle -w timeout 60 "$lock" before-sleep "$lock" &
+pkill udiskie; udiskie &
 
 # Set and exec into the default layout generator, rivertile.
 # River will send the process group of the init executable SIGTERM on exit.

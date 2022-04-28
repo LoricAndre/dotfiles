@@ -46,9 +46,7 @@ modules:
   yambar:
     packageName: yambar
     files:
-      - source: eDP-1.config.yaml
-        parse: true
-      - source: DP-1.config.yaml
+      - source: config.yaml
         parse: true
   bin:
     targetDir: ~/bin

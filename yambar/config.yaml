@@ -9,7 +9,7 @@ bar:
   layer: bottom
   foreground: %{{foreground.code}}FF
   background: %{{background.code}}FF
-  monitor: eDP-1
+  monitor: *monitor
   left:
   - river:
       anchors:

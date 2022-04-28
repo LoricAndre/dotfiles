@@ -1,12 +1,55 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 
 action=$1
-n=${#@[@]} # get number of args
+args=("$@")
+n=$(( ${#args[@]} - 1 )) # get number of args
 
 [[ $n -lt 1 ]] && sv --help && exit
 
-for i in {2..$n}; do
-  name="${@[$i]}"
+create_service() {
+	name=$1
+	[[ -z $name ]] && echo "Please specify a name for the service" && exit 1
+
+	read -p "Please enter the user to run the service as (leave empty for root): " user
+	[[ -z $user ]] && user="root"
+
+	read -p "Please enter the command to run: " exec
+	[[ -z $exec ]] && echo "Please enter a command to run" && exit 1
+
+	sudo mkdir -p /etc/runit/sv/$name/log
+
+	run=$(cat <<'END'
+#!/bin/sh
+
+[ -r ./conf ] && . ./conf
+
+groups="$(id -Gn "$USER" | tr ' ' ':')"
+
+export DISPLAY=$DISPLAY
+exec chpst -u "$USER:$groups" "$EXEC" 2>&1
+END
+	)
+	conf=$(cat <<END
+#!/bin/sh
+USER=$user
+EXEC=$exec
+END
+	)
+	log=$(cat <<'END'
+#!/bin/sh
+exec svlogd -tt .
+END
+	)
+
+	echo "$run" | sudo tee /etc/runit/sv/$name/run > /dev/null
+	sudo chmod +x /etc/runit/sv/$name/run
+	echo "$conf" | sudo tee /etc/runit/sv/$name/conf > /dev/null
+	echo "$log" | sudo tee /etc/runit/sv/$name/log/run > /dev/null
+	sudo chmod +x /etc/runit/sv/$name/log/run
+}
+
+for i in $(seq 1 $n); do
+  name="${args[$i]}"
   case "$action" in
     "enable")
       sudo ln -s "/etc/runit/sv/$name" /run/runit/service/ || sudo rm "/etc/runit/sv/$name/down" 2>&1
@@ -17,6 +60,9 @@ for i in {2..$n}; do
     "status")
       sudo sv status $name
       bat --pager="less -FR +G" "/etc/runit/sv/$name/log/current"
+      ;;
+    "create")
+      create_service $name
       ;;
     *)
       sudo sv $action $name

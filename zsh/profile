@@ -2,3 +2,8 @@ EDITOR=nvim
 VISUAL=nvim
 export XDG_CURRENT_DESKTOP=Unity
 export XKB_DEFAULT_LAYOUT=fr
+
+if [[ "$(tty)" == "/dev/tty1" ]]
+ then
+  dbus-run-session river
+fi
