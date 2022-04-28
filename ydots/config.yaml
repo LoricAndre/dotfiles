@@ -91,6 +91,8 @@ modules:
     packageName: ranger
   river:
     packageName: river
+    dependencies:
+    - rivercarro-git
     customSteps: 
     - chmod +x ~/.config/river/init
     files:
