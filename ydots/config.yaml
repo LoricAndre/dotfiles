@@ -1,28 +1,29 @@
 global:
-  installCommand: paru -S --needed %s
+  installCommand: paru -S --needed --noconfirm %s
   dotfiles: ~/dotfiles
 variables:
-  background: '#1E1E2E'
-  foreground: '#D9E0EE'
-  cursor: '#FAE3B0'
-  color0: '#6E6C7E'
-  color8: '#988BA2'
-  color1: '#F28FAD'
-  color9: '#F28FAD'
-  color2: '#ABE9B3'
-  color10: '#ABE9B3'
-  color3: '#FAE3B0'
-  color11: '#FAE3B0'
-  color4: '#96CDFB'
-  color12: '#96CDFB'
-  color5: '#DDB6F2'
-  color13: '#DDB6F2'
-  color6: '#F5C2E7'
-  color14: '#F5C2E7'
-  color7: '#C3BAC6'
-  color15: '#D9E0EE'
+  background: 1E1E2E
+  foreground: D9E0EE
+  cursor: FAE3B0
+  color0: 6E6C7E
+  color8: 988BA2
+  color1: F28FAD
+  color9: F28FAD
+  color2: ABE9B3
+  color10: ABE9B3
+  color3: FAE3B0
+  color11: FAE3B0
+  color4: 96CDFB
+  color12: 96CDFB
+  color5: DDB6F2
+  color13: DDB6F2
+  color6: F5C2E7
+  color14: F5C2E7
+  color7: C3BAC6
+  color15: D9E0EE
 modules:
-  ydots: {}
+  ydots:
+    customSteps: echo a
   neovim:
     dirname: nvim
     packageName: neovim-git
@@ -36,6 +37,9 @@ modules:
     - python-neovim
     - nvim-packer-git
     - lua51-lyaml
+    - rust-analyzer
+    - bash-language-server
+    - jedi-language-server
   waybar:
     enabled: false
     packageName: waybar
@@ -93,8 +97,10 @@ modules:
     packageName: river
     dependencies:
     - rivercarro-git
-    customSteps: 
+    postSteps:
     - chmod +x ~/.config/river/init
+    requires:
+    - yambar
     files:
       - source: init
         parse: true
@@ -110,7 +116,7 @@ modules:
   zsh:
     packageName: zsh
     targetDir: '~'
-    customSteps: 
+    preSteps: 
     - mkdir -p ~/.cache/zsh
     files:
     - source: zshrc

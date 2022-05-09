@@ -15,7 +15,7 @@ term="kitty"
 browser="firefox"
 drun="wofi --show drun"
 run="wofi --show run"
-lock="waylock --init-color '%{{background}}' --fail-color '%{{color4}}' --input-color '%{{color5}}'"
+lock="waylock --init-color '#{{background}}' --fail-color '#{{color2}}' --input-color '#{{color9}}'"
 
 
 riverctl map normal Super Return spawn "$term"
@@ -30,6 +30,7 @@ riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit
+riverctl map normal Super+Shift R spawn "bash $HOME/.config/river/init"
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super M focus-view next
@@ -118,6 +119,9 @@ riverctl map normal Super Right send-layout-cmd rivercarro "main-location right"
 riverctl map normal Super Down  send-layout-cmd rivercarro "main-location bottom"
 riverctl map normal Super Left  send-layout-cmd rivercarro "main-location left"
 
+riverctl map normal Super+Shift Tab spawn "cycle-focused-tags previous 10"
+riverctl map normal Super Tab spawn "cycle-focused-tags next 10"
+
 # Declare a passthrough mode. This mode has only a single mapping to return to
 # normal mode. This makes it useful for testing a nested wayland compositor
 riverctl declare-mode passthrough
@@ -151,9 +155,9 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x%{{background.code}}
-riverctl border-color-focused 0x%{{color5.code}}
-riverctl border-color-unfocused 0x%{{color9.code}}
+riverctl background-color 0x{{background}}
+riverctl border-color-focused 0x{{color5}}
+riverctl border-color-unfocused 0x{{color9}}
 
 # Config
 riverctl focus-follows-cursor normal
@@ -171,15 +175,20 @@ riverctl set-repeat 50 300
 # pkill waybar; waybar &
 /usr/lib/disman_backend_launcher &
 # displays=$(wayland-info | sed -n "s/^.*'\(e\?DP-\?[0-9]\)'.*$/\1/p" | sort --uniq)
-displays=$(dismanctl -o -j | jq -r '.outputs[].name' 2>/dev/null)
+while [ -z $displays ]; do
+  displays=$(dismanctl -o -j | jq -r '.outputs[].name' 2>/dev/null)
+  sleep 0.1
+done
 pkill yambar
 for display in $displays; do
   (echo "monitor: &monitor $display" && cat ~/.config/yambar/config.yaml) > /tmp/yambar.$display.yaml
   yambar -c /tmp/yambar.$display.yaml &
 done
+dismanctl output.DP-1.position.0,0
+dismanctl output.eDP-1.position.1920,0 2>&1 # Setup monitor layout
 pkill mako; mako &
-pkill swayidle; swayidle -w timeout 600 "$lock" before-sleep "$lock" &
-pkill udiskie; udiskie &
+pkill swayidle; swayidle -w timeout 600 "$lock" &
+# pkill udiskie; udiskie &
 
 scratch_tag=$(( 1 << 20 ))
 kitty --class scratchterm &
@@ -193,6 +202,7 @@ riverctl map normal Super T toggle-focused-tags ${scratch_tag}
 riverctl map normal Super+Shift T set-view-tags ${scratch_tag}
 all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
 riverctl spawn-tagmask ${all_but_scratch_tag}
+ydots-rs
 
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.

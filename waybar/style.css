@@ -4,8 +4,8 @@
 }
 
 window#waybar {
-    background-color: #1E1E2E;
-    color: #D9E0EE;
+    background-color: #{{background}};
+    color: #{{foreground}};
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -29,8 +29,8 @@ window#waybar.hidden {
 #idle_inhibitor,
 #mpd {
     padding: 0 10px;
-    color: #D9E0EE;
-    background-color: #988BA2;
+    color: #{{foreground}};
+    background-color: #{{background}};
 }
 
 @keyframes blink {
@@ -41,7 +41,7 @@ window#waybar.hidden {
 }
 
 #battery.critical:not(.charging) {
-    background-color: #96CDFB;
+    background-color: #{{color4}};
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;
@@ -60,24 +60,24 @@ window#waybar.hidden {
     transition-duration: .5s;
 }
 #tags button.focused {
-    background-color: #F28FAD;
+    background-color: #{{color9}};
 }
 
 #network.disconnected {
-    background-color: #96CDFB;
+    background-color: #{{color4}};
 }
 
 
 #pulseaudio.muted {
-    background-color: #96CDFB;
+    background-color: #{{color4}};
 }
 
 #temperature.critical {
-    background-color: #96CDFB;
+    background-color: #{{color4}};
 }
 
 #tray {
-    background-color: #1E1E2E;
+    background-color: #{{background}};
 }
 
 #tray > .passive {
@@ -86,5 +86,5 @@ window#waybar.hidden {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #96CDFB;
+    background-color: #{{color4}};
 }

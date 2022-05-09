@@ -1,42 +1,41 @@
-bg_default: &bg_default {stack: [{background: {color: %{{background.code}}FF}}, {underline: {size: 4, color: %{{color3.code}}FF}}]}
-std_underline: &std_underline {underline: { size: 2, color: %{{color3.code}}FF}}
+font: &font mono:size=12
+bg_default: &bg_default {stack: [{background: {color: {{background}}FF}}, {underline: {size: 4, color: {{color3}}FF}}]}
+std_underline: &std_underline {underline: { size: 2, color: {{color3}}FF}}
 bar:
   height: 40
   location: top
-  font: mono:pixelsize=30px
+  font: *font
   spacing: 5
   margin: 0
   layer: bottom
-  foreground: %{{foreground.code}}FF
-  background: %{{background.code}}FF
-  monitor: *monitor
+  foreground: {{foreground}}FF
+  background: {{background}}FF
+  monitor: *monitor # This is supposed to be set by prepending a line to the yaml file
   left:
   - river:
       anchors:
         - base: &river_base
             left-margin: 10
-            right-margin: 13 
-            default: {string: {text: "{tag}"}}
+            right-margin: 13
+            default: {string: {text: ""}}
             tag: id
             values:
-              0: {string: {text: 🄌}}
-              1: {string: {text: ➊}}  
-              2: {string: {text: ➋}}  
-              3: {string: {text: ➌}}  
-              4: {string: {text: ➍}}  
-              5: {string: {text: ➎}}  
-              6: {string: {text: ➏}}  
-              7: {string: {text: ➐}}  
-              8: {string: {text: ➑}}  
-              9: {string: {text: ➒}}  
-              10: {string: {text: ➓}}  
-
+              1: {string: {text: }}
+              2: {string: {text: ➋}}
+              3: {string: {text: ➌}}
+              4: {string: {text: ➍}}
+              5: {string: {text: ➎}}
+              6: {string: {text: ➏}}
+              7: {string: {text: ➐}}
+              8: {string: {text: ➑}}
+              9: {string: {text: ➒}}
+              10: {string: {text: }}
       content:
         map:
           deco:
             background:
-              color: %{{color8.code}}FF
-          on-click: 
+              color: {{color8}}FF
+          on-click:
             left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
             right: sh -c "riverctl toggle-focused-tags $((1 << ({id} -1)))"
             middle: sh -c "riverctl toggle-view-tags $((1 << ({id} -1)))"
@@ -45,7 +44,7 @@ bar:
             urgent:
               map:
                 <<: *river_base
-                deco: {background: {color: %{{background.code}}FF}}
+                deco: {background: {color: {{background}}FF}}
             focused:
               map:
                 <<: *river_base
@@ -64,7 +63,7 @@ bar:
                 tag: occupied
                 values:
                   false: {empty: {}}
-                  true: {map: {<<: *river_base, deco: {underline: {size: 3, color: %{{color3.code}}FF}}}}
+                  true: {map: {<<: *river_base, deco: {underline: {size: 3, color: {{color3}}FF}}}}
   right:
   - network:
       name: eth0
@@ -94,16 +93,23 @@ bar:
                 values:
                   "":
                     - string: {text: }
-                    - string: {text: "{ssid}", foreground: %{{foreground.code}}FF}
+                    - string: {text: "{ssid}", foreground: {{foreground}}FF}
+  - cpu:
+      content:
+      - string:
+          deco: *bg_default
+          text: "{cpu}%"
+  - mem:
+      content:
+      - string:
+          deco: *bg_default
+          text: "{percent_used}%"
   - backlight:
       name: intel_backlight
       content:
       - string:
           deco: *bg_default
-          text: 
-      - string:
-          deco: *bg_default
-          text: "{percent}%"
+          text: " {percent}%"
   - battery:
       name: BAT0
       poll-interval: 30
@@ -114,8 +120,8 @@ bar:
               - ramp:
                   tag: capacity
                   items:
-                    - string: {text: , foreground: %{{color4.code}}FF}
-                    - string: {text: , foreground: %{{color4.code}}FF}
+                    - string: {text: , foreground: {{color4}}FF}
+                    - string: {text: , foreground: {{color4}}FF}
                     - string: {text: }
                     - string: {text: }
                     - string: {text: }
@@ -123,7 +129,7 @@ bar:
                     - string: {text: }
                     - string: {text: }
                     - string: {text: }
-                    - string: {text: , foreground: %{{color2.code}}FF}
+                    - string: {text: , foreground: {{color2}}FF}
               - string: {text: "{capacity}% ({estimate})"}
       content:
         map:
@@ -135,32 +141,29 @@ bar:
             discharging:
               <<: *discharging
             charging:
-              - string: {text: , foreground: %{{color2.code}}FF}
+              - string: {text: , foreground: {{color2}}FF}
               - string: {text: "{capacity}% ({estimate})"}
             full:
-              - string: {text: , foreground: %{{color2.code}}FF}
+              - string: {text: , foreground: {{color2}}FF}
               - string: {text: "{capacity}%"}
             not charging:
               - ramp:
                   tag: capacity
                   items:
-                    - string: {text:  , foreground: %{{color4.code}}FF}
-                    - string: {text:  , foreground: %{{color12.code}}FF}
-                    - string: {text:  , foreground: %{{color10.code}}FF}
-                    - string: {text:  , foreground: %{{color10.code}}FF}
-                    - string: {text:  , foreground: %{{color10.code}}FF}
-                    - string: {text:  , foreground: %{{color10.code}}FF}
-                    - string: {text:  , foreground: %{{color2.code}}FF}
-                    - string: {text:  , foreground: %{{color2.code}}FF}
-                    - string: {text:  , foreground: %{{color2.code}}FF}
-                    - string: {text:  , foreground: %{{color2.code}}FF}
+                    - string: {text:  , foreground: {{color4}}FF}
+                    - string: {text:  , foreground: {{color12}}FF}
+                    - string: {text:  , foreground: {{color10}}FF}
+                    - string: {text:  , foreground: {{color10}}FF}
+                    - string: {text:  , foreground: {{color10}}FF}
+                    - string: {text:  , foreground: {{color10}}FF}
+                    - string: {text:  , foreground: {{color2}}FF}
+                    - string: {text:  , foreground: {{color2}}FF}
+                    - string: {text:  , foreground: {{color2}}FF}
+                    - string: {text:  , foreground: {{color2}}FF}
               - string: {text: "{capacity}%"}
   - clock:
       time-format: "%H:%M %Z"
       content:
         - string:
-            text: 
-            deco: *bg_default
-        - string:
-            text: "{time}"
+            text: "{time}"
             deco: *bg_default
