@@ -1,0 +1,6 @@
+font={{font}} 10
+background-color=#{{color.bg}}
+text-color=#{{color.fg}}
+border-color=#{{color.5}}
+progress-color=#{{color.9}}
+default-timeout=1000

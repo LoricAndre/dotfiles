@@ -5,7 +5,7 @@
   <alias>
     <family>monospace</family>
     <prefer>
-      <family>mononoki Nerd Font Mono</family>
+      <family>{{font}}</family>
     </prefer>
   </alias>
 

@@ -1,7 +1,11 @@
-EDITOR=nvim
-VISUAL=nvim
+export EDITOR=nvim
+export VISUAL=nvim
 export XDG_CURRENT_DESKTOP=Unity
 export XKB_DEFAULT_LAYOUT=fr
+# export XKB_DEFAULT_OPTIONS="caps:escape,altwin:swap_alt_win,lv3:rwin_switch"
+export MOZ_ENABLE_WAYLAND=1
+export PAGER=bat
+
 
 if [[ "$(tty)" == "/dev/tty1" ]]
  then

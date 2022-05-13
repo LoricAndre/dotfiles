@@ -92,11 +92,6 @@ else
 fi
 
 # Prompt & more
-LWD=~/.cache/zsh/lwd
-function chpwd() {
-  [ -f $LWD ] && echo "cd $PWD" > $LWD
-}
-[ -f $LWD ] && source $LWD
 function preexec() {
   timer=$(($(date +%s%3N)))
 }

@@ -1,6 +1,6 @@
-font: &font mono:size=12
-bg_default: &bg_default {stack: [{background: {color: {{background}}FF}}, {underline: {size: 4, color: {{color3}}FF}}]}
-std_underline: &std_underline {underline: { size: 2, color: {{color3}}FF}}
+font: &font {{font}}:size=12
+bg_default: &bg_default {stack: [{background: {color: {{color.bg}}FF}}, {underline: {size: 4, color: {{color.3}}FF}}]}
+std_underline: &std_underline {underline: { size: 2, color: {{color.3}}FF}}
 bar:
   height: 40
   location: top
@@ -8,8 +8,8 @@ bar:
   spacing: 5
   margin: 0
   layer: bottom
-  foreground: {{foreground}}FF
-  background: {{background}}FF
+  foreground: {{color.fg}}FF
+  background: {{color.bg}}FF
   monitor: *monitor # This is supposed to be set by prepending a line to the yaml file
   left:
   - river:
@@ -34,7 +34,7 @@ bar:
         map:
           deco:
             background:
-              color: {{color8}}FF
+              color: {{color.8}}FF
           on-click:
             left: sh -c "riverctl set-focused-tags $((1 << ({id} - 1)))"
             right: sh -c "riverctl toggle-focused-tags $((1 << ({id} -1)))"
@@ -44,7 +44,7 @@ bar:
             urgent:
               map:
                 <<: *river_base
-                deco: {background: {color: {{background}}FF}}
+                deco: {background: {color: {{color.bg}}FF}}
             focused:
               map:
                 <<: *river_base
@@ -63,7 +63,7 @@ bar:
                 tag: occupied
                 values:
                   false: {empty: {}}
-                  true: {map: {<<: *river_base, deco: {underline: {size: 3, color: {{color3}}FF}}}}
+                  true: {map: {<<: *river_base, deco: {underline: {size: 3, color: {{color.3}}FF}}}}
   right:
   - network:
       name: eth0
@@ -93,7 +93,7 @@ bar:
                 values:
                   "":
                     - string: {text: }
-                    - string: {text: "{ssid}", foreground: {{foreground}}FF}
+                    - string: {text: "{ssid}", foreground: {{color.fg}}FF}
   - cpu:
       content:
       - string:
@@ -120,8 +120,8 @@ bar:
               - ramp:
                   tag: capacity
                   items:
-                    - string: {text: , foreground: {{color4}}FF}
-                    - string: {text: , foreground: {{color4}}FF}
+                    - string: {text: , foreground: {{color.4}}FF}
+                    - string: {text: , foreground: {{color.4}}FF}
                     - string: {text: }
                     - string: {text: }
                     - string: {text: }
@@ -129,7 +129,7 @@ bar:
                     - string: {text: }
                     - string: {text: }
                     - string: {text: }
-                    - string: {text: , foreground: {{color2}}FF}
+                    - string: {text: , foreground: {{color.2}}FF}
               - string: {text: "{capacity}% ({estimate})"}
       content:
         map:
@@ -141,25 +141,25 @@ bar:
             discharging:
               <<: *discharging
             charging:
-              - string: {text: , foreground: {{color2}}FF}
+              - string: {text: , foreground: {{color.2}}FF}
               - string: {text: "{capacity}% ({estimate})"}
             full:
-              - string: {text: , foreground: {{color2}}FF}
+              - string: {text: , foreground: {{color.2}}FF}
               - string: {text: "{capacity}%"}
             not charging:
               - ramp:
                   tag: capacity
                   items:
-                    - string: {text:  , foreground: {{color4}}FF}
-                    - string: {text:  , foreground: {{color12}}FF}
-                    - string: {text:  , foreground: {{color10}}FF}
-                    - string: {text:  , foreground: {{color10}}FF}
-                    - string: {text:  , foreground: {{color10}}FF}
-                    - string: {text:  , foreground: {{color10}}FF}
-                    - string: {text:  , foreground: {{color2}}FF}
-                    - string: {text:  , foreground: {{color2}}FF}
-                    - string: {text:  , foreground: {{color2}}FF}
-                    - string: {text:  , foreground: {{color2}}FF}
+                    - string: {text:  , foreground: {{color.4}}FF}
+                    - string: {text:  , foreground: {{color.12}}FF}
+                    - string: {text:  , foreground: {{color.10}}FF}
+                    - string: {text:  , foreground: {{color.10}}FF}
+                    - string: {text:  , foreground: {{color.10}}FF}
+                    - string: {text:  , foreground: {{color.10}}FF}
+                    - string: {text:  , foreground: {{color.2}}FF}
+                    - string: {text:  , foreground: {{color.2}}FF}
+                    - string: {text:  , foreground: {{color.2}}FF}
+                    - string: {text:  , foreground: {{color.2}}FF}
               - string: {text: "{capacity}%"}
   - clock:
       time-format: "%H:%M %Z"

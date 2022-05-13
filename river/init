@@ -11,18 +11,17 @@
 # Note: the "Super" modifier is also known as Logo, GUI, Windows, Mod4, etc.
 
 # Super+Shift+Return to start an instance of foot (https://codeberg.org/dnkl/foot)
-term="kitty"
-browser="firefox"
+term="{{app.term}}"
+browser="{{app.browser}}"
 drun="wofi --show drun"
 run="wofi --show run"
-lock="waylock --init-color '#{{background}}' --fail-color '#{{color2}}' --input-color '#{{color9}}'"
+lock="waylock --init-color '#{{color.bg}}' --fail-color '#{{color.2}}' --input-color '#{{color.9}}'"
 
 
 riverctl map normal Super Return spawn "$term"
 riverctl map normal Super B spawn "$browser"
 riverctl map normal Super D spawn "$drun"
 riverctl map normal Super R spawn "$run"
-riverctl map normal Super E spawn neovide
 riverctl map normal Control+Mod1 L spawn "$lock"
 
 # Super+Q to close the focused view
@@ -30,7 +29,7 @@ riverctl map normal Super Q close
 
 # Super+Shift+E to exit river
 riverctl map normal Super+Shift E exit
-riverctl map normal Super+Shift R spawn "bash $HOME/.config/river/init"
+riverctl map normal Super+Shift R spawn "zsh -ic 'yrice && ~/.config/river/init'"
 
 # Super+J and Super+K to focus the next/previous view in the layout stack
 riverctl map normal Super M focus-view next
@@ -155,9 +154,9 @@ do
 done
 
 # Set background and border color
-riverctl background-color 0x{{background}}
-riverctl border-color-focused 0x{{color5}}
-riverctl border-color-unfocused 0x{{color9}}
+riverctl background-color 0x{{color.bg}}
+riverctl border-color-focused 0x{{color.5}}
+riverctl border-color-unfocused 0x{{color.9}}
 
 # Config
 riverctl focus-follows-cursor normal
@@ -172,23 +171,23 @@ riverctl input $input tap enabled
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-# pkill waybar; waybar &
 /usr/lib/disman_backend_launcher &
 # displays=$(wayland-info | sed -n "s/^.*'\(e\?DP-\?[0-9]\)'.*$/\1/p" | sort --uniq)
-while [ -z $displays ]; do
-  displays=$(dismanctl -o -j | jq -r '.outputs[].name' 2>/dev/null)
-  sleep 0.1
-done
-pkill yambar
-for display in $displays; do
-  (echo "monitor: &monitor $display" && cat ~/.config/yambar/config.yaml) > /tmp/yambar.$display.yaml
-  yambar -c /tmp/yambar.$display.yaml &
-done
+# while [ -z $displays ]; do
+#   displays=$(dismanctl -o -j | jq -r '.outputs[].name' 2>/dev/null)
+#   sleep 0.1
+# done
+# pkill yambar
+# for display in $displays; do
+#   (echo "monitor: &monitor $display" && cat ~/.config/yambar/config.yaml) > /tmp/yambar.$display.yaml
+#   yambar -c /tmp/yambar.$display.yaml &
+# done
 dismanctl output.DP-1.position.0,0
 dismanctl output.eDP-1.position.1920,0 2>&1 # Setup monitor layout
 pkill mako; mako &
 pkill swayidle; swayidle -w timeout 600 "$lock" &
-# pkill udiskie; udiskie &
+pkill udiskie; udiskie &
+pkill battery_warning.sh; battery_warning.sh &
 
 scratch_tag=$(( 1 << 20 ))
 kitty --class scratchterm &
@@ -202,7 +201,6 @@ riverctl map normal Super T toggle-focused-tags ${scratch_tag}
 riverctl map normal Super+Shift T set-view-tags ${scratch_tag}
 all_but_scratch_tag=$(( ((1 << 32) - 1) ^ $scratch_tag ))
 riverctl spawn-tagmask ${all_but_scratch_tag}
-ydots-rs
 
 # Set and exec into the default layout generator, rivercarro.
 # River will send the process group of the init executable SIGTERM on exit.

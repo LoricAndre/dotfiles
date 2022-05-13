@@ -5,7 +5,6 @@ mappings:
   n:
   - ["<Tab>", "<CMD>bn<CR>"]
   - ["<S-Tab>", "<CMD>bp<CR>"]
-  - ["<leader>om", "<CMD>MinimapToggle<CR>"]
   - ["m", "l"]
   - ["l", "k"]
   - ["k", "j"]
@@ -27,6 +26,8 @@ mappings:
   - ["j", "h"]
   - ["<", "<gv"]
   - [">", ">gv"]
+  t:
+  - ["<C-Esc>", "<C-\\><C-n>:q<CR>"]
 options:
   autoindent: true
   backspace: indent,eol,start
@@ -109,9 +110,11 @@ plugins:
       - ["<leader>tt", "<CMD>ToggleTerm direction=float<CR>"]
       - ["<leader>t", "<CMD>ToggleTerm direction=float<CR>"]
       - ["<leader>tv", "<CMD>ToggleTerm direction=vertical<CR>"]
-      - ["<leader>gg", "<CMD>TermExec cmd='lazygit && exit' go_back=0 direction=float<CR>"]
-      t:
-      - ["<Esc>", "<C-\\><C-n>:q<CR>"]
+  lazygit:
+    _: kdheepak/lazygit.nvim
+    mappings:
+      n:
+      - ["<leader>gg", "<CMD>LazyGit<CR>"]
   alpha:
     _: goolord/alpha-nvim
     config: |
@@ -304,6 +307,7 @@ plugins:
           icon: 
           ignored_buffers:
           - .*oneterm.*
+          - .*toggleterm.*
           show_numbers: true
           sorting: id
         hide_statusline: true
