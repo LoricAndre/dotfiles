@@ -1,6 +1,6 @@
 include ~/.config/kitty/kitty.colors
-font_size 12
+font_size {{font_size}}
+font_family {{font}}
 enable_audio_bell no
-font_family monospace
 map ctrl+shift+m next_tab
 map ctrl+shift+j previous_tab

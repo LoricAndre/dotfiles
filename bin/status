@@ -118,9 +118,9 @@ mem() {
   printf "%s" "$(free | tail -n2 | head -n1 | awk '{printf(100*$3/$2)}' | cut -d'.' -f1)%"
 }
 
-sep='::'
-# notify-send -t 2000 -i hwinfo "$(date +%T)" "$(clock)\n$(net_wpa)\n$(volume)\n$(bright)\n$(bat)"
-while true; do
-  echo "$(bright) $sep $(volume) $sep $(mem) $sep $(clock) $sep $(bat)"
-  sleep 0.1
-done
+# sep='::'
+notify-send -t 2000 -i hwinfo "$(date +%T)" "$(clock)\n$(net_wpa)\n$(volume)\n$(bright)\n$(bat)"
+# while true; do
+#   echo "$(bright) $sep $(volume) $sep $(mem) $sep $(clock) $sep $(bat)"
+#   sleep 0.1
+# done

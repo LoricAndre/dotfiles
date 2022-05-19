@@ -23,6 +23,7 @@ riverctl map normal Super B spawn "$browser"
 riverctl map normal Super D spawn "$drun"
 riverctl map normal Super R spawn "$run"
 riverctl map normal Control+Mod1 L spawn "$lock"
+riverctl map normal Super S spawn "$HOME/bin/status"
 
 # Super+Q to close the focused view
 riverctl map normal Super Q close
@@ -41,12 +42,12 @@ riverctl map normal Super+Shift M swap next
 riverctl map normal Super+Shift J swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super L focus-output next
-riverctl map normal Super K focus-output previous
+riverctl map normal Super K focus-output next
+riverctl map normal Super L focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift L send-to-output next
-riverctl map normal Super+Shift K send-to-output previous
+riverctl map normal Super+Shift K send-to-output next
+riverctl map normal Super+Shift L send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super Space zoom
@@ -171,7 +172,7 @@ riverctl input $input tap enabled
 # Set keyboard repeat rate
 riverctl set-repeat 50 300
 
-/usr/lib/disman_backend_launcher &
+# /usr/lib/disman_backend_launcher &
 # displays=$(wayland-info | sed -n "s/^.*'\(e\?DP-\?[0-9]\)'.*$/\1/p" | sort --uniq)
 # while [ -z $displays ]; do
 #   displays=$(dismanctl -o -j | jq -r '.outputs[].name' 2>/dev/null)
@@ -182,8 +183,8 @@ riverctl set-repeat 50 300
 #   (echo "monitor: &monitor $display" && cat ~/.config/yambar/config.yaml) > /tmp/yambar.$display.yaml
 #   yambar -c /tmp/yambar.$display.yaml &
 # done
-dismanctl output.DP-1.position.0,0
-dismanctl output.eDP-1.position.1920,0 2>&1 # Setup monitor layout
+# dismanctl output.DP-1.position.0,0
+# dismanctl output.eDP-1.position.1920,0 2>&1 # Setup monitor layout
 pkill mako; mako &
 pkill swayidle; swayidle -w timeout 600 "$lock" &
 pkill udiskie; udiskie &

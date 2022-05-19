@@ -3,31 +3,31 @@ global:
   dotfiles: ~/dotfiles
 variables:
   color:
-    bg: 1E1E2E
-    fg: D9E0EE
-    0: 6E6C7E
-    8: 988BA2
-    1: F28FAD
-    9: F28FAD
-    2: ABE9B3
-    10: ABE9B3
-    3: FAE3B0
-    11: FAE3B0
-    4: 96CDFB
-    12: 96CDFB
-    5: DDB6F2
-    13: DDB6F2
-    6: F5C2E7
-    14: F5C2E7
-    7: C3BAC6
-    15: D9E0EE
-  font: mononoki Nerd Font Mono
+    bg: 282a36
+    fg: d0d0d0
+    0: 4e4e4e
+    1: d68787 
+    2: 5f865f
+    3: d8af5f
+    4: 85add4
+    5: d7afaf
+    6: 87afaf
+    7: d0d0d0
+    8: 44475a
+    9: d75f87
+    10: 87af87
+    11: ffd787 
+    12: add4fb
+    13: ffafaf
+    14: 87d7d7
+    15: e4e4e4
+  font: Iosevka Nerd Font Mono
+  font_size: 11
   app:
-    term: wezterm
+    term: kitty
     browser: firefox
 modules:
-  ydots:
-    customSteps: echo a
+  yrice: {}
   neovim:
     dirname: nvim
     packageName: neovim-git
@@ -39,11 +39,13 @@ modules:
     - ranger
     - xclip
     - python-neovim
-    - nvim-packer-git
-    - lua51-lyaml
-    - rust-analyzer
-    - bash-language-server
-    - jedi-language-server
+    files:
+    - init.lua
+    - plugin
+    - lua/plugins
+    - lua/utils.lua
+    - source: lua/colors.lua
+      parse: true
   waybar:
     enabled: false
     packageName: waybar
@@ -52,6 +54,7 @@ modules:
       parse: true
     - config
   yambar:
+    enabled: false
     packageName: yambar
     files:
       - source: config.yaml
@@ -72,11 +75,11 @@ modules:
       target: 99-monospace.conf
       parse: true
   kitty:
-    enabled: false
     packageName: kitty
     files:
     - source: conf
       target: kitty.conf
+      parse: true
     - source: colors
       target: kitty.colors
       parse: true
@@ -140,6 +143,7 @@ modules:
     - source: completions
       target: .zshcompletions
   wezterm:
+    enabled: false
     packageName: wezterm
     files:
     - source: wezterm.lua
