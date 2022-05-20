@@ -42,12 +42,12 @@ riverctl map normal Super+Shift M swap next
 riverctl map normal Super+Shift J swap previous
 
 # Super+Period and Super+Comma to focus the next/previous output
-riverctl map normal Super K focus-output next
-riverctl map normal Super L focus-output previous
+riverctl map normal Super L focus-output next
+riverctl map normal Super K focus-output previous
 
 # Super+Shift+{Period,Comma} to send the focused view to the next/previous output
-riverctl map normal Super+Shift K send-to-output next
-riverctl map normal Super+Shift L send-to-output previous
+riverctl map normal Super+Shift L send-to-output next
+riverctl map normal Super+Shift K send-to-output previous
 
 # Super+Return to bump the focused view to the top of the layout stack
 riverctl map normal Super Space zoom
