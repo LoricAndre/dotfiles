@@ -1,6 +1,7 @@
 global:
   installCommand: paru -S --needed --noconfirm %s
   dotfiles: ~/dotfiles
+  gitUrl: git@github.com:LoricAndre/dotfiles
 variables:
   color:
     bg: 282a36
