@@ -30,3 +30,11 @@ local options = {
 for k, v in pairs(options) do
   vim.o[k] = v
 end
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'yaml',
+  callback = function()
+    vim.api.nvim_command('filetype indent off')
+    vim.bo.autoindent = false
+  end
+})

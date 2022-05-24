@@ -35,15 +35,23 @@ return require 'packer'.startup(function(use)
   use { 'LudoPinelli/comment-box.nvim',
     config = function() require 'plugins.comment-box' end
   }
-  use { 'ms-jpq/coq_nvim',
-    branch = 'coq',
-    config = function() require 'plugins.coq' end,
+  use { 'hrsh7th/nvim-cmp',
+    config = function() require 'plugins.cmp' end,
     requires = {
-      { 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-      { 'ms-jpq/coq.thirdparty', branch = '3p' },
-      'github/copilot.vim'
-    },
-    run = ':COQdeps'
+      'hrsh7th/cmp-nvim-lsp',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'L3MON4D3/LuaSnip',
+      'saadparwaiz1/cmp_luasnip',
+      'hrsh7th/cmp-calc',
+      'hrsh7th/cmp-nvim-lsp-document-symbol',
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      'petertriho/cmp-git',
+      'Saecki/crates.nvim',
+      'hrsh7th/cmp-nvim-lua',
+      'ray-x/cmp-treesitter',
+    }
   }
   use { 'feline-nvim/feline.nvim',
     config = function() require 'plugins.feline' end,

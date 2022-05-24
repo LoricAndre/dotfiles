@@ -1,5 +1,4 @@
 local nmap = require 'utils'.nmap
-local coq = require 'coq'
 local servers = {
   'sumneko_lua',
   'bashls',
@@ -30,8 +29,12 @@ require 'nvim-lsp-installer'.setup {
   automatic_installation = true
 }
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 for _, server in ipairs(servers) do
-  require 'lspconfig'[server].setup(coq.lsp_ensure_capabilities {
-    on_attach = on_attach
-  })
+  require 'lspconfig'[server].setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+  }
 end
