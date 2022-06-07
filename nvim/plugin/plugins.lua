@@ -79,7 +79,7 @@ return require 'packer'.startup(function(use)
   use { 'folke/persistence.nvim',
     config = function() require 'plugins.persistence' end
   }
-  use { 'LoricAndre/sidebar.nvim',
+  use { 'sidebar-nvim/sidebar.nvim',
     config = function() require 'plugins.sidebar' end
   }
   use { 'michaelb/sniprun',

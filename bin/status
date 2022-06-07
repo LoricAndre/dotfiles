@@ -119,7 +119,7 @@ mem() {
 }
 
 # sep='::'
-notify-send -t 2000 -i hwinfo "$(date +%T)" "$(clock)\n$(net_wpa)\n$(volume)\n$(bright)\n$(bat)"
+notify-send -t 2000 -i hwinfo "$(date +%T)" "$(clock)\n$(net_wpa)\n$(bat)\n$(volume)\n$(bright)\n$(bat)"
 # while true; do
 #   echo "$(bright) $sep $(volume) $sep $(mem) $sep $(clock) $sep $(bat)"
 #   sleep 0.1
