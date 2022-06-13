@@ -27,3 +27,4 @@ vmap { 'j', 'h' }
 vmap { '<', '<gv' }
 vmap { '>', '>gv' }
 tmap { '<C-Esc>', '<C-\\><C-n>:q<CR>' }
+tmap { 'jk', '<C-\\><C-n>' }
