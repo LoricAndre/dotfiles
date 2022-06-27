@@ -28,3 +28,7 @@ vmap { '<', '<gv' }
 vmap { '>', '>gv' }
 tmap { '<C-Esc>', '<C-\\><C-n>:q<CR>' }
 tmap { 'jk', '<C-\\><C-n>' }
+tmap { '<M-m>', '<C-\\><C-n><C-w><C-l>' }
+tmap { '<M-l>', '<C-\\><C-n><C-w><C-k>' }
+tmap { '<M-k>', '<C-\\><C-n><C-w><C-j>' }
+tmap { '<M-j>', '<C-\\><C-n><C-w><C-h>' }

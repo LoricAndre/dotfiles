@@ -97,3 +97,5 @@ kgt() {
 alias tf='terraform'
 alias nvim='TERM=xterm nvim'
 alias gn='n +"Telescope repo list"'
+alias :e='n'
+alias gf='g a && g c && g p'

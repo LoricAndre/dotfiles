@@ -48,6 +48,10 @@ fi
 bindkey "^[[1;5D" backward-word
 bindkey "^[[1;5C" forward-word
 bindkey "\033[127;5u" backward-kill-word
+bindkey -r "^[j"
+bindkey -r "^[k"
+bindkey -r "^[l"
+bindkey -r "^[m"
 
 # History
 HISTFILE=~/.zhistory
@@ -169,3 +173,4 @@ set -o monitor
 [ -z $ZDOTDIR ] && ZDOTDIR=$HOME
 . $ZDOTDIR/.zshaliases
 . $ZDOTDIR/.zshcompletions
+source /usr/share/nvm/init-nvm.sh
