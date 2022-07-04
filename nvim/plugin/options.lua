@@ -21,6 +21,7 @@ local options = {
   splitbelow = true,
   splitright = true,
   termguicolors = true,
+  guifont = 'monospace',
   timeoutlen = 300,
   undodir = vim.fn.stdpath("data") .. "/undodir",
   undofile = true,

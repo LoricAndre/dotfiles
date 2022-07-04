@@ -1,4 +1,5 @@
-export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.npm-packages/bin:/usr/lib/ruby/gems/2.7.0:/home/loric/.gem/ruby/2.7.0:/home/loric/.cargo/bin
+export GOPATH=$HOME/.local/share/go
+export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.npm-packages/bin:/usr/lib/ruby/gems/2.7.0:$HOME/.gem/ruby/2.7.0:$HOME/.cargo/bin:$GOPATH/bin
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim

@@ -14,6 +14,7 @@ if not os.getenv("NO_PLUGINS") then
         'cljoly/telescope-repo.nvim',
         'gbrlsnchs/telescope-lsp-handlers.nvim',
         'rcarriga/nvim-notify',
+        'nvim-telescope/telescope-file-browser.nvim'
       },
       config = function() require 'plugins.telescope' end,
       rocks = {

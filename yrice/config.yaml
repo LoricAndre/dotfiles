@@ -27,6 +27,7 @@ variables:
   app:
     term: kitty
     browser: firefox
+    editor: nvui
 modules:
   yrice: {}
   neovim:
@@ -159,4 +160,10 @@ modules:
     packageName: mako
     files:
     - source: config
+      parse: true
+  hyprland:
+    packageName: hyprland-bin
+    targetDir: ~/.config/hypr
+    files:
+    - source: hyprland.conf
       parse: true
