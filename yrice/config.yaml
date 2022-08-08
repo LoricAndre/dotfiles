@@ -29,6 +29,11 @@ variables:
     browser: firefox
     editor: nvui
 modules:
+  paru:
+    preSteps:
+    - git clone https://aur.archlinux.org/paru.git /tmp/paru
+    - cd /tmp/paru && makepkg -si
+    files: []
   yrice: {}
   neovim:
     dirname: nvim
