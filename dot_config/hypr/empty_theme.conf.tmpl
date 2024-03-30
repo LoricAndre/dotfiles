@@ -1,4 +1,4 @@
-{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+{{- $colors := get .colors .theme }}
 
 {{- range $number, $color := $colors }}
 $color{{- $number }} = 0xff{{- $color }}

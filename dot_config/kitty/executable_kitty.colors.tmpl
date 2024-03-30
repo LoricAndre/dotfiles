@@ -1,6 +1,6 @@
 # vim:ft=kitty
 
-{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+{{- $colors := get .colors .theme }}
 
 # The basic colors
 foreground              #{{ get $colors "7" }}

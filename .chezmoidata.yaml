@@ -1,0 +1,82 @@
+theme: catpuccin-mocha
+font:
+  size: 10
+  family: SourceCodePro Nerd Font Mono
+
+colors:
+  "catpuccin-mocha":
+    # Black
+    "0": "1e1e2e"  # base #1e1e2e
+    "8": "181825"  # mantle #181825
+    # Red
+    "1": "f38ba8"  # red #f38ba8
+    "9": "fab387"  # peach #fab387
+    # Green
+    "2": "a6e3a1"  # green #a6e3a1
+    "10": "313244"  # surface0 #313244
+    # Yellow
+    "3": "f9e2af"  # yellow #f9e2af
+    "11": "f5e0dc"  # rosewater #f5e0dc
+    # Blue
+    "4": "89b4fa"  # blue #89b4fa
+    "12": "585b70"  # surface2 #585b70
+    # Magenta
+    "5": "b4befe"  # lavender #b4befe
+    "13": "cba6f7"  # mauve #cba6f7
+    # Cyan
+    "6": "94e2d5"  # teal #94e2d5
+    "14": "45475a"  # surface1 #45475a
+    # White
+    "7": "cdd6f4"  # text #cdd6f4
+    "15": "f2cdcd"  # flamingo  #f2cdcd
+  "catpuccin-latte":
+    # White
+    "0": "eff1f5" # base #eff1f5
+    "8": "e6e9ef" # mantle #e6e9ef
+    # Red
+    "1": "d20f39" # red #d20f39
+    "9": "fe640b" # peach #fe640b
+    # Green
+    "2": "40a02b" # green #40a02b
+    "10": "ccd0da" # surface0 #ccd0da
+    # Yellow
+    "3": "df8e1d" # yellow #df8e1d
+    "11": "dc8a78" # rosewater #dc8a78
+    # Blue
+    "4": "1e66f5" # blue #1e66f5
+    "12": "acb0be" # surface2 #acb0be
+    # Magenta
+    "5": "7287fd" # lavender #7287fd
+    "13": "8839ef" # mauve #8839ef
+    # Cyan
+    "6": "179299" # teal #179299
+    "14": "bcc0cc" # surface1 #bcc0cc
+    # Black
+    "7": "4c4f69" # text #4c4f69
+    "15": "dd7878" # flamingo #dd7878
+  dracula:
+    # Black
+    "0": "282936" #background #282936
+    "8": "3a3c4e" #3a3c4e
+    # Red
+    "1": "ea51b2" #ea51b2
+    "9": "b45bcf" #b45bcf
+    # Green
+    "2": "00f769" #00f769
+    "10": "4d4f68" #4d4f68
+    # Yellow
+    "3": "ebff87" #ebff87
+    "11": "626483" #626483
+    # Blue
+    "4": "a1efe4" #a1efe4
+    "12": "62d6e8" #62d6e8
+    # Magenta
+    "5": "ea51b2" #ea51b2
+    "13": "b45bcf" #b45bcf
+    # Cyan
+    "6": "a1efe4" #a1efe4
+    "14": "62d6e8" #62d6e8
+    # White
+    "7": "e9e9f4" #foreground #e9e9f4
+    "15": "f7f7fb" #f7f7fb
+
