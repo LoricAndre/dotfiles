@@ -1,3 +1,5 @@
+{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+
 # output=<not set>
 font=monospace
 # dpi-aware=auto
@@ -30,13 +32,13 @@ terminal=kitty -e  # Note: you cannot actually use environment variables here
 # exit-on-keyboard-focus-loss = yes
 
 [colors]
-background=1e1e2edd
-text=cdd6f4ff
-match=f38ba8ff
-selection=585b70ff
-selection-match=f38ba8ff
-selection-text=cdd6f4ff
-border=b4befeff
+background={{- get $colors "0"}}dd
+text={{- get $colors "7"}}ff
+match={{- get $colors "5"}}ff
+selection={{- get $colors "12"}}ff
+selection-match={{- get $colors "5"}}ff
+selection-text={{- get $colors "7"}}ff
+border={{- get $colors "5"}}ff
 
 [border]
 # width=1
@@ -93,3 +95,5 @@ border=b4befeff
 # custom-17=Mod1+ampersand
 # custom-18=Mod1+asterix
 # custom-19=Mod1+parentleft
+
+# vi: ft=ini
