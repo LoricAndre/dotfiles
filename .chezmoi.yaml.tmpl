@@ -5,6 +5,14 @@ git:
   # autocommit: true
   # autopush: true
 
+merge:
+  command: nvim
+  args:
+    - -d
+    - "{{ "{{" }} .Destination {{ "}}" }}"
+    - "{{ "{{" }} .Source {{ "}}" }}"
+    - "{{ "{{" }} .Target {{ "}}" }}"
+
 data:
   font:
     size: 10
@@ -37,5 +45,55 @@ data:
       # White
       "7": "cdd6f4"  # text #cdd6f4
       "15": "f2cdcd"  # flamingo  #f2cdcd
+    "catpuccin-latte":
+      # White
+      "0": "eff1f5" # base #eff1f5
+      "8": "e6e9ef" # mantle #e6e9ef
+      # Red
+      "1": "d20f39" # red #d20f39
+      "9": "fe640b" # peach #fe640b
+      # Green
+      "2": "40a02b" # green #40a02b
+      "10": "ccd0da" # surface0 #ccd0da
+      # Yellow
+      "3": "df8e1d" # yellow #df8e1d
+      "11": "dc8a78" # rosewater #dc8a78
+      # Blue
+      "4": "1e66f5" # blue #1e66f5
+      "12": "acb0be" # surface2 #acb0be
+      # Magenta
+      "5": "7287fd" # lavender #7287fd
+      "13": "8839ef" # mauve #8839ef
+      # Cyan
+      "6": "179299" # teal #179299
+      "14": "bcc0cc" # surface1 #bcc0cc
+      # Black
+      "7": "4c4f69" # text #4c4f69
+      "15": "dd7878" # flamingo #dd7878
+    dracula:
+      # Black
+      "0": "282936" #background #282936
+      "8": "3a3c4e" #3a3c4e
+      # Red
+      "1": "ea51b2" #ea51b2
+      "9": "b45bcf" #b45bcf
+      # Green
+      "2": "00f769" #00f769
+      "10": "4d4f68" #4d4f68
+      # Yellow
+      "3": "ebff87" #ebff87
+      "11": "626483" #626483
+      # Blue
+      "4": "a1efe4" #a1efe4
+      "12": "62d6e8" #62d6e8
+      # Magenta
+      "5": "ea51b2" #ea51b2
+      "13": "b45bcf" #b45bcf
+      # Cyan
+      "6": "a1efe4" #a1efe4
+      "14": "62d6e8" #62d6e8
+      # White
+      "7": "e9e9f4" #foreground #e9e9f4
+      "15": "f7f7fb" #f7f7fb
 
 # vi: ft=yaml
