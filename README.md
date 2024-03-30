@@ -12,7 +12,7 @@
 | Editor/IDE | Neovim | No |
 | Notification daemon | Dunst | Yes |
 | VCS | Git | N/A |
-| VCS | Lazygit | No |
+| VCS | Lazygit | Yes (indirect) |
 | Runner | Fuzzel | Yes |
 | Status bar | Waybar | Yes |
 
