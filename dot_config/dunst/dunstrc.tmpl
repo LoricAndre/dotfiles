@@ -1,0 +1,18 @@
+{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+
+[global]
+frame_color = "#{{- get $colors "5" }}"
+separator_color= frame
+
+[urgency_low]
+background = "#{{- get $colors "0" }}"
+foreground = "#{{- get $colors "7" }}"
+
+[urgency_normal]
+background = "#{{- get $colors "0" }}"
+foreground = "#{{- get $colors "7" }}"
+
+[urgency_critical]
+background = "#{{- get $colors "0" }}"
+foreground = "#{{- get $colors "7" }}"
+frame_color = "#{{- get $colors "1" }}"

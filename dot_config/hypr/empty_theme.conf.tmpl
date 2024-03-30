@@ -1,0 +1,17 @@
+{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+
+{{- range $number, $color := $colors }}
+$color{{- $number }} = 0xff{{- $color }}
+{{- end }}
+
+$text      = 0xff{{- get $colors "7" }}
+$subtext1  = 0xff{{- get $colors "15" }}
+$subtext0  = 0xff{{- get $colors "11" }}
+
+$overlay2  = 0xff{{- get $colors "12" }}
+$overlay1  = 0xff{{- get $colors "14" }}
+$overlay0  = 0xff{{- get $colors "10" }}
+
+$surface2  = 0xff{{- get $colors "12" }}
+$surface1  = 0xff{{- get $colors "14" }}
+$surface0  = 0xff{{- get $colors "10" }}

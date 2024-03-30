@@ -1,0 +1,53 @@
+git:
+  log:
+    showGraph: always
+customCommands:
+  - key: '<c-f>'
+    description: 'fetch a remote branch as a new local branch'
+    command: "git fetch {{index .SelectedRemote.Name }} {{index .PromptResponses 0}}:{{index .PromptResponses 1}}"
+    context: 'remotes'
+    prompts:
+      - type: 'input'
+        title: 'Remote Branch Name'
+        initialValue: ''
+      - type: 'input'
+        title: 'New Local Branch Name'
+        initialValue: ''
+    loadingText: 'fetching branch'
+  - key: "<c-v>"
+    context: "global"
+    description: "Create new conventional commit"
+    prompts:
+      - type: "input"
+        key: "type"
+        title: "Type of change"
+        suggestions:
+          command: |
+            echo "build"
+            echo "feat"
+            echo "fix"
+            echo "chore"
+            echo "ci"
+            echo "docs"
+            echo "perf"
+            echo "refactor"
+            echo "revert"
+            echo "style"
+            echo "test"
+      - type: "input"
+        title: "Scope - Add '(<scope>)'"
+        key: "scope"
+        suggestions:
+          command:
+            "find . -type d -d -not -path './.*' -mindepth 1 | cut -d'/' -f2-"
+      - type: "input"
+        title: "Breaking change - Add '!'"
+        key: "breaking"
+        initialValue: ""
+      - type: "input"
+        title: "Message"
+        key: "message"
+        initialValue: ""
+    command: "git commit --message '{{.Form.type}}({{.Form.scope}}){{.Form.breaking}}: {{.Form.message}}'"
+    showOutput: true
+    loadingText: "Creating conventional commit..."

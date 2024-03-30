@@ -1,0 +1,22 @@
+[user]
+	email = loric.andre@pm.me
+	name = LoricAndre
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[push]
+	default = simple
+[alias]
+        cl = clone
+	co = checkout
+	p = push
+	pl = pull
+	c = commit
+	cm = commit -m
+	a = add
+        aa = add .
+	au = add -u
+	b = branch
+	sw = switch
+	s = status

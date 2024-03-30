@@ -1,0 +1,17 @@
+{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+
+{{- range $number, $color := $colors }}
+@define-color color{{- $number }} #{{- $color }};
+{{- end }}
+
+@define-color text     #{{- get $colors "7" }};
+@define-color subtext0 #{{- get $colors "15" }};
+@define-color subtext1 #{{- get $colors "11" }};
+
+@define-color surface0 #{{- get $colors "10" }};
+@define-color surface1 #{{- get $colors "14" }};
+@define-color surface2 #{{- get $colors "12" }};
+
+@define-color overlay0 #{{- get $colors "10" }};
+@define-color overlay1 #{{- get $colors "14" }};
+@define-color overlay2 #{{- get $colors "12" }};

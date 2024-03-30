@@ -1,0 +1,74 @@
+# vim:ft=kitty
+
+{{- $colors := get .chezmoi.config.data.colors .chezmoi.config.data.theme }}
+
+# The basic colors
+foreground              #{{ get $colors "7" }}
+background              #{{ get $colors "0" }}
+selection_foreground    #{{ get $colors "0" }}
+selection_background    #{{ get $colors "15"}}
+
+# Cursor colors
+cursor                  #{{ get $colors "15"}}
+cursor_text_color       #{{ get $colors "0"}}
+
+# URL underline color when hovering with mouse
+url_color               #{{ get $colors "15"}}
+
+# Kitty window border colors
+active_border_color     #{{ get $colors "14"}}
+inactive_border_color   #{{ get $colors "8" }}
+bell_border_color       #{{ get $colors "3"}}
+
+# OS Window titlebar colors
+wayland_titlebar_color system
+macos_titlebar_color system
+
+# Tab bar colors
+active_tab_foreground   #{{ get $colors "0" }}
+active_tab_background   #{{ get $colors "5"}}
+inactive_tab_foreground #{{ get $colors "7"}}
+inactive_tab_background #{{ get $colors "0" }}
+tab_bar_background      #{{ get $colors "0" }}
+
+# Colors for marks (marked text in the terminal)
+mark1_foreground #{{ get $colors "0"}}
+mark1_background #{{ get $colors "14"}}
+mark2_foreground #{{ get $colors "0"}}
+mark2_background #{{ get $colors "5"}}
+mark3_foreground #{{ get $colors "0"}}
+mark3_background #{{ get $colors "4" }}
+
+# The 16 terminal colors
+
+# black
+color0 #{{ get $colors "0" }}
+color8 #{{ get $colors "8" }}
+
+# red
+color1 #{{ get $colors "1" }}
+color9 #{{ get $colors "9" }}
+
+# green
+color2 #{{ get $colors "2" }}
+color10 #{{ get $colors "10" }}
+
+# yellow
+color3 #{{ get $colors "3" }}
+color11 #{{ get $colors "11" }}
+
+# blue
+color4 #{{ get $colors "4" }}
+color12 #{{ get $colors "12" }}
+
+# magenta
+color5 #{{ get $colors "5" }}
+color13 #{{ get $colors "13" }}
+
+# cyan
+color6 #{{ get $colors "6" }}
+color14 #{{ get $colors "14" }}
+
+# white
+color7 #{{ get $colors "7" }}
+color15 #{{ get $colors "15" }}
