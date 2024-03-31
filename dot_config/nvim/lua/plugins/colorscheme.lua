@@ -9,6 +9,7 @@ local repos = {
 
 return {
   repos["catpuccin"],
+  cond = false,
   config = function()
     vim.cmd("colorscheme " .. colorscheme)
   end

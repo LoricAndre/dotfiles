@@ -1,0 +1,17 @@
+{{- if eq .n "00" -}}{{- template "colors" (set $ "n" 0) -}}
+{{- else if eq .n "01" -}}{{- template "colors" (set $ "n" 8) -}}
+{{- else if eq .n "02" -}}{{- template "colors" (set $ "n" 10) -}}
+{{- else if eq .n "03" -}}{{- template "colors" (set $ "n" 14) -}}
+{{- else if eq .n "04" -}}{{- template "colors" (set $ "n" 12) -}}
+{{- else if eq .n "05" -}}{{- template "colors" (set $ "n" 7) -}}
+{{- else if eq .n "06" -}}{{- template "colors" (set $ "n" 11) -}}
+{{- else if eq .n "07" -}}{{- template "colors" (set $ "n" 5) -}}
+{{- else if eq .n "08" -}}{{- template "colors" (set $ "n" 1) -}}
+{{- else if eq .n "09" -}}{{- template "colors" (set $ "n" 9) -}}
+{{- else if eq .n "0A" -}}{{- template "colors" (set $ "n" 3) -}}
+{{- else if eq .n "0B" -}}{{- template "colors" (set $ "n" 2) -}}
+{{- else if eq .n "0C" -}}{{- template "colors" (set $ "n" 6) -}}
+{{- else if eq .n "0D" -}}{{- template "colors" (set $ "n" 4) -}}
+{{- else if eq .n "0E" -}}{{- template "colors" (set $ "n" 13) -}}
+{{- else if eq .n "0F" -}}{{- template "colors" (set $ "n" 15) -}}
+{{- end -}}

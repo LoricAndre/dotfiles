@@ -1,0 +1,1 @@
+{{- $colors := get .colors .theme }}{{- get $colors ( toString .n ) -}}

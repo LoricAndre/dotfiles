@@ -9,7 +9,7 @@
 | Shell | ZSH | N/A |
 | WM | Hyprland | Yes |
 | Terminal emulator | Kitty | Yes |
-| Editor/IDE | Neovim | No |
+| Editor/IDE | Neovim | Yes |
 | Notification daemon | Dunst | Yes |
 | VCS | Git | N/A |
 | VCS | Lazygit | Yes (indirect) |
