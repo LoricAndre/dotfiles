@@ -22,3 +22,8 @@
 
 To set the colorscheme, see `.chezmoidata`. Set the correct value for the `theme` key, then reload.
 To add a colorscheme, see the `colors` section. The format is based on Base16.
+
+## Showcase
+
+### catppuccin-mocha
+![catppuccin-mocha screenshot](.assets/catppuccin-mocha.png)
