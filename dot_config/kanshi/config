@@ -1,0 +1,8 @@
+profile laptop {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,0 scale 1.667
+}
+
+profile massy {
+  output "Samsung Display Corp. 0x4171 Unknown" disable
+  output "ViewSonic Corporation VX2458 Series VFA193000894" enable
+}
