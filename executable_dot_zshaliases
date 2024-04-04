@@ -137,3 +137,5 @@ rt() {
   done
 }
 alias cm=chezmoi
+
+alias obsi="pushd ~/obsi; nvim home.md +ObsidianToday; popd"
