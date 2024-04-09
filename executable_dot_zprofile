@@ -28,7 +28,11 @@ autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSI
 export HISTFILE="$XDG_STATE_HOME"/zsh/history
 
 eval "$(ssh-agent -s)"
-for key in ~/.ssh/*.key; do ssh-add "$key"; done
+for key in ~/.ssh/*.key; do
+  ssh-add "$key"
+done
 
 [ -f "/usr/share/stderred/stderred.sh" ] && . "/usr/share/stderred/stderred.sh"
 [ -f "/usr/share/stderred/stderred32.sh" ] && . "/usr/share/stderred/stderred32.sh"
+
+clear

@@ -85,7 +85,7 @@ if [ -f $HOME/.antigen.zsh ]; then
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-history-substring-search
   antigen bundle git
-  antigen bundle agkozak/zsh-z
+  # antigen bundle agkozak/zsh-z
   antigen bundle birdhackor/zsh-exa-ls-plugin@main
   antigen bundle 3v1n0/zsh-bash-completions-fallback
   antigen bundle cpitt/zsh-dotenv

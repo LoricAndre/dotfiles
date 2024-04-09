@@ -11,12 +11,23 @@
         cl = clone
 	co = checkout
 	p = push
+	pf = push --force-with-lease
 	pl = pull
 	c = commit
 	cm = commit -m
+        cam = commit -am
 	a = add
         aa = add .
 	au = add -u
 	b = branch
 	sw = switch
 	s = status
+        l = log --oneline
+        ll = log
+        graph = log --graph --abbrev-commit
+	fr = "!f() { git fetch origin \"$1\" && git rebase \"origin/$1\" --autostash; }; f"
+        fx = "!git commit --fixup=$(git log --oneline -n1 | cut -d' ' -f1); git rebase HEAD~2 --autosquash"
+        short-hash = "!git log --oneline -n1 | cut -d' ' -f1"
+        rb = rebase --autosquash
+        rbi = rebase --interavtive --autosquash
+
