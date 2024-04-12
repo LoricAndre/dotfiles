@@ -182,6 +182,11 @@ set -o monitor
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
 
+eval "$(ssh-agent -s)"
+for key in ~/.ssh/*.key; do
+  ssh-add "$key" >/dev/null
+done
+
 [ -z $ZDOTDIR ] && ZDOTDIR=$HOME
 . $ZDOTDIR/.zshaliases
 . $ZDOTDIR/.zshcompletions
