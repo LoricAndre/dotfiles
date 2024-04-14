@@ -194,3 +194,5 @@ done
 
 export THEFUCK_EXCLUDE_RULES="fix_file"
 [ -x $(which thefuck) ] && eval $(thefuck --alias f)
+
+clear
