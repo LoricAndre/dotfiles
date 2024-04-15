@@ -139,4 +139,4 @@ rt() {
 alias cm=chezmoi
 
 alias obsi="pushd ~/obsi; nvim home.md +ObsidianToday; popd"
-alias cdg='cd "$HOME/ghq/$(ghq list |fzf)"'
+alias cdg='cd "$HOME/ghq/$(ghq list | sk)"'
