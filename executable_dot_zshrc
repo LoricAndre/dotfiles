@@ -95,6 +95,8 @@ else
   [[ $install_antigen =~ "[Nn]" ]] || curl -L git.io/antigen > $HOME/.antigen.zsh
 fi
 
+eval "$(starship init zsh)"
+
 # # Prompt & more
 # function preexec() {
 #   timer=$(($(date +%s%3N)))
@@ -174,18 +176,13 @@ _clock() {
   printf "%s" "$_d"
 }
 
-export RPROMPT='%F{cyan}$(_battery)%%  $(_clock) %F{$reset_color%}'
-
-set -o PROMPT_SUBST
-export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/null) %(?.%F{green}󰄾.%F{red}✗)%f%b '
-set -o monitor
+# export RPROMPT='%F{cyan}$(_battery)%%  $(_clock) %F{$reset_color%}'
+# 
+# set -o PROMPT_SUBST
+# export PROMPT='%B%F{blue}%~ %F{yellow}$(git symbolic-ref --short HEAD 2> /dev/null) %(?.%F{green}󰄾.%F{red}✗)%f%b '
+# set -o monitor
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"
-
-eval "$(ssh-agent -s)"
-for key in ~/.ssh/*.key; do
-  ssh-add "$key" >/dev/null
-done
 
 [ -z $ZDOTDIR ] && ZDOTDIR=$HOME
 . $ZDOTDIR/.zshaliases
@@ -197,4 +194,6 @@ export THEFUCK_EXCLUDE_RULES="fix_file"
 
 eval "$(zoxide init zsh)"
 
-clear
+if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
+  tmux attach || exec tmux new-session && exit;
+fi

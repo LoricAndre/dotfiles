@@ -31,3 +31,7 @@ export HISTFILE="$XDG_STATE_HOME"/zsh/history
 [ -f "/usr/share/stderred/stderred32.sh" ] && . "/usr/share/stderred/stderred32.sh"
 
 clear
+
+if [[ $TTY == /dev/tty1 ]]; then
+  exec dbus-run-session Hyprland
+fi
