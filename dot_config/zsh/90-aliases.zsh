@@ -124,7 +124,8 @@ alias lg="lazygit"
 fzn() {
   pushd "$(find ~/src -name '.git' -exec dirname \{\} \; | fzf --preview '[ -f {}/README.md ] && bat {}/README.md || ls {}')" && nvim && popd
 }
-if [[ "$TERM" = "xterm-kitty" ]]; then
+
+if [[ -n "$KITTY_WINDOW_ID" ]]; then
   alias ssh="kitty +kitten ssh"
   alias diff="kitty +kitten diff"
   alias icat="kitty +kitten icat"

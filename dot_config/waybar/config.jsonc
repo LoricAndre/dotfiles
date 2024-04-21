@@ -9,20 +9,18 @@
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/window"
-        // "hyprland/mode",
-        // "hyprland/scratchpad"
-        // "custom/media"
     ],
     "modules-center": [
     ],
     "modules-right": [
-        // "mpd",
         "idle_inhibitor",
+        "custom/pacman",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
         "cpu",
         "memory",
+        "disk",
         "temperature",
         "backlight",
         "battery",
@@ -196,16 +194,17 @@
         },
         "on-click": "pavucontrol"
     },
-    "custom/media": {
+  "disk": {
+    "interval": 30,
+    "format": " {used}/{total}",
+    "path": "/"
+    },
+    "custom/pacman": {
         "format": "{icon} {}",
         "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
-        // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "format-icons": "󰏖",
+        "interval": 300,
+        "on-click": "kitty paru",
+        "exec": "/home/loric/bin/waybar-pacman.sh"
     }
 }
