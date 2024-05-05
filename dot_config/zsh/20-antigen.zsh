@@ -6,6 +6,7 @@ if [ -f "$ANTIGEN_FILE" ]; then
   antigen bundle zsh-users/zsh-syntax-highlighting
   antigen bundle zsh-users/zsh-completions
   antigen bundle zsh-users/zsh-history-substring-search
+  antigen bundle atuinsh/atuin@main
   antigen bundle git
   # antigen bundle agkozak/zsh-z
   antigen bundle birdhackor/zsh-exa-ls-plugin@main

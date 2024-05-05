@@ -38,13 +38,6 @@ return {
     },
   },
   {
-    "3rd/image.nvim",
-    lazy = false,
-    dependencies = { "luarocks.nvim" },
-    opts = {
-    }
-  },
-  {
     "yorickpeterse/nvim-tree-pairs",
     opts = {}
   }

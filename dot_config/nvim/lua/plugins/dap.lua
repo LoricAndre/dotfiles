@@ -32,9 +32,10 @@ return {
     dapui.setup()
   end,
   keys = {
-    { "<leader>db", function() require("dap").toggle_breakpoint() end, desc = "[DBG] Toggle Breakpoint" },
-    { "<leader>dc", function() require("dap").continue() end,          desc = "[DBG] Continue" },
-    { "<leader>dd", function() require("dapui").toggle() end,          desc = "[DBG] Toggle UI" },
-    { "<leader>dx", function() require("dapui").eval() end,            { "n", "v" },                    desc = "[DBG] Eval Code" }
+    { "<F2>",  function() require("dap").toggle_breakpoint() end, desc = "[DBG] Toggle Breakpoint" },
+    { "<F3>",  function() require("dapui").eval() end,            { "n", "v" },                    desc = "[DBG] Eval Code" },
+    { "<F4>",  function() require("dap").terminate() end,         { "n", "v" },                    desc = "[DBG] Quit" },
+    { "<F5>",  function() require("dap").continue() end,          desc = "[DBG] Continue" },
+    { "<F17>", function() require("dapui").toggle() end,          desc = "[DBG] Toggle UI" },
   }
 }

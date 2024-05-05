@@ -126,8 +126,9 @@ fzn() {
 }
 
 if [[ -n "$KITTY_WINDOW_ID" ]]; then
-  alias ssh="kitty +kitten ssh"
-  alias diff="kitty +kitten diff"
+  if [[ -z "$TMUX" ]]; then
+    alias ssh="kitty +kitten ssh"
+  fi
   alias icat="kitty +kitten icat"
 fi
 

@@ -8,6 +8,14 @@ eval "$(zoxide init zsh)"
 [ -f "/usr/share/stderred/stderred.sh" ] && . "/usr/share/stderred/stderred.sh"
 [ -f "/usr/share/stderred/stderred32.sh" ] && . "/usr/share/stderred/stderred32.sh"
 
+# pnpm
+export PNPM_HOME="/home/loric/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
   tmux attach || exec tmux new-session && exit;
 fi
