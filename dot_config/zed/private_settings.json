@@ -1,0 +1,39 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "theme": "Catppuccin Mocha",
+  "features": {
+    "copilot": false
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  },
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_family": "JetBrains Mono",
+  "relative_line_numbers": true,
+  "tab_size": 2,
+  "journal": {
+    // The path of the directory where journal entries are stored
+    "path": "~/journal",
+    "hour_format": "hour24"
+  },
+  "auto_install_extensions": {
+    "html": true,
+    "javascript": true,
+    "rust": true,
+    "prisma": true
+  },
+  // Different settings for specific languages.
+  "languages": {},
+  "auto_update": false
+}
