@@ -35,5 +35,16 @@
   },
   // Different settings for specific languages.
   "languages": {},
-  "auto_update": false
+  "auto_update": false,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_multiline_find": false,
+    "use_smartcase_find": true
+  },
+  "terminal": {
+    "dock": "bottom",
+    "font_family": "JetBrains Mono",
+    "line_height": "standard",
+    "copy_on_select": true
+  }
 }
