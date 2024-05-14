@@ -27,5 +27,19 @@
     "args": ["run", "dev"],
     "use_new_terminal": true,
     "reveal": "never"
+  },
+  {
+    "label": "docker: start compose project",
+    "command": "docker",
+    "args": ["compose", "up", "--remove-orphans", "--wait"],
+    "reveal": "never",
+    "use_new_terminal": false
+  },
+  {
+    "label": "docker: stop compose project",
+    "command": "docker",
+    "args": ["compose", "down"],
+    "reveal": "never",
+    "use_new_terminal": false
   }
 ]

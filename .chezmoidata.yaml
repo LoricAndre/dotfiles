@@ -1,4 +1,5 @@
 theme: catpuccin-mocha
+terminal: kitty
 font:
   size: 10
   family: JetBrainsMono Nerd Font Mono
@@ -6,29 +7,29 @@ font:
 colors:
   "catpuccin-mocha":
     # Black
-    "0": "1e1e2e"  # base #1e1e2e
-    "8": "181825"  # mantle #181825
+    "0": "1e1e2e" # base #1e1e2e
+    "8": "181825" # mantle #181825
     # Red
-    "1": "f38ba8"  # red #f38ba8
-    "9": "fab387"  # peach #fab387
+    "1": "f38ba8" # red #f38ba8
+    "9": "fab387" # peach #fab387
     # Green
-    "2": "a6e3a1"  # green #a6e3a1
-    "10": "313244"  # surface0 #313244
+    "2": "a6e3a1" # green #a6e3a1
+    "10": "313244" # surface0 #313244
     # Yellow
-    "3": "f9e2af"  # yellow #f9e2af
-    "11": "f5e0dc"  # rosewater #f5e0dc
+    "3": "f9e2af" # yellow #f9e2af
+    "11": "f5e0dc" # rosewater #f5e0dc
     # Blue
-    "4": "89b4fa"  # blue #89b4fa
-    "12": "585b70"  # surface2 #585b70
+    "4": "89b4fa" # blue #89b4fa
+    "12": "585b70" # surface2 #585b70
     # Magenta
-    "5": "b4befe"  # lavender #b4befe
-    "13": "cba6f7"  # mauve #cba6f7
+    "5": "b4befe" # lavender #b4befe
+    "13": "cba6f7" # mauve #cba6f7
     # Cyan
-    "6": "94e2d5"  # teal #94e2d5
-    "14": "45475a"  # surface1 #45475a
+    "6": "94e2d5" # teal #94e2d5
+    "14": "45475a" # surface1 #45475a
     # White
-    "7": "cdd6f4"  # text #cdd6f4
-    "15": "f2cdcd"  # flamingo  #f2cdcd
+    "7": "cdd6f4" # text #cdd6f4
+    "15": "f2cdcd" # flamingo  #f2cdcd
   "catpuccin-latte":
     # White
     "0": "eff1f5" # base #eff1f5
@@ -79,4 +80,3 @@ colors:
     # White
     "7": "e9e9f4" #foreground #e9e9f4
     "15": "f7f7fb" #f7f7fb
-
