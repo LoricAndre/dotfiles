@@ -33,6 +33,7 @@
     "rust": true,
     "prisma": true
   },
+  "ensure_final_newline_on_save": false,
   // Different settings for specific languages.
   "languages": {},
   "auto_update": false,
