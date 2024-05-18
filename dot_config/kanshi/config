@@ -11,3 +11,8 @@ profile gazaupouy {
   output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
   output "Ancor Communications Inc MX25AQ H2LMRS020029" mode 2560x1440@60 position 0,0
 }
+
+profile castelnau-1 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
+  output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 0,0
+}

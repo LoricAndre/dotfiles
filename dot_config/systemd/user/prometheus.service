@@ -1,0 +1,12 @@
+[Unit]
+Description=Prometheus service
+
+[Service]
+Restart=on-failure
+WorkingDirectory=/usr/share/prometheus
+EnvironmentFile=/home/loric/.config/monitoring/.env
+ExecStart=/usr/bin/prometheus --config.file=/home/loric/.config/monitoring/prometheus.yml --storage.tsdb.path=/home/loric/.local/share/prometheus/data $PROMETHEUS_ARGS
+ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=default.target

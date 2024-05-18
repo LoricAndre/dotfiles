@@ -1,0 +1,2 @@
+NODE_EXPORTER_ARGS="--web.listen-address=:19100 --collector.systemd --collector.processes --collector.wifi"
+PROMETHEUS_ARGS="--web.listen-address=:19090"

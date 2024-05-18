@@ -1,0 +1,9 @@
+apiVersion: 1
+
+datasources:
+  - name: Prometheus
+    type: prometheus
+    access: proxy
+    uid: 3f71864f-55cb-46f0-b071-6ed437ccc77e
+    url: http://localhost:19090
+    isDefault: true

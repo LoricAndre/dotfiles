@@ -1,7 +1,7 @@
 {{- $colors := get .colors .theme }}
 
 configuration{
-    modi: "run,drun,window";
+    modi: "run,drun,window,calc";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "{{ .terminal }}";
@@ -13,6 +13,7 @@ configuration{
     display-run: "   Run ";
     display-window: "   Window";
     display-Network: " 󰤨  Network";
+    display-Network: " 󰪚  Calc";
     sidebar-mode: true;
 }
 
