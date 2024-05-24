@@ -2,6 +2,8 @@ local extensions = {
   fzf = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
   ["ui-select"] = "nvim-telescope/telescope-ui-select.nvim",
   ghq = "nvim-telescope/telescope-ghq.nvim",
+  diff = "jemag/telescope-diff.nvim",
+  undo = "debugloop/telescope-undo.nvim",
 }
 
 local dependencies = { "nvim-lua/plenary.nvim" }
@@ -48,24 +50,20 @@ return {
       ["textDocument/references"] = tb.lsp_references,
       ["textDocument/definition"] = tb.lsp_definition,
       ["textDocument/documentSymbol"] = tb.lsp_document_symbols,
-      ["workspace/symbol"] = tb.lsp_workspace_symbols,
+      ["workspace/symbol"] = tb.lsp_dynamic_workspace_symbols,
     }
     for k, v in pairs(lsp_handlers) do
       vim.lsp.handlers[k] = v
     end
   end,
   keys = {
-    {
-      "<leader>a",
-      function()
-        require('telescope.builtin').live_grep()
-      end,
-      noremap = true,
-      desc = "Telescope live grep"
-    },
-    { "<leader>f", function() require('telescope.builtin').find_files() end, noremap = true, desc = "[TSP] Files" },
-    { "<leader>b", function() require('telescope.builtin').buffers() end,    noremap = true, desc = "[TSP] buffers" },
-    { "ge",        function() require('telescope.builtin').diagnostics() end, noremap = true, desc = "[LSP] Diagnostic" }
+    { "<leader>a",  function() require('telescope.builtin').grep_string({ search = "" }) end,            noremap = true, desc = "[TSP] Search" },
+    { "<leader>f",  function() require('telescope.builtin').find_files() end,                            noremap = true, desc = "[TSP] Files" },
+    { "<leader>b",  function() require('telescope.builtin').buffers() end,                               noremap = true, desc = "[TSP] Buffers" },
+    { "ge",         function() require('telescope.builtin').diagnostics() end,                           noremap = true, desc = "[LSP] Diagnostic" },
+    { "<leader>sd", function() require('telescope').extensions.diff.diff_current({ hidden = true }) end, noremap = true, desc = "[DIF] Diff curent" },
+    { "<leader>sD", function() require('telescope').extensions.diff.diff_files({ hidden = true }) end,   noremap = true, desc = "[DIF] Diff files" },
+    { "<leader>su", function() require('telescope').extensions.undo.undo() end,                          noremap = true, desc = "[UDO] Undo" },
   },
   cmd = {
     'Telescope'

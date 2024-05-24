@@ -3,6 +3,9 @@ Description=Prometheus exporter for machine metrics
 
 [Service]
 Restart=on-failure
-EnvironmentFile=-~/.config/montoring/node-exporter.env
+EnvironmentFile=/home/loric/.config/monitoring/.env
 ExecStart=/usr/bin/prometheus-node-exporter $NODE_EXPORTER_ARGS
 ExecReload=/bin/kill -HUP $MAINPID
+
+[Install]
+WantedBy=default.target

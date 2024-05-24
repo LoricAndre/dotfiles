@@ -14,6 +14,7 @@ return {
       ["<leader>d"] = { name = "+debug" },
       ["<leader>l"] = { name = "+log" },
       ["<leader>t"] = { name = "+neotree" },
+      ["<leader>s"] = { name = "+telescope" },
       ["gc"] = { name = "+comment" },
       ["gw"] = { name = "+swap" },
     })

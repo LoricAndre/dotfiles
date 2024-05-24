@@ -1,5 +1,7 @@
 return {
-  "towolf/vim-helm",
+  {
+    "sheerun/vim-polyglot"
+  },
   {
     "norcalli/nvim-colorizer.lua",
     config = function()

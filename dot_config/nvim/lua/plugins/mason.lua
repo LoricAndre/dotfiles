@@ -48,9 +48,13 @@ return {
           }))
         elseif has_cmp then
           local capabilities = cmp_lsp.default_capabilities()
-          return lspconfig[server_name].setup {
-            capabilities = capabilities
-          }
+          return lspconfig[server_name].setup(vim.tbl_deep_extend('force', opts, {
+            capabilities = vim.tbl_deep_extend(
+              'force',
+              vim.lsp.protocol.make_client_capabilities(),
+              capabilities
+            )
+          }))
         else
           return lspconfig[server_name].setup(opts)
         end
