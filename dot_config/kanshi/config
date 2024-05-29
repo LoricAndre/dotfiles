@@ -16,3 +16,14 @@ profile castelnau-1 {
   output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
   output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 0,0
 }
+
+profile castelnau-2 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1080 scale 1.667
+  output "Iiyama North America PL2793H 1188114602684" position 0,0
+}
+
+profile castelnau-3 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 1280,1440 scale 1.667
+  output "Iiyama North America PL2793H 1188114602684" mode 2560x1440@60 position 2560,0
+  output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 0,0
+}

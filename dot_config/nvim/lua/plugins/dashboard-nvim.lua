@@ -9,7 +9,7 @@ local sections = {
     icon = " ",
     desc = "Files",
     key = "f",
-    action = "Telescope find_files"
+    action = "FzfLua files"
   },
   projects = {
     icon = "󰊢 ",
@@ -62,7 +62,6 @@ return {
           sections.sessions,
           sections.dir_session,
           sections.last_session,
-          -- sections.config,
           sections.lazy,
           sections.mason,
         }

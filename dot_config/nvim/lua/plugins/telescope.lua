@@ -16,6 +16,7 @@ end
 return {
   'nvim-telescope/telescope.nvim',
   event = "VeryLazy",
+  enabled = false,
   dependencies = dependencies,
   config = function()
     local ts = require("telescope")

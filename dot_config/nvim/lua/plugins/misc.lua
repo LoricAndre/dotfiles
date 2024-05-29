@@ -42,5 +42,9 @@ return {
   {
     "yorickpeterse/nvim-tree-pairs",
     opts = {}
+  },
+  {
+    "Ramilito/kubectl.nvim",
+    opts = {}
   }
 }
