@@ -6,3 +6,6 @@ if [[ -d $ZSH_CONFIG_DIR ]]; then
 fi
 
 eval "$(atuin init zsh)"
+
+# add Pulumi to the PATH
+export PATH=$PATH:/home/loric/.pulumi/bin

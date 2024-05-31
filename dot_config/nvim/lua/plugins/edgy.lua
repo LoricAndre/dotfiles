@@ -22,6 +22,7 @@ return {
       },
       "Trouble",
       { ft = "qf", title = "QuickFix" },
+      { ft = "OverseerList", title = "Overseer List" },
     },
     left = {
       {

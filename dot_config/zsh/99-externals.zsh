@@ -15,6 +15,9 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
+#
+PULUMI_HOME="$HOME/.pulumi"
+[ -d $PULUMI_HOME/bin ] && export PATH="$PULUMI_HOME/bin:$PATH"
 
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
   tmux attach || exec tmux new-session && exit;
