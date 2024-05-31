@@ -1,4 +1,4 @@
-if [[ -x uu-ls ]]; then
+if [[ -x $(which uu-ls) ]]; then
   alias chgrp='uu-chgrp'
   alias cp='uu-cp'
   alias dircolors='uu-dircolors'
