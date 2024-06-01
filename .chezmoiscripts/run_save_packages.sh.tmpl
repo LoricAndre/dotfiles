@@ -1,0 +1,3 @@
+#!/bin/sh
+echo "packages:" > "{{ .chezmoi.sourceDir}}/{{ .packages_file }}"
+paru -Qqe | sort | sed 's/^/-  /' >> "{{ .chezmoi.sourceDir }}/{{ .packages_file }}"

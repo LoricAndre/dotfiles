@@ -18,6 +18,12 @@
 
 ## Usage
 
+### Initial setup
+
+```bash
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@gitlab.com:loric.andre/dotfiles.git
+```
+
 ### Colorscheme
 
 To set the colorscheme, see `.chezmoidata`. Set the correct value for the `theme` key, then reload.

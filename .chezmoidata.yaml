@@ -1,5 +1,7 @@
 theme: catpuccin-mocha
 terminal: kitty
+packages_file: .chezmoidata/packages.yaml
+aurHelper: paru
 font:
   size: 10
   family: JetBrainsMono Nerd Font Mono
