@@ -19,6 +19,8 @@ esac
 PULUMI_HOME="$HOME/.pulumi"
 [ -d $PULUMI_HOME/bin ] && export PATH="$PULUMI_HOME/bin:$PATH"
 
+[ -n $CARGO_HOME ] && export PATH="$CARGO_HOME/bin:$PATH"
+
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
   tmux attach || exec tmux new-session && exit;
 fi

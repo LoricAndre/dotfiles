@@ -66,6 +66,7 @@ return {
     "onsails/lspkind-nvim"
   },
   event = "VeryLazy",
+  enabled = false,
   config = function()
     local cmp = require("cmp")
     local luasnip = require("luasnip")

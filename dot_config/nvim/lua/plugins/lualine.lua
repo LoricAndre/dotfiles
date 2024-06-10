@@ -1,5 +1,5 @@
 local function lsp_servers()
-  local servers = vim.lsp.buf_get_clients()
+  local servers = vim.lsp.get_clients()
   local server_names = vim.tbl_map(function(x) return x.name end, servers)
   local prefix = ""
   if #server_names > 0 then

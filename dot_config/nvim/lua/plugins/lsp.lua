@@ -1,3 +1,4 @@
+local comp = require("builtin-completion")
 local mason_opts = {
   ui = {
     icons = {
@@ -46,6 +47,8 @@ return {
     mason_lspconfig.setup_handlers({
       function(server_name)
         local opts = lsp_handlers[server_name] or {}
+        vim.notify(server_name)
+        print(has_coq, has_epo, has_cmp)
         if has_coq then
           return lspconfig[server_name].setup(coq.lsp_ensure_capabilities(opts))
         elseif has_epo then
@@ -68,21 +71,21 @@ return {
     })
   end,
   keys = {
-    { "ga",  function() return vim.lsp.buf.code_action({ apply = true }) end, desc = "[LSP] Code Action" },
-    { "ga",  function() return vim.lsp.buf.code_action({ apply = true }) end, mode = "v",                   desc = "[LSP] Code Action" },
-    { "gn",  function() return vim.lsp.buf.rename() end,                      desc = "[LSP] Rename" },
-    { "K",           function() return vim.lsp.buf.hover() end,                       desc = "[LSP] Hover" },
-    { "<leader>cf",  function() return vim.lsp.buf.format({ async = true }) end,      desc = "[LSP] Format" },
-    { "<leader>cf",  function() return vim.lsp.buf.format({ async = true }) end,      mode = "v",                   desc = "[LSP] Format" },
-    { "gd",  function() return vim.lsp.buf.definition() end,                   desc = "[LSP] Definition" },
-    { "gr",  function() return vim.lsp.buf.references() end,                   desc = "[LSP] References" },
-    { "gs",  function() return vim.lsp.buf.document_symbol() end,                   desc = "[LSP] Document symbol" },
-    { "gq",  function() return vim.lsp.buf.workspace_symbol() end,                   desc = "[LSP] Workspace symbol" },
-    { "gi",  function() return vim.lsp.buf.implementation() end,                   desc = "[LSP] Implementations" },
-    { 'gl', function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
-    { 'gk', function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
-    { 'gm', function() return vim.diagnostic.goto_next() end,              desc = '[LSP] Next diagnostic' },
-    { 'gj', function() return vim.diagnostic.goto_prev() end,              desc = '[LSP] Prev diagnostic' },
+    { "ga",         function() return vim.lsp.buf.code_action({ apply = true }) end, desc = "[LSP] Code Action" },
+    { "ga",         function() return vim.lsp.buf.code_action({ apply = true }) end, mode = "v",                     desc = "[LSP] Code Action" },
+    { "gn",         function() return vim.lsp.buf.rename() end,                      desc = "[LSP] Rename" },
+    { "K",          function() return vim.lsp.buf.hover() end,                       desc = "[LSP] Hover" },
+    { "<leader>cf", function() return vim.lsp.buf.format({ async = true }) end,      desc = "[LSP] Format" },
+    { "<leader>cf", function() return vim.lsp.buf.format({ async = true }) end,      mode = "v",                     desc = "[LSP] Format" },
+    { "gd",         function() return vim.lsp.buf.definition() end,                  desc = "[LSP] Definition" },
+    { "gr",         function() return vim.lsp.buf.references() end,                  desc = "[LSP] References" },
+    { "gs",         function() return vim.lsp.buf.document_symbol() end,             desc = "[LSP] Document symbol" },
+    { "gq",         function() return vim.lsp.buf.workspace_symbol() end,            desc = "[LSP] Workspace symbol" },
+    { "gi",         function() return vim.lsp.buf.implementation() end,              desc = "[LSP] Implementations" },
+    { 'gl',         function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
+    { 'gk',         function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
+    { 'gm',         function() return vim.diagnostic.goto_next() end,                desc = '[LSP] Next diagnostic' },
+    { 'gj',         function() return vim.diagnostic.goto_prev() end,                desc = '[LSP] Prev diagnostic' },
 
   }
 }

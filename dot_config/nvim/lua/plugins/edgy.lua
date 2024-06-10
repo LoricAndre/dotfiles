@@ -1,8 +1,9 @@
+local trigger = "<F11>"
 return {
   "folke/edgy.nvim",
   event = "VeryLazy",
   keys = {
-    { "<leader>e", function()
+    { trigger, function()
       require("neo-tree.command").execute({ action = "close" })
       require("edgy").toggle()
     end },

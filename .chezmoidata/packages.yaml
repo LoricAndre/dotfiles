@@ -119,7 +119,7 @@ packages:
 -  mpd
 -  nautilus
 -  ncdu
--  neovim
+-  neovim-nightly-bin
 -  nerdfix
 -  networkmanager
 -  network-manager-applet
@@ -159,6 +159,7 @@ packages:
 -  progress
 -  prometheus
 -  prometheus-node-exporter
+-  proton-pass
 -  python-keyring
 -  python-pipx
 -  python-protobuf
@@ -192,6 +193,7 @@ packages:
 -  sxhkd
 -  syncthing
 -  tailscale
+-  tailscale-systray-git
 -  teams
 -  teamviewer
 -  thefuck
