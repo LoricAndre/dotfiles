@@ -2,9 +2,14 @@ return {
   'stevearc/overseer.nvim',
   event = "VeryLazy",
   opts = {
+    strategy = {
+      "toggleterm",
+      direction = "horizontal"
+    },
     templates = {
       "builtin",
-      "pulumi"
+      "pulumi",
+      "docker"
     }
   },
   keys = {
