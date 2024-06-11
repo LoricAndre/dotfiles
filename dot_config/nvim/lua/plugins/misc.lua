@@ -32,13 +32,13 @@ return {
       { "<leader>lt", function() require("chainsaw").timeLog() end,     desc = "[LOG] Time",     noremap = true },
     }
   },
-  {
-    "vhyrro/luarocks.nvim",
-    priority = 1001, -- this plugin needs to run before anything else
-    opts = {
-      rocks = { "magick" },
-    },
-  },
+  -- {
+  --   "vhyrro/luarocks.nvim",
+  --   priority = 1001, -- this plugin needs to run before anything else
+  --   opts = {
+  --     rocks = { "magick" },
+  --   },
+  -- },
   {
     "yorickpeterse/nvim-tree-pairs",
     opts = {}
