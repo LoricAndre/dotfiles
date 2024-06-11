@@ -6,6 +6,7 @@ packages:
 -  android-sdk-platform-tools
 -  android-udev
 -  apache
+-  aspnet-runtime
 -  aspnet-runtime-6.0
 -  astyle
 -  atuin
@@ -36,6 +37,7 @@ packages:
 -  docker
 -  docker-buildx
 -  docker-compose
+-  dotnet-sdk
 -  dotnet-sdk-6.0
 -  doxygen
 -  dua-cli

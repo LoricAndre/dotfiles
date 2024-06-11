@@ -4,13 +4,13 @@ local autocmds = {
   -- { "BufEnter", "term://*", "echom 2" },
   -- { "BufLeave", "term://*", "stopinsert" },
   -- { "BufWritePost", chezmoi_dir .. "/**", "silent!chezmoi apply" }
-  {
-    "LspAttach",
-    nil,
-    function(args)
-      require("builtin-completion").setup(args)
-    end
-  }
+  -- {
+  --   "LspAttach",
+  --   nil,
+  --   function(args)
+  --     require("builtin-completion").setup(args)
+  --   end
+  -- }
 }
 
 local group = vim.api.nvim_create_augroup("custom_autocmds", { clear = true })

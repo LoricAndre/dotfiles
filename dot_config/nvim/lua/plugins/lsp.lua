@@ -1,17 +1,67 @@
-local comp = require("builtin-completion")
+local setup_completion_keymaps = require("utils").setup_completion_keymaps
+
 local mason_opts = {
   ui = {
     icons = {
       package_installed = "✓",
       package_pending = "➜",
-
       package_uninstalled = "✗"
-
     }
+  },
+  ensure_installed = {
+    "autopep8",
+    "blue",
+    "clang-format",
+    "codelldb",
+    "commitlint",
+    "azure-pipelines-language-server",
+    "bash-language-server",
+    "clangd",
+    "omnisharp",
+    "css-lsp",
+    "dockerfile-language-server",
+    "emmet-language-server",
+    "eslint-lsp",
+    "eslint_d",
+    "markdownlint",
+    "marksman",
+    "netcoredbg",
+    "powershell-editor-services",
+    "stylua",
+    "trivy",
+    "gitlab-ci-ls",
+    "helm-ls",
+    "html-lsp",
+    "json-lsp",
+    "lua-language-server",
+    "pyright",
+    "sqlls",
+    "svelte-language-server",
+    "tailwindcss-language-server",
+    "terraform-ls",
+    "typescript-language-server",
+    "rust-analyzer",
+    "vue-language-server",
+    "yaml-language-server",
   }
 }
 
-local lsp_handlers = {}
+local server_configurations = {
+  {
+    inlay_hints = {
+      enabled = true
+    },
+    on_attach = function(client, bufnr)
+      if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
+        vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+        setup_completion_keymaps(bufnr)
+      end
+      if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
+    end,
+  }
+}
 
 return {
   "williamboman/mason.nvim",
@@ -35,6 +85,7 @@ return {
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
+    local registry = require("mason-registry")
     local lspconfig = require("lspconfig")
 
     local has_coq, coq = pcall(require, "coq_nvim")
@@ -42,32 +93,40 @@ return {
     local has_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
 
     mason.setup(mason_opts)
-    mason_lspconfig.setup()
 
-    mason_lspconfig.setup_handlers({
-      function(server_name)
-        local opts = lsp_handlers[server_name] or {}
-        vim.notify(server_name)
-        print(has_coq, has_epo, has_cmp)
-        if has_coq then
-          return lspconfig[server_name].setup(coq.lsp_ensure_capabilities(opts))
-        elseif has_epo then
-          return lspconfig[server_name].setup(vim.tbl_deep_extend('force', opts, {
-            capabilities = vim.tbl_deep_extend(
-              'force',
-              vim.lsp.protocol.make_client_capabilities(),
-              epo.register_cap()
-            )
-          }))
-        elseif has_cmp then
-          local capabilities = cmp_lsp.default_capabilities()
-          return lspconfig[server_name].setup {
-            capabilities = capabilities
-          }
-        else
-          return lspconfig[server_name].setup(opts)
-        end
+    for _, package_name in pairs(mason_opts.ensure_installed) do
+      if not registry.is_installed(package_name) then
+        local package = registry.get_package(package_name)
+        vim.notify("[MASON] Installing " .. package_name)
+        package:install()
       end
+    end
+
+    mason_lspconfig.setup({
+      automatic_installation = false,
+      handlers = {
+        function(server_name)
+          local opts = server_configurations[server_name] or server_configurations[1] or {}
+          if has_coq then
+            return lspconfig[server_name].setup(coq.lsp_ensure_capabilities(opts))
+          elseif has_epo then
+            return lspconfig[server_name].setup(vim.tbl_deep_extend('force', opts, {
+              capabilities = vim.tbl_deep_extend(
+                'force',
+                vim.lsp.protocol.make_client_capabilities(),
+                epo.register_cap()
+              )
+            }))
+          elseif has_cmp then
+            local capabilities = cmp_lsp.default_capabilities()
+            return lspconfig[server_name].setup {
+              capabilities = capabilities
+            }
+          else
+            return lspconfig[server_name].setup(opts)
+          end
+        end
+      }
     })
   end,
   keys = {
@@ -84,8 +143,7 @@ return {
     { "gi",         function() return vim.lsp.buf.implementation() end,              desc = "[LSP] Implementations" },
     { 'gl',         function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
     { 'gk',         function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
-    { 'gm',         function() return vim.diagnostic.goto_next() end,                desc = '[LSP] Next diagnostic' },
-    { 'gj',         function() return vim.diagnostic.goto_prev() end,                desc = '[LSP] Prev diagnostic' },
-
+    { 'gm',         function() return vim.diagnostic.jump({ count = 1 }) end,        desc = '[LSP] Next diagnostic' },
+    { 'gj',         function() return vim.diagnostic.jump({ count = -1 }) end,       desc = '[LSP] Prev diagnostic' },
   }
 }
