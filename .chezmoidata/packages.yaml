@@ -147,6 +147,7 @@ packages:
 -  pacman-contrib
 -  pamixer
 -  paru
+-  paru-debug
 -  pass
 -  pavucontrol
 -  pipewire

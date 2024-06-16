@@ -7,8 +7,8 @@ RUN pacman -Syu --noconfirm && \
 RUN useradd -m $USER
 RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
-USER loric
-WORKDIR ~$USER
+USER $USER
+WORKDIR /home/$USER
 RUN rustup default stable
 RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://gitlab.com/loric.andre/dotfiles.git
 
