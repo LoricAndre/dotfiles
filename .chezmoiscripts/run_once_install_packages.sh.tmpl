@@ -1,4 +1,8 @@
 #!/bin/sh
 
 {{ .aurHelper }} -Syu
-{{ .aurHelper }} -S --needed {{ .packages | join " " }} --noconfirm
+if [ $IN_DOCKER ]; then
+  {{ .aurHelper }} -S --needed {{ .dockerPackages | join " " }} --noconfirm
+else
+  {{ .aurHelper }} -S --needed {{ .packages | join " " }} --noconfirm
+fi

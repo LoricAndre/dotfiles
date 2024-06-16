@@ -2,7 +2,6 @@ packages:
 -  acpi
 -  adwaita-qt5-git
 -  adwaita-qt6-git
--  age
 -  android-sdk-platform-tools
 -  android-udev
 -  apache
@@ -12,9 +11,8 @@ packages:
 -  atuin
 -  autopep8
 -  avizo
--  aws-cli-v2
+-  aws-cli-v2-bin
 -  azure-cli
--  azure-storage-fuse
 -  base
 -  base-devel
 -  bat
@@ -33,14 +31,11 @@ packages:
 -  cpio
 -  davix
 -  dbeaver
--  devpod
 -  docker
 -  docker-buildx
 -  docker-compose
 -  dotnet-sdk
 -  dotnet-sdk-6.0
--  doxygen
--  dua-cli
 -  dunst
 -  efibootmgr
 -  eslint
@@ -49,7 +44,6 @@ packages:
 -  fd
 -  feh
 -  firefox
--  firefox-pwa-bin
 -  freerdp
 -  fuzzel
 -  fzf
@@ -66,8 +60,6 @@ packages:
 -  grimblast-git
 -  grub
 -  grub-btrfs
--  gst-instruments-git
--  gst-plugin-openh264
 -  gst-plugin-pipewire
 -  gtk2
 -  gvfs
@@ -93,16 +85,14 @@ packages:
 -  intel-gpu-tools
 -  intel-ucode
 -  jq
--  k3sup-bin
+-  k3sup
 -  k9s
 -  kanshi
--  kdenlive
 -  kitty
 -  kubectl
 -  kubectx
 -  kwallet
 -  lazygit
--  libinput-gestures
 -  libpulse
 -  librdkafka
 -  linux
@@ -110,7 +100,6 @@ packages:
 -  linux-headers
 -  linux-zen
 -  linux-zen-headers
--  logseq-desktop-wayland-bin
 -  lsof
 -  lua51
 -  ly
@@ -136,7 +125,6 @@ packages:
 -  obsidian
 -  obs-studio
 -  ocs-url
--  ollama
 -  openbsd-netcat
 -  openlens-bin
 -  openresolv
@@ -174,7 +162,6 @@ packages:
 -  qbittorrent
 -  qt5-wayland
 -  qt6-wayland
--  redpanda-bin
 -  ripgrep
 -  rofi-calc-git
 -  rofi-wayland
@@ -184,7 +171,6 @@ packages:
 -  signal-desktop
 -  skim
 -  smartmontools
--  snapshot
 -  sof-firmware
 -  sops
 -  spicetify-cli-git
@@ -194,14 +180,10 @@ packages:
 -  storageexplorer
 -  strace
 -  stremio
--  sxhkd
 -  syncthing
 -  tailscale
 -  tailscale-systray-git
--  teams
 -  teamviewer
--  thefuck
--  thunderbird
 -  timeshift
 -  tldr
 -  tmux
