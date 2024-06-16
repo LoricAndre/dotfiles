@@ -1,5 +1,5 @@
 dockerPackages:
-  - autopep8
+  - atuin
   - bat
   - chezmoi
   - dotnet-sdk

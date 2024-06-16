@@ -1,7 +1,7 @@
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 
 export THEFUCK_EXCLUDE_RULES="fix_file"
-[ -x $(which thefuck) ] && eval $(thefuck --alias f)
+[ -x "$(which thefuck)" ] && eval $(thefuck --alias f)
 
 eval "$(zoxide init zsh)"
 
