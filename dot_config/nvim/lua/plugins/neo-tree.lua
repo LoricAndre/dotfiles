@@ -14,6 +14,7 @@ return {
   },
   opts = {
     close_if_last_window = true,
+    hijack_netrw_behavior = 'disabled',
     window = {
       mappings = {
         j = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },

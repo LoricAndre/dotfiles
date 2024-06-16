@@ -2,14 +2,17 @@ return {
   'stevearc/overseer.nvim',
   event = "VeryLazy",
   opts = {
-    strategy = {
-      "toggleterm",
-      direction = "horizontal"
-    },
+    -- strategy = {
+    --   "jobstart",
+    --   use_terminal = false
+    -- },
+    -- strategy = {
+    --   "toggleterm",
+    --   direction = "horizontal"
+    -- },
     templates = {
       "builtin",
-      "pulumi",
-      "docker"
+      "docker.compose"
     }
   },
   keys = {

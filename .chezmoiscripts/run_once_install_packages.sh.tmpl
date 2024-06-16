@@ -1,4 +1,4 @@
 #!/bin/sh
 
 {{ .aurHelper }} -Syu
-{{ .aurHelper }} -S --needed {{ .packages | join " " }}
+{{ .aurHelper }} -S --needed {{ .packages | join " " }} --noconfirm

@@ -24,6 +24,13 @@ return {
       "Trouble",
       { ft = "qf", title = "QuickFix" },
       { ft = "OverseerList", title = "Overseer List" },
+      { title = "Overseer Runner", ft = "", filter = function (buf, win)
+        return vim.b.overseer_task ~= nil
+      end,
+        size = {
+          height = 0.3,
+        },
+      }
     },
     left = {
       {

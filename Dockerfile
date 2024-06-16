@@ -10,6 +10,6 @@ RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 USER loric
 WORKDIR ~$USER
 RUN rustup default stable
-RUN yes 1 | sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://gitlab.com/loric.andre/dotfiles.git
+RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply https://gitlab.com/loric.andre/dotfiles.git
 
 ENTRYPOINT zsh

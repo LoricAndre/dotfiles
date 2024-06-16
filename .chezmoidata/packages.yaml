@@ -55,6 +55,7 @@ packages:
 -  fzf
 -  ghq-bin
 -  git
+-  git-cliff
 -  github-cli
 -  glab
 -  glew
@@ -123,6 +124,7 @@ packages:
 -  ncdu
 -  neovim-nightly-bin
 -  nerdfix
+-  net-tools
 -  networkmanager
 -  network-manager-applet
 -  networkmanager-openvpn
