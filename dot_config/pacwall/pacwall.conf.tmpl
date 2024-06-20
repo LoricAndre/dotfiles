@@ -1,0 +1,25 @@
+{{- $colors := get .colors .theme }}
+
+hook: "swaybg -i '$W' -m center -c '#{{- get $colors "0" }}'"
+attributes: {
+    package: {
+        implicit:   "color='#{{- get $colors "1" }}aa'"
+        explicit:   "color='#{{- get $colors "4" }}aa'"
+        orphan:     "color='#{{- get $colors "6" }}aa', fontcolor='#{{- get $colors "6" }}',"
+                    "peripheries=2, xlabel='\\N'"
+        outdated:   "color='#{{- get $colors "3" }}aa', fontcolor='#{{- get $colors "3" }}',"
+                    "peripheries=3, xlabel='\\N'"
+        unresolved: "color='#{{- get $colors "5" }}aa', fontcolor='#{{- get $colors "5" }}',"
+                    "peripheries=4, xlabel='\\N'"
+        repository: {
+            core: ""
+            extra: ""
+            community: ""
+            multilib: ""
+            *: "color='#{{- get $colors "2" }}aa'"
+        }
+    }
+    dependency: {
+        common: "color='#{{- get $colors "8" }}0a'"
+    }
+}

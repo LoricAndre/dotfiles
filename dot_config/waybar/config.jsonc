@@ -10,8 +10,7 @@
         "hyprland/workspaces",
         "hyprland/window"
     ],
-    "modules-center": [
-    ],
+    "modules-center": [],
     "modules-right": [
         "idle_inhibitor",
         "custom/updates",
@@ -25,7 +24,8 @@
         "backlight",
         "battery",
         "clock",
-        "tray"
+        "tray",
+        "custom/swaync"
     ],
     // Modules configuration
     "hyprland/workspaces": {
@@ -34,26 +34,26 @@
         "warp-on-scroll": false,
         "format": "{icon}",
         "format-icons": {
-             "1": "󰲠",
-             "2": "󰲢",
-             "3": "󰲤",
-             "4": "󰲦",
-             "5": "󰲨",
-             "6": "󰲪",
-             "7": "󰲬",
-             "8": "󰲮",
-             "9": "󰲰",
-             "0": "󰿬",
-             "11": "󰲠",
-             "12": "󰲢",
-             "13": "󰲤",
-             "14": "󰲦",
-             "15": "󰲨",
-             "16": "󰲪",
-             "17": "󰲬",
-             "18": "󰲮",
-             "19": "󰲰",
-             "10": "󰿬",
+            "1": "󰲠",
+            "2": "󰲢",
+            "3": "󰲤",
+            "4": "󰲦",
+            "5": "󰲨",
+            "6": "󰲪",
+            "7": "󰲬",
+            "8": "󰲮",
+            "9": "󰲰",
+            "0": "󰿬",
+            "11": "󰲠",
+            "12": "󰲢",
+            "13": "󰲤",
+            "14": "󰲦",
+            "15": "󰲨",
+            "16": "󰲪",
+            "17": "󰲬",
+            "18": "󰲮",
+            "19": "󰲰",
+            "10": "󰿬",
             "urgent": "",
             "focused": "",
             "default": ""
@@ -74,7 +74,10 @@
     "hyprland/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": ["", ""],
+        "format-icons": [
+            "",
+            ""
+        ],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
@@ -120,25 +123,25 @@
         "format-alt": "{:%A, %B %d, %Y (%R:%S)}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
-                    "mode"          : "year",
-                    "mode-mon-col"  : 3,
-                    "weeks-pos"     : "right",
-                    "on-scroll"     : 1,
-                    "format": {
-                              "months":     "<span color='#ffead3'><b>{}</b></span>",
-                              "days":       "<span color='#ecc6d9'><b>{}</b></span>",
-                              "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
-                              "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
-                              "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
-                              }
-                    },
-        "actions":  {
-                    "on-click-right": "mode",
-                    "on-click-forward": "tz_up",
-                    "on-click-backward": "tz_down",
-                    "on-scroll-up": "shift_up",
-                    "on-scroll-down": "shift_down"
-                    }
+            "mode": "year",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#ffead3'><b>{}</b></span>",
+                "days": "<span color='#ecc6d9'><b>{}</b></span>",
+                "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
+                "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+                "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions": {
+            "on-click-right": "mode",
+            "on-click-forward": "tz_up",
+            "on-click-backward": "tz_down",
+            "on-scroll-up": "shift_up",
+            "on-scroll-down": "shift_down"
+        }
     },
     "cpu": {
         "format": "{usage}% "
@@ -153,12 +156,26 @@
         "critical-threshold": 80,
         // "format-critical": "{temperatureC}°C {icon}",
         "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
+        "format-icons": [
+            "",
+            "",
+            ""
+        ]
     },
     "backlight": {
         // "device": "acpi_video1",
         "format": "{percent}% {icon}",
-        "format-icons": ["", "", "", "", "", "", "", "", ""]
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
     },
     "battery": {
         "states": {
@@ -173,18 +190,24 @@
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"]
+        "format-icons": [
+            "󰁺",
+            "󰁼",
+            "󰁾",
+            "󰂀",
+            "󰂂"
+        ]
     },
     "power-profiles-daemon": {
-      "format": "{icon}",
-      "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-      "tooltip": true,
-      "format-icons": {
-        "default": "",
-        "performance": "",
-        "balanced": "",
-        "power-saver": ""
-      }
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -210,23 +233,34 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
         "on-click": "pavucontrol"
     },
-  "disk": {
-    "interval": 30,
-    "format": " {used}/{total}",
-    "path": "/"
+    "disk": {
+        "interval": 30,
+        "format": " {used}/{total}",
+        "path": "/"
     },
     "custom/updates": {
-       "format": "{} {icon}",
-       "return-type": "json",
-       "format-icons": {
-           "has-updates": "󱍷",
-           "updated": "󰂪"
-       },
-       "exec-if": "which waybar-module-pacman-updates",
-       "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
-   }
+        "format": "{} {icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󱍷",
+            "updated": "󰂪"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+    },
+    "custom/swaync": {
+        "format": "{icon}",
+        "interval": 60,
+        "format-icons": " ",
+        "exec": "swaync-client -c",
+        "on-click": "swaync-client -t -sw"
+    }
 }
