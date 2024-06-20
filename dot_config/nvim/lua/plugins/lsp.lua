@@ -105,7 +105,6 @@ return {
 
     mason.setup(mason_opts)
 
-    print(registry.update)
     registry.update(install_servers)
 
     mason_lspconfig.setup({
