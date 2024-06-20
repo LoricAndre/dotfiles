@@ -1,0 +1,27 @@
+colors:
+  "catppuccin-frappe":
+    # Black
+    "0": "303446" # base #303446
+    "8": "292c3c" # mantle #292c3c
+    # Red
+    "1": "e78284" # red #e78284
+    "9": "ef9f76" # peach #ef9f76
+    # Green
+    "2": "a6d189" # green #a6d189
+    "10": "414559" # surface0 #414559
+    # Yellow
+    "3": "e5c890" # yellow #e5c890
+    "11": "f2d5cf" # rosewater #f2d5cf
+    # Blue
+    "4": "8caaee" # blue #8caaee
+    "12": "626880" # surface2 #626880
+    # Magenta
+    "5": "babbf1" # lavender #babbf1
+    "13": "ca9ee6" # mauve #ca9ee6
+    # Cyan
+    "6": "81c8be" # teal #81c8be
+    "14": "51576d" # surface1 #51576d
+    # White
+    "7": "c6d0f5" # text #c6d0f5
+    "15": "eebebe" # flamingo #eebebe
+

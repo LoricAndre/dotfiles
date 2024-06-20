@@ -1,0 +1,26 @@
+colors:
+  "nord":
+    # Black
+    "0": "2E3440" # base #2E3440
+    "8": "4C566A" # mantle #4C566A
+    # Red
+    "1": "BF616A" # red #BF616A
+    "9": "BF616A" # peach #BF616A
+    # Green
+    "2": "A3BE8C" # green #A3BE8C
+    "10": "3B4252" # surface0 #3B4252
+    # Yellow
+    "3": "EBCB8B" # yellow #EBCB8B
+    "11": "EBCB8B" # rosewater #EBCB8B
+    # Blue
+    "4": "81A1C1" # blue #81A1C1
+    "12": "81A1C1" # surface2 #81A1C1
+    # Magenta
+    "5": "B48EAD" # lavender #B48EAD
+    "13": "B48EAD" # mauve #B48EAD
+    # Cyan
+    "6": "88C0D0" # teal #88C0D0
+    "14": "8FBCBB" # surface1 #8FBCBB
+    # White
+    "7": "D8DEE9" # text #D8DEE9
+    "15": "ECEFF4" # flamingo #ECEFF4

@@ -1,0 +1,27 @@
+colors:
+  "catppuccin-macchiato":
+    # Black
+    "0": "24273a" # base #24273a
+    "8": "1e2030" # mantle #1e2030
+    # Red
+    "1": "ed8796" # red #ed8796
+    "9": "f5a97f" # peach #f5a97f
+    # Green
+    "2": "a6da95" # green #a6da95
+    "10": "363a4f" # surface0 #363a4f
+    # Yellow
+    "3": "eed49f" # yellow #eed49f
+    "11": "f4dbd6" # rosewater #f4dbd6
+    # Blue
+    "4": "8aadf4" # blue #8aadf4
+    "12": "5b6078" # surface2 #5b6078
+    # Magenta
+    "5": "b7bdf8" # lavender #b7bdf8
+    "13": "c6a0f6" # mauve #c6a0f6
+    # Cyan
+    "6": "8bd5ca" # teal #8bd5ca
+    "14": "494d64" # surface1 #494d64
+    # White
+    "7": "cad3f5" # text #cad3f5
+    "15": "f0c6c6" # flamingo #f0c6c6
+
