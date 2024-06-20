@@ -14,8 +14,7 @@ if [ -f "$ANTIGEN_FILE" ]; then
   antigen bundle cpitt/zsh-dotenv
   antigen apply
 else
-  read -k 1 "install_antigen?Antigen is not installed, do you wish to install it [Yn]? "
-  [[ $install_antigen =~ "[Nn]" ]] || curl -L git.io/antigen > "$ANTIGEN_FILE"
+  curl -L git.io/antigen > "$ANTIGEN_FILE"
 fi
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=14"

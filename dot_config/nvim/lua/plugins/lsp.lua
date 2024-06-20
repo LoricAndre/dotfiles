@@ -63,14 +63,15 @@ local server_configurations = {
   }
 }
 
-local function install_servers()
-    for _, package_name in pairs(mason_opts.ensure_installed) do
-      if not registry.is_installed(package_name) then
-        local package = registry.get_package(package_name)
-        vim.notify("[MASON] Installing " .. package_name)
-        package:install()
-      end
+local function install_servers(_, _)
+  local registry = require("mason-registry")
+  for _, package_name in pairs(mason_opts.ensure_installed) do
+    if not registry.is_installed(package_name) then
+      local package = registry.get_package(package_name)
+      print("[MASON] Installing " .. package_name)
+      package:install()
     end
+  end
 end
 
 return {
@@ -104,6 +105,7 @@ return {
 
     mason.setup(mason_opts)
 
+    print(registry.update)
     registry.update(install_servers)
 
     mason_lspconfig.setup({

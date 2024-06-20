@@ -1,6 +1,6 @@
 export ZSH_CONFIG_DIR="${XDG_CONFIG_DIR:-$HOME/.config}/zsh"
 if [[ -d $ZSH_CONFIG_DIR ]]; then
-  for f in $ZSH_CONFIG_DIR/*; do
+  for f in $ZSH_CONFIG_DIR/*.zsh; do
     . "$f"
   done
 fi
