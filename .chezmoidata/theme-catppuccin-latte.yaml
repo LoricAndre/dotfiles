@@ -1,0 +1,26 @@
+colors:
+  "catppuccin-latte":
+    # White
+    "0": "eff1f5" # base #eff1f5
+    "8": "e6e9ef" # mantle #e6e9ef
+    # Red
+    "1": "d20f39" # red #d20f39
+    "9": "fe640b" # peach #fe640b
+    # Green
+    "2": "40a02b" # green #40a02b
+    "10": "ccd0da" # surface0 #ccd0da
+    # Yellow
+    "3": "df8e1d" # yellow #df8e1d
+    "11": "dc8a78" # rosewater #dc8a78
+    # Blue
+    "4": "1e66f5" # blue #1e66f5
+    "12": "acb0be" # surface2 #acb0be
+    # Magenta
+    "5": "7287fd" # lavender #7287fd
+    "13": "8839ef" # mauve #8839ef
+    # Cyan
+    "6": "179299" # teal #179299
+    "14": "bcc0cc" # surface1 #bcc0cc
+    # Black
+    "7": "4c4f69" # text #4c4f69
+    "15": "dd7878" # flamingo #dd7878
