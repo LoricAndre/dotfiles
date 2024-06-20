@@ -2,3 +2,4 @@ Dockerfile
 README.md
 .assets/
 .git/
+.gitlab-ci.yml
