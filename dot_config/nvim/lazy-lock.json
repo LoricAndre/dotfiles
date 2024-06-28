@@ -53,5 +53,6 @@
   "vim-fugitive-blame-ext": { "branch": "master", "commit": "0c9355deeb235f89f50e3e9f362469826efcfb6a" },
   "vim-polyglot": { "branch": "master", "commit": "bc8a81d3592dab86334f27d1d43c080ebf680d42" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
+  "vim-sops": { "branch": "main", "commit": "1e4d497d1da5de6edc920bfb95c842947b140f26" },
   "which-key.nvim": { "branch": "main", "commit": "0099511294f16b81c696004fa6a403b0ae61f7a0" }
 }

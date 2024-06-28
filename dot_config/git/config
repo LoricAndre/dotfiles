@@ -30,8 +30,3 @@
   short-hash = "!git log --oneline -n1 | cut -d' ' -f1"
   rb = rebase --autosquash
   rbi = rebase --interavtive --autosquash
-[credential]
-	helper = 
-	helper = /sbin/git-credential-manager
-[credential "https://dev.azure.com"]
-	useHttpPath = true

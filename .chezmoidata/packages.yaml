@@ -53,7 +53,6 @@ packages:
 -  ghq-bin
 -  git
 -  git-cliff
--  git-credential-manager-core-bin
 -  github-cli
 -  glab
 -  glew
@@ -79,6 +78,7 @@ packages:
 -  helm-diff
 -  helmfile
 -  helm-secrets
+-  hwinfo
 -  hypridle-git
 -  hyprland-git
 -  hyprlock
@@ -108,11 +108,11 @@ packages:
 -  lua51
 -  ly
 -  man-db
--  mariadb
 -  mediamtx-bin
 -  mongodb-compass
 -  mongodb-tools
 -  mpd
+-  mysql
 -  nautilus
 -  ncdu
 -  neovim-nightly-bin
@@ -137,6 +137,7 @@ packages:
 -  openvpn
 -  openvpn-update-resolv-conf-git
 -  openvpn-update-systemd-resolved
+-  opera
 -  p7zip
 -  pacman-contrib
 -  pacwall-git
@@ -158,6 +159,7 @@ packages:
 -  progress
 -  prometheus
 -  prometheus-node-exporter
+-  proton-mail-bin
 -  proton-pass
 -  python-keyring
 -  python-pipx
@@ -192,9 +194,11 @@ packages:
 -  syncthing
 -  tailscale
 -  tailscale-systray-git
+-  teams
 -  teamviewer
 -  timeshift
 -  tldr
+-  tlpui-git
 -  tmux
 -  tmux-plugin-manager
 -  traceroute
@@ -233,6 +237,7 @@ packages:
 -  xscreensaver-arch-logo
 -  yq
 -  zbar
+-  zed
 -  zip
 -  zoxide
 -  zram-generator

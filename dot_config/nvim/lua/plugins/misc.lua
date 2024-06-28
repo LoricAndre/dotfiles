@@ -56,5 +56,8 @@ return {
         },
       },
     },
+  },
+  {
+    "jsecchiero/vim-sops"
   }
 }

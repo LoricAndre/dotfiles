@@ -17,6 +17,11 @@ profile castelnau-1 {
   output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 0,0
 }
 
+profile castelnau-tv {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,0 scale 1.667
+  output "Samsung Electric Company SyncMaster H1AK500000" mode 3840x2160@30 position 1727,0
+}
+
 profile castelnau-2 {
   output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1080 scale 1.667
   output "Iiyama North America PL2793H 1188114602684" position 0,0
