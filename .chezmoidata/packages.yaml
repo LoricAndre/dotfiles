@@ -80,7 +80,7 @@ packages:
 -  helm-secrets
 -  hwinfo
 -  hypridle-git
--  hyprland-git
+-  hyprland
 -  hyprlock
 -  hyprpaper
 -  hyprpicker-git
