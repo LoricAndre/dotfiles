@@ -142,3 +142,5 @@ alias cm=chezmoi
 
 alias obsi="pushd ~/obsi; nvim home.md +ObsidianToday; popd"
 alias cdg='cd "$HOME/ghq/$(ghq list | sk)"'
+
+alias m="sudo mpm -C ~/.config/mpm/config.yaml"

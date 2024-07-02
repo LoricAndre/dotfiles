@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+query=$1
+
+# Namespaced resources
+for type in $(kubectl api-resources --verbs=list --namespaced -o name); do
+  kubectl get $type --all-namespaces | grep "$query" | \
+        while read line; do
+          ns=$(echo $line | awk '{print $1}')
+          rs=$(echo $line | awk '{print $2}')
+          kubectl patch -n "$ns" "$type" "$rs" -p '{"metadata": {"finalizers": null}}' --type=merge
+          kubectl delete -n "$ns" "$type" "$rs"
+        done;
+done
+
+# Non namespaced resources
+for type in $(kubectl api-resources --verbs=list -o name); do
+  kubectl get $type --all-namespaces | grep "query" | \
+    while read line; do
+      rs=$(echo $line | awk '{print $1}')
+      kubectl patch "$type" "$rs" -p '{"metadata": {"finalizers": null}}' --type=merge
+      kubectl delete "$type" "$rs"
+    done
+done

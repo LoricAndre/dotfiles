@@ -1,0 +1,12 @@
+mpm:
+  manager:
+    - paru
+    - cargo
+    - pipx
+    - gem
+    - npm
+  exclude:
+    - pip
+    - yarn
+  search:
+    exact: false
