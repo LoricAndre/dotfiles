@@ -18,6 +18,7 @@ packages:
 -  bat
 -  beekeeper-studio-bin
 -  beeper-latest-bin
+-  bees
 -  bind
 -  bitwarden
 -  blueman
@@ -31,6 +32,7 @@ packages:
 -  chaotic-keyring
 -  chaotic-mirrorlist
 -  chezmoi
+-  compsize
 -  cpio
 -  davix
 -  dbeaver
@@ -49,6 +51,7 @@ packages:
 -  firefox
 -  freerdp
 -  fuzzel
+-  fwupd
 -  fzf
 -  ghq-bin
 -  git
@@ -104,12 +107,12 @@ packages:
 -  linux-headers
 -  linux-zen
 -  linux-zen-headers
+-  localsend-git
 -  lsof
 -  lua51
 -  ly
 -  man-db
 -  mediamtx-bin
--  mongodb-compass
 -  mongodb-tools
 -  mpd
 -  mysql
@@ -121,7 +124,6 @@ packages:
 -  networkmanager
 -  network-manager-applet
 -  networkmanager-openvpn
--  nextcloud-client
 -  nfs-utils
 -  nmap
 -  nuget
@@ -137,7 +139,6 @@ packages:
 -  openvpn
 -  openvpn-update-resolv-conf-git
 -  openvpn-update-systemd-resolved
--  opera
 -  p7zip
 -  pacman-contrib
 -  pacwall-git
@@ -155,7 +156,6 @@ packages:
 -  postgresql
 -  powershell-bin
 -  powertop
--  pqrs-bin
 -  progress
 -  prometheus
 -  prometheus-node-exporter
