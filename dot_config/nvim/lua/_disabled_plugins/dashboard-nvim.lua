@@ -1,3 +1,13 @@
+local has_telescope, _ = require("telescope")
+local has_fzf, _ = require("fzf-lua")
+
+local file_action = "Explore"
+if has_telescope then
+  file_action = "Telescope find_files"
+end
+if has_fzf then
+  file_action = "FzfLua files"
+end
 local sections = {
   mason = {
     icon = " ",
@@ -9,7 +19,7 @@ local sections = {
     icon = " ",
     desc = "Files",
     key = "f",
-    action = "FzfLua files"
+    action = file_action
   },
   projects = {
     icon = "󰊢 ",

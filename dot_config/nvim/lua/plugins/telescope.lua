@@ -16,13 +16,12 @@ end
 return {
   'nvim-telescope/telescope.nvim',
   event = "VeryLazy",
-  enabled = false,
   dependencies = dependencies,
   config = function()
     local ts = require("telescope")
-    -- local themes = require("telescope.themes")
-    local has_trouble, trouble = pcall(require, "trouble.providers.telescope")
-    local theme_opts = {} -- themes.get_dropdown()
+    local themes = require("telescope.themes")
+    local has_trouble, trouble = pcall(require, "trouble.sources.telescope")
+    local theme_opts = themes.get_dropdown()
     local opts = {
       defaults = {
         mappings = {},
@@ -37,8 +36,8 @@ return {
     opts["defaults"] = vim.tbl_extend("force", theme_opts, opts["defaults"])
     if has_trouble then
       opts["defaults"]["mappings"] = vim.tbl_extend("force", opts["defaults"]["mappings"], {
-        i = { ["<C-t>"] = trouble.open_with_trouble },
-        n = { ["<C-t>"] = trouble.open_with_trouble },
+        i = { ["<C-t>"] = trouble.open },
+        n = { ["<C-t>"] = trouble.open },
       })
     end
     ts.setup(opts)
