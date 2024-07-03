@@ -28,6 +28,7 @@ window#waybar {
 }
 
 #workspaces button {
+  color: @text;
   border-bottom: 3px solid @surface0;
 }
 #workspaces button.active {
