@@ -57,7 +57,5 @@ return {
       },
     },
   },
-  {
-    "jsecchiero/vim-sops"
-  }
+  { "mistricky/codesnap.nvim", build = "make" },
 }

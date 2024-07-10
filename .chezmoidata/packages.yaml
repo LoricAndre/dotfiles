@@ -29,6 +29,7 @@ packages:
 -  catppuccin-gtk-theme-latte
 -  catppuccin-gtk-theme-macchiato
 -  catppuccin-gtk-theme-mocha
+-  celeste
 -  chaotic-keyring
 -  chaotic-mirrorlist
 -  chezmoi
@@ -36,6 +37,7 @@ packages:
 -  cpio
 -  davix
 -  dbeaver
+-  direnv
 -  docker
 -  docker-buildx
 -  docker-compose
@@ -171,6 +173,7 @@ packages:
 -  qbittorrent
 -  qt5-wayland
 -  qt6-wayland
+-  rclone
 -  ripgrep
 -  rofi-calc-git
 -  rofi-wayland

@@ -53,6 +53,7 @@
             // "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
             // "title<.* - Gmail .*>": "󰊫",
             // "class<obsidian>": "󱞁",
+            "class<com.hunterwittenborn.Celeste>": "󰴋",
             // "class<ONLYOFFICE Desktop Editors>": "󰈙",
             // "class<calibre-.*>": "",
             // "class<org.qbittorrent.qBittorrent>": "",
