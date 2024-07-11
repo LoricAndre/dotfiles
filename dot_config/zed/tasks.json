@@ -21,6 +21,20 @@
     "use_new_terminal": false
   },
   {
+    "label": "git : stage all",
+    "command": "git add .",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  {
+    "label": "git : commit",
+    "command": "EDITOR=zed git commit",
+    "use_new_terminal": true,
+    "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  {
     "label": "Open lazygit",
     "command": "lazygit",
     "use_new_terminal": true,

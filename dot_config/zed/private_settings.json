@@ -7,13 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
   "theme": "Catppuccin Mocha",
   "features": {
     "copilot": false
   },
   "telemetry": {
-    "diagnostics": false,
-    "metrics": false
+    "diagnostics": true,
+    "metrics": true
   },
   "vim_mode": true,
   "ui_font_size": 14,
@@ -34,6 +40,7 @@
     "prisma": true
   },
   "ensure_final_newline_on_save": false,
+  "format_on_save": "off",
   // Different settings for specific languages.
   "languages": {},
   "auto_update": false,
@@ -42,6 +49,7 @@
     "use_multiline_find": false,
     "use_smartcase_find": true
   },
+  "hover_popover_enabled": false,
   "terminal": {
     "dock": "bottom",
     "font_family": "JetBrains Mono",

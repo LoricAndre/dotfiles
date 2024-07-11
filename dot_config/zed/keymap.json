@@ -16,9 +16,19 @@
       "ctrl-escape": "menu::Cancel",
       "ctrl-c": "menu::Cancel",
       "shift-enter": "picker::UseSelectedQuery",
-      "alt-enter": ["picker::ConfirmInput", { "secondary": false }],
-      "ctrl-alt-enter": ["picker::ConfirmInput", { "secondary": true }],
-      "ctrl-shift-w": "workspace::CloseWindow",
+      "alt-enter": [
+        "picker::ConfirmInput",
+        {
+          "secondary": false
+        }
+      ],
+      "ctrl-alt-enter": [
+        "picker::ConfirmInput",
+        {
+          "secondary": true
+        }
+      ],
+      "ctrl-shift-w": "pane::CloseActiveItem",
       "shift-escape": "workspace::ToggleZoom",
       // "ctrl-o": "workspace::Open",
       "ctrl-=": "zed::IncreaseBufferFontSize",
@@ -51,8 +61,18 @@
       "g s": "project_symbols::Toggle",
       "g j": "editor::GoToPrevDiagnostic",
       "g m": "editor::GoToDiagnostic",
-      "space shift-s": "workspace::Open",
-      "space s": "projects::OpenRecent",
+      "space shift-s": [
+        "workspace::Open",
+        {
+          "create_new_window": false
+        }
+      ],
+      "space s": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
       "space r": "task::Spawn",
       "space a": "workspace::NewSearch"
     }
@@ -364,8 +384,6 @@
       ],
       "ctrl-u": "editor::UndoSelection",
       "ctrl-shift-u": "editor::RedoSelection",
-      "f8": "editor::GoToDiagnostic",
-      "shift-f8": "editor::GoToPrevDiagnostic",
       "f2": "editor::Rename",
       "f12": "editor::GoToDefinition",
       "alt-f12": "editor::GoToDefinitionSplit",
@@ -378,17 +396,16 @@
       "ctrl-shift-]": "editor::UnfoldLines",
       "ctrl-space": "editor::ShowCompletions",
       "ctrl-.": "editor::ToggleCodeActions",
-      "alt-ctrl-r": "editor::RevealInFinder",
+      "alt-ctrl-r": "editor::RevealInFileManager",
       "ctrl-alt-shift-c": "editor::DisplayCursorNames"
     }
   },
-  {
-    "context": "Editor && mode == full",
-    "bindings": {
-      "ctrl-shift-o": "outline::Toggle",
-      "ctrl-g": "go_to_line::Toggle"
-    }
-  },
+  // {
+  //   "context": "Editor && mode == full",
+  //   "bindings": {
+  //     "ctrl-g": "go_to_line::Toggle"
+  //   }
+  // },
   {
     "context": "Pane",
     "bindings": {
@@ -412,16 +429,16 @@
     "context": "Workspace",
     "bindings": {
       // Change the default action on `menu::Confirm` by setting the parameter
-      // "alt-cmd-o": [
-      //     "projects::OpenRecent",
-      //     {
-      //         "create_new_window": true
-      //     }
-      // ]
-      "alt-ctrl-o": "projects::OpenRecent",
+      "alt-cmd-o": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": true
+        }
+      ],
+      // "alt-ctrl-o": "projects::OpenRecent",
       // "space g l": "branches::OpenRecent",
       // "ctrl-t": "workspace::NewTerminal",
-      "ctrl-s": "workspace::Save",
+      // "ctrl-s": "workspace::Save",
       "ctrl-k s": "workspace::SaveWithoutFormat",
       "ctrl-shift-s": "workspace::SaveAs",
       "ctrl-n": "workspace::NewFile",
@@ -451,7 +468,12 @@
       "ctrl-shift-t": "project_symbols::Toggle",
       "ctrl-p": "file_finder::Toggle",
       "ctrl-tab": "tab_switcher::Toggle",
-      "ctrl-shift-tab": ["tab_switcher::Toggle", { "select_last": true }],
+      "ctrl-shift-tab": [
+        "tab_switcher::Toggle",
+        {
+          "select_last": true
+        }
+      ],
       "ctrl-e": "file_finder::Toggle",
       "ctrl-shift-p": "command_palette::Toggle",
       "ctrl-shift-m": "diagnostics::Deploy",
@@ -579,9 +601,19 @@
       "enter": "project_panel::Rename",
       "backspace": "project_panel::Trash",
       "delete": "project_panel::Trash",
-      "ctrl-backspace": ["project_panel::Delete", { "skip_prompt": true }],
-      "ctrl-delete": ["project_panel::Delete", { "skip_prompt": true }],
-      "alt-ctrl-r": "project_panel::RevealInFinder",
+      "ctrl-backspace": [
+        "project_panel::Delete",
+        {
+          "skip_prompt": true
+        }
+      ],
+      "ctrl-delete": [
+        "project_panel::Delete",
+        {
+          "skip_prompt": true
+        }
+      ],
+      "shift-return": "project_panel::RevealInFileManager",
       "alt-shift-f": "project_panel::NewSearchInDirectory"
     }
   },
@@ -618,7 +650,9 @@
   },
   {
     "context": "FileFinder",
-    "bindings": { "ctrl-shift-p": "file_finder::SelectPrev" }
+    "bindings": {
+      "ctrl-shift-p": "file_finder::SelectPrev"
+    }
   },
   {
     "context": "TabSwitcher",
@@ -642,17 +676,19 @@
       "escape": ["terminal::SendKeystroke", "escape"],
       "enter": ["terminal::SendKeystroke", "enter"],
       "ctrl-c": ["terminal::SendKeystroke", "ctrl-c"],
+      "ctrl-shift-d": "pane::CloseActiveItem",
       // "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
       // "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
       // "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
       // "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
       // "ctrl-w": "editor::DeleteToPreviousWordStart",
-      "ctrl-w": ["terminal::SendKeystroke", "ctrl-w"],
-
+      "ctrl-w": ["terminal::SendKeystroke", "ctrl-w"]
+      // "ctrl-backspace": ["terminal::SendKeystroke", "ctrl-backspace"],
+      // "ctrl-left": ["terminal::SendKeystroke", "ctrl-left"]
       // Some nice conveniences
-      "ctrl-backspace": ["terminal::SendText", "\u0015"],
-      "ctrl-right": ["terminal::SendText", "\u0005"],
-      "ctrl-left": ["terminal::SendText", "\u0001"]
+      // "ctrl-backspace": ["terminal::SendText", "\u0015"],
+      // "ctrl-right": ["terminal::SendText", "\u0005"],
+      // "ctrl-left": ["terminal::SendText", "\u0001"]
     }
   },
   {
@@ -700,19 +736,16 @@
       "{": "vim::StartOfParagraph",
       "}": "vim::EndOfParagraph",
       "|": "vim::GoToColumn",
-
       // Word motions
       "w": "vim::NextWordStart",
       "e": "vim::NextWordEnd",
       "b": "vim::PreviousWordStart",
       "g e": "vim::PreviousWordEnd",
-
       // Subword motions
       // "w": "vim::NextSubwordStart",
       // "b": "vim::PreviousSubwordStart",
       // "e": "vim::NextSubwordEnd",
       // "g e": "vim::PreviousSubwordEnd",
-
       "shift-w": [
         "vim::NextWordStart",
         {
@@ -731,8 +764,12 @@
           "ignorePunctuation": true
         }
       ],
-      "g shift-e": ["vim::PreviousWordEnd", { "ignorePunctuation": true }],
-
+      "g shift-e": [
+        "vim::PreviousWordEnd",
+        {
+          "ignorePunctuation": true
+        }
+      ],
       "/": "vim::Search",
       "?": [
         "vim::Search",
@@ -805,12 +842,18 @@
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePrevItem",
       "g d": "editor::GoToDefinition",
+      "g f": "editor::Format",
       "g shift-d": "editor::GoToTypeDefinition",
-      "g f": "editor::OpenUrl",
+      // "g f": "editor::OpenUrl",
       "g n": "vim::SelectNextMatch",
       "g shift-n": "vim::SelectPreviousMatch",
       "g m": "vim::SelectNext",
       "g j": "vim::SelectPrevious",
+      "g k": "editor::GoToDiagnostic",
+      "g l": "editor::GoToPrevDiagnostic",
+      "space o": "outline_panel::Open",
+      "space m": "search::SelectNextMatch",
+      // ": b d": ["workspace::SendKeystrokes", ": q enter"]
       "g >": [
         "editor::SelectNext",
         {
@@ -841,20 +884,8 @@
           "partialWord": true
         }
       ],
-      "g k": [
-        "vim::Down",
-        {
-          "displayLines": true
-        }
-      ],
       "g down": [
         "vim::Down",
-        {
-          "displayLines": true
-        }
-      ],
-      "g l": [
-        "vim::Up",
         {
           "displayLines": true
         }
@@ -974,7 +1005,6 @@
       // "ctrl-w ctrl-o": "workspace::CloseInactiveTabsAndPanes",
       // "ctrl-w n": ["workspace::NewFileInDirection", "Up"],
       // "ctrl-w ctrl-n": ["workspace::NewFileInDirection", "Up"],
-
       // "ctrl-w d": "editor::GoToDefinitionSplit",
       // "ctrl-w g d": "editor::GoToDefinitionSplit",
       // "ctrl-w shift-d": "editor::GoToTypeDefinitionSplit",
@@ -1221,6 +1251,7 @@
     "bindings": {
       "escape": "vim::NormalBefore",
       "ctrl-c": "vim::NormalBefore",
+      "ctrl-shift-v": "editor::Paste",
       "ctrl-[": "vim::NormalBefore",
       "ctrl-x ctrl-o": "editor::ShowCompletions",
       "ctrl-x ctrl-a": "assistant::InlineAssist", // zed specific
@@ -1267,7 +1298,29 @@
   {
     "context": "EmptyPane || SharedScreen",
     "bindings": {
-      ":": "command_palette::Toggle"
+      ":": "command_palette::Toggle",
+      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
+      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
+      "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "space g b": "branches::OpenRecent",
+      "space f": "file_finder::Toggle",
+      "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
+      "space z": "workspace::ToggleZoom",
+      "space shift-s": [
+        "workspace::Open",
+        {
+          "create_new_window": false
+        }
+      ],
+      "space s": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": false
+        }
+      ],
+      "space r": "task::Spawn",
+      "space a": "workspace::NewSearch"
     }
   },
   {
@@ -1290,7 +1343,7 @@
       "t": "project_panel::OpenPermanent",
       "v": "project_panel::OpenPermanent",
       "p": "project_panel::Open",
-      "x": "project_panel::RevealInFinder",
+      "x": "project_panel::RevealInFileManager",
       "shift-g": "menu::SelectLast",
       "g g": "menu::SelectFirst",
       "-": "project_panel::SelectParent",
