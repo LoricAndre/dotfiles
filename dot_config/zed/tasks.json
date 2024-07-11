@@ -23,15 +23,46 @@
   {
     "label": "git : stage all",
     "command": "git add .",
-    "use_new_terminal": true,
-    "allow_concurrent_runs": false,
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
+    "reveal": "never"
+  },
+  {
+    "label": "git : stage $ZED_RELATIVE_FILE",
+    "command": "git add $ZED_RELATIVE_FILE",
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
+    "reveal": "never"
+  },
+  {
+    "label": "git : show status",
+    "command": "git status",
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
     "reveal": "always"
   },
   {
     "label": "git : commit",
-    "command": "EDITOR=zed git commit",
-    "use_new_terminal": true,
-    "allow_concurrent_runs": false,
+    "command": "git commit",
+    "env": {
+      "VISUAL": "zed --wait"
+    },
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
+    "reveal": "never"
+  },
+  {
+    "label": "git : push",
+    "command": "git push",
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
+    "reveal": "always"
+  },
+  {
+    "label": "git : pull",
+    "command": "git pull",
+    // "use_new_terminal": true,
+    // "allow_concurrent_runs": false,
     "reveal": "always"
   },
   {
@@ -40,5 +71,12 @@
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "reveal": "always"
-  }
+  },
+  // {
+  //   "label": "dbg : print current relative file path",
+  //   "command": "echo $ZED_RELATIVE_FILE",
+  //   // "use_new_terminal": true,
+  //   // "allow_concurrent_runs": false,
+  //   "reveal": "always"
+  // }
 ]
