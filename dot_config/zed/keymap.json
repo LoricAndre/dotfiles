@@ -598,6 +598,7 @@
       "ctrl-alt-c": "project_panel::CopyPath",
       "alt-ctrl-shift-c": "project_panel::CopyRelativePath",
       "f2": "project_panel::Rename",
+      "r": "project_panel::Rename",
       "enter": "project_panel::Rename",
       "backspace": "project_panel::Trash",
       "delete": "project_panel::Trash",

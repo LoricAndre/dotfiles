@@ -13,7 +13,7 @@
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "Catppuccin Mocha",
+  "theme": "Tokyo Night Storm",
   "features": {
     "copilot": false
   },
@@ -22,10 +22,10 @@
     "metrics": true
   },
   "vim_mode": true,
-  "ui_font_size": 14,
-  "buffer_font_size": 12,
+  // "ui_font_size": 15,
+  "buffer_font_size": 13,
   "buffer_font_family": "JetBrainsMono Nerd Font",
-  "ui_font_family": "JetBrains Mono",
+  // "ui_font_family": "JetBrains Mono",
   "relative_line_numbers": true,
   "tab_size": 2,
   "journal": {
@@ -36,6 +36,7 @@
   "auto_install_extensions": {
     "html": true,
     "javascript": true,
+    "python": true,
     "rust": true,
     "prisma": true
   },
@@ -52,8 +53,11 @@
   "hover_popover_enabled": false,
   "terminal": {
     "dock": "bottom",
-    "font_family": "JetBrains Mono",
+    // "font_family": "JetBrainsMono Nerd Font Mono",
     "line_height": "standard",
-    "copy_on_select": true
+    "copy_on_select": true,
+    "env": {
+      "VISUAL": "zed --wait"
+    }
   }
 }

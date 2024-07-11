@@ -41,6 +41,7 @@ packages:
 -  docker
 -  docker-buildx
 -  docker-compose
+-  dolphin
 -  dotnet-sdk
 -  dotnet-sdk-6.0
 -  dunst
@@ -50,6 +51,7 @@ packages:
 -  eza
 -  fd
 -  feh
+-  ffmpegthumbs
 -  firefox
 -  freerdp
 -  fuzzel
@@ -100,6 +102,8 @@ packages:
 -  kitty
 -  kubectl
 -  kubectx
+-  kvantum
+-  kvantum-theme-catppuccin-git
 -  kwallet
 -  lazygit
 -  libpulse
@@ -118,7 +122,6 @@ packages:
 -  mongodb-tools
 -  mpd
 -  mysql
--  nautilus
 -  ncdu
 -  neovim-nightly-bin
 -  nerdfix

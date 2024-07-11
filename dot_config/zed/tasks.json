@@ -43,9 +43,9 @@
   },
   {
     "label": "git : commit",
-    "command": "git commit",
+    "command": "VISUAL='zed --wait' git commit",
     "env": {
-      "VISUAL": "zed --wait"
+      "VISUAL": "zed --wait" // NOT WORKING RN
     },
     // "use_new_terminal": true,
     // "allow_concurrent_runs": false,
