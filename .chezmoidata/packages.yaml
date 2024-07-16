@@ -166,12 +166,12 @@ packages:
 -  prometheus-node-exporter
 -  proton-mail-bin
 -  proton-pass
+-  pyenv
 -  python-keyring
 -  python-pipx
 -  python-protobuf
 -  python-pyclip
 -  python-pymongo
--  python-uv
 -  python-virtualenv
 -  qbittorrent
 -  qt5-wayland
@@ -233,8 +233,9 @@ packages:
 -  wl-clipboard
 -  wlr-randr
 -  wmctrl
+-  xdg-desktop-portal-gtk
 -  xdg-desktop-portal-hyprland
--  xdg-desktop-portal-wlr
+-  xdg-desktop-portal-kde
 -  xdg-user-dirs-gtk
 -  xdo
 -  xdotool
@@ -244,7 +245,6 @@ packages:
 -  xscreensaver-arch-logo
 -  yq
 -  zbar
--  zed
 -  zip
 -  zoxide
 -  zram-generator

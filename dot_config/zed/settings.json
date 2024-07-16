@@ -13,9 +13,16 @@
   "outline_panel": {
     "dock": "right"
   },
-  "theme": "Tokyo Night Storm",
+  "theme": "Catppuccin Macchiato",
   "features": {
     "copilot": false
+  },
+  "assistant": {
+    "version": "1",
+    "provider": {
+      "default_model": "claude-3-5-sonnet-20240620",
+      "name": "anthropic"
+    }
   },
   "telemetry": {
     "diagnostics": true,

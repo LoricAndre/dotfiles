@@ -1,11 +1,11 @@
 [
-  {
-    "label": "pnpm: development server",
-    "command": "pnpm",
-    "args": ["run", "dev"],
-    "use_new_terminal": true,
-    "reveal": "never"
-  },
+  // {
+  //   "label": "pnpm: development server",
+  //   "command": "pnpm",
+  //   "args": ["run", "dev"],
+  //   "use_new_terminal": true,
+  //   "reveal": "never"
+  // },
   {
     "label": "docker: start compose project",
     "command": "docker",
@@ -71,7 +71,7 @@
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
     "reveal": "always"
-  },
+  }
   // {
   //   "label": "dbg : print current relative file path",
   //   "command": "echo $ZED_RELATIVE_FILE",

@@ -22,7 +22,7 @@
     "battery",
     "clock",
     "tray",
-    "custom/swaync",
+    "custom/swaync"
   ],
   // Modules configuration
   "hyprland/workspaces": {
@@ -64,13 +64,13 @@
       // "class<steam_app_[0-9]+>": "󰮂",
       // "title<Winetricks.*>": "󰡶",
       // "class<lutris>": "🦦",
-      "class<Spotify>": "",
+      "class<Spotify>": ""
       // "class<jetbrains-idea(-ce)?>": ""
       // "class<Code>": "󰨞",
       // "class<com.obsproject.Studio|zoom>": "",
       // "class<io.github.whoozle.android-file-transfer>": "",
       // "class<(Chromium)|(Chrome)>": "",
-    },
+    }
   },
   "keyboard-state": {
     "numlock": true,
@@ -78,18 +78,18 @@
     "format": "{name} {icon}",
     "format-icons": {
       "locked": "",
-      "unlocked": "",
-    },
+      "unlocked": ""
+    }
   },
   "hyprland/mode": {
-    "format": "<span style=\"italic\">{}</span>",
+    "format": "<span style=\"italic\">{}</span>"
   },
   "hyprland/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
     "format-icons": ["", ""],
     "tooltip": true,
-    "tooltip-format": "{app}: {title}",
+    "tooltip-format": "{app}: {title}"
   },
   "mpd": {
     "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
@@ -98,35 +98,35 @@
     "unknown-tag": "N/A",
     "interval": 5,
     "consume-icons": {
-      "on": " ",
+      "on": " "
     },
     "random-icons": {
       "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " ",
+      "on": " "
     },
     "repeat-icons": {
-      "on": " ",
+      "on": " "
     },
     "single-icons": {
-      "on": "1 ",
+      "on": "1 "
     },
     "state-icons": {
       "paused": "",
-      "playing": "",
+      "playing": ""
     },
     "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)",
+    "tooltip-format-disconnected": "MPD (disconnected)"
   },
   "idle_inhibitor": {
     "format": "{icon}",
     "format-icons": {
       "activated": "󰅶",
-      "deactivated": "",
-    },
+      "deactivated": ""
+    }
   },
   "tray": {
     // "icon-size": 21,
-    "spacing": 10,
+    "spacing": 10
   },
   "clock": {
     "format": "{:%H:%M} 󰥔 ",
@@ -142,23 +142,23 @@
         "days": "<span color='#ecc6d9'><b>{}</b></span>",
         "weeks": "<span color='#99ffdd'><b>W{}</b></span>",
         "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
-      },
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>"
+      }
     },
     "actions": {
       "on-click-right": "mode",
       "on-click-forward": "tz_up",
       "on-click-backward": "tz_down",
       "on-scroll-up": "shift_up",
-      "on-scroll-down": "shift_down",
-    },
+      "on-scroll-down": "shift_down"
+    }
   },
   "cpu": {
-    "format": "{usage}% ",
+    "format": "{usage}% "
     // "tooltip": false
   },
   "memory": {
-    "format": "{}% ",
+    "format": "{}% "
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -166,18 +166,18 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""],
+    "format-icons": ["", "", ""]
   },
   "backlight": {
     // "device": "acpi_video1",
     "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""],
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
   "battery": {
     "states": {
       // "good": 95,
       "warning": 30,
-      "critical": 15,
+      "critical": 15
     },
     "format": "{capacity}% {icon}",
     "format-full": "{capacity}% {icon}",
@@ -186,7 +186,7 @@
     "format-alt": "{time} {icon}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"],
+    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"]
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -196,8 +196,8 @@
       "default": "",
       "performance": "",
       "balanced": "",
-      "power-saver": "",
-    },
+      "power-saver": ""
+    }
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -206,7 +206,7 @@
     "tooltip-format": "{ifname} via {gwaddr}",
     "format-linked": "{ifname} (No IP) 󰈂",
     "format-disconnected": "Disconnected ⚠",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -223,30 +223,30 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""],
+      "default": ["", "", ""]
     },
-    "on-click": "pavucontrol",
+    "on-click": "pavucontrol"
   },
   "disk": {
     "interval": 30,
     "format": " {used}/{total}",
-    "path": "/",
+    "path": "/"
   },
   "custom/updates": {
     "format": "{} {icon}",
     "return-type": "json",
     "format-icons": {
       "has-updates": "󱍷",
-      "updated": "󰂪",
+      "updated": "󰂪"
     },
     "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300",
+    "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
   },
   "custom/swaync": {
     "format": "{icon}",
     "interval": 60,
     "format-icons": " ",
     "exec": "swaync-client -c",
-    "on-click": "swaync-client -t -sw",
-  },
+    "on-click": "swaync-client -t -sw"
+  }
 }
