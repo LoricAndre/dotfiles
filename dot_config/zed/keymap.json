@@ -15,7 +15,7 @@
       "escape": "menu::Cancel",
       "ctrl-escape": "menu::Cancel",
       "ctrl-c": "menu::Cancel",
-      "shift-enter": "picker::UseSelectedQuery",
+      "shift-enter": "picker::ConfirmInput",
       "alt-enter": [
         "picker::ConfirmInput",
         {
@@ -54,6 +54,7 @@
       "space g b": "branches::OpenRecent",
       "space g r": "editor::RevertSelectedHunks",
       "space g l": "editor::ToggleGitBlame",
+      "space g g": ["workspace::SendKeystrokes", ": center term enter lazygit && exit enter"],
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
