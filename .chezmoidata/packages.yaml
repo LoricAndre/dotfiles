@@ -5,6 +5,7 @@ packages:
 -  android-sdk-platform-tools
 -  android-udev
 -  ansible
+-  anyrun-git
 -  apache
 -  aspnet-runtime
 -  aspnet-runtime-6.0
@@ -87,7 +88,7 @@ packages:
 -  helm-secrets
 -  hwinfo
 -  hypridle-git
--  hyprland
+-  hyprland-git
 -  hyprlock
 -  hyprpaper
 -  hyprpicker-git
@@ -245,6 +246,7 @@ packages:
 -  xscreensaver-arch-logo
 -  yq
 -  zbar
+-  zed-preview-bin
 -  zip
 -  zoxide
 -  zram-generator

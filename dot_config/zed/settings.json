@@ -37,7 +37,7 @@
   "tab_size": 2,
   "journal": {
     // The path of the directory where journal entries are stored
-    "path": "~/journal",
+    "path": "~/notes/oxide",
     "hour_format": "hour24"
   },
   "auto_install_extensions": {
