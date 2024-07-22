@@ -64,7 +64,11 @@
     "line_height": "standard",
     "copy_on_select": true,
     "env": {
-      "VISUAL": "zed --wait"
+      "VISUAL": "zed --wait",
+      "ZED_TERM": "1"
     }
+  },
+  "jupyter": {
+    "enabled": true
   }
 }

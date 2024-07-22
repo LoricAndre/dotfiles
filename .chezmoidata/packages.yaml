@@ -89,7 +89,7 @@ packages:
 -  hwinfo
 -  hypridle-git
 -  hyprland-git
--  hyprlock
+-  hyprlock-git
 -  hyprpaper
 -  hyprpicker-git
 -  hyprwayland-scanner
@@ -100,6 +100,7 @@ packages:
 -  k3sup
 -  k9s
 -  kanshi
+-  kidex-git
 -  kitty
 -  kubectl
 -  kubectx
