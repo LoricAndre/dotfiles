@@ -60,8 +60,11 @@
       "g r": "editor::FindAllReferences",
       "g n": "editor::Rename",
       "g s": "project_symbols::Toggle",
-      "g j": "editor::GoToPrevDiagnostic",
-      "g m": "editor::GoToDiagnostic",
+      "g m": "vim::SelectNext",
+      "g j": "vim::SelectPrevious",
+      "g k": "editor::GoToDiagnostic",
+      "ctrl-l": "editor::AddSelectionAbove",
+      "ctrl-k": "editor::AddSelectionBelow",
       "space shift-s": [
         "workspace::Open",
         {
@@ -88,7 +91,6 @@
       "ctrl-d": "editor::Delete",
       "tab": "editor::Tab",
       "shift-tab": "editor::TabPrev",
-      "ctrl-k": "editor::CutToEndOfLine",
       // "ctrl-t": "editor::Transpose",
       // "ctrl-backspace": "editor::DeleteToBeginningOfLine",
       // "ctrl-delete": "editor::DeleteToEndOfLine",
@@ -137,7 +139,6 @@
       "ctrl-shift-home": "editor::SelectToBeginning",
       "ctrl-shift-end": "editor::SelectToEnd",
       "ctrl-a": "editor::SelectAll",
-      "ctrl-l": "editor::SelectLine",
       "ctrl-shift-i": "editor::Format",
       // "cmd-shift-left": [
       //   "editor::SelectToBeginningOfLine",
@@ -183,7 +184,6 @@
       // ],
       "ctrl-alt-space": "editor::ShowCharacterPalette",
       "ctrl-;": "editor::ToggleLineNumbers",
-      "ctrl-k ctrl-r": "editor::RevertSelectedHunks",
       "ctrl-'": "editor::ToggleHunkDiff",
       "ctrl-\"": "editor::ExpandAllHunkDiffs"
       // "space g b": "editor::ToggleGitBlame"
@@ -319,8 +319,6 @@
       "ctrl-w": "editor::DeleteToPreviousWordStart",
       "alt-ctrl-t": "pane::CloseInactiveItems",
       "alt-ctrl-shift-w": "workspace::CloseInactiveTabsAndPanes",
-      "ctrl-k u": "pane::CloseCleanItems",
-      "ctrl-k w": "pane::CloseAllItems",
       "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-alt-g": "search::SelectNextMatch",
       "ctrl-alt-shift-g": "search::SelectPrevMatch",
@@ -364,19 +362,6 @@
           "replace_newest": false
         }
       ],
-      "ctrl-k ctrl-d": [
-        "editor::SelectNext",
-        {
-          "replace_newest": true
-        }
-      ],
-      "ctrl-k ctrl-shift-d": [
-        "editor::SelectPrevious",
-        {
-          "replace_newest": true
-        }
-      ],
-      "ctrl-k ctrl-i": "editor::Hover",
       "ctrl-/": [
         "editor::ToggleComments",
         {
@@ -440,7 +425,6 @@
       // "space g l": "branches::OpenRecent",
       // "ctrl-t": "workspace::NewTerminal",
       // "ctrl-s": "workspace::Save",
-      "ctrl-k s": "workspace::SaveWithoutFormat",
       "ctrl-shift-s": "workspace::SaveAs",
       "ctrl-n": "workspace::NewFile",
       "ctrl-shift-n": "workspace::NewWindow",
@@ -464,8 +448,6 @@
           "replace_enabled": true
         }
       ],
-      "ctrl-k ctrl-s": "zed::OpenKeymap",
-      "ctrl-k ctrl-t": "theme_selector::Toggle",
       "ctrl-shift-t": "project_symbols::Toggle",
       "ctrl-p": "file_finder::Toggle",
       "ctrl-tab": "tab_switcher::Toggle",
@@ -481,16 +463,7 @@
       "ctrl-shift-e": "project_panel::ToggleFocus",
       "ctrl-?": "assistant::ToggleFocus",
       "ctrl-alt-s": "workspace::SaveAll",
-      "ctrl-k m": "language_selector::Toggle",
       "escape": "workspace::Unfollow",
-      "ctrl-k ctrl-left": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-k ctrl-right": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k ctrl-up": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-k ctrl-down": ["workspace::ActivatePaneInDirection", "Down"],
-      "ctrl-k shift-left": ["workspace::SwapPaneInDirection", "Left"],
-      "ctrl-k shift-right": ["workspace::SwapPaneInDirection", "Right"],
-      "ctrl-k shift-up": ["workspace::SwapPaneInDirection", "Up"],
-      "ctrl-k shift-down": ["workspace::SwapPaneInDirection", "Down"],
       "alt-t": "task::Rerun",
       "alt-shift-t": "task::Spawn"
     }
@@ -514,16 +487,6 @@
       "ctrl-alt-shift-b": "editor::SelectToPreviousSubwordStart",
       "ctrl-alt-shift-right": "editor::SelectToNextSubwordEnd",
       "ctrl-alt-shift-f": "editor::SelectToNextSubwordEnd"
-    }
-  },
-  // Bindings from Atom
-  {
-    "context": "Pane",
-    "bindings": {
-      "ctrl-k up": "pane::SplitUp",
-      "ctrl-k down": "pane::SplitDown",
-      "ctrl-k left": "pane::SplitLeft",
-      "ctrl-k right": "pane::SplitRight"
     }
   },
   // Bindings that should be unified with bindings for more general actions
@@ -574,7 +537,6 @@
     "bindings": {
       "alt-enter": "editor::OpenExcerpts",
       "shift-enter": "editor::ExpandExcerpts",
-      "ctrl-k enter": "editor::OpenExcerptsSplit",
       "ctrl-f8": "editor::GoToHunk",
       "ctrl-shift-f8": "editor::GoToPrevHunk",
       "ctrl-enter": "assistant::InlineAssist"
@@ -846,11 +808,6 @@
       "g f": "editor::Format",
       "g shift-d": "editor::GoToTypeDefinition",
       // "g f": "editor::OpenUrl",
-      "g n": "vim::SelectNextMatch",
-      "g shift-n": "vim::SelectPreviousMatch",
-      "g m": "vim::SelectNext",
-      "g j": "vim::SelectPrevious",
-      "g k": "editor::GoToDiagnostic",
       "g l": "editor::GoToPrevDiagnostic",
       "space o": "outline_panel::Open",
       "space m": "search::SelectNextMatch",
@@ -1329,23 +1286,22 @@
     "context": "ProjectPanel && not_editing",
     "bindings": {
       ":": "command_palette::Toggle",
-      "%": "project_panel::NewFile",
+      "a": "project_panel::NewFile",
       "r": "project_panel::Rename",
       "/": "project_panel::NewSearchInDirectory",
-      "d": "project_panel::NewDirectory",
+      "shift-a": "project_panel::NewDirectory",
       "enter": "project_panel::OpenPermanent",
       "escape": "project_panel::ToggleFocus",
-      "h": "project_panel::CollapseSelectedEntry",
+      "j": "project_panel::CollapseSelectedEntry",
       "k": "menu::SelectNext",
       "l": "menu::SelectPrev",
       "m": "project_panel::ExpandSelectedEntry",
       "o": "project_panel::OpenPermanent",
-      "shift-d": "project_panel::Delete",
-      "shift-r": "project_panel::Rename",
+      "d": "project_panel::Delete",
       "t": "project_panel::OpenPermanent",
       "v": "project_panel::OpenPermanent",
-      "p": "project_panel::Open",
-      "x": "project_panel::RevealInFileManager",
+      "x": "project_panel::Cut",
+      "p": "project_panel::Paste",
       "shift-g": "menu::SelectLast",
       "g g": "menu::SelectFirst",
       "-": "project_panel::SelectParent",
