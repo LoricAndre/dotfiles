@@ -169,6 +169,7 @@ packages:
 -  proton-mail-bin
 -  proton-pass
 -  pyenv
+-  python-ipykernel
 -  python-keyring
 -  python-pipx
 -  python-protobuf

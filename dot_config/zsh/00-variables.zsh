@@ -1,14 +1,9 @@
-export EDITOR=nvim
-export VISUAL=nvim
+[ -z "$EDITOR" ] && export EDITOR=nvim
+[ -z "$VISUAL" ] && export VISUAL=nvim
 # export XDG_CURRENT_DESKTOP=Unity
 export XKB_DEFAULT_LAYOUT=fr
 # export XKB_DEFAULT_OPTIONS="caps:escape,altwin:swap_alt_win,lv3:rwin_switch"
-export MOZ_ENABLE_WAYLAND=1
 export PAGER=bat
-
-export GTK_THEME=Adwaita:dark
-export GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
-export QT_STYLE_OVERRIDE=adwaita-dark
 
 export XDG_DATA_HOME=$HOME/.local/share
 export XDG_CONFIG_HOME=$HOME/.config
