@@ -119,6 +119,7 @@ packages:
 -  localsend-git
 -  lsof
 -  lua51
+-  luarocks
 -  ly
 -  man-db
 -  mediamtx-bin

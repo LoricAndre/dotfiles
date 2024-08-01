@@ -1,7 +1,13 @@
 local chezmoi_dir = vim.fn.expand("~/.local/share/chezmoi")
 
 local autocmds = {
-  -- { "BufEnter", "term://*", "echom 2" },
+  -- Sidebar
+  { "BufEnter", "SidebarNvim_*", function()
+    vim.keymap.set("n", "k", "<Down>", { noremap = true, buffer = true })
+    vim.keymap.set("n", "l", "<Up>", { noremap = true, buffer = true })
+    vim.keymap.set("n", "m", "<CR>", { noremap = false, buffer = true })
+    vim.keymap.set("n", "j", "<Left>", { noremap = true, buffer = true })
+  end },
   -- { "BufLeave", "term://*", "stopinsert" },
   -- { "BufWritePost", chezmoi_dir .. "/**", "silent!chezmoi apply" }
   -- {

@@ -1,8 +1,8 @@
 {
   "Navigator.nvim": { "branch": "master", "commit": "91d86506ac2a039504d5205d32a1d4bc7aa57072" },
   "codesnap.nvim": { "branch": "main", "commit": "c2924bf6c9a2c2c03318fae9b7fe0706412b9d9c" },
-  "distant.nvim": { "branch": "v0.3", "commit": "823267cf3b77cf9a7ae28454926eabc18fec1ba0" },
   "dracula.nvim": { "branch": "main", "commit": "fdf503e52ec1c8aae07353604d891fe5a3ed5201" },
+  "dressing.nvim": { "branch": "master", "commit": "6741f1062d3dc6e4755367a7e9b347b553623f04" },
   "firenvim": { "branch": "master", "commit": "4d2eef5fd2a7af0e91b76f1a9715228548316125" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "fugitive-azure-devops.vim": { "branch": "master", "commit": "f5fc65a35a08662f8f3b1df457cc37597004f43a" },
@@ -34,6 +34,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "5be6c4e685618b99c3210a69375b38a1202369b4" },
   "overseer.nvim": { "branch": "master", "commit": "cbcdcbae3704c21d3ff96a1927d952b8a966b08a" },
   "plenary.nvim": { "branch": "master", "commit": "a3e3bc82a3f95c5ed0d7201546d5d2c19b20d683" },
+  "sidebar.nvim": { "branch": "main", "commit": "5695712eef6288fff667343c4ae77c54911bdb1b" },
   "telescope-diff.nvim": { "branch": "master", "commit": "141afaaed3e2dfdb7badad6558cdd682441dfe5f" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-ghq.nvim": { "branch": "master", "commit": "2bd2e2d10f1a06fce9cce1e33ffe464c84ceb63b" },

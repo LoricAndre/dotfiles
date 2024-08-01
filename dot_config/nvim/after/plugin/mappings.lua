@@ -13,7 +13,7 @@ vim.keymap.set({"n", "x", "v", "o"}, ")", "]")
 vim.keymap.set({"t"}, "jk", "<C-\\><C-n>")
 vim.keymap.set({"v"}, "<", "<gv")
 vim.keymap.set({"v"}, ">", ">gv")
-vim.keymap.set({"n", "x", "v", "o", "t"}, "<leader><Space>", "<CMD>b#<CR>")
+vim.keymap.set({"n", "x", "v", "o"}, "<leader><Space>", "<CMD>b#<CR>")
 
 vim.keymap.set("n", "<Esc>", "<CMD>noh<CR>")
 vim.keymap.set("n", "<Tab>", "<CMD>bn<CR>")
