@@ -18,59 +18,53 @@
     "command": "docker",
     "args": ["compose", "down"],
     "reveal": "never",
-    "use_new_terminal": false
+    "use_new_terminal": false,
+    "hide": "on_success"
   },
   {
-    "label": "git : stage all",
+    "label": "git: stage all",
     "command": "git add .",
-    // "use_new_terminal": true,
-    // "allow_concurrent_runs": false,
-    "reveal": "never"
+    "reveal": "never",
+    "hide": "on_success"
   },
   {
-    "label": "git : stage $ZED_RELATIVE_FILE",
+    "label": "git: stage $ZED_RELATIVE_FILE",
     "command": "git add $ZED_RELATIVE_FILE",
-    // "use_new_terminal": true,
-    // "allow_concurrent_runs": false,
-    "reveal": "never"
+    "reveal": "never",
+    "hide": "on_success"
   },
   {
-    "label": "git : show status",
+    "label": "git: show status",
     "command": "git status",
-    // "use_new_terminal": true,
-    // "allow_concurrent_runs": false,
     "reveal": "always"
   },
   {
-    "label": "git : commit",
-    "command": "VISUAL='zed --wait' git commit",
-    "env": {
-      "VISUAL": "zed --wait" // NOT WORKING RN
-    },
-    // "use_new_terminal": true,
-    // "allow_concurrent_runs": false,
-    "reveal": "never"
+    "label": "git: commit",
+    "command": "git commit",
+    "reveal": "never",
+    "hide": "on_success"
   },
   {
-    "label": "git : push",
+    "label": "git: push",
     "command": "git push",
     // "use_new_terminal": true,
     // "allow_concurrent_runs": false,
-    "reveal": "always"
+    "reveal": "always",
+    "hide": "on_success"
   },
   {
-    "label": "git : pull",
+    "label": "git: pull",
     "command": "git pull",
-    // "use_new_terminal": true,
-    // "allow_concurrent_runs": false,
-    "reveal": "always"
+    "reveal": "always",
+    "hide": "on_success"
   },
   {
     "label": "Open lazygit",
     "command": "lazygit",
     "use_new_terminal": true,
     "allow_concurrent_runs": false,
-    "reveal": "always"
+    "reveal": "always",
+    "hide": "on_success"
   }
   // {
   //   "label": "dbg : print current relative file path",

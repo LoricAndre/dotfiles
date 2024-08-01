@@ -7,6 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "language_models": {
+    "anthropic": {
+            "version": "1"
+        }
+  },
   "collaboration_panel": {
     "dock": "right"
   },
@@ -18,11 +23,12 @@
     "copilot": false
   },
   "assistant": {
-    "version": "1",
-    "provider": {
-      "default_model": "claude-3-5-sonnet-20240620",
-      "name": "anthropic"
-    }
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "provider": null
   },
   "telemetry": {
     "diagnostics": true,
@@ -49,6 +55,7 @@
   },
   "ensure_final_newline_on_save": false,
   "format_on_save": "off",
+  "auto_signature_help": true,
   // Different settings for specific languages.
   "languages": {},
   "auto_update": false,
@@ -64,8 +71,8 @@
     "line_height": "standard",
     "copy_on_select": true,
     "env": {
-      "EDITOR": "zeditor --wait",
-      "VISUAL": "zeditor",
+      "EDITOR": "zed --wait",
+      "VISUAL": "zed --wait",
       "ZED": "1"
     }
   },

@@ -29,14 +29,11 @@
         }
       ],
       "ctrl-shift-w": "pane::CloseActiveItem",
-      "shift-escape": "workspace::ToggleZoom",
-      // "ctrl-o": "workspace::Open",
       "ctrl-=": "zed::IncreaseBufferFontSize",
       "ctrl-+": "zed::IncreaseBufferFontSize",
       "ctrl--": "zed::DecreaseBufferFontSize",
       "ctrl-0": "zed::ResetBufferFontSize",
       "ctrl-,": "zed::OpenSettings",
-      "ctrl-q": "zed::Quit",
       "alt-f9": "zed::Hide",
       "f11": "zed::ToggleFullScreen",
       "ctrl-t": "terminal_panel::ToggleFocus",
@@ -91,39 +88,24 @@
       "ctrl-d": "editor::Delete",
       "tab": "editor::Tab",
       "shift-tab": "editor::TabPrev",
-      // "ctrl-t": "editor::Transpose",
-      // "ctrl-backspace": "editor::DeleteToBeginningOfLine",
-      // "ctrl-delete": "editor::DeleteToEndOfLine",
       "ctrl-backspace": "editor::DeleteToPreviousWordStart",
       "ctrl-w": "editor::DeleteToPreviousWordStart",
       "ctrl-delete": "editor::DeleteToNextWordEnd",
-      // "alt-h": "editor::DeleteToPreviousWordStart",
-      // "alt-d": "editor::DeleteToNextWordEnd",
       "ctrl-x": "editor::Cut",
       "ctrl-c": "editor::Copy",
       "ctrl-v": "editor::Paste",
       "ctrl-z": "editor::Undo",
       "ctrl-shift-z": "editor::Redo",
       "up": "editor::MoveUp",
-      // "ctrl-up": "editor::MoveToStartOfParagraph", todo(linux) Should be "scroll down by 1 line"
       "pageup": "editor::PageUp",
-      // "shift-pageup": "editor::MovePageUp", todo(linux) should be 'select page up'
       "home": "editor::MoveToBeginningOfLine",
       "down": "editor::MoveDown",
-      // "ctrl-down": "editor::MoveToEndOfParagraph", todo(linux) should be "scroll up by 1 line"
       "pagedown": "editor::PageDown",
-      // "shift-pagedown": "editor::MovePageDown", todo(linux) should be 'select page down'
       "end": "editor::MoveToEndOfLine",
       "left": "editor::MoveLeft",
       "right": "editor::MoveRight",
       "ctrl-left": "editor::MoveToPreviousWordStart",
-      // "alt-b": "editor::MoveToPreviousWordStart",
       "ctrl-right": "editor::MoveToNextWordEnd",
-      // "alt-f": "editor::MoveToNextWordEnd",
-      // "cmd-left": "editor::MoveToBeginningOfLine",
-      // "ctrl-a": "editor::MoveToBeginningOfLine",
-      // "cmd-right": "editor::MoveToEndOfLine",
-      // "ctrl-e": "editor::MoveToEndOfLine",
       "ctrl-home": "editor::MoveToBeginning",
       "ctrl-end": "editor::MoveToEnd",
       "shift-up": "editor::SelectUp",
@@ -134,59 +116,26 @@
       "ctrl-shift-right": "editor::SelectToNextWordEnd",
       "ctrl-shift-up": "editor::AddSelectionAbove",
       "ctrl-shift-down": "editor::AddSelectionBelow",
-      // "ctrl-shift-up": "editor::SelectToStartOfParagraph",
-      // "ctrl-shift-down": "editor::SelectToEndOfParagraph",
       "ctrl-shift-home": "editor::SelectToBeginning",
       "ctrl-shift-end": "editor::SelectToEnd",
       "ctrl-a": "editor::SelectAll",
       "ctrl-shift-i": "editor::Format",
-      // "cmd-shift-left": [
-      //   "editor::SelectToBeginningOfLine",
-      //   {
-      //     "stop_at_soft_wraps": true
-      //   }
-      // ],
       "shift-home": [
         "editor::SelectToBeginningOfLine",
         {
           "stop_at_soft_wraps": true
         }
       ],
-      // "ctrl-shift-a": [
-      //   "editor::SelectToBeginningOfLine",
-      //   {
-      //     "stop_at_soft_wraps": true
-      //   }
-      // ],
-      // "cmd-shift-right": [
-      //   "editor::SelectToEndOfLine",
-      //   {
-      //     "stop_at_soft_wraps": true
-      //   }
-      // ],
       "shift-end": [
         "editor::SelectToEndOfLine",
         {
           "stop_at_soft_wraps": true
         }
       ],
-      // "ctrl-shift-e": [
-      //   "editor::SelectToEndOfLine",
-      //   {
-      //     "stop_at_soft_wraps": true
-      //   }
-      // ],
-      // "alt-v": [
-      //   "editor::MovePageUp",
-      //   {
-      //     "center_cursor": true
-      //   }
-      // ],
       "ctrl-alt-space": "editor::ShowCharacterPalette",
       "ctrl-;": "editor::ToggleLineNumbers",
       "ctrl-'": "editor::ToggleHunkDiff",
       "ctrl-\"": "editor::ExpandAllHunkDiffs"
-      // "space g b": "editor::ToggleGitBlame"
     }
   },
   {
@@ -204,12 +153,6 @@
           "replace_enabled": true
         }
       ],
-      // "cmd-e": [
-      //   "buffer_search::Deploy",
-      //   {
-      //     "focus": false
-      //   }
-      // ],
       "ctrl->": "assistant::QuoteSelection"
     }
   },
@@ -386,12 +329,6 @@
       "ctrl-alt-shift-c": "editor::DisplayCursorNames"
     }
   },
-  // {
-  //   "context": "Editor && mode == full",
-  //   "bindings": {
-  //     "ctrl-g": "go_to_line::Toggle"
-  //   }
-  // },
   {
     "context": "Pane",
     "bindings": {
@@ -421,10 +358,6 @@
           "create_new_window": true
         }
       ],
-      // "alt-ctrl-o": "projects::OpenRecent",
-      // "space g l": "branches::OpenRecent",
-      // "ctrl-t": "workspace::NewTerminal",
-      // "ctrl-s": "workspace::Save",
       "ctrl-shift-s": "workspace::SaveAs",
       "ctrl-n": "workspace::NewFile",
       "ctrl-shift-n": "workspace::NewWindow",
@@ -640,18 +573,8 @@
       "enter": ["terminal::SendKeystroke", "enter"],
       "ctrl-c": ["terminal::SendKeystroke", "ctrl-c"],
       "ctrl-shift-d": "pane::CloseActiveItem",
-      // "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      // "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      // "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      // "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
-      // "ctrl-w": "editor::DeleteToPreviousWordStart",
-      "ctrl-w": ["terminal::SendKeystroke", "ctrl-w"]
-      // "ctrl-backspace": ["terminal::SendKeystroke", "ctrl-backspace"],
-      // "ctrl-left": ["terminal::SendKeystroke", "ctrl-left"]
-      // Some nice conveniences
-      // "ctrl-backspace": ["terminal::SendText", "\u0015"],
-      // "ctrl-right": ["terminal::SendText", "\u0005"],
-      // "ctrl-left": ["terminal::SendText", "\u0001"]
+      "ctrl-w": ["terminal::SendKeystroke", "ctrl-w"],
+      "ctrl-a": ["terminal::SendKeystroke", "ctrl-a"]
     }
   },
   {
@@ -673,7 +596,6 @@
           }
         }
       ],
-      // "ctrl-t": "workspace::NewTerminal",
       "space f": "file_finder::Toggle",
       "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
       "space z": "workspace::ToggleZoom",
@@ -684,8 +606,6 @@
       "k": "vim::Down",
       "down": "vim::Down",
       "enter": "vim::NextLineStart",
-      // "tab": "vim::Tab",
-      // "shift-tab": "vim::Tab",
       "l": "vim::Up",
       "up": "vim::Up",
       "m": "vim::Right",
@@ -800,18 +720,15 @@
       "ctrl-u": "vim::ScrollUp",
       "ctrl-e": "vim::LineDown",
       "ctrl-y": "vim::LineUp",
-      // "g" commands
       "g g": "vim::StartOfDocument",
       "tab": "pane::ActivateNextItem",
       "shift-tab": "pane::ActivatePrevItem",
       "g d": "editor::GoToDefinition",
       "g f": "editor::Format",
       "g shift-d": "editor::GoToTypeDefinition",
-      // "g f": "editor::OpenUrl",
       "g l": "editor::GoToPrevDiagnostic",
       "space o": "outline_panel::Open",
       "space m": "search::SelectNextMatch",
-      // ": b d": ["workspace::SendKeystrokes", ": q enter"]
       "g >": [
         "editor::SelectNext",
         {
@@ -897,18 +814,6 @@
       "z c": "editor::Fold",
       "z o": "editor::UnfoldLines",
       "z f": "editor::FoldSelectedRanges",
-      // "space shift-q": [
-      //   "pane::CloseActiveItem",
-      //   {
-      //     "saveIntent": "skip"
-      //   }
-      // ],
-      // "space q": [
-      //   "pane::CloseActiveItem",
-      //   {
-      //     "saveIntent": "saveAll"
-      //   }
-      // ],
       // Count support
       "1": ["vim::Number", 1],
       "2": ["vim::Number", 2],
@@ -924,51 +829,6 @@
       "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
       "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
       "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
-      // "ctrl-w j": ["workspace::ActivatePaneInDirection", "Left"],
-      // "ctrl-w m": ["workspace::ActivatePaneInDirection", "Right"],
-      // "ctrl-w l": ["workspace::ActivatePaneInDirection", "Up"],
-      // "ctrl-w k": ["workspace::ActivatePaneInDirection", "Down"],
-      // "ctrl-w ctrl-j": ["workspace::ActivatePaneInDirection", "Left"],
-      // "ctrl-w ctrl-m": ["workspace::ActivatePaneInDirection", "Right"],
-      // "ctrl-w ctrl-l": ["workspace::ActivatePaneInDirection", "Up"],
-      // "ctrl-w ctrl-k": ["workspace::ActivatePaneInDirection", "Down"],
-      // "ctrl-w shift-left": ["workspace::SwapPaneInDirection", "Left"],
-      // "ctrl-w shift-right": ["workspace::SwapPaneInDirection", "Right"],
-      // "ctrl-w shift-up": ["workspace::SwapPaneInDirection", "Up"],
-      // "ctrl-w shift-down": ["workspace::SwapPaneInDirection", "Down"],
-      // "ctrl-w shift-j": ["workspace::SwapPaneInDirection", "Left"],
-      // "ctrl-w shift-m": ["workspace::SwapPaneInDirection", "Right"],
-      // "ctrl-w shift-l": ["workspace::SwapPaneInDirection", "Up"],
-      // "ctrl-w shift-k": ["workspace::SwapPaneInDirection", "Down"],
-      // "ctrl-w g t": "pane::ActivateNextItem",
-      // "ctrl-w ctrl-g t": "pane::ActivateNextItem",
-      // "ctrl-w g shift-t": "pane::ActivatePrevItem",
-      // "ctrl-w ctrl-g shift-t": "pane::ActivatePrevItem",
-      // "ctrl-w w": "workspace::ActivateNextPane",
-      // "ctrl-w ctrl-w": "workspace::ActivateNextPane",
-      // "ctrl-w p": "workspace::ActivatePreviousPane",
-      // "ctrl-w ctrl-p": "workspace::ActivatePreviousPane",
-      // "ctrl-w shift-w": "workspace::ActivatePreviousPane",
-      // "ctrl-w ctrl-shift-w": "workspace::ActivatePreviousPane",
-      // "ctrl-w v": "pane::SplitLeft",
-      // "ctrl-w ctrl-v": "pane::SplitLeft",
-      // "ctrl-w s": "pane::SplitUp",
-      // "ctrl-w shift-s": "pane::SplitUp",
-      // "ctrl-w ctrl-s": "pane::SplitUp",
-      // "ctrl-w c": "pane::CloseAllItems",
-      // "ctrl-w ctrl-c": "pane::CloseAllItems",
-      // "ctrl-w q": "pane::CloseAllItems",
-      // "ctrl-w ctrl-q": "pane::CloseAllItems",
-      // "ctrl-w o": "workspace::CloseInactiveTabsAndPanes",
-      // "ctrl-w ctrl-o": "workspace::CloseInactiveTabsAndPanes",
-      // "ctrl-w n": ["workspace::NewFileInDirection", "Up"],
-      // "ctrl-w ctrl-n": ["workspace::NewFileInDirection", "Up"],
-      // "ctrl-w d": "editor::GoToDefinitionSplit",
-      // "ctrl-w g d": "editor::GoToDefinitionSplit",
-      // "ctrl-w shift-d": "editor::GoToTypeDefinitionSplit",
-      // "ctrl-w g shift-d": "editor::GoToTypeDefinitionSplit",
-      // "ctrl-w space": "editor::OpenExcerptsSplit",
-      // "ctrl-w g space": "editor::OpenExcerptsSplit",
       "-": "pane::RevealInProjectPanel"
     }
   },
@@ -990,7 +850,7 @@
       "shift-d": "vim::DeleteToEndOfLine",
       "shift-j": "vim::JoinLines",
       "y": ["vim::PushOperator", "Yank"],
-      "shift-y": "vim::YankLine",
+      "shift-y": "vim::YankToEndOfLine",
       "i": "vim::InsertBefore",
       "shift-i": "vim::InsertFirstNonWhitespace",
       "a": "vim::InsertAfter",
@@ -1218,7 +1078,6 @@
       "ctrl-x ctrl-z": "editor::Cancel",
       "ctrl-w": "editor::DeleteToPreviousWordStart",
       "ctrl-u": "editor::DeleteToBeginningOfLine",
-      // "ctrl-t": "vim::Indent",
       "ctrl-d": "vim::Outdent",
       "ctrl-r \"": "editor::Paste",
       "ctrl-r +": "editor::Paste",

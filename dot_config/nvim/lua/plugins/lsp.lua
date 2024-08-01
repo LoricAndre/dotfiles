@@ -56,9 +56,9 @@ local server_configurations = {
         vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
         setup_completion_keymaps(bufnr)
       end
-      if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
-        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      end
+      -- if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
+      --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      -- end
     end,
   }
 }
