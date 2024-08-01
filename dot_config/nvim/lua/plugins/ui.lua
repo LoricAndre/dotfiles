@@ -25,4 +25,5 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
   },
+  {'kevinhwang91/nvim-bqf', ft = 'qf'}
 }

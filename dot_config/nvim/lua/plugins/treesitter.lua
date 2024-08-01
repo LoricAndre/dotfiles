@@ -1,7 +1,11 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects"
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    {
+      "yorickpeterse/nvim-tree-pairs",
+      opts = {}
+    },
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',

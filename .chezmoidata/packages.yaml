@@ -109,6 +109,7 @@ packages:
 -  kvantum-theme-catppuccin-git
 -  kwallet
 -  lazygit
+-  lazysql
 -  libpulse
 -  librdkafka
 -  linux

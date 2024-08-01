@@ -14,6 +14,6 @@ return {
   cmd = "Neogen",
   module = "neogen",
   keys = {
-    { "<leader>cn", function() require("neogen").generate({}) end }
+    { "gC", function() require("neogen").generate({}) end }
   }
 }

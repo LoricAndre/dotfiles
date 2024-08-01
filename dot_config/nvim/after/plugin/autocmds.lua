@@ -8,7 +8,8 @@ local autocmds = {
     vim.keymap.set("n", "m", "<CR>", { noremap = false, buffer = true })
     vim.keymap.set("n", "j", "<Left>", { noremap = true, buffer = true })
   end },
-  -- { "BufLeave", "term://*", "stopinsert" },
+  { "BufEnter", "term://*", "startinsert" },
+  { "BufLeave", "term://*", "stopinsert" },
   -- { "BufWritePost", chezmoi_dir .. "/**", "silent!chezmoi apply" }
   -- {
   --   "LspAttach",
