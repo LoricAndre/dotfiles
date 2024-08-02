@@ -6,7 +6,7 @@ local extensions = {
   undo = "debugloop/telescope-undo.nvim",
 }
 
-local dependencies = { "nvim-lua/plenary.nvim" }
+local dependencies = { "nvim-lua/plenary.nvim", { "stevearc/dressing.nvim", opts = {} } }
 
 for _, v in pairs(extensions) do
   ---@diagnostic disable-next-line: assign-type-mismatch

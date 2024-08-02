@@ -21,7 +21,7 @@ vim.keymap.set("n", "<Tab>", "<CMD>bn<CR>")
 vim.keymap.set("n", "<S-Tab>", "<CMD>bp<CR>")
 
 local function is_qf_open()
-  for index, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if vim.fn.buflisted(bufnr) == 1 then
       if vim.api.nvim_get_option_value("ft", { buf = bufnr }) == "qf" then
         return true

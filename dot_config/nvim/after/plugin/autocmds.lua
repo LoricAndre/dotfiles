@@ -5,8 +5,8 @@ local autocmds = {
   { "BufEnter", "SidebarNvim_*", function()
     vim.keymap.set("n", "k", "<Down>", { noremap = true, buffer = true })
     vim.keymap.set("n", "l", "<Up>", { noremap = true, buffer = true })
-    vim.keymap.set("n", "m", "<CR>", { noremap = false, buffer = true })
-    vim.keymap.set("n", "j", "<Left>", { noremap = true, buffer = true })
+    vim.keymap.set("n", "m", "e", { noremap = false, buffer = true })
+    vim.keymap.set("n", "j", "t", { noremap = false, buffer = true })
   end },
   { "BufEnter", "term://*", "startinsert" },
   { "BufLeave", "term://*", "stopinsert" },

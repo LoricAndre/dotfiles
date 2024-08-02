@@ -63,6 +63,10 @@ local server_configurations = {
       if has_lsp_signature then
         lsp_signature.on_attach({}, bufnr)
       end
+      local has_tiny_code_action, tiny_code_action = pcall(require, "tiny-code-action")
+      if has_tiny_code_action then
+        vim.lsp.handlers["textDocument/codeAction"] = tiny_code_action.code_action
+      end
     end,
   }
 }
@@ -87,6 +91,15 @@ return {
     "nvimtools/none-ls.nvim",
     "ray-x/lsp_signature.nvim",
     { "j-hui/fidget.nvim", opts = {} },
+    {
+      "rachartier/tiny-code-action.nvim",
+      dependencies = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-telescope/telescope.nvim" },
+      },
+      event = "LspAttach",
+      opts = {}
+    },
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       cond = false,

@@ -8,6 +8,12 @@ return {
       "symbols",
       "diagnostics",
       "todos"
+    },
+    files = {
+      ignored_paths = {
+        "%.git$",
+        "%node_modules$",
+      },
     }
   },
   keys = {
