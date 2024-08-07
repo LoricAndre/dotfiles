@@ -144,3 +144,16 @@ alias obsi="pushd ~/obsi; nvim home.md +ObsidianToday; popd"
 alias cdg='cd "$HOME/ghq/$(ghq list | sk)"'
 
 alias m="sudo mpm -C ~/.config/mpm/config.yaml"
+
+mkproj() {
+  PROJ_ROOT="$HOME/src"
+  PROJ_DIR="$PROJ_ROOT/$1/$2"
+  mkdir "$PROJ_DIR"
+  pushd "$PROJ_DIR"
+  git init
+  popd
+}
+
+genpw() {
+  printf "%s" $(tr -dc 'A-Za-z0-9_-' </dev/urandom | head -c $1)
+}

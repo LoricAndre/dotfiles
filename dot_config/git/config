@@ -30,3 +30,10 @@
   short-hash = "!git log --oneline -n1 | cut -d' ' -f1"
   rb = rebase --autosquash
   rbi = rebase --interavtive --autosquash
+[merge]
+  tool = nvimdiff
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "nvimdiff"]
+  layout = "LOCAL,BASE,REMOTE / MERGED"
