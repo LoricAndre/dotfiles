@@ -1,11 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    {
-      "yorickpeterse/nvim-tree-pairs",
-      opts = {}
-    },
+    "nvim-treesitter/nvim-treesitter-textobjects"
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',
@@ -64,32 +60,32 @@ return {
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
-          [")f"] = { query = "@function.outer", desc = "[TS] Next function" },
-          [")c"] = { query = "@class.outer", desc = "[TS] Next class" },
-          [")b"] = { query = "@block.outer", desc = "[TS] Next block" },
-          [")a"] = { query = "@parameter.outer", desc = "[TS] Next parameter" },
-          [")s"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Next scope" },
+          ["]f"] = { query = "@function.outer", desc = "[TS] Next function" },
+          ["]c"] = { query = "@class.outer", desc = "[TS] Next class" },
+          ["]b"] = { query = "@block.outer", desc = "[TS] Next block" },
+          ["]a"] = { query = "@parameter.outer", desc = "[TS] Next parameter" },
+          ["]s"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Next scope" },
         },
         goto_next_end = {
-          [")F"] = { query = "@function.outer", desc = "[TS] Next function" },
-          [")C"] = { query = "@class.outer", desc = "[TS] Next class" },
-          [")B"] = { query = "@block.outer", desc = "[TS] Next block" },
-          [")A"] = { query = "@parameter.outer", desc = "[TS] Next parameter" },
-          [")S"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Next scope" },
+          ["]F"] = { query = "@function.outer", desc = "[TS] Next function" },
+          ["]C"] = { query = "@class.outer", desc = "[TS] Next class" },
+          ["]B"] = { query = "@block.outer", desc = "[TS] Next block" },
+          ["]A"] = { query = "@parameter.outer", desc = "[TS] Next parameter" },
+          ["]S"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Next scope" },
         },
         goto_previous_start = {
-          ["(f"] = { query = "@function.outer", desc = "[TS] Previous function" },
-          ["(c"] = { query = "@class.outer", desc = "[TS] Previous class" },
-          ["(b"] = { query = "@block.outer", desc = "[TS] Previous block" },
-          ["(a"] = { query = "@parameter.outer", desc = "[TS] Previous parameter" },
-          ["(s"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Previous scope" },
+          ["[f"] = { query = "@function.outer", desc = "[TS] Previous function" },
+          ["[c"] = { query = "@class.outer", desc = "[TS] Previous class" },
+          ["[b"] = { query = "@block.outer", desc = "[TS] Previous block" },
+          ["[a"] = { query = "@parameter.outer", desc = "[TS] Previous parameter" },
+          ["[s"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Previous scope" },
         },
         goto_previous_end = {
-          ["(F"] = { query = "@function.outer", desc = "[TS] Previous function" },
-          ["(C"] = { query = "@class.outer", desc = "[TS] Previous class" },
-          ["(B"] = { query = "@block.outer", desc = "[TS] Previous block" },
-          ["(A"] = { query = "@parameter.outer", desc = "[TS] Previous parameter" },
-          ["(S"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Previous scope" },
+          ["[F"] = { query = "@function.outer", desc = "[TS] Previous function" },
+          ["[C"] = { query = "@class.outer", desc = "[TS] Previous class" },
+          ["[B"] = { query = "@block.outer", desc = "[TS] Previous block" },
+          ["[A"] = { query = "@parameter.outer", desc = "[TS] Previous parameter" },
+          ["[S"] = { query = "@scope.outer", query_group = "locals", desc = "[TS] Previous scope" },
         },
       }
     }

@@ -119,6 +119,7 @@ scrpcy-tcp() {
   adb-tcp $1
   scrpcy
 }
+alias g="git"
 alias lg="lazygit"
 
 fzn() {

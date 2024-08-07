@@ -19,6 +19,7 @@ vim.keymap.set({ "n", "x", "v", "o" }, "<leader><Space>", "<CMD>b#<CR>")
 vim.keymap.set("n", "<Esc>", "<CMD>noh<CR>")
 vim.keymap.set("n", "<Tab>", "<CMD>bn<CR>")
 vim.keymap.set("n", "<S-Tab>", "<CMD>bp<CR>")
+vim.keymap.set({ "n", "o" }, "h", "]", { noremap = false })
 
 local function is_qf_open()
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
