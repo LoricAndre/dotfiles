@@ -34,7 +34,7 @@ if [[ -x $(which uu-ls) ]]; then
   alias du='uu-du'
   alias fmt='uu-fmt'
   alias id='uu-id'
-  alias ls='uu-ls'
+  # alias ls='uu-ls'
   alias nice='uu-nice'
   alias pathchk='uu-pathchk'
   alias readlink='uu-readlink'
