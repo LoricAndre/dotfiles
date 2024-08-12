@@ -1,6 +1,8 @@
 {{- $colors := get .colors .theme }}
 
 font={{ .font.family }}:size={{ .font.size }}
+shell=tmux
+
 [colors]
 foreground={{ get $colors "7" }}
 background={{ get $colors "0" }}
