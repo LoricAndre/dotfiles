@@ -655,7 +655,7 @@ const options = mkOptions(OPTIONS, {
                 shutdown: opt("shutdown now"),
                 inhibit_hypridle: opt("[ -z $(pgrep hypridle) ] && hypridle || pkill hypridle"),
                 avatar: {
-                    image: opt("avatar-default-symbolic"),
+                    image: opt("/home/loric/pictures/avatar-circle.png"),
                     name: opt<"system" | string>("system"),
                 },
             },
@@ -744,7 +744,7 @@ const options = mkOptions(OPTIONS, {
         }
     },
 
-    terminal: opt("kitty"),
+    terminal: opt("foot"),
 
     notifications: {
         position: opt<"top" | "top right" | "top left" | "bottom" | "bottom right" | "bottom left">("top right"),
