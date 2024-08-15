@@ -1,4 +1,5 @@
 local setup_completion_keymaps = require("utils").setup_completion_keymaps
+local show_complete_documentation = require("utils").show_complete_documentation
 
 local mason_opts = {
   ui = {
@@ -55,6 +56,7 @@ local server_configurations = {
       if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
         vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
         setup_completion_keymaps(bufnr)
+        show_complete_documentation(client, bufnr)
       end
       -- if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
       --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
