@@ -31,10 +31,10 @@ return {
       { "<leader>lt", function() require("chainsaw").timeLog() end,     desc = "[LOG] Time",     noremap = true },
     }
   },
-  {
-    "Ramilito/kubectl.nvim",
-    opts = {}
-  },
+  -- {
+  --   "Ramilito/kubectl.nvim",
+  --   opts = {}
+  -- },
   {
     {
       "folke/lazydev.nvim",

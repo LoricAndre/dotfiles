@@ -1,5 +1,5 @@
-local setup_completion_keymaps = require("utils").setup_completion_keymaps
-local show_complete_documentation = require("utils").show_complete_documentation
+local setup_completion_keymaps = require("utils.lsp").setup_completion_keymaps
+local show_complete_documentation = require("utils.lsp").show_complete_documentation
 
 local mason_opts = {
   ui = {
