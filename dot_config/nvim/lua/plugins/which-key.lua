@@ -15,6 +15,7 @@ return {
       { "<leader>l", group = "+log" },
       { "<leader>t", group = "+neotree" },
       { "<leader>s", group = "+telescope" },
+      { "<leader>n", group = "+minimap" },
       { "gc", group = "+comment" },
       { "gw", group = "+swap" },
     })

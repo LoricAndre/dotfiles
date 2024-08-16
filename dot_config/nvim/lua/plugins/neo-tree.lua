@@ -16,7 +16,7 @@ return {
       desc = "Explorer NeoTree (cwd)",
     },
     { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
-    { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
+    { "<leader>E", "<leader>fE", desc = "Explorer NeoTree (cwd)",      remap = true },
     {
       "<leader>ge",
       function()
@@ -64,10 +64,10 @@ return {
     },
     window = {
       mappings = {
-        j = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
-        k = { "move_cursor_down" },
-        l = { "move_cursor_up"},
-        m = { "focus_preview" },
+        ["j"] = { "toggle_preview", config = { use_float = true, use_image_nvim = true } },
+        ["k"] = { "move_cursor_down" },
+        ["l"] = { "move_cursor_up" },
+        ["m"] = { "focus_preview" },
         ["<space>"] = "none",
         ["Y"] = {
           function(state)
@@ -77,7 +77,6 @@ return {
           end,
           desc = "Copy Path to Clipboard",
         },
-        ["P"] = { "toggle_preview", config = { use_float = false } },
       },
     },
     default_component_configs = {
