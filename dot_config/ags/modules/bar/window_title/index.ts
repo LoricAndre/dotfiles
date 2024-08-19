@@ -1,4 +1,4 @@
-const hyprland = await Service.import("hyprland");
+// const hyprland = await Service.import("hyprland");
 import { ActiveClient } from 'types/service/hyprland'
 
 const filterTitle = (windowtitle: ActiveClient) => {
@@ -32,11 +32,11 @@ const ClientTitle = () => {
             children: [
                 Widget.Label({
                     class_name: "bar-button-icon windowtitle",
-                    label: hyprland.active.bind("client").as((v) => filterTitle(v).icon),
+                    // label: hyprland.active.bind("client").as((v) => filterTitle(v).icon),
                 }),
                 Widget.Label({
                     class_name: "bar-button-label windowtitle",
-                    label: hyprland.active.bind("client").as((v) => filterTitle(v).label),
+                    // label: hyprland.active.bind("client").as((v) => filterTitle(v).label),
                 })
             ]
         }),

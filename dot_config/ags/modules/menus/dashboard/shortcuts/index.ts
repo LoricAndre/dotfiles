@@ -1,4 +1,4 @@
-const hyprland = await Service.import("hyprland");
+// const hyprland = await Service.import("hyprland");
 import options from "options";
 
 const { left, right } = options.menus.dashboard.shortcuts;
@@ -32,39 +32,39 @@ const Shortcuts = () => {
         class_name: "dropdown recording",
         hpack: "fill",
         hexpand: true,
-        setup: (self) => {
-            self.hook(hyprland, () => {
-                const displays = hyprland.monitors.map((mon) => {
-                    return Widget.MenuItem({
-                        label: `Display ${mon.name}`,
-                        on_activate: () => {
-                            App.closeWindow("dashboardmenu");
-                            Utils.execAsync(
-                                `${App.configDir}/services/screen_record.sh start ${mon.name}`,
-                            ).catch((err) => console.error(err));
-                        },
-                    });
-                });
-
-                const apps = hyprland.clients.map((clt) => {
-                    return Widget.MenuItem({
-                        label: `${clt.class.charAt(0).toUpperCase() + clt.class.slice(1)} (Workspace ${clt.workspace.name})`,
-                        on_activate: () => {
-                            App.closeWindow("dashboardmenu");
-                            Utils.execAsync(
-                                `${App.configDir}/services/screen_record.sh start ${clt.focusHistoryID}`,
-                            ).catch((err) => console.error(err));
-                        },
-                    });
-                });
-
-                return (self.children = [
-                    ...displays,
-                    // Disabled since window recording isn't available on wayland
-                    // ...apps
-                ]);
-            });
-        },
+        // setup: (self) => {
+        //     self.hook(hyprland, () => {
+        //         const displays = hyprland.monitors.map((mon) => {
+        //             return Widget.MenuItem({
+        //                 label: `Display ${mon.name}`,
+        //                 on_activate: () => {
+        //                     App.closeWindow("dashboardmenu");
+        //                     Utils.execAsync(
+        //                         `${App.configDir}/services/screen_record.sh start ${mon.name}`,
+        //                     ).catch((err) => console.error(err));
+        //                 },
+        //             });
+        //         });
+        //
+        //         const apps = hyprland.clients.map((clt) => {
+        //             return Widget.MenuItem({
+        //                 label: `${clt.class.charAt(0).toUpperCase() + clt.class.slice(1)} (Workspace ${clt.workspace.name})`,
+        //                 on_activate: () => {
+        //                     App.closeWindow("dashboardmenu");
+        //                     Utils.execAsync(
+        //                         `${App.configDir}/services/screen_record.sh start ${clt.focusHistoryID}`,
+        //                     ).catch((err) => console.error(err));
+        //                 },
+        //             });
+        //         });
+        //
+        //         return (self.children = [
+        //             ...displays,
+        //             // Disabled since window recording isn't available on wayland
+        //             // ...apps
+        //         ]);
+        //     });
+        // },
     });
 
     return Widget.Box({

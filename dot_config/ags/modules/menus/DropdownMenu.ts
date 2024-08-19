@@ -1,4 +1,4 @@
-const hyprland = await Service.import("hyprland");
+// const hyprland = await Service.import("hyprland");
 import { globalMousePos } from "globals";
 import { Exclusivity } from "lib/types/widget";
 
@@ -16,55 +16,55 @@ const moveBoxToCursor = (self: any, fixed: boolean) => {
         return;
     }
 
-    globalMousePos.connect("changed", ({ value }) => {
-        const hyprScaling = hyprland.monitors[hyprland.active.monitor.id].scale;
-        const currentWidth = self.child.get_allocation().width;
-
-        let monWidth = hyprland.monitors[hyprland.active.monitor.id].width;
-        let monHeight = hyprland.monitors[hyprland.active.monitor.id].height;
-
-        // If GDK Scaling is applied, then get divide width by scaling
-        // to get the proper coordinates.
-        // Ex: On a 2860px wide monitor... if scaling is set to 2, then the right
-        // end of the monitor is the 1430th pixel.
-        const gdkScale = Utils.exec('bash -c "echo $GDK_SCALE"');
-
-        if (/^\d+(.\d+)?$/.test(gdkScale)) {
-            const scale = parseFloat(gdkScale);
-            monWidth = monWidth / scale;
-            monHeight = monHeight / scale;
-        } else {
-            monWidth = monWidth / hyprScaling;
-            monHeight = monHeight / hyprScaling;
-        }
-
-        // If monitor is vertical (transform = 1 || 3) swap height and width
-        if (hyprland.monitors[hyprland.active.monitor.id].transform % 2 !== 0) {
-            [monWidth, monHeight] = [monHeight, monWidth];
-        }
-
-        let marginRight = monWidth - currentWidth / 2;
-        marginRight = fixed ? marginRight - monWidth / 2 : marginRight - value[0];
-        let marginLeft = monWidth - currentWidth - marginRight;
-
-        const minimumMargin = 0;
-
-        if (marginRight < minimumMargin) {
-            marginRight = minimumMargin;
-            marginLeft = monWidth - currentWidth - minimumMargin;
-        }
-
-        if (marginLeft < minimumMargin) {
-            marginLeft = minimumMargin;
-            marginRight = monWidth - currentWidth - minimumMargin;
-        }
-
-        const marginTop = 45;
-        const marginBottom = monHeight - marginTop;
-        self.set_margin_left(marginLeft);
-        self.set_margin_right(marginRight);
-        self.set_margin_bottom(marginBottom);
-    });
+    // globalMousePos.connect("changed", ({ value }) => {
+    //     // const hyprScaling = hyprland.monitors[hyprland.active.monitor.id].scale;
+    //     const currentWidth = self.child.get_allocation().width;
+    //
+    //     // let monWidth = hyprland.monitors[hyprland.active.monitor.id].width;
+    //     // let monHeight = hyprland.monitors[hyprland.active.monitor.id].height;
+    //
+    //     // If GDK Scaling is applied, then get divide width by scaling
+    //     // to get the proper coordinates.
+    //     // Ex: On a 2860px wide monitor... if scaling is set to 2, then the right
+    //     // end of the monitor is the 1430th pixel.
+    //     const gdkScale = Utils.exec('bash -c "echo $GDK_SCALE"');
+    //
+    //     if (/^\d+(.\d+)?$/.test(gdkScale)) {
+    //         const scale = parseFloat(gdkScale);
+    //         monWidth = monWidth / scale;
+    //         monHeight = monHeight / scale;
+    //     } else {
+    //         monWidth = monWidth / hyprScaling;
+    //         monHeight = monHeight / hyprScaling;
+    //     }
+    //
+    //     // If monitor is vertical (transform = 1 || 3) swap height and width
+    //     if (hyprland.monitors[hyprland.active.monitor.id].transform % 2 !== 0) {
+    //         [monWidth, monHeight] = [monHeight, monWidth];
+    //     }
+    //
+    //     let marginRight = monWidth - currentWidth / 2;
+    //     marginRight = fixed ? marginRight - monWidth / 2 : marginRight - value[0];
+    //     let marginLeft = monWidth - currentWidth - marginRight;
+    //
+    //     const minimumMargin = 0;
+    //
+    //     if (marginRight < minimumMargin) {
+    //         marginRight = minimumMargin;
+    //         marginLeft = monWidth - currentWidth - minimumMargin;
+    //     }
+    //
+    //     if (marginLeft < minimumMargin) {
+    //         marginLeft = minimumMargin;
+    //         marginRight = monWidth - currentWidth - minimumMargin;
+    //     }
+    //
+    //     const marginTop = 45;
+    //     const marginBottom = monHeight - marginTop;
+    //     self.set_margin_left(marginLeft);
+    //     self.set_margin_right(marginRight);
+    //     self.set_margin_bottom(marginBottom);
+    // });
 };
 
 // NOTE: We make the window visible for 2 seconds (on startup) so the child

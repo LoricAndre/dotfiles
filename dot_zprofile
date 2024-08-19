@@ -1,1 +1,2 @@
 export QT_STYLE_OVERRIDE=kvantum
+eval $(luarocks path --lua-version 5.4)

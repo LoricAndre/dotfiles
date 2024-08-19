@@ -4,7 +4,7 @@ import brightness from "services/Brightness"
 import { OSDLabel } from "./label/index";
 import { OSDBar } from "./bar/index";
 import { OSDIcon } from "./icon/index";
-const hyprland = await Service.import("hyprland");
+// const hyprland = await Service.import("hyprland");
 const audio = await Service.import("audio")
 
 const {
@@ -17,9 +17,9 @@ const {
 
 const curMonitor = Variable(monitor.value);
 
-hyprland.active.connect("changed", () => {
-    curMonitor.value = hyprland.active.monitor.id;
-})
+// hyprland.active.connect("changed", () => {
+//     curMonitor.value = hyprland.active.monitor.id;
+// })
 
 const DELAY = 2500;
 
