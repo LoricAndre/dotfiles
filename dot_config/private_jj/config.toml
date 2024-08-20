@@ -1,0 +1,7 @@
+[user]
+name = "loric.andre"
+email = "gitlab.j3bzo@slmail.me"
+
+[ui]
+default-command = "log"
+diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
