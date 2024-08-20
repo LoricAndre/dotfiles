@@ -1,4 +1,4 @@
-// const hyprland = await Service.import("hyprland");
+const hyprland = await Service.import("hyprland");
 import { WorkspaceRule, WorkspaceMap } from "lib/types/workspace";
 import options from "options";
 
@@ -15,7 +15,7 @@ const Workspaces = (monitor = -1, ws = 8) => {
         }
 
         const monitorMap = {};
-        // hyprland.monitors.forEach((m) => (monitorMap[m.id] = m.name));
+        hyprland.monitors.forEach((m) => (monitorMap[m.id] = m.name));
 
         const currentMonitorName = monitorMap[monitor];
         return wsRules[currentMonitorName].includes(curWs);
@@ -43,13 +43,13 @@ const Workspaces = (monitor = -1, ws = 8) => {
     };
 
     const getCurrentMonitorWorkspaces = () => {
-        // if (hyprland.monitors.length === 1) {
-        //     return Array.from({ length: workspaces.value }, (_, i) => i + 1);
-        // }
+        if (hyprland.monitors.length === 1) {
+            return Array.from({ length: workspaces.value }, (_, i) => i + 1);
+        }
 
         const monitorWorkspaces = getWorkspaceRules();
         const monitorMap = {};
-        // hyprland.monitors.forEach((m) => (monitorMap[m.id] = m.name));
+        hyprland.monitors.forEach((m) => (monitorMap[m.id] = m.name));
 
         const currentMonitorName = monitorMap[monitor];
 
@@ -62,25 +62,25 @@ const Workspaces = (monitor = -1, ws = 8) => {
     })
 
     const goToNextWS = () => {
-        const curWorkspace = 0 ; // hyprland.active.workspace.id;
+        const curWorkspace = hyprland.active.workspace.id;
         const indexOfWs = currentMonitorWorkspaces.value.indexOf(curWorkspace);
         let nextIndex = indexOfWs + 1;
         if (nextIndex >= currentMonitorWorkspaces.value.length) {
             nextIndex = 0;
         }
 
-        // hyprland.messageAsync(`dispatch workspace ${currentMonitorWorkspaces.value[nextIndex]}`)
+        hyprland.messageAsync(`dispatch workspace ${currentMonitorWorkspaces.value[nextIndex]}`)
     }
 
     const goToPrevWS = () => {
-        const curWorkspace = 0; // hyprland.active.workspace.id;
+        const curWorkspace = hyprland.active.workspace.id;
         const indexOfWs = currentMonitorWorkspaces.value.indexOf(curWorkspace);
         let prevIndex = indexOfWs - 1;
         if (prevIndex < 0) {
             prevIndex = currentMonitorWorkspaces.value.length - 1;
         }
 
-        // hyprland.messageAsync(`dispatch workspace ${currentMonitorWorkspaces.value[prevIndex]}`)
+        hyprland.messageAsync(`dispatch workspace ${currentMonitorWorkspaces.value[prevIndex]}`)
     }
 
     function throttle<T extends (...args: any[]) => void>(func: T, limit: number): T {
@@ -134,7 +134,7 @@ const Workspaces = (monitor = -1, ws = 8) => {
                             return Widget.Button({
                                 class_name: "workspace-button",
                                 on_primary_click: () => {
-                                    // hyprland.messageAsync(`dispatch workspace ${i}`)
+                                    hyprland.messageAsync(`dispatch workspace ${i}`)
 
                                 },
                                 child: Widget.Label({
@@ -149,19 +149,19 @@ const Workspaces = (monitor = -1, ws = 8) => {
                                             options.bar.workspaces.icons.available.bind("value"),
                                             options.bar.workspaces.icons.active.bind("value"),
                                             options.bar.workspaces.icons.occupied.bind("value"),
-                                            // hyprland.active.workspace.bind("id")
+                                            hyprland.active.workspace.bind("id")
                                         ],
                                         (show_icons, show_numbered, numbered_active_indicator) => {
                                             if (show_icons) {
                                                 return `workspace-icon`;
                                             }
-                                            // if (show_numbered) {
-                                            //     const numActiveInd = hyprland.active.workspace.id === i
-                                            //         ? numbered_active_indicator
-                                            //         : "";
-                                            //
-                                            //     return `workspace-number ${numActiveInd}`;
-                                            // }
+                                            if (show_numbered) {
+                                                const numActiveInd = hyprland.active.workspace.id === i
+                                                    ? numbered_active_indicator
+                                                    : "";
+
+                                                return `workspace-number ${numActiveInd}`;
+                                            }
                                             return "";
                                         },
                                     ),
@@ -171,16 +171,16 @@ const Workspaces = (monitor = -1, ws = 8) => {
                                             options.bar.workspaces.icons.available.bind("value"),
                                             options.bar.workspaces.icons.active.bind("value"),
                                             options.bar.workspaces.icons.occupied.bind("value"),
-                                            // hyprland.active.workspace.bind("id")
+                                            hyprland.active.workspace.bind("id")
                                         ],
                                         (showIcons, available, active, occupied, _) => {
                                             if (showIcons) {
-                                                // if (hyprland.active.workspace.id === i) {
-                                                //     return active;
-                                                // }
-                                                // if ((hyprland.getWorkspace(i)?.windows || 0) > 0) {
-                                                //     return occupied;
-                                                // }
+                                                if (hyprland.active.workspace.id === i) {
+                                                    return active;
+                                                }
+                                                if ((hyprland.getWorkspace(i)?.windows || 0) > 0) {
+                                                    return occupied;
+                                                }
                                                 if (
                                                     monitor !== -1
                                                 ) {
@@ -191,16 +191,16 @@ const Workspaces = (monitor = -1, ws = 8) => {
                                         },
                                     ),
                                     setup: (self) => {
-                                        // self.hook(hyprland, () => {
-                                        //     self.toggleClassName(
-                                        //         "active",
-                                        //         hyprland.active.workspace.id === i,
-                                        //     );
-                                        //     self.toggleClassName(
-                                        //         "occupied",
-                                        //         (hyprland.getWorkspace(i)?.windows || 0) > 0,
-                                        //     );
-                                        // });
+                                        self.hook(hyprland, () => {
+                                            self.toggleClassName(
+                                                "active",
+                                                hyprland.active.workspace.id === i,
+                                            );
+                                            self.toggleClassName(
+                                                "occupied",
+                                                (hyprland.getWorkspace(i)?.windows || 0) > 0,
+                                            );
+                                        });
                                     },
                                 })
                             });
@@ -208,15 +208,15 @@ const Workspaces = (monitor = -1, ws = 8) => {
                 },
             ),
             setup: (box) => {
-                // if (ws === 0) {
-                //     box.hook(hyprland.active.workspace, () =>
-                //         box.children.map((btn) => {
-                //             btn.visible = hyprland.workspaces.some(
-                //                 (ws) => ws.id === btn.attribute,
-                //             );
-                //         }),
-                //     );
-                // }
+                if (ws === 0) {
+                    box.hook(hyprland.active.workspace, () =>
+                        box.children.map((btn) => {
+                            btn.visible = hyprland.workspaces.some(
+                                (ws) => ws.id === btn.attribute,
+                            );
+                        }),
+                    );
+                }
             },
         }),
         isVisible: true,
