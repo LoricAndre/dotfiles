@@ -1,5 +1,6 @@
 [ -z "$EDITOR" ] && export EDITOR=nvim
 [ -z "$VISUAL" ] && export VISUAL="nvim --cmd 'let g:flatten_wait=1'"
+[ -z "$VISUAL" ] && export VISUAL=nvim
 [ -z "$MANPAGER" ] && export MANPAGER="nvim +Man!"
 # export XDG_CURRENT_DESKTOP=Unity
 export XKB_DEFAULT_LAYOUT=fr
