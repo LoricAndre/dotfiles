@@ -1,49 +1,105 @@
 @import "theme.css";
 
 * {
-  font-family: monospace;
-  font-size: 12px;
+  font-family: JetBrainsMonoNerdFontPropo;
+  font-weight: 700;
+  font-size: 10pt;
   min-height: 0;
 }
+
+tooltip {
+  background-color: transparent;
+  border: none;
+}
+
+tooltip label {
+  background-color: @color8;
+  border-radius: 8px;
+  /*margin: 4px;*/
+  padding: 8px;
+  border: @color5 solid 1px;
+}
+
 
 window#waybar {
   background: transparent;
 }
 
-.modules-right, .modules-left {
-  background-color: @surface0;
+.modules-right, .modules-center, .modules-left {
+  background-color: @color8;
   color: @text;
+  /*border: @color5 solid 1px;*/
 
-  padding-top: 0px;
-  padding-bottom: 0px;
-  padding-left: 5px;
-  padding-right: 5px;
-
-  margin-top: 0px;
+  margin-top: 10px;
   margin-bottom: 0px;
   margin-left: 5px;
   margin-right: 5px;
 
-  border-radius: 1rem;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  border-radius: 8px;
 }
 
 #workspaces button {
-  color: @text;
+  color: @color5;
   border-bottom: 3px solid @surface0;
 }
 #workspaces button.active {
-    border-bottom: 3px solid @color5;
+    border-bottom: 3px solid @color13;
 }
 
 #workspaces button.focused, button:hover {
-    border-bottom: 3px solid @color5;
+    border-bottom: 3px solid @color13;
 }
 
 #window {
-  margin-left: 20px;
+  color: @color15;
 }
 
-.module {
-  padding-right: 6px;
-  padding-left: 6px;
+#idle_inhibitor {
+  color: @color13;
+}
+
+#custom-updates {
+  color: @color3;
+}
+
+#pulseaudio {
+  color: @color2;
+}
+
+#network {
+  color: @color9;
+}
+
+#cpu {
+  color: @color5;
+}
+
+#disk {
+  color: @color2;
+}
+
+#memory {
+  color: @color15;
+}
+
+#backlight {
+  color: @color13;
+}
+
+#battery {
+  color: @color6;
+}
+
+#clock {
+  color: @color5;
+}
+
+#custom-swaync {
+  color: @color5;
 }

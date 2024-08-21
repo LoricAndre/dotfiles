@@ -4,12 +4,16 @@
   "position": "top", // Waybar position (top|bottom|left|right)
   // "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
-  "spacing": 4, // Gaps between modules (4px)
+  "spacing": 12, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": ["hyprland/workspaces", "hyprland/window"],
-  "modules-center": [],
+  "modules-left": [
+    "hyprland/workspaces",
+  ],
+  "modules-center": [
+    "hyprland/window"
+  ],
   "modules-right": [
-    "idle_inhibitor",
+    //"idle_inhibitor",
     "custom/updates",
     "pulseaudio",
     "network",
@@ -17,7 +21,6 @@
     "cpu",
     "memory",
     "disk",
-    "temperature",
     "backlight",
     "battery",
     "clock",
@@ -33,43 +36,44 @@
     "format-window-separator": "  ",
     "window-rewrite-default": "",
     "window-rewrite": {
-      // https://www.nerdfonts.com/cheat-sheet and https://fontawesome.com/icons
       "class<Kitty>": "",
+      "class<Foot>": "",
       "class<org.gnome.Nautilus>": "",
-      // "class<com.github.weclaw1.ImageRoll|nomacs>": "",
-      "title<(.*[$%#] *)?nvim.*>": "",
-      "title<(.*[$%#] *)?btm.*>": "",
+      "title<(.* *)? nvim>": "",
+      "title<(.* *)?btm.*>": "",
       "class<firefox>": "",
+      "class<firefox-nightly>": "",
       "class<dev.zed.Zed-Preview>": "",
-      // "class<discord>": "",
       "title<(Open)?Lens.*>": "󱃾",
-      // "title<Discord.*>": "",
-      // "title<.[0-9]+. Discord.*>": " °",
-      // "title<Signal>": "󰍡",
-      // "title<WhatsApp.*>": "",
-      // "title<.[0-9]+. WhatsApp.*>": "°",
-      // "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
-      // "title<.* - Gmail .*>": "󰊫",
-      // "class<obsidian>": "󱞁",
-      "class<com.hunterwittenborn.Celeste>": "󰴋",
-      // "class<ONLYOFFICE Desktop Editors>": "󰈙",
-      // "class<calibre-.*>": "",
-      // "class<org.qbittorrent.qBittorrent>": "",
-      // "class<org.kde.kdeconnect.*>": "",
       "class<mpv>": "",
       "class<vlc>": "󰕼",
-      // "class<Gimp-.*>": "",
-      // "class<steam.*>": "󰓓", //  for FontAwesome
-      // "class<steam> title<Friends List>": "",
-      // "class<steam_app_[0-9]+>": "󰮂",
-      // "title<Winetricks.*>": "󰡶",
-      // "class<lutris>": "🦦",
-      "class<Spotify>": ""
-      // "class<jetbrains-idea(-ce)?>": ""
-      // "class<Code>": "󰨞",
-      // "class<com.obsproject.Studio|zoom>": "",
-      // "class<io.github.whoozle.android-file-transfer>": "",
-      // "class<(Chromium)|(Chrome)>": "",
+      "class<obsidian>": "󱞁",
+      "class<Spotify>": "",
+      "class<com.hunterwittenborn.Celeste>": "󰴋",
+      "class<steam.*>": "󰓓", //  for FontAwesome
+      "class<steam> title<Friends List>": "",
+      "class<steam_app_[0-9]+>": "󰮂",
+      "class<com.github.weclaw1.ImageRoll|nomacs>": "",
+      "class<discord>": "",
+      "title<Discord.*>": "",
+      "title<.[0-9]+. Discord.*>": " °",
+      "title<Signal>": "󰍡",
+      "title<WhatsApp.*>": "",
+      "title<.[0-9]+. WhatsApp.*>": "°",
+      "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
+      "title<.* - Gmail .*>": "󰊫",
+      "class<ONLYOFFICE Desktop Editors>": "󰈙",
+      "class<calibre-.*>": "",
+      "class<org.qbittorrent.qBittorrent>": "",
+      "class<org.kde.kdeconnect.*>": "",
+      "class<Gimp-.*>": "",
+      "title<Winetricks.*>": "󰡶",
+      "class<lutris>": "🦦",
+      "class<jetbrains-idea(-ce)?>": "",
+      "class<Code>": "󰨞",
+      "class<com.obsproject.Studio|zoom>": "",
+      "class<io.github.whoozle.android-file-transfer>": "",
+      "class<(Chromium)|(Chrome)>": ""
     }
   },
   "keyboard-state": {
@@ -87,7 +91,10 @@
   "hyprland/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
-    "format-icons": ["", ""],
+    "format-icons": [
+      "",
+      ""
+    ],
     "tooltip": true,
     "tooltip-format": "{app}: {title}"
   },
@@ -121,7 +128,7 @@
     "format": "{icon}",
     "format-icons": {
       "activated": "󰅶",
-      "deactivated": ""
+      "deactivated": "󰾪"
     }
   },
   "tray": {
@@ -154,11 +161,11 @@
     }
   },
   "cpu": {
-    "format": "{usage}% "
+    "format": " {usage}%"
     // "tooltip": false
   },
   "memory": {
-    "format": "{}% "
+    "format": " {}%"
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -166,12 +173,26 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{temperatureC}°C {icon}",
-    "format-icons": ["", "", ""]
+    "format-icons": [
+      "",
+      "",
+      ""
+    ]
   },
   "backlight": {
     // "device": "acpi_video1",
-    "format": "{percent}% {icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format": "{icon} {percent}%",
+    "format-icons": [
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      ""
+    ]
   },
   "battery": {
     "states": {
@@ -179,14 +200,20 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{capacity}% {icon}",
-    "format-full": "{capacity}% {icon}",
-    "format-charging": "{capacity}% 󰂄",
-    "format-plugged": "{capacity}% ",
-    "format-alt": "{time} {icon}",
+    "format": "{icon} {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": ["󰁺", "󰁼", "󰁾", "󰂀", "󰂂"]
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ]
   },
   "power-profiles-daemon": {
     "format": "{icon}",
@@ -201,20 +228,20 @@
   },
   "network": {
     // "interface": "wlp2*", // (Optional) To force the use of this interface
-    "format-wifi": "{essid} ({signalStrength}%) 󰤥",
-    "format-ethernet": "{ipaddr}/{cidr} 󰈁",
+    "format-wifi": "󰤥 {essid} ({signalStrength}%)",
+    "format-ethernet": "󰈁 {ipaddr}/{cidr}",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "format-linked": "{ifname} (No IP) 󰈂",
-    "format-disconnected": "Disconnected ⚠",
+    "format-linked": "󰈂 {ifname} (No IP)",
+    "format-disconnected": "⚠ Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}"
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{volume}% {icon} {format_source}",
-    "format-bluetooth": "{volume}% {icon} {format_source}",
+    "format": "{icon} {volume}% {format_source}",
+    "format-bluetooth": "{icon} {volume}% {format_source}",
     "format-bluetooth-muted": "󰝟 {icon} {format_source}",
     "format-muted": "󰝟 {format_source}",
-    "format-source": "{volume}% ",
+    "format-source": " {volume}%",
     "format-source-muted": "",
     "format-icons": {
       "headphone": "",
@@ -223,7 +250,11 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": [
+        "",
+        "",
+        ""
+      ]
     },
     "on-click": "pavucontrol"
   },
@@ -233,20 +264,34 @@
     "path": "/"
   },
   "custom/updates": {
-    "format": "{} {icon}",
+    "format": "{icon} {}",
     "return-type": "json",
     "format-icons": {
       "has-updates": "󱍷",
       "updated": "󰂪"
     },
     "exec-if": "which waybar-module-pacman-updates",
-    "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300"
+    "exec": "waybar-module-pacman-updates  --interval-seconds 5 --network-interval-seconds 300",
+    "on-click": "tmux new-session -s waybar-update paru"
   },
   "custom/swaync": {
-    "format": "{icon}",
-    "interval": 60,
-    "format-icons": " ",
-    "exec": "swaync-client -c",
-    "on-click": "swaync-client -t -sw"
+    "tooltip": false,
+    "format": "{icon} ({})",
+    "format-icons": {
+      "notification": "<sup></sup>",
+      "none": "",
+      "dnd-notification": "<sup></sup>",
+      "dnd-none": "",
+      "inhibited-notification": "<sup></sup>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<sup></sup>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   }
 }
