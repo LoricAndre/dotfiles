@@ -53,11 +53,11 @@ local server_configurations = {
       enabled = true
     },
     on_attach = function(client, bufnr)
-      if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
-        vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-        setup_completion_keymaps(bufnr)
-        show_complete_documentation(client, bufnr)
-      end
+      -- if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
+      --   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+      --   setup_completion_keymaps(bufnr)
+      --   show_complete_documentation(client, bufnr)
+      -- end
       -- if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
       --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
       -- end
@@ -91,7 +91,7 @@ return {
     "neovim/nvim-lspconfig",
     "williamboman/mason-lspconfig.nvim",
     "nvimtools/none-ls.nvim",
-    "ray-x/lsp_signature.nvim",
+    -- "ray-x/lsp_signature.nvim",
     { "j-hui/fidget.nvim", opts = {} },
     {
       "rachartier/tiny-code-action.nvim",
@@ -169,7 +169,7 @@ return {
     { "gi", function() return vim.lsp.buf.implementation() end,              desc = "[LSP] Implementations" },
     { 'gl', function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
     { 'gk', function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
-    { 'gm', function() return vim.diagnostic.jump({ count = 1 }) end,        desc = '[LSP] Next diagnostic' },
-    { 'gj', function() return vim.diagnostic.jump({ count = -1 }) end,       desc = '[LSP] Prev diagnostic' },
+    { 'gm', function() return vim.diagnostic.goto_next({ count = 1 }) end,        desc = '[LSP] Next diagnostic' },
+    { 'gj', function() return vim.diagnostic.goto_prev({ count = -1 }) end,       desc = '[LSP] Prev diagnostic' },
   }
 }

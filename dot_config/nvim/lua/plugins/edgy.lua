@@ -53,22 +53,22 @@ return {
       }
     },
     right = {
-      -- {
-      --   title = "minimap",
-      --   ft = "neominimap",
-      --   pinned = true,
-      --   open = "Neominimap on",
-      --   size = {
-      --     width = 0.2
-      --   }
-      -- }
       {
-        title = "outline",
-        ft = "Outline",
+        title = "minimap",
+        ft = "neominimap",
         pinned = true,
-        open = "OutlineOpen",
-        size = { width = 0.2 }
+        open = "Neominimap on",
+        size = {
+          width = 0.2
+        }
       }
+      -- {
+      --   title = "outline",
+      --   ft = "Outline",
+      --   pinned = true,
+      --   open = "OutlineOpen",
+      --   size = { width = 0.2 }
+      -- }
     },
     animate = {
       enabled = false
