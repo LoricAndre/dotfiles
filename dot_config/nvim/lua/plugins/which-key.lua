@@ -9,7 +9,7 @@ return {
     local wk = require("which-key")
     wk.add({
       { "<leader>g", group = "+git" },
-      { "<leader>q", group = "+trouble" },
+      -- { "<leader>q", group = "+trouble" },
       { "<leader>u", group = "+ui" },
       { "<leader>d", group = "+debug" },
       { "<leader>l", group = "+log" },

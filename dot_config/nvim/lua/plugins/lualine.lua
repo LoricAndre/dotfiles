@@ -41,7 +41,7 @@ return {
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "diff", "diagnostics" },
-        lualine_c = { "filename", lsp_servers, "lsp_progress" },
+        lualine_c = { lsp_servers, "lsp_progress" },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = {
           { "diagnostics", sources = { "nvim_workspace_diagnostic" } }
@@ -57,7 +57,7 @@ return {
         lualine_z = {}
       },
       tabline = {
-        lualine_a = { "buffers" },
+        lualine_a = { {"filename", path = 1 } },
         lualine_b = {},
         lualine_c = {},
         lualine_x = {},
