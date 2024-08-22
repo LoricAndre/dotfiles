@@ -46,14 +46,19 @@ window#waybar {
 
 #workspaces button {
   color: @color5;
-  border-bottom: 3px solid @surface0;
-}
-#workspaces button.active {
-    border-bottom: 3px solid @color13;
+  border-top: 3px solid transparent;
+  padding: 4px 8px;
+  transition: all 0.1s ease-in-out;
 }
 
-#workspaces button.focused, button:hover {
-    border-bottom: 3px solid @color13;
+#workspaces button.active {
+  border-top: 3px solid @color13;
+  background-color: @color8;
+}
+
+#workspaces button:hover {
+  border-top: 3px solid @color13;
+  background-color: @color8;
 }
 
 #window {
