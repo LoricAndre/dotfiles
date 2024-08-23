@@ -8,3 +8,4 @@ hooks: packages-hook
 
 packages-hook:
   cp ./_files/pre-commit-hook.sh .git/hooks/pre-commit
+  chmod +x .git/hooks/pre-commit
