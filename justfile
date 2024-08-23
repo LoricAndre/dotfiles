@@ -4,6 +4,10 @@ quick-apply:
 apply:
   chezmoi apply
 
+sync-packages:
+  git pull --autostash
+  paru -Sy --needed --noconfirm $(cat _files/packages | tr '\n' ' ')
+
 hooks: packages-hook
 
 packages-hook:
