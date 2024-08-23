@@ -1,9 +1,7 @@
 #!/bin/sh
 
-PACKAGES_FILE=".chezmoidata/packages.yaml"
+PACKAGES_FILE="_files/packages"
 
-echo "packages:" > "${PACKAGES_FILE}"
-paru -Qqe | sort | sed 's/^/-  /' >> "${PACKAGES_FILE}"
+paru -Qqe | sort > "$PACKAGES_FILE"
 
-git add "${PACKAGES_FILE}"
-
+git add "$PACKAGES_FILE"
