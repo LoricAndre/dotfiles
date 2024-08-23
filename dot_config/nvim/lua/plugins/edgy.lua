@@ -67,7 +67,14 @@ return {
         ft = "Outline",
         pinned = true,
         open = "OutlineOpen",
-        size = { width = 0.2 }
+        -- size = { width = 0.2 }
+      },
+      {
+        title = "overseer",
+        ft = "OverseerList",
+        pinned = true,
+        open = "OverseerOpen",
+        size = { height = 0.25 }
       }
     },
     animate = {

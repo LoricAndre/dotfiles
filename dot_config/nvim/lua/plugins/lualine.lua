@@ -18,6 +18,19 @@ return {
     "arkav/lualine-lsp-progress"
   },
   config = function()
+    local has_overseer, overseer = pcall(require, "overseer")
+    local overseer_section = {}
+    if has_overseer then
+      overseer_section = { "overseer",
+        label = " ",
+        unique = true,
+        symbols = {
+            [overseer.STATUS.FAILURE] = "󱐋 ",
+            [overseer.STATUS.CANCELED] = "󰜺 ",
+            [overseer.STATUS.SUCCESS] = " ",
+            [overseer.STATUS.RUNNING] = " ",
+          }}
+    end
     require("lualine").setup({
       options = {
         icons_enabled = true,
@@ -44,7 +57,8 @@ return {
         lualine_c = { lsp_servers, "lsp_progress" },
         lualine_x = { "encoding", "fileformat", "filetype" },
         lualine_y = {
-          { "diagnostics", sources = { "nvim_workspace_diagnostic" } }
+          { "diagnostics", sources = { "nvim_workspace_diagnostic" } },
+          overseer_section
         },
         lualine_z = { "searchcount", "location" }
       },

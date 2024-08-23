@@ -206,6 +206,7 @@ rofi-wayland
 sbctl
 scrcpy
 sddm
+sddm-catppuccin-git
 sdl2_image
 skim
 slock

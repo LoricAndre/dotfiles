@@ -9,6 +9,7 @@ return {
     --   "jobstart",
     --   use_terminal = false
     -- },
+    dap = false,
     strategy = {
       "toggleterm",
       direction = "float"
@@ -23,7 +24,8 @@ return {
     }
   },
   keys = {
-    { "<leader>rr", "<CMD>OverseerRun<CR>",    noremap = true, desc = "[OVS] Run" },
-    { "<leader>rt", "<CMD>OverseerToggle<CR>", noremap = true, desc = "[OVS] Toggle" },
+    { "<leader>rr", "<CMD>OverseerRun<CR>",    noremap = true, desc = "[ovs] run" },
+    { "<leader>rt", "<CMD>OverseerToggle<CR>", noremap = true, desc = "[ovs] run" },
+    { "<leader>ra", "<CMD>OverseerTaskAction<CR>", noremap = true, desc = "[ovs] run" },
   }
 }

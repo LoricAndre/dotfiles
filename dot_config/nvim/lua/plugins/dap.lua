@@ -13,6 +13,11 @@ return {
     local dap = require("dap")
     local dapui = require("dapui")
 
+    local has_overseer, overseer = pcall(require, "overseer")
+    if has_overseer then
+      overseer.enable_dap()
+    end
+
     dap.listeners.after.event_initialized["dapui_config"] = function()
       dapui.open()
     end
@@ -23,6 +28,8 @@ return {
       dapui.close()
     end
     require("mason-nvim-dap").setup({
+      ensure_installed = {},
+      automatic_installation = true,
       handlers = {
         function(config)
           require('mason-nvim-dap').default_setup(config)
