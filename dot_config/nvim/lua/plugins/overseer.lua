@@ -23,7 +23,7 @@ return {
     }
   },
   keys = {
-    { "<leader>or", "<CMD>OverseerRun<CR>",    noremap = true, desc = "[OVS] Run" },
-    { "<leader>oo", "<CMD>OverseerToggle<CR>", noremap = true, desc = "[OVS] Toggle" },
+    { "<leader>rr", "<CMD>OverseerRun<CR>",    noremap = true, desc = "[OVS] Run" },
+    { "<leader>rt", "<CMD>OverseerToggle<CR>", noremap = true, desc = "[OVS] Toggle" },
   }
 }
