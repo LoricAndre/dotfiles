@@ -41,6 +41,7 @@ packages:
 -  chezmoi
 -  cilium-cli
 -  compsize
+-  cowsay
 -  cpio
 -  dart-sass
 -  dbeaver
