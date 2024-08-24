@@ -66,6 +66,7 @@ freerdp
 fuzzel
 fwupd
 fzf
+gamemode
 ghq-bin
 git
 git-cliff
@@ -99,6 +100,8 @@ helm
 helm-diff
 helmfile
 helm-secrets
+heroic-games-launcher-bin
+heroic-games-launcher-bin-wayland-hook
 hwinfo
 hypridle-git
 hyprland
@@ -136,6 +139,7 @@ lua51
 luarocks
 ly
 man-db
+mangohud
 mani
 mediamtx-bin
 mongodb-tools
@@ -256,7 +260,6 @@ waybar
 waybar-module-pacman-updates-git
 wev
 wget
-wine
 wireplumber
 wireshark-qt
 wl-clipboard
@@ -277,6 +280,7 @@ xorg-xinit
 xscreensaver-arch-logo
 yq
 zbar
+zen-browser-bin
 zip
 zoxide
 zram-generator
