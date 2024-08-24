@@ -158,3 +158,5 @@ mkproj() {
 genpw() {
   printf "%s" $(tr -dc 'A-Za-z0-9_-' </dev/urandom | head -c $1)
 }
+
+alias j=just
