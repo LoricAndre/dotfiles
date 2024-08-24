@@ -1,7 +1,5 @@
 #!/bin/sh
 
-cwd=$(pwd)
-
 if [ ! -x "$(which paru)" ]; then
   push /tmp
   sudo pacman -S --noconfirm --needed base-devel
@@ -31,6 +29,5 @@ fi
 
 paru -S --needed --noconfirm just
 
-cd "$cwd"
-
+cd "$CHEZMOI_COMMAND_DIR"
 just sync-packages
