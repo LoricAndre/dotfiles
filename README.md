@@ -10,10 +10,10 @@
 | WM | Hyprland | Yes |
 | Terminal emulator | Kitty | Yes |
 | Editor/IDE | Neovim | Yes |
-| Notification daemon | Dunst | Yes |
+| Notification daemon | Swaync | Yes |
 | VCS | Git | N/A |
 | VCS | Lazygit | Yes (indirect) |
-| Runner | Fuzzel | Yes |
+| Runner | Anyrun | Yes |
 | Status bar | Waybar | Yes |
 
 ## Usage

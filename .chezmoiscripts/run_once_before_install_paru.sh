@@ -1,7 +1,9 @@
 #!/bin/sh
 
+cwd=$(pwd)
+
 if [ ! -x "$(which paru)" ]; then
-  cd /tmp
+  push /tmp
   sudo pacman -S --noconfirm --needed base-devel
   git clone https://aur.archlinux.org/paru.git
   cd paru
@@ -26,3 +28,9 @@ if [ -z "$(grep "$CHEZMOI_MARKER" /etc/pacman.conf)" ]; then
   echo "[chaotic-aur]" | sudo tee --append /etc/pacman.conf
   echo "Include = /etc/pacman.d/chaotic-mirrorlist" | sudo tee --append /etc/pacman.conf
 fi
+
+paru -S --needed --noconfirm just
+
+cd "$cwd"
+
+just sync-packages
