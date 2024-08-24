@@ -129,7 +129,6 @@ kanshi
 kde-gtk-config
 kdeplasma-addons
 kgamma
-kidex-git
 kinfocenter
 kitty
 krdp
@@ -240,8 +239,6 @@ rclone
 ripgrep
 river
 river-ultitile-git
-rofi-calc-git
-rofi-wayland
 sbctl
 scrcpy
 sddm

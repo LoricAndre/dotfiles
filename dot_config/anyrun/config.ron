@@ -42,6 +42,6 @@ Config(
     "libapplications.so",
     "libshell.so",
     "librink.so",
-    "libkidex.so",
+    // "libkidex.so",
   ],
 )
