@@ -1,7 +1,8 @@
-local setup_completion_keymaps = require("utils.lsp").setup_completion_keymaps
+local setup_completion_keymaps    = require("utils.lsp").setup_completion_keymaps
 local show_complete_documentation = require("utils.lsp").show_complete_documentation
+local settings = require("settings")
 
-local mason_opts = {
+local mason_opts                  = {
   ui = {
     icons = {
       package_installed = "✓",
@@ -47,20 +48,22 @@ local mason_opts = {
   }
 }
 
-local server_configurations = {
+local server_configurations       = {
   {
     inlay_hints = {
       enabled = true
     },
     on_attach = function(client, bufnr)
-      -- if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
-      --   vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
-      --   setup_completion_keymaps(bufnr)
-      --   show_complete_documentation(client, bufnr)
-      -- end
-      -- if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
-      --   vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
-      -- end
+      if settings.completion == "builtin" then
+        if client.supports_method("textDocument/completion", { bufnr = bufnr }) then
+          vim.lsp.completion.enable(true, client.id, bufnr, { autotrigger = true })
+          setup_completion_keymaps(bufnr)
+          show_complete_documentation(client, bufnr)
+        end
+        if client.supports_method("textDocument/inlayHint", { bufnr = bufnr }) then
+          vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+        end
+      end
       local has_lsp_signature, lsp_signature = pcall(require, "lsp_signature")
       if has_lsp_signature then
         lsp_signature.on_attach({}, bufnr)
@@ -95,6 +98,7 @@ return {
     { "j-hui/fidget.nvim", opts = {} },
     {
       "rachartier/tiny-code-action.nvim",
+      enabled = settings.finder == "telescope",
       dependencies = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-telescope/telescope.nvim" },
@@ -169,7 +173,7 @@ return {
     { "gi", function() return vim.lsp.buf.implementation() end,              desc = "[LSP] Implementations" },
     { 'gl', function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
     { 'gk', function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
-    { 'gm', function() return vim.diagnostic.goto_next({ count = 1 }) end,        desc = '[LSP] Next diagnostic' },
-    { 'gj', function() return vim.diagnostic.goto_prev({ count = -1 }) end,       desc = '[LSP] Prev diagnostic' },
+    { 'gm', function() return vim.diagnostic.goto_next({ count = 1 }) end,   desc = '[LSP] Next diagnostic' },
+    { 'gj', function() return vim.diagnostic.goto_prev({ count = -1 }) end,  desc = '[LSP] Prev diagnostic' },
   }
 }

@@ -1,5 +1,6 @@
 return {
   "sindrets/diffview.nvim",
+  enabled = false,
   dependencies = {
     "nvim-tree/nvim-web-devicons"
   },

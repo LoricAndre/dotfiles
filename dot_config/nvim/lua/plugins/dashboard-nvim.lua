@@ -1,3 +1,27 @@
+local settings = require("settings")
+local actions = function()
+  local find_a = ""
+  local old_a = ""
+  local grep_a = ""
+  if settings.finder == "telescope" then
+    find_a = "Telescope find_files"
+    old_a = "Telescope oldfiles"
+    grep_a = "Telescope live_grep"
+  elseif settings.finder == "fzf" then
+    find_a = "FzfLua files"
+    old_a = "FzfLua oldfiles"
+    grep_a = "FzfLua live_grep"
+  end
+  return {
+    { action = find_a, desc = " Find File", icon = " ", key = "f" },
+    { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
+    { action = old_a, desc = " Recent Files", icon = " ", key = "r" },
+    { action = grep_a, desc = " Find Text", icon = " ", key = "g" },
+    { action = "Lazy", desc = " Lazy", icon = "󰒲 ", key = "z" },
+    { action = function() vim.api.nvim_input("<cmd>qa<cr>") end, desc = " Quit", icon = " ", key = "q" },
+  }
+
+end
 return {
   "nvimdev/dashboard-nvim",
   lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
@@ -36,7 +60,7 @@ return {
       config = {
         header = vim.split(logo, "\n"),
         center = {
-          { action = 'Telescop find_files', desc = " Find File", icon = " ", key = "f" },
+          { action = 'Telescope find_files', desc = " Find File", icon = " ", key = "f" },
           { action = "ene | startinsert", desc = " New File", icon = " ", key = "n" },
           { action = 'Telescope oldfiles', desc = " Recent Files", icon = " ", key = "r" },
           { action = 'Telescope live_grep', desc = " Find Text", icon = " ", key = "g" },

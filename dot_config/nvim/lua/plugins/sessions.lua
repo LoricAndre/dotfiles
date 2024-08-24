@@ -1,6 +1,6 @@
 return {
   "olimorris/persisted.nvim",
-  cond = false,
+  enabled = false,
   lazy = false,
   config = function(opts)
     local group = vim.api.nvim_create_augroup("PersistedHooks", {})

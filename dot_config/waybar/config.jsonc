@@ -42,6 +42,7 @@
       "title<(.* *)? nvim>": "",
       "title<(.* *)?btm.*>": "",
       "class<firefox>": "",
+      "class<zen-alpha>": "",
       "class<firefox-nightly>": "",
       "class<dev.zed.Zed-Preview>": "",
       "title<(Open)?Lens.*>": "󱃾",

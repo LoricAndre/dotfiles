@@ -2,6 +2,7 @@ return {
   "ibhagwan/fzf-lua",
   event = "VeryLazy",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  enabled = require("settings").finder == "fzf",
   config = function()
     local fzf = require('fzf-lua')
     fzf.setup({ 'skim'

@@ -1,6 +1,6 @@
 return {
   'glepnir/dbsession.nvim',
-  cond = false,
+  enabled = false,
   cmd = { 'SessionSave', 'SessionDelete', 'SessionLoad' },
   opts = {
     auto_save_on_exit = true

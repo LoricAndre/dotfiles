@@ -1,7 +1,7 @@
 -- https://github.com/ms-jpq/coq_nvim/issues/589 for syntax error on windows
 return {
   "ms-jpq/coq_nvim",
-  enabled = false,
+  cond = require("settings").s_completion == "coq",
   branch = "coq",
   dependencies = {
     { "ms-jpq/coq.artifacts",  branch = "artifacts" },
