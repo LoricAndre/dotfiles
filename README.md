@@ -4,8 +4,8 @@
 
 *Note*: `Colorscheme` means that the colorscheme is managed by chezmoi.
 
-| Category | Tool | Colorscheme |
-| -------- | ---- | ----------- |
+| Category               | Tool       | Colorscheme               |
+| --------               | ----       | -----------               |
 | Shell | ZSH | N/A |
 | WM | Hyprland | Yes |
 | Terminal emulator | Kitty | Yes |
@@ -23,6 +23,7 @@
 ```bash
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply git@gitlab.com:loric.andre/dotfiles.git
 ```
+
 
 ### Colorscheme
 
