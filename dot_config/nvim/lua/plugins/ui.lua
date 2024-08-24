@@ -25,5 +25,15 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {}
   },
-  {'kevinhwang91/nvim-bqf', ft = 'qf'}
+  { 'kevinhwang91/nvim-bqf', ft = 'qf' },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+    }
+  }
 }

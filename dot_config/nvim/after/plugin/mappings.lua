@@ -3,8 +3,16 @@ vim.keymap.set({ "n", "x", "v", "o" }, "k", "<Down>")
 vim.keymap.set({ "n", "x", "v", "o" }, "l", "<Up>")
 vim.keymap.set({ "n", "x", "v", "o" }, "m", "<Right>")
 
-vim.keymap.set({ "n", "x", "v", "o" }, "(", "[")
-vim.keymap.set({ "n", "x", "v", "o" }, ")", "]")
+vim.keymap.set({ "n", "x", "v", "o" }, "zk", "zj")
+vim.keymap.set({ "n", "x", "v", "o" }, "zl", "zk")
+
+vim.keymap.set({ "n", "x", "v", "o" }, "hf", "zj")
+vim.keymap.set({ "n", "x", "v", "o" }, "Hf", "zk")
+
+for _, k in ipairs({"{", "}", "(", ")", "M", "m", "d", "s", "%"}) do
+  vim.keymap.set({ "n", "x", "v", "o" }, "h" .. k, "]" .. k)
+  vim.keymap.set({ "n", "x", "v", "o" }, "H" .. k, "[" .. k)
+end
 
 -- vim.keymap.set({"n", "v", "o", "t"}, "<M-j>", "<C-\\><C-n><C-w><C-h>")
 -- vim.keymap.set({"n", "v", "o", "t"}, "<M-k>", "<C-\\><C-n><C-w><C-j>")
