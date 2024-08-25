@@ -29,7 +29,7 @@
   fx = "!git commit --fixup=$(git log --oneline -n1 | cut -d' ' -f1); git rebase HEAD~2 --autosquash"
   short-hash = "!git log --oneline -n1 | cut -d' ' -f1"
   rb = rebase --autosquash
-  rbi = rebase --interavtive --autosquash
+  rbi = rebase --interactive --autosquash
 [merge]
   tool = nvimdiff
 [mergetool]
@@ -37,3 +37,7 @@
   keepBackup = false
 [mergetool "nvimdiff"]
   layout = "LOCAL,BASE,REMOTE / MERGED"
+
+[pclone]
+	root = /home/loric/src
+  conf = pclone.conf

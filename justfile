@@ -1,6 +1,10 @@
 aur_helper := "paru"
 pacman_args := "--needed --noconfirm"
 
+mod compose '~/.config/just/compose.just'
+
+default:
+  just --list
 
 quick-apply:
   chezmoi apply --exclude scripts
@@ -21,6 +25,7 @@ packages-hook:
 
 chaotic-aur:
   #!/usr/bin/env -S sudo bash
+  set -euxo pipefail
   CHEZMOI_MARKER="### Added by chezmoi ###"
   if [ -z "$(grep "$CHEZMOI_MARKER" /etc/pacman.conf)" ]; then
     echo $CHEZMOI_MARKER >> /etc/pacman.conf

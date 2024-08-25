@@ -1,0 +1,60 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  cat <<EOS
+  Usage: 
+    git pclone <url> [path] [git options]
+EOS
+}
+
+__dbg() {
+  [ -v DEBUG ] || return
+  echo "[DBG] $@" >&2
+}
+
+cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+
+__root() {
+  git config --get pclone.root
+}
+
+__mkpath() {
+  url=$@
+  path=$(echo "$url" | sed 's#^\w\+://\(\w\+@\)\?\([^:/]\+\)[/:]\(.*\)$#\2/\3#')
+  keys=$($cfg --get-regexp --name-only '^pclone\.pattern\..*$')
+  __dbg "initial path $path"
+  for full_key in $keys; do
+    key=$(echo $full_key | sed 's/^pclone\.pattern\.//')
+    pattern=$($cfg --get $full_key)
+    __dbg "found pattern $pattern -> $key"
+    path=$(echo $path | sed -E "s#$pattern#$key#I")
+    __dbg "obtained path $path"
+  done
+  echo $path | tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed 's/-\+/-/'
+}
+
+(("$#")) || (usage && exit 1)
+url=$1
+__dbg "url: $url"
+shift
+(("$#")) && (
+    subdir=$(echo $1 | sed "s#^$(__root)/\?##")
+  ) || subdir="$(__mkpath $url)"
+path="$(__root)/$subdir"
+__dbg "path: $path"
+shift || true
+
+git_opts=$@
+
+__dbg "git options: $git_opts"
+
+read -p "Clone $url to $path [Y/n]? " -n 1 -r
+echo
+if [[ ! $REPLY =~ ^[nN]$ ]]; then
+  git clone "$url" "$path" $git_opts
+  cfg_name=$(echo $subdir | sed 's#/#__#')
+  $cfg --add "pclone.repo.$cfg_name.url" "$url"
+  $cfg --add "pclone.repo.$cfg_name.path" "$subdir"
+fi
