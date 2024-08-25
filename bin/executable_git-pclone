@@ -20,7 +20,7 @@ root=$(git config get pclone.root)
 
 __mkpath() {
   url=$@
-  path=$(echo "$url" | sed 's#^\w\+://\(\w\+@\)\?\([^:/]\+\)[/:]\(.*\)$#\2/\3#')
+  path=$(echo "$url" | sed 's#^\w\+://\(\w\+@\)\?\([^:/]\+\)[/:]\(.*\)$#\2/\3#;s#\.git$##')
   keys=$($cget --all --show-names --regexp '^pclone\.pattern\..*$' | cut -d' ' -f1)
   __dbg "initial path $path"
   for full_key in $keys; do
