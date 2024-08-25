@@ -16,14 +16,12 @@ __dbg() {
 cget="git config get --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 cset="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
-__root() {
-  git config get pclone.root
-}
+root=$(git config get pclone.root)
 
 subdir=""
-(("$#")) && subdir=$(echo $1 | sed "s#^$(__root)/\?##")
+(("$#")) && subdir=$(echo $1 | sed "s#^$root/\?##")
 
-echo "[INF] Syncing repos in $(__root)/$subdir"
+echo "[INF] Syncing repos in $root/$subdir"
 
 cfg_pattern=$(echo $subdir | sed "s#/#__#g")
 
@@ -37,7 +35,7 @@ for path_key in $path_keys; do
 
   __dbg "got repo with path $path and url $url"
 
-  [ -z "$(ls -A "$(__root)/$path" 2>/dev/null)" ] && (
+  [ -z "$(ls -A "$root/$path" 2>/dev/null)" ] && (
     echo "[INF] cloning $url at $path"
     git pclone "$url" "$path"
   ) || (echo "[WRN] $path exists and is not empty, skipping...")

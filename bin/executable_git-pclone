@@ -16,9 +16,7 @@ __dbg() {
 cget="git config get --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 cset="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
-__root() {
-  git config get pclone.root
-}
+root=$(git config get pclone.root)
 
 __mkpath() {
   url=$@
@@ -40,9 +38,9 @@ url=$1
 __dbg "url: $url"
 shift
 subdir="$(__mkpath $url)"
-(("$#")) && subdir=$(echo $1 | sed "s#^$(__root)/\?##")
+(("$#")) && subdir=$(echo $1 | sed "s#^$root/\?##")
   
-path="$(__root)/$subdir"
+path="$root/$subdir"
 __dbg "path: $path"
 shift || true
 

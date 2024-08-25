@@ -16,18 +16,16 @@ __dbg() {
 
 cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
-__root() {
-  git config get pclone.root
-}
+root=$(git config get pclone.root)
 
 while (( "$#" )); do
-  subdir=$(echo $1 | sed "s#^$(__root)/\?##")
+  subdir=$(echo $1 | sed "s#^$root/\?##")
   shift
-  path="$(__root)/$subdir"
+  path="$root/$subdir"
 
   __dbg "got path $path"
 
-  [ -d "$path/.git" ] || (echo "Please make sure that the path exists in $(__root) and is a git repository" && exit 1)
+  [ -d "$path/.git" ] || (echo "Please make sure that the path exists in $root and is a git repository" && exit 1)
 
   remote=$(git --git-dir="$path/.git" remote | head -n1)
   __dbg "remote: $remote"

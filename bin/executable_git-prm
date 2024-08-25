@@ -13,15 +13,13 @@ __dbg() {
   [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
 }
 
-__root() {
-  git config get pclone.root
-}
+root=$(git config get pclone.root)
 
 cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
 
 path=$1
-subdir=$(echo $path | sed "s#^$(__root)/\?##")
+subdir=$(echo $path | sed "s#^$root/\?##")
 cfg_name=$(echo $subdir | sed 's#/#__#g')
 config=$($cfg get --all --regexp "pclone.repo.$cfg_name.url") # Check that the config exists
 
