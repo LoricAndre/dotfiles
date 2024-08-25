@@ -36,7 +36,7 @@ RUN sudo pacman -Syu --noconfirm && \
     kubectx \
     lazygit \
     lsof \
-    neovim-nightly-bin \
+    neovim \
     man-db \
     mariadb \
     mongodb-tools \

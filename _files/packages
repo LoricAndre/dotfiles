@@ -75,7 +75,6 @@ fwupd
 fzf
 gamemode
 gamescope
-ghq-bin
 git
 git-cliff
 github-cli
@@ -173,7 +172,6 @@ nfs-utils
 nmap
 nuget
 nvm
-oatmeal-bin
 obsidian
 obs-studio
 ocs-url
@@ -254,7 +252,6 @@ spicetify-cli-git
 spotify
 starship
 steam
-storageexplorer
 strace
 stremio
 swaybg
