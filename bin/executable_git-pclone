@@ -10,24 +10,24 @@ EOS
 }
 
 __dbg() {
-  [ -v DEBUG ] || return
-  echo "[DBG] $@" >&2
+  [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
 }
 
-cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cget="git config get --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cset="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
 __root() {
-  git config --get pclone.root
+  git config get pclone.root
 }
 
 __mkpath() {
   url=$@
   path=$(echo "$url" | sed 's#^\w\+://\(\w\+@\)\?\([^:/]\+\)[/:]\(.*\)$#\2/\3#')
-  keys=$($cfg --get-regexp --name-only '^pclone\.pattern\..*$')
+  keys=$($cget --all --show-names --regexp '^pclone\.pattern\..*$' | cut -d' ' -f1)
   __dbg "initial path $path"
   for full_key in $keys; do
     key=$(echo $full_key | sed 's/^pclone\.pattern\.//')
-    pattern=$($cfg --get $full_key)
+    pattern=$($cget $full_key)
     __dbg "found pattern $pattern -> $key"
     path=$(echo $path | sed -E "s#$pattern#$key#I")
     __dbg "obtained path $path"
@@ -39,9 +39,9 @@ __mkpath() {
 url=$1
 __dbg "url: $url"
 shift
-(("$#")) && (
-    subdir=$(echo $1 | sed "s#^$(__root)/\?##")
-  ) || subdir="$(__mkpath $url)"
+subdir="$(__mkpath $url)"
+(("$#")) && subdir=$(echo $1 | sed "s#^$(__root)/\?##")
+  
 path="$(__root)/$subdir"
 __dbg "path: $path"
 shift || true
@@ -55,6 +55,6 @@ echo
 if [[ ! $REPLY =~ ^[nN]$ ]]; then
   git clone "$url" "$path" $git_opts
   cfg_name=$(echo $subdir | sed 's#/#__#')
-  $cfg --add "pclone.repo.$cfg_name.url" "$url"
-  $cfg --add "pclone.repo.$cfg_name.path" "$subdir"
+  $cset "pclone.repo.$cfg_name.url" "$url"
+  $cset "pclone.repo.$cfg_name.path" "$subdir"
 fi

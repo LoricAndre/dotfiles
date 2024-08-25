@@ -10,12 +10,11 @@ EOS
 }
 
 __dbg() {
-  [ -v DEBUG ] || return
-  echo "[DBG] $@" >&2
+  [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
 }
 
 __root() {
-  git config --get pclone.root
+  git config get pclone.root
 }
 
 cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
@@ -24,15 +23,13 @@ cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone
 path=$1
 subdir=$(echo $path | sed "s#^$(__root)/\?##")
 cfg_name=$(echo $subdir | sed 's#/#__#g')
-config=$($cfg --get-regexp "pclone.repo.$cfg_name.url")
+config=$($cfg get --all --regexp "pclone.repo.$cfg_name.url") # Check that the config exists
 
-echo "Got remote $config"
-
-git --work-tree=$path status
+git --git-dir="$path/.git" status
 
 read -p "Remove repo from $path [y/N]? " -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   rm -r "$path"
-  $cfg --remove-section "pclone.repo.$cfg_name"
+  $cfg remove-section "pclone.repo.$cfg_name"
 fi
