@@ -18,7 +18,7 @@ cset="git config --file $(git config --get pclone.root)/$(git config --get pclon
 
 root=$(git config get pclone.root)
 
-__mkpath() {
+build_path() {
   url=$@
   path=$(echo "$url" | sed 's#^\w\+://\(\w\+@\)\?\([^:/]\+\)[/:]\(.*\)$#\2/\3#;s#\.git$##')
   keys=$($cget --all --show-names --regexp '^pclone\.pattern\..*$' | cut -d' ' -f1)
@@ -37,7 +37,7 @@ __mkpath() {
 url=$1
 __dbg "url: $url"
 shift
-subdir="$(__mkpath $url)"
+subdir="$(build_path $url)"
 (("$#")) && subdir=$(echo $1 | sed "s#^$root/\?##")
   
 path="$root/$subdir"
