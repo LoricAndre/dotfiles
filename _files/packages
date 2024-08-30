@@ -11,7 +11,6 @@ arandr
 aspnet-runtime
 aspnet-runtime-6.0
 astyle
-atuin
 avizo
 awesome
 aws-cli-v2-bin
@@ -248,7 +247,7 @@ smartmontools
 sniffnet
 sof-firmware
 sops
-spicetify-cli-git
+spicetify-cli
 spotify
 starship
 steam
@@ -289,6 +288,7 @@ vulkan-mesa-layers
 wacomtablet
 waybar
 waybar-module-pacman-updates-git
+wdisplays
 wev
 wget
 wireplumber

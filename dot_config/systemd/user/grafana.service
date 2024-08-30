@@ -3,7 +3,7 @@ Description=Grafana service
 
 [Service]
 WorkingDirectory=/usr/share/grafana
-ExecStart=/usr/bin/grafana-server --config=/home/loric/.config/monitoring/grafana.ini
+ExecStart=/usr/bin/grafana server --config=/home/loric/.config/monitoring/grafana.ini
 
 [Install]
 WantedBy=default.target

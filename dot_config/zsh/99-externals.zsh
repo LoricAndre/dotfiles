@@ -31,3 +31,5 @@ eval "$(pyenv init -)"
 if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
   tmux attach || exec tmux new-session && exit;
 fi
+
+source <(fzf --zsh)

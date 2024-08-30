@@ -16,7 +16,7 @@ tooltip label {
   background-color: @color8;
   border-radius: 8px;
   /*margin: 4px;*/
-  padding: 8px;
+  padding-top: 0px;
   border: @color5 solid 1px;
 }
 
