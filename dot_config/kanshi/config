@@ -4,7 +4,7 @@ profile laptop {
 
 profile uw {
   output "Samsung Electric Company S34C65xU HNTX403859" mode 3440x1440@60 position 0,0
-  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 980,1440 scale 1.667
+  output "Samsung Display Corp. 0x4171 Unknown" disable mode 2880x1800@90 position 980,1440 scale 1.667
 }
 
 profile massy {
