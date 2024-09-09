@@ -56,19 +56,19 @@ window#waybar {
   padding-bottom: 4px;
   border-radius: 8px;
 }
-#workspaces button {
+#workspaces button,#tags button {
   color: @color5;
   border-top: 3px solid transparent;
   padding: 4px 8px;
   transition: all 0.1s ease-in-out;
 }
 
-#workspaces button.active {
+#workspaces button.active,#tags button.focused {
   border-top: 3px solid @color13;
   background-color: @color8;
 }
 
-#workspaces button:hover {
+#workspaces button:hover,#tags button:hover {
   border-top: 3px solid @color13;
   background-color: @color8;
 }

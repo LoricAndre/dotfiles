@@ -1,0 +1,5 @@
+{{- $colors := get .colors .theme }}
+
+riverctl background-color 0x{{ get $colors "0" }}
+riverctl border-color-focused 0x{{ get $colors "5" }}
+riverctl border-color-unfocused 0x{{ get $colors "8" }}

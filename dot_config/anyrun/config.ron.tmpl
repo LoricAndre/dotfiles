@@ -38,10 +38,14 @@ Config(
 
   // List of plugins to be loaded by default, can be specified with a relative path to be loaded from the
   // `<anyrun config dir>/plugins` directory or with an absolute path to just load the file the path points to.
+  capacities_api_key: {{ pass "env/CAPACITIES_API_KEY" | quote }},
+  capacities_space_id: {{ pass "env/CAPACITIES_SPACE_ID" | quote }},
+
   plugins: [
     "libapplications.so",
     "libshell.so",
     "librink.so",
+    "/home/loric/src/perso/anyrun-capacities/target/release/libanyrun_capacities.so"
     // "libkidex.so",
   ],
 )

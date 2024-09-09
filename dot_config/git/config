@@ -41,3 +41,6 @@
 [pclone]
 	root = /home/loric/src
   conf = pclone.conf
+
+[include]
+  path = "~/.config/git/localconfig"

@@ -1,5 +1,5 @@
 alias parin="paru -Sy"
-alias parem="paru -R"
+alias parem="paru -Rscn"
 # f() {
 #   find $@ 2>/dev/null | fzf
 # }
@@ -108,6 +108,7 @@ vnmap() {
 }
 alias pipr=pip install -r
 
+alias adb='HOME="$XDG_DATA_HOME/android" adb'
 adb-tcp() {
   IP=$1
   PORT=$(nmap $IP -T5 -p 37000-44000 | sed -n 's#^\([0-9]\{5\}\)/tcp\sopen\s.*$#\1#p')

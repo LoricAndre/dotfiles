@@ -7,21 +7,23 @@
   "spacing": 12, // Gaps between modules (4px)
   // Choose the order of the modules
   "modules-left": [
-    "hyprland/workspaces",
-    "hyprland/window"
+    //"river/tags"
+    "hyprland/workspaces"
   ],
   "modules-center": [
+    //"river/window"
+    "hyprland/window"
   ],
   "modules-right": [
     //"idle_inhibitor",
-    "custom/updates",
+    //"custom/updates",
     "pulseaudio",
     "network",
     // "power-profiles-daemon",
     "cpu",
     "memory",
     "disk",
-    "backlight",
+    //"backlight",
     "battery",
     "clock",
     "tray",
@@ -86,10 +88,10 @@
       "unlocked": ""
     }
   },
-  "hyprland/mode": {
+  "river/mode": {
     "format": "<span style=\"italic\">{}</span>"
   },
-  "hyprland/scratchpad": {
+  "river/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
     "format-icons": [
