@@ -57,7 +57,6 @@ dunst
 efibootmgr
 eslint
 ethtool
-eza
 fastfetch
 fd
 feh
@@ -106,6 +105,7 @@ helm-secrets
 heroic-games-launcher-bin
 heroic-games-launcher-bin-wayland-hook
 hwinfo
+hyperfine
 hypridle-git
 hyprland
 hyprlock-git
@@ -128,6 +128,7 @@ krdp
 ksshaskpass
 kubectl
 kubectx
+kustomize
 kvantum
 kvantum-theme-catppuccin-git
 kwallet
@@ -284,7 +285,6 @@ xscreensaver-arch-logo
 yazi
 yq
 zbar
-zen-browser-bin
 zip
 zoxide
 zram-generator
