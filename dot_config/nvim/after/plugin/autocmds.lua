@@ -8,16 +8,10 @@ local autocmds = {
     vim.keymap.set("n", "m", "e", { noremap = false, buffer = true })
     vim.keymap.set("n", "j", "t", { noremap = false, buffer = true })
   end },
+  { "BufWinEnter", "?*", "silent! loadview 1" },
+  { "BufWinLeave", "?*", "silent! mkview 1" },
   { "BufEnter", "term://*", "startinsert" },
   { "BufLeave", "term://*", "stopinsert" },
-  -- { "BufWritePost", chezmoi_dir .. "/**", "silent!chezmoi apply" }
-  -- {
-  --   "LspAttach",
-  --   nil,
-  --   function(args)
-  --     require("builtin-completion").setup(args)
-  --   end
-  -- }
 }
 
 local group = vim.api.nvim_create_augroup("custom_autocmds", { clear = true })

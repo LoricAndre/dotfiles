@@ -21,7 +21,7 @@ alias top='btm'
 alias s='status'
 alias :qa='exit'
 alias :q='clear'
-alias reboot='sudo reboot'
+alias reboot='systemctl reboot'
 alias shutdown='sudo shutdown'
 alias mkdir="mkdir -p"
 
