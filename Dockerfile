@@ -59,7 +59,6 @@ RUN sudo pacman -Syu --noconfirm && \
     tmux \
     tmux-plugin-manager \
     traceroute \
-    tree-sitter-git \
     ttf-jetbrains-mono-nerd \
     unzip \
     wget \
