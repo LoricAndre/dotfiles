@@ -75,6 +75,7 @@ RUN sudo pacman -Syu --noconfirm && \
 RUN sudo mkdir /src && sudo chown $USER /src
 COPY --chown=$USER . .local/share/chezmoi
 # RUN pwd && ls -al && exit 1
+RUN chezmoi init
 RUN chezmoi apply --exclude=scripts
 RUN nvim --headless ":Lazy! sync" +qa
 RUN zsh -ic exit
