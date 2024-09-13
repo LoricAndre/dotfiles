@@ -27,6 +27,7 @@ bitwarden
 blueman
 bluez-utils
 bottom
+brave-bin
 breeze-gtk
 breeze-plymouth
 brightnessctl
@@ -157,7 +158,8 @@ mediamtx-bin
 meson
 mysql
 ncdu
-neovim
+neovim-nightly-bin
+neovim-remote
 net-tools
 networkmanager
 network-manager-applet
@@ -243,7 +245,6 @@ tlpui-git
 tmux
 tmux-plugin-manager
 traceroute
-tree-sitter
 ttf-jetbrains-mono-nerd
 ttf-sourcecodepro-nerd
 udiskie
@@ -257,6 +258,7 @@ virtualbox-host-dkms
 visual-studio-code-bin
 vkd3d
 vlc
+vmware-horizon-client
 vtk
 vulkan-mesa-layers
 waybar
@@ -277,7 +279,6 @@ xdg-ninja
 xdg-user-dirs-gtk
 xdo
 xdotool
-xf86-video-intel
 xorg-xev
 xorg-xeyes
 xorg-xinit

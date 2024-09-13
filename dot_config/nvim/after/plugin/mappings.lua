@@ -46,3 +46,5 @@ vim.keymap.set("n", "<leader>c", function()
     vim.cmd.copen()
   end
 end, { desc = "toggle qf" })
+
+vim.cmd.packadd("matchit") -- needed for %-jump

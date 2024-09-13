@@ -53,7 +53,7 @@ alias dkc='docker-compose'
 alias dk='docker'
 
 n() {
-  [[ -d $1 ]] && cd $1 && nvim && cd - || nvim $@
+  [[ -d $1 ]] && cd $1 && nvim && cd - || nvr -sl $@
 }
 
 fcd() {

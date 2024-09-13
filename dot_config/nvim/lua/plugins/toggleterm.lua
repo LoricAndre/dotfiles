@@ -31,14 +31,22 @@ return {
     end,
     event   = "VeryLazy",
     keys    = {
-      { "<leader>gg", function()
-        Lazygit:toggle()
-        vim.cmd("startinsert")
-      end, desc = "[GIT] Toggle Lazygit" },
-      { "<leader>k",  function()
-        K9s:toggle()
-        vim.cmd("startinsert")
-      end,     desc = "[k8s] Toggle k9s" },
+      {
+        "<leader>gg",
+        function()
+          Lazygit:toggle()
+          vim.cmd("startinsert")
+        end,
+        desc = "[GIT] Toggle Lazygit"
+      },
+      {
+        "<leader>k",
+        function()
+          K9s:toggle()
+          vim.cmd("startinsert")
+        end,
+        desc = "[k8s] Toggle k9s"
+      },
     }
   }
 }

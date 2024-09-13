@@ -19,6 +19,7 @@ RUN sudo pacman -Syu --noconfirm && \
     atuin \
     bat \
     chezmoi \
+    direnv \
     dotnet-sdk \
     dotnet-sdk-6.0 \
     eza \
@@ -36,7 +37,6 @@ RUN sudo pacman -Syu --noconfirm && \
     kubectx \
     lazygit \
     lsof \
-    neovim \
     man-db \
     mariadb \
     mongodb-tools \
@@ -44,6 +44,8 @@ RUN sudo pacman -Syu --noconfirm && \
     nerdfix \
     nmap \
     nuget \
+    neovim-nightly-bin \
+    neovim-remote \
     nvm \
     openssh \
     pass \
@@ -78,9 +80,9 @@ COPY --chown=$USER . .local/share/chezmoi
 RUN chezmoi init
 RUN chezmoi apply --exclude=scripts
 RUN nvim --headless ":Lazy! sync" +qa
-RUN zsh -ic exit
-RUN zsh -ic exit
-RUN zsh -ic "nvm install --lts"
+RUN zsh -lic exit
+RUN zsh -lic exit
+RUN zsh -lic "nvm install --lts"
 # RUN nvim --headless +"sleep 60" +qa
 WORKDIR /src
-ENTRYPOINT zsh
+ENTRYPOINT ["zsh", "-li"]
