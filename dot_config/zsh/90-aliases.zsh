@@ -53,7 +53,18 @@ alias dkc='docker-compose'
 alias dk='docker'
 
 n() {
-  [[ -d $1 ]] && cd $1 && nvim && cd - || nvr -sl $@
+  if [[ -d $f ]]; then 
+    cur=$(pwd)
+    cd $f
+    nvim
+    cd $cur
+  else
+    if [[ -z "$NVIM" ]]; then
+      nvim $@
+    else
+      nvr -sl $@
+    fi
+  fi
 }
 
 fcd() {
@@ -95,7 +106,7 @@ kgt() {
 }
 
 alias tf='terraform'
-alias nvim='TERM=xterm nvim'
+# alias nvim='TERM=xterm nvim'
 alias gn='n +"Telescope repo list"'
 alias :e='n'
 alias gf='g a && g c && g p'
@@ -142,7 +153,6 @@ rt() {
 }
 alias cm=chezmoi
 
-alias obsi="pushd ~/obsi; nvim home.md +ObsidianToday; popd"
 alias cdg='cd "$HOME/ghq/$(ghq list | sk)"'
 
 alias m="sudo mpm -C ~/.config/mpm/config.yaml"

@@ -24,7 +24,7 @@
   },
   "assistant": {
     "default_model": {
-      "provider": "anthropic",
+      "provider": "zed.dev",
       "model": "claude-3-5-sonnet-20240620"
     },
     "version": "2",
@@ -71,8 +71,8 @@
     "line_height": "standard",
     "copy_on_select": true,
     "env": {
-      "EDITOR": "zed --wait",
-      "VISUAL": "zed --wait",
+      "EDITOR": "zeditor --wait",
+      "VISUAL": "zeditor --wait",
       "ZED": "1"
     }
   },

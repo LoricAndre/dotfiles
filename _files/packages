@@ -20,10 +20,8 @@ baobab
 base
 base-devel
 bat
-beeper-latest-bin
 bees
 bind
-bitwarden
 blueman
 bluez-utils
 bottom
@@ -169,7 +167,6 @@ nmap
 noto-fonts-emoji
 nuget
 nvm
-obsidian
 obs-studio
 ocs-url
 openbsd-netcat
@@ -202,6 +199,7 @@ plymouth-kcm
 pnpm
 polkit-gnome
 postgresql
+power-options-webview
 powershell-bin
 powertop
 progress
@@ -241,7 +239,6 @@ teamviewer
 timeshift
 tldr
 tllist
-tlpui-git
 tmux
 tmux-plugin-manager
 traceroute
@@ -286,8 +283,8 @@ xscreensaver-arch-logo
 yazi
 yq
 zbar
+zed-preview-bin
 zip
 zoxide
 zram-generator
 zsh
-zui-bin

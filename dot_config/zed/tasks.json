@@ -1,11 +1,4 @@
 [
-  // {
-  //   "label": "pnpm: development server",
-  //   "command": "pnpm",
-  //   "args": ["run", "dev"],
-  //   "use_new_terminal": true,
-  //   "reveal": "never"
-  // },
   {
     "label": "docker: start compose project",
     "command": "docker",
@@ -28,7 +21,7 @@
     "hide": "on_success"
   },
   {
-    "label": "git: stage $ZED_RELATIVE_FILE",
+    "label": "git: stage current file",
     "command": "git add $ZED_RELATIVE_FILE",
     "reveal": "never",
     "hide": "on_success"
@@ -55,14 +48,6 @@
   {
     "label": "git: pull",
     "command": "git pull",
-    "reveal": "always",
-    "hide": "on_success"
-  },
-  {
-    "label": "Open lazygit",
-    "command": "lazygit",
-    "use_new_terminal": true,
-    "allow_concurrent_runs": false,
     "reveal": "always",
     "hide": "on_success"
   }

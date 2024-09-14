@@ -1,6 +1,6 @@
 local setup_completion_keymaps    = require("utils.lsp").setup_completion_keymaps
 local show_complete_documentation = require("utils.lsp").show_complete_documentation
-local settings = require("settings")
+local settings                    = require("settings")
 
 local mason_opts                  = {
   ui = {
@@ -105,6 +105,14 @@ return {
       },
       event = "LspAttach",
       opts = {}
+    },
+    {
+      "rachartier/tiny-inline-diagnostic.nvim",
+      event = "VeryLazy", -- Or `LspAttach`
+      config = function()
+        vim.diagnostic.config({ virtual_text = false })
+        require('tiny-inline-diagnostic').setup()
+      end
     },
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
