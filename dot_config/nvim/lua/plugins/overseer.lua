@@ -2,7 +2,7 @@ return {
   'stevearc/overseer.nvim',
   event = "VeryLazy",
   dependencies = {
-    "stevearc/dressing.nvim"
+    { "stevearc/dressing.nvim", lazy = true },
   },
   opts = {
     -- strategy = {
@@ -24,8 +24,8 @@ return {
     }
   },
   keys = {
-    { "<leader>rr", "<CMD>OverseerRun<CR>",    noremap = true, desc = "[ovs] run" },
-    { "<leader>rt", "<CMD>OverseerToggle<CR>", noremap = true, desc = "[ovs] run" },
+    { "<leader>rr", "<CMD>OverseerRun<CR>",        noremap = true, desc = "[ovs] run" },
+    { "<leader>rt", "<CMD>OverseerToggle<CR>",     noremap = true, desc = "[ovs] run" },
     { "<leader>ra", "<CMD>OverseerTaskAction<CR>", noremap = true, desc = "[ovs] run" },
   }
 }

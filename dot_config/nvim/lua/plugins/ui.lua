@@ -22,7 +22,8 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-lua/plenary.nvim", lazy = true },
+    event = "VeryLazy",
     opts = {}
   },
   { 'kevinhwang91/nvim-bqf', ft = 'qf' },
@@ -33,7 +34,7 @@ return {
     },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
+      { "MunifTanjim/nui.nvim", lazy = true },
     }
   }
 }

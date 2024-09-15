@@ -68,8 +68,6 @@ freerdp
 fuzzel
 fwupd
 fzf
-gamemode
-gamescope
 git
 git-cliff
 git-credential-manager-bin
@@ -135,7 +133,19 @@ kwalletmanager
 kwallet-pam
 kwrited
 lazygit
-lib32-mangohud
+lib32-fontconfig
+lib32-gtk2
+lib32-gtk3
+lib32-libnm
+lib32-libpulse
+lib32-libva
+lib32-libvdpau
+lib32-libxinerama
+lib32-libxrandr
+lib32-libxtst
+lib32-openal
+lib32-sdl2
+lib32-vkd3d
 lib32-vulkan-mesa-layers
 libgnome-keyring
 libpulse
@@ -150,6 +160,7 @@ lsof
 lswt
 lua51
 luarocks
+lutris
 ly
 man-db
 mediamtx-bin
@@ -163,6 +174,7 @@ networkmanager
 network-manager-applet
 networkmanager-openvpn
 nfs-utils
+niri
 nmap
 noto-fonts-emoji
 nuget
@@ -199,7 +211,6 @@ plymouth-kcm
 pnpm
 polkit-gnome
 postgresql
-power-options-webview
 powershell-bin
 powertop
 progress
@@ -239,6 +250,7 @@ teamviewer
 timeshift
 tldr
 tllist
+tlp
 tmux
 tmux-plugin-manager
 traceroute
@@ -263,6 +275,8 @@ waybar-module-pacman-updates-git
 wdisplays
 wev
 wget
+wine
+winetricks
 wireplumber
 wireshark-qt
 wl-clipboard
@@ -276,10 +290,12 @@ xdg-ninja
 xdg-user-dirs-gtk
 xdo
 xdotool
+xf86-video-intel
 xorg-xev
 xorg-xeyes
 xorg-xinit
 xscreensaver-arch-logo
+xwayland-satellite
 yazi
 yq
 zbar

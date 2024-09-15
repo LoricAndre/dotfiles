@@ -91,24 +91,24 @@ return {
   "williamboman/mason.nvim",
   -- after = "coq_nvim",
   dependencies = {
-    "neovim/nvim-lspconfig",
-    "williamboman/mason-lspconfig.nvim",
-    "nvimtools/none-ls.nvim",
+    { "neovim/nvim-lspconfig",             lazy = true },
+    { "williamboman/mason-lspconfig.nvim", lazy = true },
+    { "nvimtools/none-ls.nvim",            lazy = true },
     -- "ray-x/lsp_signature.nvim",
-    { "j-hui/fidget.nvim", opts = {} },
+    { "j-hui/fidget.nvim",                 opts = {},  lazy = true },
     {
       "rachartier/tiny-code-action.nvim",
       enabled = settings.finder == "telescope",
       dependencies = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-telescope/telescope.nvim" },
+        { "nvim-lua/plenary.nvim",         lazy = true },
+        { "nvim-telescope/telescope.nvim", lazy = true },
       },
       event = "LspAttach",
       opts = {}
     },
     {
       "rachartier/tiny-inline-diagnostic.nvim",
-      event = "VeryLazy", -- Or `LspAttach`
+      event = "LspAttach",
       config = function()
         vim.diagnostic.config({ virtual_text = false })
         require('tiny-inline-diagnostic').setup()
@@ -116,25 +116,39 @@ return {
     },
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      cond = false,
+      enabled = false,
+      event = "LspAttach",
       config = function()
         vim.diagnostic.config({
           virtual_text = false,
         })
         require("lsp_lines").setup()
       end,
+      lazy = true
     }
   },
-  event = "VeryLazy",
+  event = "Filetype",
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local registry = require("mason-registry")
     local lspconfig = require("lspconfig")
 
-    local has_coq, coq = pcall(require, "coq_nvim")
-    local has_epo, epo = pcall(require, "epo")
-    local has_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+    local has_coq = settings.completion == "coq"
+    if has_coq then
+      ---@diagnostic disable-next-line: lowercase-global
+      has_coq, coq = pcall(require, "coq_nvim")
+    end
+    local has_epo = settings.completion == "epo"
+    if has_epo then
+      ---@diagnostic disable-next-line: lowercase-global
+      has_epo, epo = pcall(require, "epo")
+    end
+    local has_cmp = settings.completion == "cmp"
+    if has_cmp then
+      ---@diagnostic disable-next-line: lowercase-global
+      has_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
+    end
 
     mason.setup(mason_opts)
 
@@ -181,7 +195,7 @@ return {
     { "gi", function() return vim.lsp.buf.implementation() end,              desc = "[LSP] Implementations" },
     { 'gl', function() return vim.lsp.buf.incoming_calls() end,              desc = '[LSP] Incoming calls' },
     { 'gk', function() return vim.lsp.buf.outgoing_calls() end,              desc = '[LSP] Outgoing calls' },
-    { 'gm', function() return vim.diagnostic.goto_next({ count = 1 }) end,   desc = '[LSP] Next diagnostic' },
-    { 'gj', function() return vim.diagnostic.goto_prev({ count = -1 }) end,  desc = '[LSP] Prev diagnostic' },
+    { 'gm', function() return vim.diagnostic.jump({ count = 1 }) end,        desc = '[LSP] Next diagnostic' },
+    { 'gj', function() return vim.diagnostic.jump({ count = -1 }) end,       desc = '[LSP] Prev diagnostic' },
   }
 }

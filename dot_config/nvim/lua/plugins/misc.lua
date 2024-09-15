@@ -8,10 +8,12 @@ return {
   --   opts = {}
   -- },
   {
-    "sheerun/vim-polyglot"
+    "sheerun/vim-polyglot",
+    event = "VeryLazy"
   },
   {
     "norcalli/nvim-colorizer.lua",
+    event = "Filetype",
     config = function()
       vim.o.termguicolors = true
       return require("colorizer").setup({
@@ -45,5 +47,5 @@ return {
       },
     },
   },
-  { "mistricky/codesnap.nvim", build = "make" },
+  { "mistricky/codesnap.nvim", build = "make", cmd = { "CodeSnap", "CodeSnapAscii", "CodeSnapHighlight", "CodeSnapSave", "CodeSnapSaveHighlight" } },
 }

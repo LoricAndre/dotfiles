@@ -1,7 +1,7 @@
 return {
   'numToStr/Navigator.nvim',
   opts = {},
-  lazy = false,
+  -- lazy = false,
   keys = {
     { "<M-j>", function() require('Navigator').left() end,  mode = { "i", "n", "t" }, desc = "[TMX] Navigate left" },
     { "<M-k>", function() require('Navigator').down() end,  mode = { "i", "n", "t" }, desc = "[TMX] Navigate down" },

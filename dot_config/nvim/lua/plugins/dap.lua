@@ -1,14 +1,31 @@
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
-    "rcarriga/nvim-dap-ui",
-    "jay-babu/mason-nvim-dap.nvim",
-    "nvim-neotest/nvim-nio"
+    { "rcarriga/nvim-dap-ui",         lazy = true },
+    { "jay-babu/mason-nvim-dap.nvim", lazy = true },
+    { "nvim-neotest/nvim-nio",        lazy = true },
+    { "williamboman/mason.nvim",      lazy = true },
   },
   after = {
     "williamboman/mason.nvim"
   },
-  event = "VeryLazy",
+  cmd = {
+    "DapContinue",
+    "DapDisconnect",
+    "DapEval",
+    "DapInstall",
+    "DapLoadLaunchJSON",
+    "DapNew",
+    "DapRestartFrame",
+    "DapSetLogLevel",
+    "DapShowLog",
+    "DapStepInto",
+    "DapStepOut",
+    "DapStepOver",
+    "DapTerminate",
+    "DapToggleBreakpoint",
+    "DapToggleRepl",
+  },
   config = function()
     local dap = require("dap")
     local dapui = require("dapui")

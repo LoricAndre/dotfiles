@@ -1,8 +1,8 @@
 return {
   'nvim-treesitter/nvim-treesitter',
   dependencies = {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    "rrethy/nvim-treesitter-textsubjects"
+    { "nvim-treesitter/nvim-treesitter-textobjects", lazy = true },
+    { "rrethy/nvim-treesitter-textsubjects",         lazy = true }
   },
   build = ':TSUpdate',
   main = 'nvim-treesitter.configs',

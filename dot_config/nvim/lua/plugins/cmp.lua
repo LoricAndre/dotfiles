@@ -47,23 +47,24 @@ end
 return {
   "hrsh7th/nvim-cmp",
   dependencies = {
-    "hrsh7th/cmp-path",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-nvim-lsp-document-symbol",
-    "hrsh7th/cmp-nvim-lua",
-    "davidsierradz/cmp-conventionalcommits",
-    "rafamadriz/friendly-snippets",
-    { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+    { "hrsh7th/cmp-path",                      lazy = true },
+    { "hrsh7th/cmp-buffer",                    lazy = true },
+    { "hrsh7th/cmp-nvim-lsp",                  lazy = true },
+    { "hrsh7th/cmp-nvim-lsp-signature-help",   lazy = true },
+    { "hrsh7th/cmp-nvim-lsp-document-symbol",  lazy = true },
+    { "hrsh7th/cmp-nvim-lua",                  lazy = true },
+    { "davidsierradz/cmp-conventionalcommits", lazy = true },
+    { "rafamadriz/friendly-snippets",          lazy = true },
+    { "petertriho/cmp-git",                    requires = "nvim-lua/plenary.nvim", lazy = true },
     {
       "saadparwaiz1/cmp_luasnip",
       dependencies = {
-        "L3MON4D3/LuaSnip",
-        "rafamadriz/friendly-snippets"
+        { "L3MON4D3/LuaSnip",             lazy = true },
+        { "rafamadriz/friendly-snippets", lazy = true },
       },
+      lazy = true
     },
-    "onsails/lspkind-nvim"
+    { "onsails/lspkind-nvim", lazy = true },
   },
   event = "VeryLazy",
   enabled = require("settings").completion == "cmp",

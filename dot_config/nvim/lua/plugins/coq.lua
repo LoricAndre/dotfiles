@@ -4,8 +4,8 @@ return {
   cond = require("settings").s_completion == "coq",
   branch = "coq",
   dependencies = {
-    { "ms-jpq/coq.artifacts",  branch = "artifacts" },
-    { "ms-jpq/coq.thirdparty", branch = "3p" }
+    { "ms-jpq/coq.artifacts",  branch = "artifacts", lazy = true },
+    { "ms-jpq/coq.thirdparty", branch = "3p",        lazy = true }
   },
   config = function()
     vim.g.coq_settings = {

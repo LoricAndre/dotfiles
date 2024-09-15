@@ -4,6 +4,7 @@
 return {
     "Isrothy/neominimap.nvim",
     lazy = false, -- NOTE: NO NEED to Lazy load
+    enabled = false,
     cmd = "Neominimap",
     version = "v3.*.*",
     keys = {

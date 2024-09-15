@@ -24,10 +24,10 @@ return {
     },
   },
   dependencies = {
-    "nvim-tree/nvim-web-devicons",
-    "stevearc/dressing.nvim",
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
+    { "nvim-tree/nvim-web-devicons", lazy = true },
+    { "stevearc/dressing.nvim",      lazy = true },
+    { "nvim-lua/plenary.nvim",       lazy = true },
+    { "MunifTanjim/nui.nvim",        lazy = true },
     --- The below is optional, make sure to setup it properly if you have lazy=true
     -- {
     --   'MeanderingProgrammer/render-markdown.nvim',

@@ -1,21 +1,25 @@
 local extensions = {
   fzf = { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-  ["ui-select"] = "nvim-telescope/telescope-ui-select.nvim",
-  ghq = "nvim-telescope/telescope-ghq.nvim",
-  diff = "jemag/telescope-diff.nvim",
-  undo = "debugloop/telescope-undo.nvim",
+  -- ["ui-select"] = "nvim-telescope/telescope-ui-select.nvim",
+  -- ghq = "nvim-telescope/telescope-ghq.nvim",
+  -- diff = "jemag/telescope-diff.nvim",
+  -- undo = "debugloop/telescope-undo.nvim",
 }
 
-local dependencies = { "nvim-lua/plenary.nvim", { "stevearc/dressing.nvim", opts = {} } }
+local dependencies = { { "nvim-lua/plenary.nvim", lazy = true }, { "stevearc/dressing.nvim", lazy = true, opts = {} } }
 
 for _, v in pairs(extensions) do
   ---@diagnostic disable-next-line: assign-type-mismatch
-  table.insert(dependencies, #dependencies + 1, v)
+  if type(v) == "table" then
+    v.lazy = true
+    table.insert(dependencies, #dependencies + 1, v)
+  else
+    table.insert(dependencies, #dependencies + 1, { v, lazy = true })
+  end
 end
 
 return {
   'nvim-telescope/telescope.nvim',
-  event = "VeryLazy",
   enabled = require("settings").finder == "telescope",
   dependencies = dependencies,
   config = function()

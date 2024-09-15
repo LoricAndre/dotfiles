@@ -2,7 +2,7 @@ return {
   "sindrets/diffview.nvim",
   enabled = false,
   dependencies = {
-    "nvim-tree/nvim-web-devicons"
+    { "nvim-tree/nvim-web-devicons", lazy = true }
   },
   opts = {
     diff_binaries = false,    -- Show diffs for binaries

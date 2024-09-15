@@ -5,27 +5,16 @@ local colorscheme = "{{ .theme }}"
 local repos = {
   nordfox = "EdenEast/nightfox.nvim",
   dracula = "Mofiqul/dracula.nvim",
-  catpuccin = "catppuccin/nvim"
+  ["catppuccin-mocha"] = "catppuccin/nvim",
+  ["catppuccin-macchiato"] = "catppuccin/nvim",
 }
 
-
-local specs = {}
-local is_first = true
-
-for _, value in pairs(repos) do
-  local spec
-  if is_first then
-    spec = {
-      value,
-      config = function ()
-        vim.cmd("colorscheme " .. colorscheme)
-      end
-    }
-    is_first = false
-  else
-    spec = { value }
+local spec = {
+  repos[colorscheme],
+  name = colorscheme,
+  config = function ()
+    vim.cmd("colorscheme " .. colorscheme)
   end
-  table.insert(specs, spec)
-end
+}
 
-return specs
+return spec

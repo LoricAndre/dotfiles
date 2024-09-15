@@ -4,5 +4,5 @@ return {
   opts = {
     default_file_explorer = false
   },
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { { "nvim-tree/nvim-web-devicons", lazy = true } },
 }
