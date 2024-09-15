@@ -279,8 +279,8 @@
     "on-click": "tmux new-session -s waybar-update paru"
   },
   "custom/swaync": {
-    "tooltip": false,
-    "format": "{icon} ({})",
+    "tooltip": "{}",
+    "format": "{icon}",
     "format-icons": {
       "notification": "<sup></sup>",
       "none": "",
