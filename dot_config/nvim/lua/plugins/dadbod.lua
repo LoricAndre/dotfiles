@@ -1,6 +1,5 @@
 return {
   'kristijanhusak/vim-dadbod-ui',
-  enabled = false,
   dependencies = {
     {
       'tpope/vim-dadbod',
@@ -21,20 +20,20 @@ return {
   config = function()
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
-    local autocomplete_group = vim.api.nvim_create_augroup("vimrc_autocompletion", { clear = true })
-    local cmp = require("cmp")
-    vim.api.nvim_create_autocmd("FileType", {
-      pattern = { "sql", "mysql", "plsql" },
-      callback = function()
-        cmp.setup.buffer({
-          sources = {
-            { name = "vim-dadbod-completion" },
-            { name = "buffer" },
-            { name = "luasnip" },
-          },
-        })
-      end,
-      group = autocomplete_group,
-    })
+    -- local autocomplete_group = vim.api.nvim_create_augroup("vimrc_autocompletion", { clear = true })
+    -- local cmp = require("cmp")
+    -- vim.api.nvim_create_autocmd("FileType", {
+    --   pattern = { "sql", "mysql", "plsql" },
+    --   callback = function()
+    --     cmp.setup.buffer({
+    --       sources = {
+    --         { name = "vim-dadbod-completion" },
+    --         { name = "buffer" },
+    --         { name = "luasnip" },
+    --       },
+    --     })
+    --   end,
+    --   group = autocomplete_group,
+    -- })
   end,
 }

@@ -22,6 +22,8 @@ alias s='status'
 alias :qa='exit'
 alias :q='clear'
 alias reboot='systemctl reboot'
+alias winboot='systemctl reboot --boot-loader-entry=auto-windows'
+alias uefiboot='systemctl reboot --firmware-setup'
 alias shutdown='sudo shutdown'
 alias mkdir="mkdir -p"
 

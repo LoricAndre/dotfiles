@@ -8,6 +8,7 @@ ansible
 anyrun-git
 apache
 arandr
+archiso
 asar
 aspnet-runtime
 aspnet-runtime-6.0
@@ -53,6 +54,7 @@ dotnet-sdk
 dotnet-sdk-6.0
 downgrade
 dunst
+edk2-ovmf
 efibootmgr
 eslint
 ethtool
@@ -215,6 +217,7 @@ powershell-bin
 powertop
 progress
 qbittorrent
+qemu-desktop
 qt5-wayland
 qt6-wayland
 rclone
@@ -294,8 +297,6 @@ xf86-video-intel
 xorg-xev
 xorg-xeyes
 xorg-xinit
-xscreensaver-arch-logo
-xwayland-satellite
 yazi
 yq
 zbar
