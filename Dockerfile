@@ -7,71 +7,29 @@ ARG USER=loric
 RUN useradd -m $USER
 RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
+RUN pacman -Syu --noconfirm && \
+  pacman -Sy --noconfirm git base-devel && \
+  pacman -Scc && \
+  sudo rm /var/cache -rf
+
 USER $USER
 WORKDIR /home/$USER
 
-RUN sudo pacman -Syu --noconfirm && \
-  sudo pacman -S --noconfirm git \
-                        openssh \
-                        sudo && \
-  cd /tmp && git clone https://aur.archlinux.org/paru.git && cd paru && makepkg -si --noconfirm && \
-  cd && paru -Sy --noconfirm \
-    atuin \
-    bat \
-    chezmoi \
-    direnv \
-    dotnet-sdk \
-    dotnet-sdk-6.0 \
-    eza \
-    fd \
-    fzf \
-    skim \
-    helm \
-    helm-diff \
-    helmfile \
-    helm-secrets \
-    jq \
-    k3sup \
-    k9s \
-    kubectl \
-    kubectx \
-    lazygit \
-    lsof \
-    man-db \
-    mariadb \
-    mongodb-tools \
-    ncdu \
-    nerdfix \
-    nmap \
-    nuget \
-    neovim-nightly-bin \
-    neovim-remote \
-    nvm \
-    openssh \
-    pass \
-    pnpm \
-    postgresql \
-    powershell-bin \
-    progress \
-    python-virtualenv \
-    ripgrep \
-    sops \
-    starship \
-    tldr \
-    tmux \
-    tmux-plugin-manager \
-    traceroute \
-    ttf-jetbrains-mono-nerd \
-    unzip \
-    wget \
-    wl-clipboard \
-    yq \
-    zip \
-    zoxide \
-    zsh && \
+# Add chaotic aur & trizen
+RUN cd /tmp && git clone https://aur.archlinux.org/trizen.git && \
+    cd trizen && \
+    makepkg -si --noconfirm && \
+    sudo pacman -Scc && \
+    cd / && sudo rm /tmp/* -rf && \
+    sudo rm /var/cache -rf
+
+
+COPY _files/headless-packages packages
+
+RUN trizen -Sy --noconfirm $(cat packages) && \
   rm .cache -rf && sudo rm /tmp/* -rf && \
   go clean -modcache && \
-  paru -Scc && \
+  trizen -Scc && \
   sudo rm /var/cache -rf
 
 RUN sudo mkdir /src && sudo chown $USER /src

@@ -1,4 +1,4 @@
-aur_helper := "paru"
+aur_helper := "trizen"
 pacman_args := "--needed --noconfirm"
 
 default:

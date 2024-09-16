@@ -1,6 +1,6 @@
 mpm:
   manager:
-    - paru
+    - trizen
     - cargo
     - pipx
     - gem
