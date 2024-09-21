@@ -1,0 +1,36 @@
+colors:
+  "aura-soft-dark":
+    # Black
+    "0": "21202E"  #21202E
+    "8": "15141b"  #15141b
+
+    # red
+    "1": "c55858"  #c55858
+    "9": "ff6767"  #ff6767
+
+    # green
+    "2": "54c59f"  #54c59f
+    "10": "61ffca"  #61ffca
+
+    # yellow
+    "3": "c7a06f"  #c7a06f
+    "11": "ffca85"  #ffca85
+
+    # blue
+    "4": "6cb2c7"  #6cb2c7
+    "12": "82e2ff"  #82e2ff
+
+    # magenta
+    "5": "8464c6"  #8464c6
+    "13": "a277ff"  #a277ff
+
+    # cyan
+    "6": "c17ac8"  #c17ac8
+    "14": "54c59f"  #54c59f
+
+    # white
+    "7": "bdbdbd"  #bdbdbd
+    "15": "edecee"  #edecee
+
+
+#

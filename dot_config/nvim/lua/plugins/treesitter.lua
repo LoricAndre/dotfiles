@@ -22,5 +22,6 @@ return {
     indent = {
       enable = true
     },
-  }
+  },
+  event = "VeryLazy"
 }

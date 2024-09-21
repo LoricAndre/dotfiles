@@ -7,12 +7,19 @@ local repos = {
   dracula = "Mofiqul/dracula.nvim",
   ["catppuccin-mocha"] = "catppuccin/nvim",
   ["catppuccin-macchiato"] = "catppuccin/nvim",
+  ["aura-dark"] = "baliestri/aura-theme",
+  ["aura-soft-dark"] = "baliestri/aura-theme",
+  ["aura-dark-soft-text"] = "baliestri/aura-theme",
+  ["aura-soft-dark-soft-text"] = "baliestri/aura-theme",
 }
 
 local spec = {
   repos[colorscheme],
   name = colorscheme,
-  config = function ()
+  lazy = false,
+  priority = 1000,
+  config = function(plugin)
+    vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
     vim.cmd("colorscheme " .. colorscheme)
   end
 }

@@ -1,0 +1,11 @@
+# /home/loric/.config/tmuxinator/dadbod.yml
+
+name: dadbod
+root: ~/
+
+windows:
+  - editor:
+      layout: main-vertical
+      panes:
+        - nvim +DBUI
+

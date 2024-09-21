@@ -1,4 +1,4 @@
-theme: catppuccin-macchiato
+theme: aura-soft-dark
 terminal: kitty
 packages_file: .chezmoidata/packages.yaml
 aurHelper: paru

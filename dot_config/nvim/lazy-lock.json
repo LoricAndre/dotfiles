@@ -1,7 +1,7 @@
 {
   "Navigator.nvim": { "branch": "master", "commit": "91d86506ac2a039504d5205d32a1d4bc7aa57072" },
+  "aura-soft-dark": { "branch": "feat/neovim-port", "commit": "6c0b2244c57b9b8588c1f9ea9f56ef1d41d82e87" },
   "avante.nvim": { "branch": "main", "commit": "f9520c4fdfed08e9cc609d6cd319b358e4ea33a5" },
-  "catppuccin-macchiato": { "branch": "main", "commit": "63685e1562ef53873c9764b483d7ac5c7a608922" },
   "codesnap.nvim": { "branch": "main", "commit": "c2924bf6c9a2c2c03318fae9b7fe0706412b9d9c" },
   "dashboard-nvim": { "branch": "master", "commit": "fabf5feec96185817c732d47d363f34034212685" },
   "dressing.nvim": { "branch": "master", "commit": "c5775a888adbc50652cb370073fcfec963eca93e" },
