@@ -3,12 +3,23 @@ profile laptop {
 }
 
 profile uw {
-  output "Samsung Electric Company S34C65xU HNTX403859" mode 3440x1440@60 position 0,0
-  output "Samsung Display Corp. 0x4171 Unknown" disable mode 2880x1800@90 position 980,1440 scale 1.667
+  output "Samsung Electric Company S34C65xU HNTX403859" {
+    mode 3440x1440@60
+    position 0,0
+  }
+  output "Samsung Display Corp. 0x4171 Unknown" disable
+}
+
+profile marine {
+  output "Huawei Technologies Co., Inc. ZQE-CAA 0xC080F622" {
+    mode 3440x1440
+    position 0,0
+  }
+  output eDP-1 disable
 }
 
 profile massy {
-  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,0 scale 1.667
+  output eDP-1 mode 2880x1800@90 position 0,0 scale 1.667
   output "ViewSonic Corporation VX2458 Series VFA193000894" enable position 1727,0
 }
 

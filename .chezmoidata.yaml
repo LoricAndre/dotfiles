@@ -1,4 +1,4 @@
-theme: carbonfox #catppuccin-macchiato
+theme: catppuccin-macchiato
 terminal: kitty
 packages_file: .chezmoidata/packages.yaml
 aurHelper: paru

@@ -1,31 +1,32 @@
 return {
   'stevearc/overseer.nvim',
-  event = "VeryLazy",
+  event = 'VeryLazy',
   dependencies = {
-    { "stevearc/dressing.nvim", lazy = true },
+    { 'stevearc/dressing.nvim', lazy = true },
   },
   opts = {
-    -- strategy = {
-    --   "jobstart",
-    --   use_terminal = false
-    -- },
-    dap = false,
+    dap = true,
     strategy = {
-      "toggleterm",
-      direction = "float"
+      'toggleterm',
+      direction = 'vertical',
+      auto_scroll = true,
+      close_on_exit = false,
+      quit_on_exit = 'never',
+      open_on_start = true,
+      hidden = true
     },
     templates = {
-      "builtin",
-      "docker.compose"
+      'builtin',
+      'docker.compose'
     },
     task_list = {
-      direction = "right",
+      direction = 'right',
       max_width = { 75, 0.2 },
     }
   },
   keys = {
-    { "<leader>rr", "<CMD>OverseerRun<CR>",        noremap = true, desc = "[ovs] run" },
-    { "<leader>rt", "<CMD>OverseerToggle<CR>",     noremap = true, desc = "[ovs] run" },
-    { "<leader>ra", "<CMD>OverseerTaskAction<CR>", noremap = true, desc = "[ovs] run" },
+    { '<leader>rr', '<CMD>OverseerRun<CR>',        noremap = true, desc = '[ovs] run' },
+    { '<leader>rt', '<CMD>OverseerToggle<CR>',     noremap = true, desc = '[ovs] run' },
+    { '<leader>ra', '<CMD>OverseerTaskAction<CR>', noremap = true, desc = '[ovs] run' },
   }
 }

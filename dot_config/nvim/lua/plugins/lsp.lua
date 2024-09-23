@@ -186,7 +186,7 @@ return {
     { "ga", function() return vim.lsp.buf.code_action({ apply = true }) end, mode = "v",                     desc = "[LSP] Code Action" },
     { "gn", function() return vim.lsp.buf.rename() end,                      desc = "[LSP] Rename" },
     { "K",  function() return vim.lsp.buf.hover() end,                       desc = "[LSP] Hover" },
-    { "gf", function() return vim.lsp.buf.format({ async = true }) end,      desc = "[LSP] Format" },
+    -- { "gf", function() return vim.lsp.buf.format({ async = true }) end,      desc = "[LSP] Format" },
     { "gf", function() return vim.lsp.buf.format({ async = true }) end,      mode = "v",                     desc = "[LSP] Format" },
     { "gd", function() return vim.lsp.buf.definition() end,                  desc = "[LSP] Definition" },
     { "gr", function() return vim.lsp.buf.references() end,                  desc = "[LSP] References" },

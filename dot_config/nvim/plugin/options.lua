@@ -1,4 +1,5 @@
 local options = {
+  wrap = false,
   autoindent = true,
   title = true,
   backspace = 'indent,eol,start',
