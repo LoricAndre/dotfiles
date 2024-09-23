@@ -1,4 +1,4 @@
-[ -z "$EDITOR" ] && export EDITOR="nvr -sl"
+[ -z "$EDITOR" ] && export EDITOR="nvr -sl --remote-wait"
 [ -z "$VISUAL" ] && export VISUAL=$EDITOR
 [ -z "$MANPAGER" ] && export MANPAGER="nvim +Man!"
 # export XDG_CURRENT_DESKTOP=Unity
