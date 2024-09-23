@@ -11,18 +11,18 @@ return {
     "sheerun/vim-polyglot",
     event = "VeryLazy"
   },
-  {
-    "norcalli/nvim-colorizer.lua",
-    event = "Filetype",
-    config = function()
-      vim.o.termguicolors = true
-      return require("colorizer").setup({
-        ['*'] = {
-          names = false
-        }
-      })
-    end
-  },
+  -- {
+  --   "norcalli/nvim-colorizer.lua",
+  --   event = "Filetype",
+  --   config = function()
+  --     vim.o.termguicolors = true
+  --     return require("colorizer").setup({
+  --       ['*'] = {
+  --         names = false
+  --       }
+  --     })
+  --   end
+  -- },
   {
     "chrisgrieser/nvim-chainsaw",
     opts = {},

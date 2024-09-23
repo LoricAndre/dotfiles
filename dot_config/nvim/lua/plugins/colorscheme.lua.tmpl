@@ -1,26 +1,26 @@
 # vim:ft=lua
-local colorscheme = "{{ .theme }}"
+local colorscheme = '{{ .theme }}'
 
+local colorscheme_prefix = colorscheme:gmatch('%w+')()
 
 local repos = {
-  nordfox = "EdenEast/nightfox.nvim",
-  dracula = "Mofiqul/dracula.nvim",
-  ["catppuccin-mocha"] = "catppuccin/nvim",
-  ["catppuccin-macchiato"] = "catppuccin/nvim",
-  ["aura-dark"] = "baliestri/aura-theme",
-  ["aura-soft-dark"] = "baliestri/aura-theme",
-  ["aura-dark-soft-text"] = "baliestri/aura-theme",
-  ["aura-soft-dark-soft-text"] = "baliestri/aura-theme",
+  nordfox = 'EdenEast/nightfox.nvim',
+  nightfox = 'EdenEast/nightfox.nvim',
+  carbonfox = 'EdenEast/nightfox.nvim',
+  dracula = 'Mofiqul/dracula.nvim',
+  catppuccin = 'catppuccin/nvim',
+  aura = 'baliestri/aura-theme',
+  tokyonight = 'folke/tokyonight.nvim',
 }
 
 local spec = {
-  repos[colorscheme],
-  name = colorscheme,
+  repos[colorscheme_prefix],
+  name = colorscheme_prefix,
   lazy = false,
   priority = 1000,
   config = function(plugin)
-    vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-    vim.cmd("colorscheme " .. colorscheme)
+    vim.opt.rtp:append(plugin.dir .. '/packages/neovim')
+    vim.cmd('colorscheme ' .. colorscheme)
   end
 }
 

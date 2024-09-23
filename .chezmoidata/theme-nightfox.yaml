@@ -1,0 +1,33 @@
+colors:
+  "carbonfox":
+    # Black
+    "0": "282828"  #21202E
+    "8": "484848"  #15141b
+
+    # red
+    "1": "ee5396"  #c55858
+    "9": "f16da6"  #ff6767
+
+    # green
+    "2": "25be6a"  #54c59f
+    "10": "46c880"  #61ffca
+
+    # yellow
+    "3": "08bdba"  #c7a06f
+    "11": "2dc7c4"  #ffca85
+
+    # blue
+    "4": "78a9ff"  #6cb2c7
+    "12": "8cb6ff"  #82e2ff
+
+    # magenta
+    "5": "be95ff"  #8464c6
+    "13": "c8a5ff"  #a277ff
+
+    # cyan
+    "6": "33b1ff"  #c17ac8
+    "14": "52bdff"  #54c59f
+
+    # white
+    "7": "dfdfe0"  #bdbdbd
+    "15": "e4e4e5"  #edecee

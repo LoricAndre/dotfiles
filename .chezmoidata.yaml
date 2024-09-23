@@ -1,4 +1,4 @@
-theme: aura-soft-dark
+theme: carbonfox #catppuccin-macchiato
 terminal: kitty
 packages_file: .chezmoidata/packages.yaml
 aurHelper: paru
