@@ -9,6 +9,7 @@ return {
   config = function(_, opts)
     require('edgy').setup(opts)
     require('edgy').open()
+    vim.defer_fn(require('edgy').goto_main, 100)
   end,
   keys = {
     {
@@ -21,6 +22,7 @@ return {
     },
   },
   opts = {
+    exit_when_last = true,
     bottom = {
       -- toggleterm / lazyterm at the bottom with a height of 40% of the screen
       {

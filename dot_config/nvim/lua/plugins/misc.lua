@@ -8,8 +8,9 @@ return {
   --   opts = {}
   -- },
   {
-    "sheerun/vim-polyglot",
-    event = "VeryLazy"
+    'sheerun/vim-polyglot',
+    event = 'VeryLazy',
+    enabled = false,
   },
   -- {
   --   "norcalli/nvim-colorizer.lua",
@@ -24,14 +25,34 @@ return {
   --   end
   -- },
   {
-    "chrisgrieser/nvim-chainsaw",
+    'chrisgrieser/nvim-chainsaw',
     opts = {},
     keys = {
-      { "<leader>lv", function() require("chainsaw").variableLog() end, desc = "[LOG] Variable", noremap = true },
-      { "<leader>ll", function() require("chainsaw").beepLog() end,     desc = "[LOG] Beep",     noremap = true },
-      { "<leader>lo", function() require("chainsaw").objectLog() end,   desc = "[LOG] Object",   noremap = true },
-      { "<leader>lt", function() require("chainsaw").timeLog() end,     desc = "[LOG] Time",     noremap = true },
-    }
+      {
+        '<leader>lv',
+        function() require('chainsaw').variableLog() end,
+        desc = '[LOG] Variable',
+        noremap = true,
+      },
+      {
+        '<leader>ll',
+        function() require('chainsaw').beepLog() end,
+        desc = '[LOG] Beep',
+        noremap = true,
+      },
+      {
+        '<leader>lo',
+        function() require('chainsaw').objectLog() end,
+        desc = '[LOG] Object',
+        noremap = true,
+      },
+      {
+        '<leader>lt',
+        function() require('chainsaw').timeLog() end,
+        desc = '[LOG] Time',
+        noremap = true,
+      },
+    },
   },
   -- {
   --   "Ramilito/kubectl.nvim",
@@ -39,13 +60,22 @@ return {
   -- },
   {
     {
-      "folke/lazydev.nvim",
-      ft = "lua", -- only load on lua files
+      'folke/lazydev.nvim',
+      ft = 'lua', -- only load on lua files
       opts = {
-        library = {
-        },
+        library = {},
       },
     },
   },
-  { "mistricky/codesnap.nvim", build = "make", cmd = { "CodeSnap", "CodeSnapAscii", "CodeSnapHighlight", "CodeSnapSave", "CodeSnapSaveHighlight" } },
+  {
+    'mistricky/codesnap.nvim',
+    build = 'make',
+    cmd = {
+      'CodeSnap',
+      'CodeSnapAscii',
+      'CodeSnapHighlight',
+      'CodeSnapSave',
+      'CodeSnapSaveHighlight',
+    },
+  },
 }

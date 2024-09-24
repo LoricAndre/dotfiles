@@ -15,4 +15,3 @@ if not vim.g.vscode then
 
   if not package.loaded['lazy'] then require('lazy').setup('plugins') end
 end
-

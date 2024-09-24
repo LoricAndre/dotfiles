@@ -28,14 +28,14 @@ local options = {
   termguicolors = true,
   guifont = 'monospace',
   timeoutlen = 300,
-  undodir = vim.fn.stdpath("data") .. "/undodir",
+  undodir = vim.fn.stdpath('data') .. '/undodir',
   undofile = true,
   wildmenu = true,
   laststatus = 3,
-  splitkeep = "screen",
+  splitkeep = 'screen',
   -- statusline = require("statusline").build(),
-  signcolumn = "yes:1",
-  sessionoptions = "buffers,curdir,folds,tabpages,winpos,terminal"
+  signcolumn = 'yes:1',
+  sessionoptions = 'buffers,curdir,folds,tabpages,winpos,terminal',
 }
 
 for k, v in pairs(options) do

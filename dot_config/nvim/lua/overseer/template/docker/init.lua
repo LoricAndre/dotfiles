@@ -1,5 +1,5 @@
 return {
-  "docker.build",
-  "docker.compose.up",
-  "docker.compose.down"
+  'docker.build',
+  'docker.compose.up',
+  'docker.compose.down',
 }

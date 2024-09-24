@@ -5,7 +5,7 @@ return {
     { 'stevearc/dressing.nvim', lazy = true },
   },
   opts = {
-    dap = true,
+    dap = false, --  if enabled, this will load dap and slow startup by ~60ms
     strategy = {
       'toggleterm',
       direction = 'vertical',
@@ -13,20 +13,35 @@ return {
       close_on_exit = false,
       quit_on_exit = 'never',
       open_on_start = true,
-      hidden = true
+      hidden = true,
     },
     templates = {
       'builtin',
-      'docker.compose'
+      'docker.compose',
     },
     task_list = {
       direction = 'right',
       max_width = { 75, 0.2 },
-    }
+    },
   },
   keys = {
-    { '<leader>rr', '<CMD>OverseerRun<CR>',        noremap = true, desc = '[ovs] run' },
-    { '<leader>rt', '<CMD>OverseerToggle<CR>',     noremap = true, desc = '[ovs] run' },
-    { '<leader>ra', '<CMD>OverseerTaskAction<CR>', noremap = true, desc = '[ovs] run' },
-  }
+    {
+      '<leader>rr',
+      '<CMD>OverseerRun<CR>',
+      noremap = true,
+      desc = '[ovs] run',
+    },
+    {
+      '<leader>rt',
+      '<CMD>OverseerToggle<CR>',
+      noremap = true,
+      desc = '[ovs] run',
+    },
+    {
+      '<leader>ra',
+      '<CMD>OverseerTaskAction<CR>',
+      noremap = true,
+      desc = '[ovs] run',
+    },
+  },
 }

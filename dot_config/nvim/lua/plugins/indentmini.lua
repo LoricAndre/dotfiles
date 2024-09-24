@@ -4,10 +4,10 @@ return {
   config = function()
     require('indentmini').setup({
       exclude = {
-        "dashboard"
-      }
+        'dashboard',
+      },
     })
     vim.cmd.highlight('default link IndentLine Comment')
   end,
-  enabled = false
+  enabled = false,
 }

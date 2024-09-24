@@ -2,8 +2,8 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
-    config  = function()
-      local opts     = {
+    config = function()
+      local opts = {
         open_mapping = '<C-t>',
         direction = 'horizontal',
         on_open = function(_)
@@ -15,29 +15,29 @@ return {
               vim.defer_fn(function()
                 require('sidebar-nvim').close()
                 require('sidebar-nvim').open()
-                print(win)
                 vim.api.nvim_set_current_win(win)
               end, 20)
             end
           end
-        end
+        end,
       }
       -- lazygit
       local Terminal = require('toggleterm.terminal').Terminal
-      Lazygit        = Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
-      K9s            = Terminal:new({ cmd = 'k9s', hidden = true, direction = 'float' })
+      Lazygit =
+        Terminal:new({ cmd = 'lazygit', hidden = true, direction = 'float' })
+      K9s = Terminal:new({ cmd = 'k9s', hidden = true, direction = 'float' })
 
       return require('toggleterm').setup(opts)
     end,
-    event   = 'VeryLazy',
-    keys    = {
+    event = 'VeryLazy',
+    keys = {
       {
         '<leader>gg',
         function()
           Lazygit:toggle()
           vim.cmd('startinsert')
         end,
-        desc = '[GIT] Toggle Lazygit'
+        desc = '[GIT] Toggle Lazygit',
       },
       {
         '<leader>k',
@@ -45,8 +45,8 @@ return {
           K9s:toggle()
           vim.cmd('startinsert')
         end,
-        desc = '[k8s] Toggle k9s'
+        desc = '[k8s] Toggle k9s',
       },
-    }
-  }
+    },
+  },
 }

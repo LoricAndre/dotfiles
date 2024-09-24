@@ -1,8 +1,8 @@
 return {
-  "hedyhli/outline.nvim",
-  cmd = { "Outline", "OutlineOpen" },
+  'hedyhli/outline.nvim',
+  cmd = { 'Outline', 'OutlineOpen' },
   keys = {
-    { "<leader>o", "<cmd>Outline<CR>", desc = "[outline] toggle" },
+    { '<leader>o', '<cmd>Outline<CR>', desc = '[outline] toggle' },
   },
   opts = {
     keymaps = {

@@ -1,5 +1,5 @@
 return {
-  "michaelb/sniprun",
+  'michaelb/sniprun',
   enabled = false,
-  build = "sh install.sh"
+  build = 'sh install.sh',
 }

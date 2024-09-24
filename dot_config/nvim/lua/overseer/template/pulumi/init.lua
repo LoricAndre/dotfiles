@@ -1,25 +1,25 @@
-local overseer = require("overseer")
+local overseer = require('overseer')
 local subcommands = {
-  "up",
-  "destroy"
+  'up',
+  'destroy',
 }
 
 local template = {
   priority = 10,
   params = {
-    args = {}
+    args = {},
   },
   builder = function(params)
     return {
-      cmd = "pulumi",
-      args = params.args
+      cmd = 'pulumi',
+      args = params.args,
     }
-  end
+  end,
 }
 return {
   condition = {
     callback = function(search)
-      return vim.fn.empty(vim.fn.glob(search.dir .. "Pulumi.yaml")) == 0
+      return vim.fn.empty(vim.fn.glob(search.dir .. 'Pulumi.yaml')) == 0
     end,
   },
   generator = function(opts, callback)
@@ -29,11 +29,11 @@ return {
         res,
         overseer.wrap_template(
           template,
-          { name = string.format("pulumi %s", cmd) },
-          { args = { cmd, "--cwd", opts.dir } }
+          { name = string.format('pulumi %s', cmd) },
+          { args = { cmd, '--cwd', opts.dir } }
         )
       )
     end
     callback(res)
-  end
+  end,
 }

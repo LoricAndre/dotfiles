@@ -1,46 +1,46 @@
 return {
-  "julienvincent/hunk.nvim",
-  cmd = { "DiffEditor" },
+  'julienvincent/hunk.nvim',
+  cmd = { 'DiffEditor' },
   opts = {
     keys = {
       global = {
-        quit = { "q" },
-        accept = { "<leader><Cr>" },
-        focus_tree = { "<leader>e" },
+        quit = { 'q' },
+        accept = { '<leader><Cr>' },
+        focus_tree = { '<leader>e' },
       },
 
       tree = {
-        expand_node = { "m", "<Right>" },
-        collapse_node = { "j", "<Left>" },
+        expand_node = { 'm', '<Right>' },
+        collapse_node = { 'j', '<Left>' },
 
-        open_file = { "<Cr>" },
+        open_file = { '<Cr>' },
 
-        toggle_file = { "a" },
+        toggle_file = { 'a' },
       },
 
       diff = {
-        toggle_line = { "a" },
-        toggle_hunk = { "A" },
+        toggle_line = { 'a' },
+        toggle_hunk = { 'A' },
       },
     },
 
     ui = {
       tree = {
         -- Mode can either be `nested` or `flat`
-        mode = "nested",
+        mode = 'nested',
         width = 35,
       },
       --- Can be either `vertical` or `horizontal`
-      layout = "vertical",
+      layout = 'vertical',
     },
 
     icons = {
-      selected = "󰡖",
-      deselected = "",
-      partially_selected = "󰛲",
+      selected = '󰡖',
+      deselected = '',
+      partially_selected = '󰛲',
 
-      folder_open = "",
-      folder_closed = "",
+      folder_open = '',
+      folder_closed = '',
     },
 
     -- Called right after each window and buffer are created.
@@ -50,5 +50,5 @@ return {
       ---@param _context { buf: number, win: number }
       on_diff_mount = function(_context) end,
     },
-  }
+  },
 }
