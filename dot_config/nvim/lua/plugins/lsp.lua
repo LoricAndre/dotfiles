@@ -42,7 +42,6 @@ local server_configurations = {
 
 return {
   { 'neovim/nvim-lspconfig', lazy = true },
-  { 'nvimtools/none-ls.nvim', lazy = true },
   -- "ray-x/lsp_signature.nvim",
   {
     'linrongbin16/lsp-progress.nvim',
