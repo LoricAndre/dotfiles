@@ -8,8 +8,15 @@ return {
   end,
   config = function(_, opts)
     require('edgy').setup(opts)
-    require('edgy').open()
-    vim.defer_fn(require('edgy').goto_main, 100)
+    local aug = vim.api.nvim_create_augroup('edgy-autoopen-custom', {clear = true})
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = aug,
+      pattern = '*',
+      callback = function()
+        require('edgy').open()
+        vim.defer_fn(require('edgy').goto_main, 100)
+      end
+    })
   end,
   keys = {
     {
