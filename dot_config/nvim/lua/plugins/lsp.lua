@@ -200,6 +200,7 @@ return {
         'azure_pipelines_ls',
         'bashls',
         'clangd',
+        'cssls',
         'dockerls',
         'docker_compose_language_service',
         'gitlab_ci_ls',

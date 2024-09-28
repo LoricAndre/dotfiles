@@ -80,7 +80,7 @@ return {
         title = 'outline',
         ft = 'Outline',
         pinned = true,
-        open = 'OutlineOpen',
+        open = 'OutlineOpen!',
         -- size = { width = 0.2 }
       },
       {

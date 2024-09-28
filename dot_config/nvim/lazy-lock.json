@@ -52,6 +52,7 @@
   "tiny-inline-diagnostic.nvim": { "branch": "main", "commit": "1a83e7ce5c9d0ae4d89fc5c812b55ff8ed1d39e7" },
   "todo-comments.nvim": { "branch": "main", "commit": "ae0a2afb47cf7395dc400e5dc4e05274bf4fb9e0" },
   "toggleterm.nvim": { "branch": "main", "commit": "48be57eaba817f038d61bbf64d2c597f578c0827" },
+  "treesitter-indent-object.nvim": { "branch": "master", "commit": "84feec844aa386554b6eeda2833143615346cf3e" },
   "vim-dadbod": { "branch": "master", "commit": "7888cb7164d69783d3dce4e0283decd26b82538b" },
   "vim-dadbod-completion": { "branch": "master", "commit": "880f7e9f2959e567c718d52550f9fae1aa07aa81" },
   "vim-dadbod-ui": { "branch": "master", "commit": "f29c85ab42861c6ef683289b0c6a51e0d436dcf6" },
