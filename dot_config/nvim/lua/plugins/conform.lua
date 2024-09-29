@@ -14,6 +14,7 @@ return {
         lua = { 'stylua' },
         typescript = { 'prettierd' },
         javascript = { 'prettierd' },
+        rust = { 'rustfmt' }
       },
     },
     keys = {
