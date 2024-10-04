@@ -70,7 +70,7 @@ return {
         header = vim.split(logo, '\n'),
         center = {
           {
-            action = 'Telescope smart_open',
+            action = 'Telescope smart_open smart_open cwd_only=true',
             desc = ' Find File',
             icon = ' ',
             key = 'f',
