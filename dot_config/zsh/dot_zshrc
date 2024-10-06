@@ -5,4 +5,4 @@ if [[ -d $ZSH_CONFIG_DIR ]]; then
   done
 fi
 
-# eval "$(atuin init zsh)"
+eval "$(atuin init zsh)"

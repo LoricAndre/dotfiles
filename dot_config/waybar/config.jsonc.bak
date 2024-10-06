@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
   "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
+  "position": "left", // Waybar position (top|bottom|left|right)
   // "height": 30, // Waybar height (to be removed for auto height)
   // "width": 1280, // Waybar width
   "spacing": 12, // Gaps between modules (4px)
@@ -10,10 +10,10 @@
     //"river/tags"
     "hyprland/workspaces"
   ],
-  "modules-center": [
+  "modules-center": [],
     //"river/window"
-    "hyprland/window"
-  ],
+    // "hyprland/window"
+  // ],
   "modules-right": [
     //"idle_inhibitor",
     //"custom/updates",
@@ -139,8 +139,8 @@
     "spacing": 10
   },
   "clock": {
-    "format": "{:%H:%M} 󰥔 ",
-    "format-alt": "{:%A, %B %d, %Y (%R:%S)}",
+    "format": "   󰥔 \n {:%H:%M}",
+    "format-alt": "  {:%a\n%b %d}",
     "tooltip-format": "<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "year",
@@ -164,12 +164,14 @@
     }
   },
   "cpu": {
-    "format": " {usage}%"
+    "format": "<span></span>\n<span>{usage}%</span>",
+    "justify": "center"
     // "tooltip": false
   },
   "memory": {
-    "format": " {}%",
-    "tooltip-format": "memory: {used} / {total} GiB used\nswap: {swapUsed} / {swapTotal} GiB used"
+    "format": "<span></span>\n<span>{}%</span>",
+    "tooltip-format": "memory: {used} / {total} GiB used\nswap: {swapUsed} / {swapTotal} GiB used",
+    "justify": "center"
   },
   "temperature": {
     // "thermal-zone": 2,
@@ -241,9 +243,9 @@
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
-    "format": "{icon} {volume}% {format_source}",
-    "format-bluetooth": "{icon} {volume}% {format_source}",
-    "format-bluetooth-muted": "󰝟 {icon} {format_source}",
+    "format": "{icon} {volume}%\n{format_source}",
+    "format-bluetooth": "{icon} {volume}%\n{format_source}",
+    "format-bluetooth-muted": "󰝟 {icon}\n{format_source}",
     "format-muted": "󰝟 {format_source}",
     "format-source": " {volume}%",
     "format-source-muted": "",
