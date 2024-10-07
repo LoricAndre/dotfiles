@@ -1,4 +1,4 @@
 return {
-  completion = 'builtin', ---@type "cmp" | "epo" | "coq" | "builtin"
+  completion = 'blink', ---@type "cmp" | "epo" | "coq" | "builtin" | "blink"
   finder = 'telescope', ---@type "telescope" | "fzf"
 }
