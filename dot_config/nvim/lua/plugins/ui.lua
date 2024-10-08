@@ -1,7 +1,9 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
-    opts = {},
+    opts = {
+      current_line_blame = true,
+    },
     event = 'VeryLazy',
     keys = {
       {
@@ -110,7 +112,9 @@ return {
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
-    opts = {},
+    opts = {
+
+    },
     dependencies = {
       -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
       { 'MunifTanjim/nui.nvim', lazy = true },

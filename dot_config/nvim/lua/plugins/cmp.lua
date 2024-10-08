@@ -129,6 +129,8 @@ return {
     { 'hrsh7th/cmp-path', lazy = true },
     { 'hrsh7th/cmp-buffer', lazy = true },
     { 'hrsh7th/cmp-nvim-lsp', lazy = true },
+    { 'dmitmel/cmp-cmdline-history', lazy = true },
+    { 'hrsh7th/cmp-cmdline', lazy = true },
     { 'hrsh7th/cmp-nvim-lsp-signature-help', lazy = true },
     { 'hrsh7th/cmp-nvim-lsp-document-symbol', lazy = true },
     { 'hrsh7th/cmp-nvim-lua', lazy = true },
@@ -243,6 +245,25 @@ return {
       }, {
         { name = 'buffer' },
       }),
+    })
+    cmp.setup.cmdline({ '/', '?' }, {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' },
+        { name = 'cmdline_history' },
+      },
+    })
+
+    -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' },
+      }, {
+        { name = 'cmdline' },
+        { name = 'cmdline_history' },
+      }),
+      matching = { disallow_symbol_nonprefix_matching = false },
     })
   end,
 }
