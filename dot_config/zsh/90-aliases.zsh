@@ -46,8 +46,6 @@ data() {
 alias py='python3'
 alias cat='bat'
 
-alias mkdir='mkdir -p'
-
 fullPush() {
   git add .
   git commit -m "$@"
