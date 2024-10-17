@@ -31,7 +31,7 @@ local autocmds = {
       if ret.code ~= 0 then
         vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
       end
-      vim.system({ 'chezmoi', 'apply' }):wait()
+      vim.system({ 'chezmoi', 'apply', '--exclude', 'scripts', '--force' }):wait()
       vim.notify('[chezmoi] Applied dotfiles changes')
     end,
   },
@@ -42,6 +42,7 @@ for _, opts in ipairs(autocmds) do
   if type(opts[3]) == 'string' then
     vim.api.nvim_create_autocmd(opts[1], {
       pattern = opts[2],
+      ---@diagnostic disable-next-line: assign-type-mismatch
       command = opts[3],
       group = group,
     })

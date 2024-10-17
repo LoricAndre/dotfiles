@@ -14,7 +14,7 @@ local cfg = {
       'battery',
       'clock',
       'tray',
-      -- 'custom/swaync',
+      'custom/swaync',
     },
   },
 }

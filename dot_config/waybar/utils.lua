@@ -12,7 +12,7 @@ function M.build(spec)
     built['modules-' .. pos] = spec.widgets[pos]
     for _, module in ipairs(spec.widgets[pos]) do
       built[module] =
-        require('modules.' .. module:gsub('/', '.')).setup(spec.settings)
+          require('modules.' .. module:gsub('/', '.')).setup(spec.settings)
     end
   end
 
