@@ -1,5 +1,5 @@
 #!/bin/sh
 
 sudo pacman -Sy --needed --noconfirm just
-cd "$CHEZMOI_COMMAND_DIR"
+cd "$HOME/.local/share/chezmoi"
 just sync-packages
