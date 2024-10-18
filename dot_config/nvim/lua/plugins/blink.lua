@@ -1,3 +1,126 @@
+local function set_highlights()
+  vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#282C34', fg = 'NONE' })
+  vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#C5CDD9', bg = '#22252A' })
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemAbbrDeprecated',
+    { fg = '#7E8294', bg = 'NONE', strikethrough = true }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemAbbrMatch',
+    { fg = '#82AAFF', bg = 'NONE', bold = true }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemAbbrMatchFuzzy',
+    { fg = '#82AAFF', bg = 'NONE', bold = true }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemMenu',
+    { fg = '#C792EA', bg = 'NONE', italic = true }
+  )
+
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindField', { fg = '#EED8DA', bg = '#B5585F' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindProperty',
+    { fg = '#EED8DA', bg = '#B5585F' }
+  )
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindEvent', { fg = '#EED8DA', bg = '#B5585F' })
+
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindText', { fg = '#C3E88D', bg = '#9FBD73' })
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindEnum', { fg = '#C3E88D', bg = '#9FBD73' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindKeyword',
+    { fg = '#C3E88D', bg = '#9FBD73' }
+  )
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindConstant',
+    { fg = '#FFE082', bg = '#D4BB6C' }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindConstructor',
+    { fg = '#FFE082', bg = '#D4BB6C' }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindReference',
+    { fg = '#FFE082', bg = '#D4BB6C' }
+  )
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindFunction',
+    { fg = '#EADFF0', bg = '#A377BF' }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindStruct',
+    { fg = '#EADFF0', bg = '#A377BF' }
+  )
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindClass', { fg = '#EADFF0', bg = '#A377BF' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindModule',
+    { fg = '#EADFF0', bg = '#A377BF' }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindOperator',
+    { fg = '#EADFF0', bg = '#A377BF' }
+  )
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindVariable',
+    { fg = '#C5CDD9', bg = '#7E8294' }
+  )
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindFile', { fg = '#C5CDD9', bg = '#7E8294' })
+
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindUnit', { fg = '#F5EBD9', bg = '#D4A959' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindSnippet',
+    { fg = '#F5EBD9', bg = '#D4A959' }
+  )
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindFolder',
+    { fg = '#F5EBD9', bg = '#D4A959' }
+  )
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindMethod',
+    { fg = '#DDE5F5', bg = '#6C8ED4' }
+  )
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindValue', { fg = '#DDE5F5', bg = '#6C8ED4' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindEnumMember',
+    { fg = '#DDE5F5', bg = '#6C8ED4' }
+  )
+
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindInterface',
+    { fg = '#D8EEEB', bg = '#58B5A8' }
+  )
+  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindColor', { fg = '#D8EEEB', bg = '#58B5A8' })
+  vim.api.nvim_set_hl(
+    0,
+    'BlinkCmpItemKindTypeParameter',
+    { fg = '#D8EEEB', bg = '#58B5A8' }
+  )
+end
+
 return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
@@ -7,9 +130,13 @@ return {
   enabled = require('settings').completion == 'blink',
 
   -- use a release tag to download pre-built binaries
-  version = 'v0.*',
+  -- version = 'v0.*',
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-  -- build = 'cargo build --release',
+  build = 'cargo build --release',
+  config = function(plugin, opts)
+    set_highlights()
+    return require('blink-cmp').setup(opts)
+  end,
   opts = {
     -- for keymap, all values may be string | string[]
     -- use an empty table to disable a keymap
@@ -162,7 +289,7 @@ return {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
       -- will be removed in a future release, assuming themes add support
-      use_nvim_cmp_as_default = false,
+      use_nvim_cmp_as_default = true,
     },
 
     -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
