@@ -16,10 +16,9 @@ return {
     keymap = {
       show = '<C-space>',
       hide = '<C-e>',
-      accept = '<Tab>',
-      select_prev = { '<Up>' },
-      select_next = { '<Down>' },
-
+      accept = '<CR>',
+      select_prev = { '<S-Tab>' },
+      select_next = { '<Tab>' },
       show_documentation = {},
       hide_documentation = {},
       scroll_documentation_up = '<C-b>',
@@ -96,139 +95,111 @@ return {
       -- returns no completion items
       -- WARN: This API will have breaking changes during the beta
       providers = {
+        { 'blink.cmp.sources.lsp', name = 'LSP' },
+        { 'blink.cmp.sources.path', name = 'Path', score_offset = 3 },
+        { 'blink.cmp.sources.snippets', name = 'Snippets', score_offset = -3 },
         {
-          { 'blink.cmp.sources.lsp' },
-          { 'blink.cmp.sources.path' },
-          { 'blink.cmp.sources.snippets', score_offset = -3 },
-        },
-        { { 'blink.cmp.sources.buffer' } },
-      },
-      -- FOR REF: full example
-      --   providers = {
-      --     {
-      --       -- all of these properties work on every source
-      --       {
-      --           'blink.cmp.sources.lsp',
-      --           keyword_length = 0,
-      --           score_offset = 0,
-      --           trigger_characters = { 'f', 'o', 'o' },
-      --           opts = {},
-      --       },
-      --       -- the follow two sources have additional options
-      --       {
-      --         'blink.cmp.sources.path',
-      --         opts = {
-      --           trailing_slash = false,
-      --           label_trailing_slash = true,
-      --           get_cwd = function(context) return vim.fn.expand(('#%d:p:h'):format(context.bufnr)) end,
-      --           show_hidden_files_by_default = true,
-      --         }
-      --       },
-      --       {
-      --         'blink.cmp.sources.snippets',
-      --         score_offset = -3,
-      --         -- similar to https://github.com/garymjr/nvim-snippets
-      --         opts = {
-      --           friendly_snippets = true,
-      --           search_paths = { vim.fn.stdpath('config') .. '/snippets' },
-      --           global_snippets = { 'all' },
-      --           extended_filetypes = {},
-      --           ignored_filetypes = {},
-      --         },
-      --       },
-      --     },
-      --     { { 'blink.cmp.sources.buffer' } }
-      --   }
-      -- },
-
-      windows = {
-        autocomplete = {
-          min_width = 30,
-          max_width = 60,
-          max_height = 10,
-          border = 'none',
-          winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
-          -- keep the cursor X lines away from the top/bottom of the window
-          scrolloff = 2,
-          -- which directions to show the window,
-          -- falling back to the next direction when there's not enough space
-          direction_priority = { 's', 'n' },
-          -- Controls how the completion items are rendered on the popup window
-          -- 'simple' will render the item's kind icon the left alongside the label
-          -- 'reversed' will render the label on the left and the kind icon + name on the right
-          -- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
-          draw = 'simple',
-        },
-        documentation = {
-          min_width = 10,
-          max_width = 60,
-          max_height = 20,
-          border = 'padded',
-          winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
-          -- which directions to show the documentation window,
-          -- for each of the possible autocomplete window directions,
-          -- falling back to the next direction when there's not enough space
-          direction_priority = {
-            autocomplete_north = { 'e', 'w', 'n', 's' },
-            autocomplete_south = { 'e', 'w', 's', 'n' },
-          },
-          auto_show = true,
-          auto_show_delay_ms = 500,
-          update_delay_ms = 100,
-        },
-        signature_help = {
-          min_width = 1,
-          max_width = 100,
-          max_height = 10,
-          border = 'padded',
-          winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+          'blink.cmp.sources.buffer',
+          name = 'Buffer',
+          fallback_for = { 'LSP' },
         },
       },
+    },
 
-      highlight = {
-        ns = vim.api.nvim_create_namespace('blink_cmp'),
-        -- sets the fallback highlight groups to nvim-cmp's highlight groups
-        -- useful for when your theme doesn't support blink.cmp
-        -- will be removed in a future release, assuming themes add support
-        use_nvim_cmp_as_default = false,
+    windows = {
+      autocomplete = {
+        min_width = 30,
+        max_width = 60,
+        max_height = 10,
+        border = 'none',
+        winhighlight = 'Normal:BlinkCmpMenu,FloatBorder:BlinkCmpMenuBorder,CursorLine:BlinkCmpMenuSelection,Search:None',
+        -- keep the cursor X lines away from the top/bottom of the window
+        scrolloff = 2,
+        -- which directions to show the window,
+        -- falling back to the next direction when there's not enough space
+        direction_priority = { 's', 'n' },
+        -- Controls how the completion items are rendered on the popup window
+        -- 'simple' will render the item's kind icon the left alongside the label
+        -- 'reversed' will render the label on the left and the kind icon + name on the right
+        -- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
+        draw = 'simple',
+        selection = 'auto_insert',
+        cycle = {
+          -- When `true`, calling `select_next` at the *bottom* of the completion list will select the *first* completion item.
+          from_bottom = true,
+          -- When `true`, calling `select_prev` at the *top* of the completion list will select the *last* completion item.
+          from_top = true,
+        },
       },
-
-      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-      -- adjusts spacing to ensure icons are aligned
-      nerd_font_variant = 'mono',
-
-      kind_icons = {
-        Text = '󰉿',
-        Method = '󰊕',
-        Function = '󰊕',
-        Constructor = '󰒓',
-
-        Field = '󰜢',
-        Variable = '󰆦',
-        Property = '󰖷',
-
-        Class = '󱡠',
-        Interface = '󱡠',
-        Struct = '󱡠',
-        Module = '󰅩',
-
-        Unit = '󰪚',
-        Value = '󰦨',
-        Enum = '󰦨',
-        EnumMember = '󰦨',
-
-        Keyword = '󰻾',
-        Constant = '󰏿',
-
-        Snippet = '󱄽',
-        Color = '󰏘',
-        File = '󰈔',
-        Reference = '󰬲',
-        Folder = '󰉋',
-        Event = '󱐋',
-        Operator = '󰪚',
-        TypeParameter = '󰬛',
+      documentation = {
+        min_width = 10,
+        max_width = 60,
+        max_height = 20,
+        border = 'padded',
+        winhighlight = 'Normal:BlinkCmpDoc,FloatBorder:BlinkCmpDocBorder,CursorLine:BlinkCmpDocCursorLine,Search:None',
+        -- which directions to show the documentation window,
+        -- for each of the possible autocomplete window directions,
+        -- falling back to the next direction when there's not enough space
+        direction_priority = {
+          autocomplete_north = { 'e', 'w', 'n', 's' },
+          autocomplete_south = { 'e', 'w', 's', 'n' },
+        },
+        auto_show = true,
+        auto_show_delay_ms = 500,
+        update_delay_ms = 100,
       },
+      signature_help = {
+        min_width = 1,
+        max_width = 100,
+        max_height = 10,
+        border = 'padded',
+        winhighlight = 'Normal:BlinkCmpSignatureHelp,FloatBorder:BlinkCmpSignatureHelpBorder',
+      },
+    },
+
+    highlight = {
+      ns = vim.api.nvim_create_namespace('blink_cmp'),
+      -- sets the fallback highlight groups to nvim-cmp's highlight groups
+      -- useful for when your theme doesn't support blink.cmp
+      -- will be removed in a future release, assuming themes add support
+      use_nvim_cmp_as_default = false,
+    },
+
+    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+    -- adjusts spacing to ensure icons are aligned
+    nerd_font_variant = 'mono',
+
+    kind_icons = {
+      Text = '󰉿',
+      Method = '󰊕',
+      Function = '󰊕',
+      Constructor = '󰒓',
+
+      Field = '󰜢',
+      Variable = '󰆦',
+      Property = '󰖷',
+
+      Class = '󱡠',
+      Interface = '󱡠',
+      Struct = '󱡠',
+      Module = '󰅩',
+
+      Unit = '󰪚',
+      Value = '󰦨',
+      Enum = '󰦨',
+      EnumMember = '󰦨',
+
+      Keyword = '󰻾',
+      Constant = '󰏿',
+
+      Snippet = '󱄽',
+      Color = '󰏘',
+      File = '󰈔',
+      Reference = '󰬲',
+      Folder = '󰉋',
+      Event = '󱐋',
+      Operator = '󰪚',
+      TypeParameter = '󰬛',
     },
   },
 }
