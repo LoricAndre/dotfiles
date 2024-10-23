@@ -1,5 +1,5 @@
-aur_helper := "trizen"
-pacman_args := "--needed --noconfirm"
+aur_helper := "paru"
+pacman_args := "--needed"
 
 default:
   just --list

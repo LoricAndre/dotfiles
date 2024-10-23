@@ -42,5 +42,13 @@
 	root = /home/loric/src
   conf = pclone.conf
 
+[credential]
+	helper = 
+	helper = /usr/bin/git-credential-manager
+	credentialStore = gpg
+	cacheOptions = --timeout 999999999
+[credential "https://dev.azure.com"]
+	useHttpPath = true
+
 [include]
   path = "~/.config/git/localconfig"

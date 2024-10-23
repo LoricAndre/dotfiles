@@ -15,7 +15,7 @@ __dbg() {
 
 root=$(git config get pclone.root)
 
-cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cfg="git config --includes --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
 
 path=$1

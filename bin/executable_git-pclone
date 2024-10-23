@@ -13,7 +13,7 @@ __dbg() {
   [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
 }
 
-cget="git config get --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cget="git config get --includes --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 cset="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
 root=$(git config get pclone.root)

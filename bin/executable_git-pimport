@@ -14,7 +14,7 @@ __dbg() {
   [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
 }
 
-cfg="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cfg="git config --includes --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
 
 root=$(git config get pclone.root)
 
