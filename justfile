@@ -10,7 +10,17 @@ quick-apply:
 apply:
   chezmoi apply
 
-sync-packages: aur-helper
+custom-packages:
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  for pkg in _files/alr/*; do
+    pushd $pkg
+    PACMAN={{ aur_helper }} makepkg -si --needed --noconfirm
+    popd
+  done
+
+sync-packages: aur-helper custom-packages
   git pull --autostash
   @{{aur_helper}} {{pacman_args}} -Syu
   @{{aur_helper}} {{pacman_args}} -Sy $(cat _files/packages | tr '\n' ' ')
