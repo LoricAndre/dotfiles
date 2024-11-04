@@ -145,10 +145,10 @@ bindl = , XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindl = , XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%
 bindl = , XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindl = , XF86AudioMicMute, exec, pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindl = , XF86AudioPlay, exec, playerctl play
-bindl = , XF86AudioPause, exec, playerctl pause
-bindl = , XF86AudioNext, exec, playerctl next
-bindl = , XF86AudioPrev, exec, playerctl previous
+bindl = , XF86AudioPlay, exec, playerctl --player=spotify,%any play
+bindl = , XF86AudioPause, exec, playerctl --player=spotify,%any pause
+bindl = , XF86AudioNext, exec, playerctl --player=spotify,%any next
+bindl = , XF86AudioPrev, exec, playerctl --player=spotify,%any previous
 
 bindl = , XF86MonBrightnessUp, exec, brightnessctl set 10%+
 bindl = , XF86MonBrightnessDown, exec, brightnessctl set 10%-
