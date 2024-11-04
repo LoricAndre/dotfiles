@@ -16,7 +16,7 @@ custom-packages:
 
   for pkg in _files/alr/*; do
     pushd $pkg
-    PACMAN={{ aur_helper }} makepkg -si --needed --noconfirm
+    [ -f PKGBUILD ] && PACMAN={{ aur_helper }} makepkg -si --needed --noconfirm
     popd
   done
 
