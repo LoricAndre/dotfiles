@@ -30,6 +30,7 @@ bluez-hid2hci
 bluez-libs
 bluez-utils
 bottom
+brave-bin
 breeze-gtk
 breeze-plymouth
 brightnessctl
@@ -275,6 +276,7 @@ qt6-wayland
 rclone
 ripgrep
 rsync
+rustup
 sassc
 sbctl
 scrcpy

@@ -9,6 +9,9 @@ add_newline = false
 success_symbol = '[](bold purple)'
 error_symbol = '[](bold red)'
 
+[username]
+show_always = true
+
 [git_metrics]
 disabled = false
 # added_style = 'bold blue'

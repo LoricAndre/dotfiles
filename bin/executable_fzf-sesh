@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+CMD="sesh list -tziH | grep -v -F '[34m[39m _'"
+
+$CMD | fzf-tmux -p 55%,60% \
+		--no-sort --ansi --prompt="󰣇 " \
+    --preview-window=up:80% \
+    --preview="tmux capture-pane -ep -t {2..} 2>/dev/null || eval eza --tree -L 2 {2..} --color=always" \
+		--header="󱋱 ^a 󰉹 󱋱 ^n 󰐕 󱋱 ^d 󰅖 󱋱 ^f 󰍉 󱋱 " \
+		--bind="ctrl-a:change-prompt(󰣇 )+reload($CMD)" \
+		--bind="ctrl-n:execute(tmux new-session -d -t {2..})+reload($CMD)" \
+		--bind="ctrl-f:change-prompt(🔎  )+reload(fd -uL -t d --prune -d 5 -p --glob '**/.git' $HOME/src | xargs dirname )" \
+		--bind="ctrl-r:reload($CMD)" \
+		--bind="ctrl-d:execute(tmux kill-session -t {2..})+change-prompt(󰣇 )+reload($CMD)"
