@@ -25,6 +25,7 @@ return {
         require('edgy').toggle()
         vim.defer_fn(require('edgy').goto_main, 100)
       end,
+      mode = {'n', 't'},
       desc = '[edgy] toggle',
     },
   },

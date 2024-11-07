@@ -6,14 +6,17 @@ return {
   },
   opts = {
     dap = false, --  if enabled, this will load dap and slow startup by ~60ms
+    -- strategy = {
+    --   'toggleterm',
+    --   direction = 'vertical',
+    --   auto_scroll = true,
+    --   close_on_exit = false,
+    --   quit_on_exit = 'never',
+    --   open_on_start = true,
+    --   hidden = true,
+    -- },
     strategy = {
-      'toggleterm',
-      direction = 'vertical',
-      auto_scroll = true,
-      close_on_exit = false,
-      quit_on_exit = 'never',
-      open_on_start = true,
-      hidden = true,
+      'jobstart'
     },
     templates = {
       'builtin',

@@ -16,7 +16,7 @@ return {
         style = 'lazygit',
         height = 0.75 * vim.o.lines,
         width = 0.75 * vim.o.columns,
-        backdrop = 100
+        backdrop = 100,
       },
     },
     quickfile = { enabled = true },
@@ -24,7 +24,7 @@ return {
     words = { enabled = false },
     terminal = {
       win = {
-        style = 'terminal',
+        style = 'minimal',
         keys = {
           gf = function(self)
             local f = vim.fn.findfile(vim.fn.expand('<cfile>'))
@@ -51,6 +51,11 @@ return {
             mode = 't',
             expr = true,
             desc = 'Double escape to normal mode',
+          },
+          esc = {
+            '<esc>',
+            function() Snacks.bufdelete() end,
+            desc = 'Close terminal buffer'
           },
         },
       },
