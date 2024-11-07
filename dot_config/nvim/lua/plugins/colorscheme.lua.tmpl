@@ -1,27 +1,35 @@
-# vim:ft=lua
-local colorscheme = '{{ .theme }}'
-
-local colorscheme_prefix = colorscheme:gmatch('%w+')()
-
+-- vim:ft=lua
 local repos = {
   nordfox = 'EdenEast/nightfox.nvim',
   nightfox = 'EdenEast/nightfox.nvim',
   carbonfox = 'EdenEast/nightfox.nvim',
   dracula = 'Mofiqul/dracula.nvim',
-  catppuccin = 'catppuccin/nvim',
+  catppuccin = {
+    'catppuccin/nvim',
+    opts = { dim_inactive = { enabled = false } },
+  },
   aura = 'baliestri/aura-theme',
   tokyonight = 'folke/tokyonight.nvim',
 }
 
-local spec = {
-  repos[colorscheme_prefix],
-  name = colorscheme_prefix,
-  lazy = false,
-  priority = 1000,
-  config = function(plugin)
-    vim.opt.rtp:append(plugin.dir .. '/packages/neovim')
-    vim.cmd('colorscheme ' .. colorscheme)
+local function setup(colorscheme)
+  local colorscheme_prefix = colorscheme:gmatch('%w+')()
+  local repo = repos[colorscheme_prefix]
+  local spec = {
+    name = colorscheme_prefix,
+    lazy = false,
+    priority = 1000,
+    config = function(plugin, opts)
+      vim.opt.rtp:append(plugin.dir .. '/packages/neovim')
+      vim.cmd('colorscheme ' .. colorscheme)
+    end,
+  }
+  if type(repo) == 'string' then
+    spec[1] = repo
+  else
+    spec = vim.tbl_deep_extend('force', spec, repo)
   end
-}
+  return spec
+end
 
-return spec
+return setup('{{ .theme }}')

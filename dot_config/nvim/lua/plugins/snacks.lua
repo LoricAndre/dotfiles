@@ -10,34 +10,21 @@ return {
       timeout = 2000,
       style = 'compact',
     },
+    lazygit = {
+      enabled = true,
+      win = {
+        style = 'lazygit',
+        height = 0.75 * vim.o.lines,
+        width = 0.75 * vim.o.columns,
+        backdrop = 100
+      },
+    },
     quickfile = { enabled = true },
     statuscolumn = { enabled = false },
     words = { enabled = false },
     terminal = {
       win = {
         style = 'terminal',
-        wo = {
-          cursorcolumn = false,
-          cursorline = false,
-          cursorlineopt = 'both',
-          fillchars = 'eob: ,lastline:…',
-          list = false,
-          listchars = 'extends:…,tab:  ',
-          number = false,
-          relativenumber = false,
-          signcolumn = 'no',
-          spell = false,
-          winbar = '',
-          statuscolumn = '',
-          winfixheight = true,
-          winfixwidth = true,
-          wrap = false,
-        },
-        bo = {
-          filetype = 'snacks_terminal',
-        },
-        height = 0,
-        width = 0,
         keys = {
           gf = function(self)
             local f = vim.fn.findfile(vim.fn.expand('<cfile>'))
@@ -77,6 +64,9 @@ return {
           wrap = true,
         },
         bo = { filetype = 'markdown' },
+      },
+      lazygit = {
+        border = 'rounded',
       },
     },
   },
