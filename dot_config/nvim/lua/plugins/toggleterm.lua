@@ -2,6 +2,7 @@ return {
   {
     'akinsho/toggleterm.nvim',
     version = '*',
+    enabled = false,
     config = function()
       local opts = {
         open_mapping = '<C-t>',

@@ -43,8 +43,22 @@ return {
           local is_tiled = vim.api.nvim_win_get_config(win).relative == ''
           return is_tiled and not spawned_by_overseer
         end,
-        pinned = true,
+        -- pinned = true,
         open = 'ToggleTerm',
+      },
+      {
+        title = 'terminal',
+        ft = 'snacks_terminal',
+        size = { height = 0.25 },
+        -- exclude floating windows
+        filter = function(buf, win)
+          local spawned_by_overseer, _ =
+            pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
+          local is_tiled = vim.api.nvim_win_get_config(win).relative == ''
+          return is_tiled and not spawned_by_overseer
+        end,
+        pinned = true,
+        open = function() pcall(Snacks.terminal.open) end,
       },
       'Trouble',
       { ft = 'qf', title = 'QuickFix' },

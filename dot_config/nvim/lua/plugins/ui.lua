@@ -1,6 +1,7 @@
 return {
   {
     'lewis6991/gitsigns.nvim',
+    enabled = false,
     opts = {
       current_line_blame = true,
     },
@@ -112,6 +113,7 @@ return {
   {
     'folke/noice.nvim',
     event = 'VeryLazy',
+    enabled = false,
     opts = {
 
     },
