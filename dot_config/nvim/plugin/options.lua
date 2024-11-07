@@ -38,6 +38,7 @@ local options = {
   -- statusline = require("statusline").build(),
   signcolumn = 'yes:1',
   sessionoptions = 'buffers,curdir,folds,tabpages,winpos,terminal',
+  langmap = 'jh,kj,lk,ml,hm'
 }
 
 for k, v in pairs(options) do
