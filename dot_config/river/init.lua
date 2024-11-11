@@ -67,11 +67,6 @@ require('maps').setup_arrows({
   Super = r.focus_output,
   ['Super+Shift'] = r.send_to_output,
 })
--- riverctl map normal $mod Next focus-output next
--- riverctl map normal $mod Prior focus-output previous
--- riverctl map normal $mod+Shift Next send-to-output next
--- riverctl map normal $mod+Shift Prior send-to-output previous
-
 require('maps').setup_pointers({
   Super = {
     BTN_LEFT = 'move-view',
@@ -87,25 +82,65 @@ require('maps').setup_tags({
   ['Super+Control+Shift'] = r.toggle_view_tags,
 })
 
--- # Various media key mapping examples for both normal and locked mode which do
--- # not have a modifier
--- for mode in normal locked
--- do
---     # Control pulse audio volume with pamixer (https://github.com/cdemoulins/pamixer)
---     riverctl map $mode None XF86AudioRaiseVolume  spawn 'pamixer -i 5'
---     riverctl map $mode None XF86AudioLowerVolume  spawn 'pamixer -d 5'
---     riverctl map $mode None XF86AudioMute         spawn 'pamixer --toggle-mute'
---
---     # Control MPRIS aware media players with playerctl (https://github.com/altdesktop/playerctl)
---     riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
---     riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
---     riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
---     riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
---
---     # Control screen backlight brightness with brightnessctl (https://github.com/Hummer12007/brightnessctl)
---     riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set +5%'
---     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set 5%-'
--- done
+for _, mode in ipairs({ 'normal', 'locked' }) do
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioRaiseVolume',
+    r.spawn('pamixer', '-i', 5)
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioLowerVolume',
+    r.spawn('pamixer', '-d', 5)
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioMute',
+    r.spawn('pamixer', '--togle-mute')
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioMedia',
+    r.spawn('playerctl', 'play-pause')
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioPlay',
+    r.spawn('playerctl', 'play-pause')
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86AudioPrev',
+    r.spawn('playerctl', 'previous')
+  )
+  r.dispatch('map', mode, 'None', 'XF86AudioNext', r.spawn('playerctl', 'next'))
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86MonBrightnessUp',
+    r.spawn('brightnessctl', 'set', '+5%')
+  )
+  r.dispatch(
+    'map',
+    mode,
+    'None',
+    'XF86MonBrightnessDown',
+    r.spawn('brightnessctl', 'set', '5%-')
+  )
+end
 
 require('autostart').setup({
   'waybar',
@@ -114,7 +149,16 @@ require('autostart').setup({
   'kanshi',
   'nm-applet',
   {
-    { C.layout, '-no-smart-gaps', '-inner-gaps', 10, '-outer-gaps', 20, '-main-ratio', 0.65 },
+    {
+      C.layout,
+      '-no-smart-gaps',
+      '-inner-gaps',
+      10,
+      '-outer-gaps',
+      20,
+      '-main-ratio',
+      0.65,
+    },
     restart = false,
   },
 })
