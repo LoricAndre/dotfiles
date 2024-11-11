@@ -3,7 +3,7 @@ local utils = require("utils")
 local cfg = {
   settings = require('settings'),
   widgets = {
-    left = { 'hyprland/workspaces' },
+    left = { 'hyprland/workspaces', 'river/tags' },
     center = {},
     right = {
       'pulseaudio',

@@ -1,6 +1,0 @@
-# vim:ft=bash
-pkill waybar; waybar &
-pkill udiskie; udiskie &
-pkill pacwall; pacwall &
-pkill kanshi; kanshi &
-pkill nm-applet; nm-applet &

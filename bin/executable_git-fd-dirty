@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+base="$1"
+
+[[ -d "$base" ]] || base='.'
+
+fd --prune '\.git' "$base" -t d -H -a | xargs dirname | while read repo; do
+  {
+    pushd "$repo">/dev/null
+    [ -n "$(git status --porcelain)" ] && echo "$repo dirty"
+    popd >/dev/null
+  };
+done

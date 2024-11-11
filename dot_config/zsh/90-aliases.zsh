@@ -174,3 +174,7 @@ genpw() {
 }
 
 alias j=just
+
+git-fd-dirty() {
+  fd '.git' "$1" -t d -H | xargs dirname | while read repo; do { pushd "$repo">/dev/null; git status >/dev/null 2>&1 || echo "$repo dirty" }; done
+}

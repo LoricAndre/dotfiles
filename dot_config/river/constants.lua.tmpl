@@ -1,0 +1,35 @@
+-- vim: ft=lua
+-- {{- $colors := get .colors .theme }}
+
+return {
+  scratch_tag = 24,
+  sticky_tag = 32,
+  tag_keys = {
+    'ampersand',
+    'eacute',
+    'quotedbl',
+    'apostrophe',
+    'parenleft',
+    'minus',
+    'egrave',
+    'underscore',
+    'ccedilla',
+    'agrave',
+  },
+  dirs = {
+    left = 'J',
+    down = 'K',
+    up = 'L',
+    right = 'M',
+  },
+  layout = 'rivercarro',
+  runner = 'anyrun',
+  term = 'kitty',
+  browser = 'firefox',
+  lock = 'hyprlock',
+  colors = {
+    ['background-color'] = '0x{{ get $colors "0" }}',
+    ['border-color-focused'] = '0x{{ get $colors "5" }}',
+    ['border-color-unfocused'] = '0x{{ get $colors "8" }}',
+  },
+}

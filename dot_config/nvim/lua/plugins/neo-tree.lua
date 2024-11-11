@@ -5,7 +5,7 @@ return {
     { 'nvim-lua/plenary.nvim', lazy = true },
     { 'nvim-tree/nvim-web-devicons', lazy = true },
     { 'MunifTanjim/nui.nvim', lazy = true },
-    { '3rd/image.nvim', lazy = true },
+    -- { '3rd/image.nvim', lazy = true },
   },
   keys = {
     {
@@ -76,13 +76,13 @@ return {
     },
     window = {
       mappings = {
-        ['j'] = {
-          'toggle_preview',
-          config = { use_float = true, use_image_nvim = true },
-        },
-        ['k'] = { 'move_cursor_down' },
-        ['l'] = { 'move_cursor_up' },
-        ['m'] = { 'focus_preview' },
+        -- ['j'] = {
+        --   'toggle_preview',
+        --   config = { use_float = true, use_image_nvim = true },
+        -- },
+        -- ['k'] = { 'move_cursor_down' },
+        -- ['l'] = { 'move_cursor_up' },
+        -- ['m'] = { 'focus_preview' },
         ['<space>'] = 'none',
         ['Y'] = {
           function(state)
