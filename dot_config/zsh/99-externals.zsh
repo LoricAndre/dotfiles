@@ -1,4 +1,5 @@
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
+[ -f $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
 
 export THEFUCK_EXCLUDE_RULES="fix_file"
 [ -x "$(which thefuck)" ] && eval $(thefuck --alias f)

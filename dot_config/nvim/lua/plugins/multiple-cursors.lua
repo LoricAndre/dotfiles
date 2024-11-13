@@ -48,7 +48,7 @@ return {
   --       end,
   --     },
   --   },
-  -- },
+  },
   keys = {
     { '<C-j>', '<Cmd>MultipleCursorsAddDown<CR>' },
     { '<C-Down>', '<Cmd>MultipleCursorsAddDown<CR>', mode = { 'n', 'i' } },

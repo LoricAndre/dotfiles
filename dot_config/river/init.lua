@@ -148,6 +148,8 @@ require('autostart').setup({
   'pacwall',
   'kanshi',
   'nm-applet',
+  'swaync',
+  'hypridle',
   {
     {
       C.layout,

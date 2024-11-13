@@ -9,7 +9,7 @@ end
 
 function M.tagmask(number) return math.floor(2 ^ (number - 1)) end
 function M.spawn(cmd) return 'spawn ' .. cmd end
-function M.reload() return M.spawn('lua $HOME/.config/river/init') end
+function M.reload() return M.spawn('$HOME/.config/river/init') end
 function M.focus_view(dir) return 'focus-view ' .. dir end
 function M.swap_view(dir) return 'swap ' .. dir end
 function M.focus_output(dir) return 'focus-output ' .. dir end
