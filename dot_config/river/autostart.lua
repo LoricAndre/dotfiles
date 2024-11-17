@@ -5,6 +5,8 @@ local M = {}
 local function pgrep(cmd)
   if type(cmd) == 'table' then
     cmd = cmd[1]
+  else
+    cmd = string.gsub(cmd, "%s.*", "")
   end
   return os.execute('pgrep '.. cmd)[1]
 end
@@ -13,13 +15,16 @@ local function pkill(cmd)
   if type(cmd) == 'table' then
     cmd = cmd[1]
   end
+  print('killing ' ..  cmd)
   os.execute('pkill ' .. cmd)
 end
 
 local function run(cmd)
   if type(cmd) == 'table' then
     cmd = table.concat(cmd, ' ')
+    print('built ' .. cmd)
   end
+  print('running ' ..  cmd)
   os.execute(cmd .. " &")
 end
 

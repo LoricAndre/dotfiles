@@ -1,126 +1,3 @@
-local function set_highlights()
-  vim.api.nvim_set_hl(0, 'PmenuSel', { bg = '#282C34', fg = 'NONE' })
-  vim.api.nvim_set_hl(0, 'Pmenu', { fg = '#C5CDD9', bg = '#22252A' })
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemAbbrDeprecated',
-    { fg = '#7E8294', bg = 'NONE', strikethrough = true }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemAbbrMatch',
-    { fg = '#82AAFF', bg = 'NONE', bold = true }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemAbbrMatchFuzzy',
-    { fg = '#82AAFF', bg = 'NONE', bold = true }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemMenu',
-    { fg = '#C792EA', bg = 'NONE', italic = true }
-  )
-
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindField', { fg = '#EED8DA', bg = '#B5585F' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindProperty',
-    { fg = '#EED8DA', bg = '#B5585F' }
-  )
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindEvent', { fg = '#EED8DA', bg = '#B5585F' })
-
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindText', { fg = '#C3E88D', bg = '#9FBD73' })
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindEnum', { fg = '#C3E88D', bg = '#9FBD73' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindKeyword',
-    { fg = '#C3E88D', bg = '#9FBD73' }
-  )
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindConstant',
-    { fg = '#FFE082', bg = '#D4BB6C' }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindConstructor',
-    { fg = '#FFE082', bg = '#D4BB6C' }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindReference',
-    { fg = '#FFE082', bg = '#D4BB6C' }
-  )
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindFunction',
-    { fg = '#EADFF0', bg = '#A377BF' }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindStruct',
-    { fg = '#EADFF0', bg = '#A377BF' }
-  )
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindClass', { fg = '#EADFF0', bg = '#A377BF' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindModule',
-    { fg = '#EADFF0', bg = '#A377BF' }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindOperator',
-    { fg = '#EADFF0', bg = '#A377BF' }
-  )
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindVariable',
-    { fg = '#C5CDD9', bg = '#7E8294' }
-  )
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindFile', { fg = '#C5CDD9', bg = '#7E8294' })
-
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindUnit', { fg = '#F5EBD9', bg = '#D4A959' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindSnippet',
-    { fg = '#F5EBD9', bg = '#D4A959' }
-  )
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindFolder',
-    { fg = '#F5EBD9', bg = '#D4A959' }
-  )
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindMethod',
-    { fg = '#DDE5F5', bg = '#6C8ED4' }
-  )
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindValue', { fg = '#DDE5F5', bg = '#6C8ED4' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindEnumMember',
-    { fg = '#DDE5F5', bg = '#6C8ED4' }
-  )
-
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindInterface',
-    { fg = '#D8EEEB', bg = '#58B5A8' }
-  )
-  vim.api.nvim_set_hl(0, 'BlinkCmpItemKindColor', { fg = '#D8EEEB', bg = '#58B5A8' })
-  vim.api.nvim_set_hl(
-    0,
-    'BlinkCmpItemKindTypeParameter',
-    { fg = '#D8EEEB', bg = '#58B5A8' }
-  )
-end
-
 return {
   'saghen/blink.cmp',
   lazy = false, -- lazy loading handled internally
@@ -129,30 +6,28 @@ return {
 
   enabled = require('settings').completion == 'blink',
 
-  -- use a release tag to download pre-built binaries
-  -- version = 'v0.*',
-  -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   build = 'cargo build --release',
-  config = function(plugin, opts)
-    set_highlights()
-    return require('blink-cmp').setup(opts)
-  end,
   opts = {
     -- for keymap, all values may be string | string[]
     -- use an empty table to disable a keymap
     keymap = {
-      show = '<C-space>',
-      hide = '<C-e>',
-      accept = '<CR>',
-      select_prev = { '<S-Tab>' },
-      select_next = { '<Tab>' },
-      show_documentation = {},
-      hide_documentation = {},
-      scroll_documentation_up = '<C-b>',
-      scroll_documentation_down = '<C-f>',
-
-      snippet_forward = '<Tab>',
-      snippet_backward = '<S-Tab>',
+      ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+      ['<C-e>'] = { 'hide', 'fallback' },
+      ['<CR>'] = { 'accept', 'fallback' },
+      ['<Tab>'] = {
+        function(cmp)
+          if cmp.is_in_snippet() then
+            return cmp.accept()
+          else
+            return cmp.select_next()
+          end
+        end,
+        'snippet_forward',
+        'fallback',
+      },
+      ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
+      ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
+      ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
     },
 
     accept = {
@@ -217,18 +92,61 @@ return {
     },
 
     sources = {
-      -- similar to nvim-cmp's sources, but we point directly to the source's lua module
-      -- multiple groups can be provided, where it'll fallback to the next group if the previous
-      -- returns no completion items
-      -- WARN: This API will have breaking changes during the beta
+      -- list of enabled providers
+      completion = {
+        enabled_providers = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+
+      -- Please see https://github.com/Saghen/blink.compat for using `nvim-cmp` sources
       providers = {
-        { 'blink.cmp.sources.lsp', name = 'LSP' },
-        { 'blink.cmp.sources.path', name = 'Path', score_offset = 3 },
-        { 'blink.cmp.sources.snippets', name = 'Snippets', score_offset = -3 },
-        {
-          'blink.cmp.sources.buffer',
+        lsp = {
+          name = 'LSP',
+          module = 'blink.cmp.sources.lsp',
+
+          --- *All* of the providers have the following options available
+          --- NOTE: All of these options may be functions to get dynamic behavior
+          --- See the type definitions for more information
+          enabled = true, -- whether or not to enable the provider
+          transform_items = nil, -- function to transform the items before they're returned
+          should_show_items = true, -- whether or not to show the items
+          max_items = nil, -- maximum number of items to return
+          min_keyword_length = 0, -- minimum number of characters to trigger the provider
+          fallback_for = {}, -- if any of these providers return 0 items, it will fallback to this provider
+          score_offset = 0, -- boost/penalize the score of the items
+          override = nil, -- override the source's functions
+        },
+        path = {
+          name = 'Path',
+          module = 'blink.cmp.sources.path',
+          score_offset = 3,
+          opts = {
+            trailing_slash = false,
+            label_trailing_slash = true,
+            get_cwd = function(context)
+              return vim.fn.expand(('#%d:p:h'):format(context.bufnr))
+            end,
+            show_hidden_files_by_default = false,
+          },
+        },
+        snippets = {
+          name = 'Snippets',
+          module = 'blink.cmp.sources.snippets',
+          score_offset = -3,
+          opts = {
+            friendly_snippets = true,
+            search_paths = { vim.fn.stdpath('config') .. '/snippets' },
+            global_snippets = { 'all' },
+            extended_filetypes = {},
+            ignored_filetypes = {},
+          },
+
+          --- Example usage for disabling the snippet provider after pressing trigger characters (i.e. ".")
+          -- enabled = function(ctx) return ctx ~= nil and ctx.trigger.kind == vim.lsp.protocol.CompletionTriggerKind.TriggerCharacter end,
+        },
+        buffer = {
           name = 'Buffer',
-          fallback_for = { 'LSP' },
+          module = 'blink.cmp.sources.buffer',
+          fallback_for = { 'lsp' },
         },
       },
     },
@@ -249,7 +167,77 @@ return {
         -- 'simple' will render the item's kind icon the left alongside the label
         -- 'reversed' will render the label on the left and the kind icon + name on the right
         -- 'function(blink.cmp.CompletionRenderContext): blink.cmp.Component[]' for custom rendering
-        draw = 'simple',
+        draw = {
+          align_to_component = 'label', -- or 'none' to disable
+          -- Left and right padding, optionally { left, right } for different padding on each side
+          padding = 0,
+          -- Gap between columns
+          gap = 1,
+
+          -- Components to render, grouped by column
+          columns = {
+            { 'kind_icon' },
+            { 'label', 'label_description', gap = 1 },
+          },
+          -- for a setup similar to nvim-cmp: https://github.com/Saghen/blink.cmp/pull/245#issuecomment-2463659508
+          -- columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind" } },
+
+          -- Definitions for possible components to render. Each component defines:
+          --   ellipsis: whether to add an ellipsis when truncating the text
+          --   width: control the min, max and fill behavior of the component
+          --   text function: will be called for each item
+          --   highlight function: will be called only when the line appears on screen
+          components = {
+            kind_icon = {
+              ellipsis = false,
+              width = { fill = true },
+              text = function(ctx) return " " .. ctx.kind_icon .. " " .. ctx.icon_gap end,
+              highlight = function(ctx)
+                return 'BlinkCmpKind' .. ctx.kind
+              end,
+            },
+
+            label = {
+              width = { fill = true, max = 60 },
+              text = function(ctx) return ctx.label .. ctx.label_detail end,
+              highlight = function(ctx)
+                -- label and label details
+                local highlights = {
+                  {
+                    0,
+                    #ctx.label,
+                    group = ctx.deprecated and 'BlinkCmpLabelDeprecated' or 'BlinkCmpLabel',
+                  },
+                }
+                if ctx.label_detail then
+                  table.insert(
+                    highlights,
+                    {
+                      #ctx.label,
+                      #ctx.label + #ctx.label_detail,
+                      group = 'BlinkCmpDetail',
+                    }
+                  )
+                end
+
+                -- characters matched on the label by the fuzzy matcher
+                for _, idx in ipairs(ctx.label_matched_indices) do
+                  table.insert(
+                    highlights,
+                    { idx, idx + 1, group = 'BlinkCmpMatch' }
+                  )
+                end
+
+                return highlights
+              end,
+            },
+          },
+          label_description = {
+            width = { max = 30 },
+            text = function(ctx) return ctx.label_description end,
+            highlight = 'BlinkCmpLabelDescription',
+          },
+        },
         selection = 'auto_insert',
         cycle = {
           -- When `true`, calling `select_next` at the *bottom* of the completion list will select the *first* completion item.

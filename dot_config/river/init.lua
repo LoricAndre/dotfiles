@@ -149,7 +149,26 @@ require('autostart').setup({
   'kanshi',
   'nm-applet',
   'swaync',
-  'hypridle',
+  {
+    {
+      'swayidle',
+      '-w',
+      'timeout',
+      '150',
+      [['brightnessctl -s set 10']],
+      'resume',
+      [[ 'brightnessctl -r' ]],
+      'timeout',
+      '300',
+      [[ 'wlopm --off "*"' ]],
+      'resume',
+      [[ 'wlopm --on "*"' ]],
+      'before-sleep',
+      [['loginctl lock-session']],
+      'after-resume',
+      [['systemctl --user restart wireplumber pipewire pipewire-pulse']],
+    },
+  },
   {
     {
       C.layout,
