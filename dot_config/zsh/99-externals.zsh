@@ -32,4 +32,6 @@ if [ -z "$TMUX" ] && [ "$TERM" = "xterm-kitty" ]; then
   tmux attach || exec tmux new-session && exit;
 fi
 
+export GPG_TTY="$(tty)"
+
 source <(fzf --zsh)
