@@ -2,7 +2,10 @@
 
 [global]
 frame_color = "#{{- get $colors "5" }}"
-separator_color= frame
+separator_color = frame
+follow = mouse
+mouse_left_click = "do_action, close_current"
+corner_radius = 4
 
 [urgency_low]
 background = "#{{- get $colors "0" }}"

@@ -6,6 +6,12 @@
 super + Return
 	kitty
 
+super + s
+  notify-send "Status" "$(fastfetch)" -u normal -t 3000
+
+super + b
+  firefox
+
 # program launcher
 super + @space
 	dmenu_run
@@ -19,7 +25,7 @@ super + Escape
 #
 
 # quit/restart bspwm
-super + alt + {e,r}
+super + shift + {e,r}
 	bspc {quit,wm -r}
 
 # close and kill
@@ -43,8 +49,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,f, z}
-	bspc node -t {tiled,pseudo_tiled,floating, monocle}
+super + {t,shift + t,f,z}
+	bspc node -t {tiled,pseudo_tiled,floating,monocle}
 
 # set the node flags
 super + ctrl + {h,x,y,z}

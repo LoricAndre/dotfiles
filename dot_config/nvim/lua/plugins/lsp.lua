@@ -3,6 +3,12 @@ local show_complete_documentation =
   require('utils.lsp').show_complete_documentation
 local settings = require('settings')
 
+local signs = { Error = "󱐋", Warn = "", Hint = "", Info = "" }
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
 local server_configurations = {
   {
     inlay_hints = {
@@ -59,7 +65,7 @@ return {
           return ' LSP:' .. client_count
         else
           local client_names = {}
-          for i, client in ipairs(active_clients) do
+          for _, client in ipairs(active_clients) do
             if client and client.name ~= '' then
               table.insert(client_names, '[' .. client.name .. ']')
             end
@@ -167,7 +173,7 @@ return {
         desc = '[LSP] Implementations',
       },
       {
-        'gl',
+        'gj',
         function() return vim.lsp.buf.incoming_calls() end,
         desc = '[LSP] Incoming calls',
       },
@@ -177,12 +183,12 @@ return {
         desc = '[LSP] Outgoing calls',
       },
       {
-        'gm',
+        'gl',
         function() return vim.diagnostic.jump({ count = 1 }) end,
         desc = '[LSP] Next diagnostic',
       },
       {
-        'gj',
+        'gh',
         function() return vim.diagnostic.jump({ count = -1 }) end,
         desc = '[LSP] Prev diagnostic',
       },

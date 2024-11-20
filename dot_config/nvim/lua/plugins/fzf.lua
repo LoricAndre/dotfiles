@@ -5,7 +5,27 @@ return {
   enabled = require('settings').finder == 'fzf',
   config = function()
     local fzf = require('fzf-lua')
-    fzf.setup({ 'skim' })
+    fzf.setup({
+      debug = true,
+      desc = 'skim run inside a tmux popup',
+      fzf_bin = 'sk-tmux',
+      fzf_opts = { ['-p'] = true, ['-w 80%'] = true, ['-h 80%'] = true },
+      fzf_tmux_opts = { ['--tmux'] = true },
+      winopts = {
+        preview = { default = 'bat' },
+        height = 0.8,
+        width = 0.8,
+        row = 0.5,
+        col = 0.5,
+        backdrop = 100,
+        border = 'none',
+      },
+      manpages = { previewer = 'man_native' },
+      helptags = { previewer = 'help_native' },
+      lsp = { code_actions = { previewer = 'codeaction_native' } },
+      tags = { previewer = 'bat' },
+      btags = { previewer = 'bat' },
+    })
     fzf.register_ui_select()
     local lsp_handlers = {
       ['textDocument/references'] = fzf.lsp_references,
@@ -40,6 +60,18 @@ return {
       function() require('fzf-lua').buffers() end,
       noremap = true,
       desc = '[FZF] Buffers',
+    },
+    {
+      'gw',
+      function() require('fzf-lua').diagnostics_document() end,
+      noremap = true,
+      desc = '[LSP] Document diagnostics',
+    },
+    {
+      'gW',
+      function() require('fzf-lua').diagnostics_workspace() end,
+      noremap = true,
+      desc = '[LSP] Workspace diagnostics',
     },
   },
 }

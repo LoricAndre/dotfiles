@@ -4,7 +4,7 @@ local actions = function()
   local old_a = ''
   local grep_a = ''
   if settings.finder == 'telescope' then
-    find_a = 'Telescope find_files'
+    find_a = 'Telescope smart_open smart_open cwd_only=true'
     old_a = 'Telescope oldfiles'
     grep_a = 'Telescope live_grep'
   elseif settings.finder == 'fzf' then
@@ -34,6 +34,7 @@ end
 return {
   'nvimdev/dashboard-nvim',
   lazy = false, -- As https://github.com/nvimdev/dashboard-nvim/pull/450, dashboard-nvim shouldn't be lazy-loaded to properly handle stdin.
+  enabled = false,
   opts = function()
     local logo = [[
         %##*++++++++++*******++++***#=
@@ -68,33 +69,7 @@ return {
       },
       config = {
         header = vim.split(logo, '\n'),
-        center = {
-          {
-            action = 'Telescope smart_open smart_open cwd_only=true',
-            desc = ' Find File',
-            icon = ' ',
-            key = 'f',
-          },
-          {
-            action = 'ene | startinsert',
-            desc = ' New File',
-            icon = ' ',
-            key = 'n',
-          },
-          {
-            action = 'Telescope live_grep',
-            desc = ' Find Text',
-            icon = ' ',
-            key = 'g',
-          },
-          { action = 'Lazy', desc = ' Lazy', icon = '󰒲 ', key = 'z' },
-          {
-            action = function() vim.api.nvim_input('<cmd>qa<cr>') end,
-            desc = ' Quit',
-            icon = ' ',
-            key = 'q',
-          },
-        },
+        center = actions(),
         footer = function()
           local stats = require('lazy').stats()
           local ms = (math.floor(stats.startuptime * 100 + 0.5) / 100)

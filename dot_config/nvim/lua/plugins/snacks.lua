@@ -2,7 +2,6 @@ return {
   'folke/snacks.nvim',
   priority = 1000,
   lazy = false,
-  ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
     notifier = {
@@ -19,47 +18,10 @@ return {
         backdrop = 100,
       },
     },
+    dashboard = require('plugins.snacks.dashboard'),
+    terminal = require('plugins.snacks.terminal'),
     quickfile = { enabled = true },
-    statuscolumn = { enabled = false },
-    words = { enabled = false },
-    terminal = {
-      win = {
-        style = 'minimal',
-        keys = {
-          gf = function(self)
-            local f = vim.fn.findfile(vim.fn.expand('<cfile>'))
-            if f == '' then
-              Snacks.notify.warn('No file under cursor')
-            else
-              self:close()
-              vim.cmd('e ' .. f)
-            end
-          end,
-          term_normal = {
-            '<esc>',
-            function(self)
-              self.esc_timer = self.esc_timer
-                or (vim.uv or vim.loop).new_timer()
-              if self.esc_timer:is_active() then
-                self.esc_timer:stop()
-                vim.cmd('stopinsert')
-              else
-                self.esc_timer:start(200, 0, function() end)
-                return '<esc>'
-              end
-            end,
-            mode = 't',
-            expr = true,
-            desc = 'Double escape to normal mode',
-          },
-          esc = {
-            '<esc>',
-            function() Snacks.bufdelete() end,
-            desc = 'Close terminal buffer'
-          },
-        },
-      },
-    },
+    statuscolumn = { enabled = true },
     styles = {
       notification = {
         border = 'rounded',
@@ -134,7 +96,9 @@ return {
       pattern = 'VeryLazy',
       callback = function()
         -- Setup some globals for debugging (lazy-loaded)
+        ---@diagnostic disable-next-line: duplicate-set-field
         _G.dd = function(...) Snacks.debug.inspect(...) end
+        ---@diagnostic disable-next-line: duplicate-set-field
         _G.bt = function() Snacks.debug.backtrace() end
         vim.print = _G.dd -- Override print to use snacks for `:=` command
 
