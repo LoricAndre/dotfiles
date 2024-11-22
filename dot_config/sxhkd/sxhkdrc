@@ -12,6 +12,12 @@ super + s
 super + b
   firefox
 
+super + Print
+  flameshot gui
+
+Print
+  flameshot screen
+
 # program launcher
 super + @space
 	dmenu_run
@@ -33,8 +39,8 @@ super + {_,shift + }q
 	bspc node -{c,k}
 
 # # alternate between the tiled and monocle layout
-# super + z
-	# bspc desktop -l next
+super + z
+	bspc desktop -l next
 
 # send the newest marked node to the newest preselected node
 super + y
@@ -49,8 +55,8 @@ super + g
 #
 
 # set the window state
-super + {t,shift + t,f,z}
-	bspc node -t {tiled,pseudo_tiled,floating,monocle}
+super + {t,shift + t,f}
+	bspc node -t {tiled,pseudo_tiled,floating}
 
 # set the node flags
 super + ctrl + {h,x,y,z}
@@ -125,3 +131,25 @@ super + alt + shift + {j,k,l,m}
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+XF86AudioRaiseVolume
+  pactl set-sink-volume @DEFAULT_SINK@ +5%
+XF86AudioLowerVolume
+  pactl set-sink-volume @DEFAULT_SINK@ -5%
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+XF86AudioMicMute
+  pactl set-source-mute @DEFAULT_SOURCE@ toggle
+XF86AudioPlay
+  playerctl --player=spotify,%any play
+XF86AudioPause
+  playerctl --player=spotify,%any pause
+XF86AudioNext
+  playerctl --player=spotify,%any next
+XF86AudioPrev
+  playerctl --player=spotify,%any previous
+
+XF86MonBrightnessUp
+  brightnessctl set 10%+
+XF86MonBrightnessDown
+  brightnessctl set 10%-
