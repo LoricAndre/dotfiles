@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# vi: ft=bash
+
+# {{- $colors := get .colors .theme }}
+
+betterlockscreen -l dim \
+  --off 10 \
+  --color '#{{ get $colors "0" }}'

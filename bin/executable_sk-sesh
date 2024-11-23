@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-CMD="sesh list -tziH | grep -v -F '[34m[39m _'"
+CMD="sesh list -tziH | grep -vF ' ___'"
 
 $CMD | sk-tmux -p 55%,60% \
 		--no-sort --ansi --prompt="󰣇 " \

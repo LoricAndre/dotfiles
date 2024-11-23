@@ -12,6 +12,9 @@ super + s
 super + b
   firefox
 
+ctrl + alt + l
+  $HOME/bin/lock
+
 super + Print
   flameshot gui
 
