@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-set -ueo pipefail
+set -euo pipefail
 
-AUR_HELPER=paru
+AUR_HELPER="/sbin/paru"
 LIST_CMD="$AUR_HELPER -Qqe | sort"
 
 SAVE_PATH="$(chezmoi source-path)/_files/pkg"
