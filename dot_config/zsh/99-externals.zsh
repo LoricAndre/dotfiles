@@ -34,4 +34,4 @@ fi
 
 export GPG_TTY="$(tty)"
 
-source <(fzf --zsh)
+source /usr/share/skim/key-bindings.zsh

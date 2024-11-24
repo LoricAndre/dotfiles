@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+cat
+
+echo
+echo
+
+while read name; do
+  echo "$name"
+  if [[ $1 == install ]]; then
+    echo "Installed $name, adding to file..."
+    echo $name >> "$2"
+  elif [[ $1 == remove ]]; then
+    echo "Uninstalled $name, removing from file..."
+    sed -i "/^$name\$/d" "$2"
+  fi
+done
+
