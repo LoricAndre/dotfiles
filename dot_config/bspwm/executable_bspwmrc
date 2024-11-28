@@ -14,7 +14,7 @@ run() {
 
 }
 
-setxkbmap fr
+setxkbmap fr -option caps:escape
 
 xsetroot -cursor_name left_ptr
 
