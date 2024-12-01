@@ -16,16 +16,17 @@ return {
       ['<CR>'] = { 'accept', 'fallback' },
       ['<Tab>'] = {
         function(cmp)
-          if cmp.is_in_snippet() then
-            return cmp.accept()
+          if cmp.select_next() == true then
+            return true
+          elseif cmp.snippet_forward() == true then
+            return true
           else
-            return cmp.select_next()
+            return false
           end
         end,
-        'snippet_forward',
         'fallback',
       },
-      ['<S-Tab>'] = { 'snippet_backward', 'select_prev', 'fallback' },
+      ['<S-Tab>'] = { 'select_prev', 'snippet_backward', 'fallback' },
       ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
       ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
     },
@@ -191,10 +192,10 @@ return {
             kind_icon = {
               ellipsis = false,
               width = { fill = true },
-              text = function(ctx) return " " .. ctx.kind_icon .. " " .. ctx.icon_gap end,
-              highlight = function(ctx)
-                return 'BlinkCmpKind' .. ctx.kind
+              text = function(ctx)
+                return ' ' .. ctx.kind_icon .. ' ' .. ctx.icon_gap
               end,
+              highlight = function(ctx) return 'BlinkCmpKind' .. ctx.kind end,
             },
 
             label = {
@@ -206,18 +207,16 @@ return {
                   {
                     0,
                     #ctx.label,
-                    group = ctx.deprecated and 'BlinkCmpLabelDeprecated' or 'BlinkCmpLabel',
+                    group = ctx.deprecated and 'BlinkCmpLabelDeprecated'
+                      or 'BlinkCmpLabel',
                   },
                 }
                 if ctx.label_detail then
-                  table.insert(
-                    highlights,
-                    {
-                      #ctx.label,
-                      #ctx.label + #ctx.label_detail,
-                      group = 'BlinkCmpDetail',
-                    }
-                  )
+                  table.insert(highlights, {
+                    #ctx.label,
+                    #ctx.label + #ctx.label_detail,
+                    group = 'BlinkCmpDetail',
+                  })
                 end
 
                 -- characters matched on the label by the fuzzy matcher
