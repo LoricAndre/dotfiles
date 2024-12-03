@@ -19,6 +19,7 @@ setxkbmap fr -option caps:escape
 xsetroot -cursor_name left_ptr
 
 run_once sxhkd pacwall dunst
+run picom
 
 xset s 900 3600
 xss-lock -- $HOME/bin/lock

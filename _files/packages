@@ -16,6 +16,7 @@ astyle
 asusctl
 atuin
 auto-cpufreq
+autorandr
 aylurs-gtk-shell-git
 azure-cli
 baobab
@@ -38,6 +39,7 @@ breeze
 breeze-gtk
 breeze-plymouth
 brightnessctl
+bspwm
 btrfs-assistant
 btrfs-progs
 cachyos-hooks
@@ -49,6 +51,7 @@ cachyos-settings
 cachyos-v3-mirrorlist
 cachyos-v4-mirrorlist
 cameractrls
+cargo-flamegraph
 catppuccin-cursors-mocha
 catppuccin-gtk-theme-frappe
 catppuccin-gtk-theme-latte
@@ -75,6 +78,7 @@ diffutils
 direnv
 discover
 dive
+dmenu
 dnsmasq
 docker
 docker-buildx
@@ -99,6 +103,7 @@ fd
 feh
 ffmpegthumbs
 firefox
+flameshot
 flatpak-kcm
 fontforge
 foot
@@ -112,6 +117,7 @@ git-cliff
 git-credential-manager-bin
 github-cli
 glab
+glew
 gn
 gnome-bluetooth-3.0
 gnome-keyring
@@ -136,6 +142,7 @@ gvfs-smb
 hdf5
 helm
 helmfile
+hsetroot
 hwinfo
 hyperfine
 hypridle-git
@@ -187,13 +194,11 @@ lib32-gtk3
 lib32-libnm
 lib32-libpulse
 lib32-libva
-lib32-libva-mesa-driver
 lib32-libvdpau
 lib32-libxinerama
 lib32-libxrandr
 lib32-libxtst
 lib32-mesa
-lib32-mesa-vdpau
 lib32-nvidia-utils
 lib32-openal
 lib32-opencl-nvidia
@@ -205,7 +210,6 @@ libgnome-keyring
 libkscreen
 libplasma
 librdkafka
-libva-mesa-driver
 libva-nvidia-driver
 libvips
 linux
@@ -227,14 +231,14 @@ lvm2
 ly
 man-db
 man-pages
+mariadb
+mariadb-libs
 mdadm
-mesa-vdpau
 meson
 milou
 mkinitcpio
 modemmanager
 mongodb-tools
-mysql
 mysql-workbench
 ncdu
 neovim-nightly-bin
@@ -257,6 +261,7 @@ obs-studio
 ocean-sound-theme
 openbsd-netcat
 opencl-nvidia
+opencv
 openresolv
 openssh
 openvpn-update-resolv-conf-git
@@ -270,7 +275,9 @@ parallel
 paru
 pass
 pavucontrol
+perf
 perl
+picom
 pinta
 pipewire-alsa
 pipewire-jack
@@ -348,6 +355,7 @@ sudo
 swaybg
 swaync
 switcheroo-control
+sxhkd
 syncthing
 sysfsutils
 systemd-boot-manager
@@ -417,6 +425,7 @@ yq
 zbar
 zed-preview-bin
 zen-browser-avx2-bin
+zinit
 zip
 zoxide
 zsh
