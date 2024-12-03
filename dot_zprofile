@@ -33,6 +33,8 @@ export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export _Z_DATA="$XDG_DATA_HOME/z"
 export ZDOTDIR="$HOME"/.config/zsh
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION"
+
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
+mkdir -p $(dirname $HISTFILE)
 
 export QT_STYLE_OVERRIDE=kvantum
