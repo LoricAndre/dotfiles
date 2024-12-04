@@ -1,5 +1,5 @@
-# alias parin="paru -Sy"
-# alias parem="paru -Rscn"
+alias parin="paru -Sy"
+alias parem="paru -Rscn"
 alias tz=trizen
 alias tza="tz -Sy"
 alias tzr="tz -Rscn"
