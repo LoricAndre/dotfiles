@@ -9,8 +9,8 @@
 {
   "language_models": {
     "anthropic": {
-            "version": "1"
-        }
+      "version": "1"
+    }
   },
   "collaboration_panel": {
     "dock": "right"
@@ -46,12 +46,25 @@
     "path": "~/notes/oxide",
     "hour_format": "hour24"
   },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
   "auto_install_extensions": {
+    "catppuccin": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "env": true,
+    "helm": true,
     "html": true,
     "javascript": true,
+    "log": true,
+    "lua": true,
+    "markdow-oxide": true,
+    "marksman": true,
+    "prisma": true,
     "python": true,
-    "rust": true,
-    "prisma": true
+    "rust": true
   },
   "ensure_final_newline_on_save": false,
   "format_on_save": "off",
@@ -74,9 +87,15 @@
       "EDITOR": "zeditor --wait",
       "VISUAL": "zeditor --wait",
       "ZED": "1"
+    },
+    "toolbar": {
+      "breadcrumbs": false
     }
   },
   "jupyter": {
     "enabled": true
+  },
+  "project_panel": {
+    "auto_fold_dirs": false
   }
 }

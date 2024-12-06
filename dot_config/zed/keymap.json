@@ -856,7 +856,7 @@
       "shift-d": "vim::DeleteToEndOfLine",
       "shift-j": "vim::JoinLines",
       "y": ["vim::PushOperator", "Yank"],
-      "shift-y": "vim::YankToEndOfLine",
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
       "i": "vim::InsertBefore",
       "shift-i": "vim::InsertFirstNonWhitespace",
       "a": "vim::InsertAfter",
@@ -885,8 +885,8 @@
       "ctrl-pagedown": "pane::ActivateNextItem",
       "ctrl-pageup": "pane::ActivatePrevItem",
       // tree-sitter related commands
-      "[ x": "editor::SelectLargerSyntaxNode",
-      "] x": "editor::SelectSmallerSyntaxNode"
+      ") x": "editor::SelectLargerSyntaxNode",
+      "( x": "editor::SelectSmallerSyntaxNode"
     }
   },
   {
