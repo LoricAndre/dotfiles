@@ -253,6 +253,7 @@ nmap
 noto-fonts-emoji
 nss-mdns
 nuget
+nushell
 nvidia-prime
 nvidia-settings
 nvidia-utils
@@ -328,6 +329,8 @@ ripgrep
 river
 river-bedload-git
 rivercarro
+rofi
+rofi-calc
 rog-control-center
 rsync
 rustup
@@ -433,3 +436,4 @@ zsh-autosuggestions
 zsh-completions
 zsh-history-substring-search
 zsh-syntax-highlighting
+zui-bin

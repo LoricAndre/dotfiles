@@ -15,6 +15,7 @@
 	pl = pull
 	c = commit
 	cm = commit -m
+	ca = commit -a
   cam = commit -am
 	a = add
   aa = add .
@@ -43,7 +44,7 @@
   conf = pclone.conf
 
 [credential]
-	helper = 
+	helper =
 	helper = /usr/bin/git-credential-manager
 	credentialStore = gpg
 	cacheOptions = --timeout 999999999
