@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+HIST="/tmp/bspwm_cycle"
+
+win_ids=$(xdo id -cr | sort)
+curr=$(xdo id)
+
+[[ -f $HIST ]] || touch $HIST
+
+
+list() {
+  res=""
+
+  for hist_id in $(cat $HIST); do
+    if [[ $hist_id == $curr ]]; then
+      sed -i "/$hist_id/d" $HIST
+      continue
+    fi
+    if [[ ! $(echo $win_ids | grep -q "$hist_id") ]]; then
+      sed -i "/$hist_id/d" $HIST
+    fi
+    # Remove hist id from win ids
+    win_ids=$(echo -ne "$win_ids" | sed "/$hist_id/d")
+    win_name=$(xprop -id $hist_id _NET_WM_NAME | cut -d'"' -f2)
+    res="$res$hist_id:$win_name\n"
+  done
+
+  for win_id in $win_ids; do
+    win_name=$(xprop -id $win_id _NET_WM_NAME | cut -d'"' -f2)
+    res="$res$win_id:$win_name\n"
+  done
+
+  echo -ne "$res"
+}
+
+swap() {
+  [ -z $1 ] && return
+  id=$(echo $1 | cut -d':' -f1)
+  echo "$curr" >> $HIST
+  bspc node -s $id
+  # bspc node -f $1
+}
+
+case "$1" in
+  prev) res=$(tail -n1 $HIST)
+  ;;
+  *) res=$(list | rofi -dmenu -display-columns 2, -display-column-separator ':')
+  ;;
+esac
+
+swap $res

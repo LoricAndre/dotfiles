@@ -51,10 +51,13 @@
       "space g b": "branches::OpenRecent",
       "space g r": "editor::RevertSelectedHunks",
       "space g l": "editor::ToggleGitBlame",
-      "space g g": ["workspace::SendKeystrokes", ": center term enter lazygit && exit enter"],
-      "space g s": ["task::Spawn", "git: stage current file"],
-      "space g shift-s": ["task::Spawn", "git: stage all"],
-      "space g c": ["task::Spawn", "git: commit"],
+      "space g g": [
+        "workspace::SendKeystrokes",
+        ": center term enter lazygit && exit enter"
+      ],
+      "space g s": ["task::Spawn", { "task_name": "git: stage current file" }],
+      "space g shift-s": ["task::Spawn", { "task_name": "git: stage all" }],
+      "space g c": ["task::Spawn", { "task_name": "git: commit" }],
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
@@ -68,13 +71,13 @@
       "space shift-s": [
         "workspace::Open",
         {
-          "create_new_window": false
+          "create_new_window": true
         }
       ],
       "space s": [
         "projects::OpenRecent",
         {
-          "create_new_window": false
+          "create_new_window": true
         }
       ],
       "space r": "task::Spawn",

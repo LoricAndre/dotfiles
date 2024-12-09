@@ -35,7 +35,10 @@
     "label": "git: commit",
     "command": "git commit",
     "reveal": "never",
-    "hide": "on_success"
+    "hide": "on_success",
+    "env": {
+      "VISUAL": "zeditor --wait"
+    }
   },
   {
     "label": "git: push",
