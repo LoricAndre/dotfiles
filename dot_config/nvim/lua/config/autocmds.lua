@@ -14,8 +14,8 @@ local autocmds = {
   },
   { 'BufWinEnter', '?*', 'silent! loadview 1' },
   { 'BufWinLeave', '?*', 'silent! mkview 1' },
-  { 'BufEnter', 'term://*', 'startinsert' },
-  { 'BufLeave', 'term://*', 'stopinsert' },
+  -- { 'BufEnter', 'term://*', 'startinsert' },
+  -- { 'BufLeave', 'term://*', 'stopinsert' },
   {
     'BufWritePost',
     chezmoi_dir .. '/*',
@@ -33,6 +33,20 @@ local autocmds = {
       end
       vim.system({ 'chezmoi', 'apply', '--exclude', 'scripts', '--force' }):wait()
       vim.notify('[chezmoi] Applied dotfiles changes')
+    end,
+  },
+  -- Auto open edgy
+  {
+    'LspAttach',
+    '*',
+    function()
+      if vim.o.columns > 50 and vim.o.lines > 10 then
+        local has_edgy, edgy = pcall(require, 'edgy')
+        if has_edgy then
+          edgy.open()
+          vim.defer_fn(edgy.goto_main, 100)
+        end
+      end
     end,
   },
 }

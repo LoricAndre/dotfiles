@@ -8,14 +8,14 @@ return {
   end,
   config = function(_, opts)
     require('edgy').setup(opts)
-    local aug = vim.api.nvim_create_augroup('edgy-autoopen-custom', {clear = true})
+    local aug = vim.api.nvim_create_augroup('edgy-autoopen-custom', { clear = true })
     vim.api.nvim_create_autocmd('LspAttach', {
       group = aug,
       pattern = '*',
       callback = function()
         require('edgy').open()
         vim.defer_fn(require('edgy').goto_main, 100)
-      end
+      end,
     })
   end,
   keys = {
@@ -25,7 +25,7 @@ return {
         require('edgy').toggle()
         vim.defer_fn(require('edgy').goto_main, 100)
       end,
-      mode = {'n', 't'},
+      mode = { 'n', 't' },
       desc = '[edgy] toggle',
     },
   },
@@ -39,8 +39,7 @@ return {
         size = { height = 0.25 },
         -- exclude floating windows
         filter = function(buf, win)
-          local spawned_by_overseer, _ =
-            pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
+          local spawned_by_overseer, _ = pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
           local is_tiled = vim.api.nvim_win_get_config(win).relative == ''
           return is_tiled and not spawned_by_overseer
         end,
@@ -53,13 +52,14 @@ return {
         size = { height = 0.25 },
         -- exclude floating windows
         filter = function(buf, win)
-          local spawned_by_overseer, _ =
-            pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
+          local spawned_by_overseer, _ = pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
           local is_tiled = vim.api.nvim_win_get_config(win).relative == ''
           return is_tiled and not spawned_by_overseer
         end,
-        pinned = true,
-        open = function() pcall(Snacks.terminal.open) end,
+        -- pinned = true,
+        open = function()
+          pcall(Snacks.terminal.open)
+        end,
       },
       'Trouble',
       { ft = 'qf', title = 'QuickFix' },
@@ -67,7 +67,9 @@ return {
         ft = 'help',
         size = { height = 20 },
         -- only show help buffers
-        filter = function(buf) return vim.bo[buf].buftype == 'help' end,
+        filter = function(buf)
+          return vim.bo[buf].buftype == 'help'
+        end,
       },
       { ft = 'spectre_panel', size = { height = 0.4 } },
     },
@@ -111,8 +113,7 @@ return {
         size = { height = 0.25 },
         -- exclude floating windows
         filter = function(buf, win)
-          local spawned_by_overseer, _ =
-            pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
+          local spawned_by_overseer, _ = pcall(vim.api.nvim_buf_get_var, buf, 'overseer_task')
           local is_tiled = vim.api.nvim_win_get_config(win).relative == ''
           return is_tiled and spawned_by_overseer
         end,
@@ -122,8 +123,12 @@ return {
       enabled = false,
       fps = 60, -- frames per second
       cps = 120, -- cells per second
-      on_begin = function() vim.g.minianimate_disable = true end,
-      on_end = function() vim.g.minianimate_disable = false end,
+      on_begin = function()
+        vim.g.minianimate_disable = true
+      end,
+      on_end = function()
+        vim.g.minianimate_disable = false
+      end,
       -- Spinner for pinned views that are loading.
       -- if you have noice.nvim installed, you can use any spinner from it, like:
       -- spinner = require("noice.util.spinners").spinners.circleFull,
