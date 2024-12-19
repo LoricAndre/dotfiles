@@ -13,7 +13,6 @@ kubectx
 lazygit
 lsof
 man-db
-mariadb
 mongodb-tools
 ncdu
 nerdfix
@@ -62,3 +61,9 @@ rofi
 rofi-calc
 picom
 terraform
+okular
+coolercontrol
+rofi
+rofi-calc
+nerdfix
+zui-bin
