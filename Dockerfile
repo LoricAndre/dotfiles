@@ -8,39 +8,37 @@ RUN useradd -m $USER
 RUN echo "$USER ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
 
 RUN pacman -Syu --noconfirm && \
-  pacman -Sy --noconfirm git base-devel && \
-  pacman -Scc && \
-  sudo rm /var/cache -rf
+  pacman -Sy --noconfirm git base-devel rustup && \
+  yes | pacman -Scc && \
+  cd / && \
+  sudo rm /tmp/* /var/cache -rf
+
+RUN mkdir /src && chown $USER /src
 
 USER $USER
+
+WORKDIR /tmp
+RUN git clone https://aur.archlinux.org/paru.git && \
+  rustup default stable && \
+  cd paru && makepkg -si --noconfirm && \
+  rm /tmp/* -rf
+
 WORKDIR /home/$USER
-
-# Add chaotic aur & trizen
-RUN cd /tmp && git clone https://aur.archlinux.org/trizen.git && \
-    cd trizen && \
-    makepkg -si --noconfirm && \
-    sudo pacman -Scc && \
-    cd / && sudo rm /tmp/* -rf && \
-    sudo rm /var/cache -rf
-
-
 COPY _files/headless-packages packages
 
-RUN trizen -Sy --noconfirm $(cat packages) && \
-  rm .cache -rf && sudo rm /tmp/* -rf && \
+RUN paru -Sy --noconfirm $(cat packages) && \
+  helm plugin install https://github.com/jkroepke/helm-secrets && \
+  helm plugin install https://github.com/databus23/helm-diff && \
+  rm .cache -rf && \
   go clean -modcache && \
-  trizen -Scc && \
-  sudo rm /var/cache -rf
+  yes | paru -Scc
 
-RUN sudo mkdir /src && sudo chown $USER /src
 COPY --chown=$USER . .local/share/chezmoi
-# RUN pwd && ls -al && exit 1
-RUN chezmoi init
-RUN chezmoi apply --exclude=scripts
-RUN nvim --headless ":Lazy! sync" +qa
-RUN zsh -lic exit
-RUN zsh -lic exit
-RUN zsh -lic "nvm install --lts"
-# RUN nvim --headless +"sleep 60" +qa
+
+RUN chezmoi init && \
+  chezmoi apply --exclude=scripts && \
+  nvim --headless ":Lazy! sync | sleep 60" +qa && \
+  zsh -lic exit && zsh -lic exit && zsh -lic "nvm install --lts"
+
 WORKDIR /src
 ENTRYPOINT ["zsh", "-li"]
