@@ -1,3 +1,6 @@
 [submodule "dot_config/ags"]
 	path = dot_config/ags
 	url = https://gitlab.com/loric.andre/ags
+[submodule "dot_config/external_nvim"]
+	path = dot_config/external_nvim
+	url = https://gitlab.com/loric.andre/nvim.git
