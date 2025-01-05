@@ -2,7 +2,7 @@
 
 run_once() {
   for p in "$@"; do
-    pgrep -x $p > /dev/null || $p &
+    pgrep -x $p >/dev/null || $p &
   done
 }
 
@@ -28,14 +28,16 @@ autorandr --change
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 bspc monitor -r
 
-bspc config border_width         2
-bspc config window_gap          12
+bspc config border_width 2
+bspc config window_gap 12
 
 bspc config focus_follows_pointer true
 
-bspc config split_ratio          0.65
-bspc config borderless_monocle   true
-bspc config gapless_monocle      true
+bspc config split_ratio 0.65
+bspc config borderless_monocle true
+bspc config gapless_monocle true
 
 bspc rule -a *:*:Picture-in-Picture state=floating
 bspc rule -a pavucontrol state=floating
+
+notify-send 'BSPWM' 'Config loaded'

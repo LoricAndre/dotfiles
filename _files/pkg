@@ -17,7 +17,6 @@ mongodb-tools
 ncdu
 nerdfix
 nmap
-neovim-nightly-bin
 neovim-remote
 nvm
 openssh
@@ -71,3 +70,16 @@ cups
 system-config-printer
 brscan5
 skanlite
+aws-cli-v2-bin
+ghostty
+lua51
+lua-language-server
+7zip
+steam
+ntfs-3g
+vscode-langservers-extracted
+rust-analyzer
+yaml-language-server
+helm-ls-bin
+vim-language-server
+neovim-nightly
