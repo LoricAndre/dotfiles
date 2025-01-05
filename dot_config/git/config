@@ -5,6 +5,7 @@
 	defaultBranch = main
 [pull]
 	rebase = true
+	recurse = true
 [push]
 	default = simple
 [alias]
