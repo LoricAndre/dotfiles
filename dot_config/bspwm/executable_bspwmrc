@@ -16,6 +16,8 @@ run() {
 
 setxkbmap fr -option caps:escape
 
+xinput set-prop "$(xinput list --name-only| grep Touchpad)" "libinput Tapping Enabled" 1
+
 xsetroot -cursor_name left_ptr
 
 run_once sxhkd pacwall dunst

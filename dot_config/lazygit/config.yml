@@ -1,6 +1,8 @@
 git:
   log:
     showGraph: always
+os:
+  editPreset: 'nvim-remote'
 customCommands:
   - key: '<c-f>'
     description: 'fetch a remote branch as a new local branch'
@@ -51,3 +53,7 @@ customCommands:
     command: "git commit --message '{{.Form.type}}({{.Form.scope}}){{.Form.breaking}}: {{.Form.message}}'"
     showOutput: true
     loadingText: "Creating conventional commit..."
+  - key: '<c-P>'
+    description: 'push tags'
+    command: 'git push --tags'
+    context: 'commits'

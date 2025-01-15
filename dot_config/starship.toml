@@ -16,10 +16,21 @@ show_always = true
 disabled = false
 # added_style = 'bold blue'
 # format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+ignore_submodules = true
+[git_status]
+ignore_submodules = true
 
-# [kubernetes]
-# disabled = false
-# detect_files = ['Chart.yaml']
+
+[kubernetes]
+disabled = false
+detect_files = ['Chart.yaml']
+detect_env_vars = ['KUBECONFIG']
+
+[time]
+disabled = false
+
+[direnv]
+disabled = false
 
 [custom.jj]
 command = '''

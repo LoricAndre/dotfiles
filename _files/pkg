@@ -83,3 +83,5 @@ yaml-language-server
 helm-ls-bin
 vim-language-server
 neovim-nightly
+ventoy-bin
+xreader
