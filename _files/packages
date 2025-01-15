@@ -25,6 +25,7 @@ base-devel
 bash-completion
 bat
 bees
+betterlockscreen
 bind
 blesh-git
 bluedevil
@@ -71,6 +72,7 @@ cpupower
 cryptsetup
 dart
 dart-sass
+dbeaver
 debtap
 device-mapper
 dhclient
@@ -187,6 +189,7 @@ kwin
 kwrited
 layer-shell-qt
 lazygit
+lazysql
 less
 lib32-fontconfig
 lib32-gtk2
@@ -278,6 +281,7 @@ pass
 pavucontrol
 perf
 perl
+php
 picom
 pinta
 pipewire-alsa
