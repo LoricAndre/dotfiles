@@ -4,6 +4,6 @@ tmp=$(mktemp)
 
 paru -Sss $@ > $tmp
 
-packages=$(grep -v '^\s' $tmp | sk -m --height 10 --reverse --preview "grep -A 8 ^{1} $tmp | tail -n+2 | sed -e '/^[a-z]/q' | head -n-1 | sed 's/^\s\+//'")
+packages=$(grep -v '^\s' $tmp | sk -m --height 10 --reverse --preview "grep -A 8 ^{1} $tmp | tail -n+2 | sed -e '/^[a-z]/q' | head -n-1 | sed 's/^\s\+//'" | awk '{ print $1 }')
 
 paru -S "$packages"
