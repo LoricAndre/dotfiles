@@ -1,6 +1,6 @@
 theme: catppuccin-macchiato
 terminal: kitty
-browser: firefox
+browser: zen-browser
 packages_file: .chezmoidata/packages.yaml
 aurHelper: paru
 font:
