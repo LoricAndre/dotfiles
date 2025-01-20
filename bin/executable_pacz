@@ -1,9 +1,44 @@
 #!/usr/bin/env bash
 
-tmp=$(mktemp)
+set -euo pipefail
 
-paru -Sss $@ > $tmp
+# Check for required commands
+for cmd in paru sk grep awk sed; do
+    if ! command -v "$cmd" >/dev/null 2>&1; then
+        echo "Error: Required command '$cmd' not found." >&2
+        exit 1
+    fi
+done
 
-packages=$(grep -v '^\s' $tmp | sk -m --height 10 --reverse --preview "grep -A 8 ^{1} $tmp | tail -n+2 | sed -e '/^[a-z]/q' | head -n-1 | sed 's/^\s\+//'" | awk '{ print $1 }')
+# Create temporary file with error handling
+tmp=$(mktemp) || {
+    echo "Error: Failed to create temporary file." >&2
+    exit 1
+}
+trap 'rm -f "$tmp"' EXIT INT TERM
 
-paru -S "$packages"
+# Show usage if no arguments provided
+if [ $# -eq 0 ]; then
+    echo "Usage: $0 <search-terms...>" >&2
+    exit 1
+fi
+
+# Search for packages
+if ! paru -Sss "$@" > "$tmp"; then
+    echo "Error: Package search failed." >&2
+    exit 1
+fi
+
+if [ ! -s "$tmp" ]; then
+    echo "No packages found matching the search criteria." >&2
+    exit 1
+fi
+
+packages=$(grep -v '^\s' "$tmp" | sk -m --height 10 --reverse --preview "grep -A 8 ^{1} \"$tmp\" | tail -n+2 | sed -e '/^[a-z]/q' | head -n-1 | sed 's/^\s\+//'" | awk '{ print $1 }')
+
+if [ -n "$packages" ]; then
+    paru -S $(echo "$packages" | tr '\n' ' ')
+else
+    echo "No packages selected for installation." >&2
+    exit 0
+fi
