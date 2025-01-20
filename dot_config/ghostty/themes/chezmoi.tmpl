@@ -1,0 +1,46 @@
+{{- $colors := get .colors .theme }}
+
+# The basic colors
+foreground = #{{ get $colors "7" }}
+background = #{{ get $colors "0" }}
+selection-foreground = #{{ get $colors "0" }}
+selection-background = #{{ get $colors "15"}}
+
+# Cursor colors
+cursor-color = #{{ get $colors "15"}}
+cursor-text = #{{ get $colors "0"}}
+
+# The 16 terminal colors
+
+# black
+palette = 0=#{{ get $colors "0" }}
+palette = 8=#{{ get $colors "8" }}
+
+# red
+palette = 1=#{{ get $colors "1" }}
+palette = 9=#{{ get $colors "9" }}
+
+# green
+palette = 2=#{{ get $colors "2" }}
+palette = 10=#{{ get $colors "10" }}
+
+# yellow
+palette = 3=#{{ get $colors "3" }}
+palette = 11=#{{ get $colors "11" }}
+
+# blue
+palette = 4=#{{ get $colors "4" }}
+palette = 12=#{{ get $colors "12" }}
+
+# magenta
+palette = 5=#{{ get $colors "5" }}
+palette = 13=#{{ get $colors "13" }}
+
+# cyan
+palette = 6=#{{ get $colors "6" }}
+palette = 14=#{{ get $colors "14" }}
+
+# white
+palette = 7=#{{ get $colors "7" }}
+palette = 15=#{{ get $colors "15" }}
+

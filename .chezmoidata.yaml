@@ -1,5 +1,5 @@
 theme: catppuccin-macchiato
-terminal: kitty
+terminal: ghostty
 browser: zen-browser
 packages_file: .chezmoidata/packages.yaml
 aurHelper: paru
