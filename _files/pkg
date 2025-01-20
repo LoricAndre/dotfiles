@@ -34,7 +34,6 @@ traceroute
 ttf-jetbrains-mono-nerd
 unzip
 wget
-wl-clipboard
 yq
 zip
 zoxide
@@ -52,18 +51,12 @@ shotwell
 picom
 zinit
 piper
-nushell
 pueue
-nushell
 zui-bin
-rofi
-rofi-calc
 picom
 terraform
 okular
 coolercontrol
-rofi
-rofi-calc
 nerdfix
 zui-bin
 cups
@@ -83,5 +76,7 @@ yaml-language-server
 helm-ls-bin
 vim-language-server
 neovim-nightly
-ventoy-bin
-xreader
+xorg-xsetroot
+rofi
+rofi-calc
+zen-browser-bin
