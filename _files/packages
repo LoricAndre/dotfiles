@@ -130,7 +130,9 @@ helmfile
 hsetroot
 hwinfo
 hyperfine
+hypridle-git
 hyprland-git
+hyprlock-git
 inetutils
 inotify-tools
 intel-gpu-tools
@@ -338,6 +340,7 @@ vlc
 vtk
 vulkan-mesa-layers
 vulkan-radeon
+waybar
 wdisplays
 webkit2gtk
 wev
