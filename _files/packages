@@ -1,5 +1,6 @@
 7zip
 acpi
+act
 adwaita-qt5-git
 adwaita-qt6-git
 alacritty
@@ -54,10 +55,12 @@ chwd
 cilium-cli
 cmake
 compsize
+coolercontrol
 cosmic-files
 cpio
 cpupower
 cryptsetup
+cups
 dart
 dart-sass
 debtap
@@ -95,6 +98,7 @@ fuse2
 fuzzel
 fwupd
 fzf
+ghostty
 git
 git-credential-manager-bin
 github-cli
@@ -126,6 +130,7 @@ helmfile
 hsetroot
 hwinfo
 hyperfine
+hyprland-git
 inetutils
 inotify-tools
 intel-gpu-tools
@@ -182,6 +187,7 @@ lsof
 lswt
 lua51
 lua-json
+lua-language-server
 luarocks
 lvm2
 ly
@@ -198,6 +204,7 @@ mysql-workbench
 ncdu
 neovim-nightly-bin
 neovim-remote
+nerdfix
 netctl
 net-tools
 networkmanager
@@ -207,6 +214,7 @@ nfs-utils
 nmap
 noto-fonts-emoji
 nss-mdns
+ntfs-3g
 nuget
 nvidia-prime
 nvidia-settings
@@ -214,6 +222,7 @@ nvidia-utils
 nvm
 obs-studio
 ocean-sound-theme
+okular
 openbsd-netcat
 opencl-nvidia
 opencv
@@ -233,6 +242,7 @@ perl
 php
 picom
 pinta
+piper
 pipewire-alsa
 pipewire-jack
 pipewire-pulse
@@ -247,6 +257,7 @@ power-profiles-daemon
 powershell-bin
 powertop
 progress
+pueue
 pv
 python
 python-libnacl
@@ -262,6 +273,7 @@ rofi
 rofi-calc
 rog-control-center
 rsync
+rust-analyzer
 rustup
 sassc
 sbctl
@@ -269,6 +281,8 @@ sddm
 sddm-catppuccin-git
 sdl2_image
 sesh-bin
+shotwell
+skanlite
 skim-git
 slock
 smartmontools
@@ -280,6 +294,7 @@ sops
 spicetify-cli
 spotify
 starship
+steam
 strace
 sudo
 swaybg
@@ -288,10 +303,12 @@ switcheroo-control
 sxhkd
 syncthing
 sysfsutils
+system-config-printer
 systemd-boot-manager
 tailscale
 tailscale-systray-git
 teamviewer
+terraform
 texinfo
 timeshift
 tldr
@@ -312,6 +329,7 @@ uutils-coreutils
 uv
 vagrant
 vi
+vim-language-server
 virtualbox
 virtualbox-host-dkms
 visual-studio-code-bin
@@ -342,10 +360,13 @@ xorg-xev
 xorg-xeyes
 xorg-xinit
 xorg-xsetroot
+xss-lock
+yaml-language-server
 yazi
 yq
 zbar
 zed-preview-bin
+zellij
 zen-browser-bin
 zinit
 zip
