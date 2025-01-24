@@ -108,6 +108,7 @@ gn
 gnome-bluetooth-3.0
 gnome-keyring
 grim
+grimblast-git
 grub
 grub-btrfs
 gst-plugin-pipewire
@@ -348,6 +349,7 @@ wget
 which
 wireplumber
 wireshark-qt
+wl-clipboard
 wmctrl
 wpa_supplicant
 xclip
