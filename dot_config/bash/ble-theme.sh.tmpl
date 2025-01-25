@@ -1,0 +1,56 @@
+# vi: ft=bash
+
+{{- $colors := get .colors .theme }}
+
+ble-face -s argument_error 'bg=#{{ get $colors "1" }},fg=#{{ get $colors "0" }}'            # Red background, Crust foreground for better contrast
+ble-face -s argument_option 'fg=#{{ get $colors "15" }},italic'               # Flamingo
+ble-face -s auto_complete 'fg=#{{ get $colors "14" }},italic'                 # Surface1
+ble-face -s cmdinfo_cd_cdpath 'fg=#{{ get $colors "4" }},bg=#{{ get $colors "0" }},italic'  # Blue, Crust
+ble-face -s command_alias 'fg=#{{ get $colors "5" }}'                        # Sapphire
+ble-face -s command_builtin 'fg=#{{ get $colors "5" }}'                      # Peach
+ble-face -s command_directory 'fg=#{{ get $colors "4" }}'                    # Blue
+ble-face -s command_file 'fg=#{{ get $colors "4" }}'                         # Sapphire
+ble-face -s command_function 'fg=#{{ get $colors "5" }}'                     # Sapphire
+ble-face -s command_keyword 'fg=#{{ get $colors "13" }}'                      # Mauve
+ble-face -s disabled 'fg=#{{ get $colors "10" }}'                             # Surface0
+ble-face -s filename_directory 'fg=#{{ get $colors "4" }}'                   # Blue
+ble-face -s filename_directory_sticky 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "2" }}' # Crust, Green
+ble-face -s filename_executable 'fg=#{{ get $colors "5" }},bold'             # Green
+ble-face -s filename_ls_colors 'none'
+ble-face -s filename_orphan 'fg=#{{ get $colors "12" }},bold' # Sky
+ble-face -s filename_other 'none'
+ble-face -s filename_setgid 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "3" }},underline' # Crust, Yellow
+ble-face -s filename_setuid 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "11" }},underline' # Crust, Peach
+ble-face -s menu_filter_input 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "3" }}'         # Crust, Yellow
+ble-face -s overwrite_mode 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "4" }}'            # Crust, Sky
+ble-face -s prompt_status_line 'bg=#{{ get $colors "15" }}'                   # Overlay2
+ble-face -s region 'bg=#{{ get $colors "14" }}'                               # Surface1
+ble-face -s region_insert 'bg=#{{ get $colors "14" }}'                        # Surface1
+ble-face -s region_match 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "3" }}'              # Crust, Yellow
+ble-face -s region_target 'fg=#{{ get $colors "0" }},bg=#{{ get $colors "13" }}'             # Crust, Mauve
+ble-face -s syntax_brace 'fg=#{{ get $colors "8" }}'                         # Overlay0
+ble-face -s syntax_command 'fg=#{{ get $colors "13" }}'                       # Sapphire
+ble-face -s syntax_comment 'fg=#{{ get $colors "10" }}'                       # Yellow
+ble-face -s syntax_delimiter 'fg=#{{ get $colors "8" }}'                     # Overlay0
+ble-face -s syntax_document 'fg=#{{ get $colors "11" }},bold'                 # Rosewater
+ble-face -s syntax_document_begin 'fg=#{{ get $colors "11" }},bold'           # Rosewater
+ble-face -s syntax_error 'bg=#{{ get $colors "9" }},fg=#{{ get $colors "0" }}'              # Red background, Crust foreground for better contrast
+ble-face -s syntax_escape 'fg=#{{ get $colors "15" }}'                        # Flamingo
+ble-face -s syntax_expr 'fg=#{{ get $colors "13" }}'                          # Mauve
+ble-face -s syntax_function_name 'fg=#{{ get $colors "5" }}'                 # Lavender
+ble-face -s syntax_glob 'fg=#{{ get $colors "9" }}'                          # Peach
+ble-face -s syntax_history_expansion 'fg=#{{ get $colors "5" }},italic'      # Lavender
+ble-face -s syntax_param_expansion 'fg=#{{ get $colors "9" }}'               # Red
+ble-face -s syntax_quotation 'fg=#{{ get $colors "2" }}'                     # Green
+ble-face -s syntax_tilde 'fg=#{{ get $colors "13" }}'                         # Mauve
+ble-face -s syntax_varname 'fg=#{{ get $colors "11" }}'                       # Rosewater
+ble-face -s varname_array 'fg=#{{ get $colors "5" }}'                        # Peach
+ble-face -s varname_empty 'fg=#{{ get $colors "5" }}'                        # Peach
+ble-face -s varname_export 'fg=#{{ get $colors "5" }}'                       # Peach
+ble-face -s varname_expr 'fg=#{{ get $colors "5" }}'                         # Peach
+ble-face -s varname_hash 'fg=#{{ get $colors "5" }}'                         # Peach
+ble-face -s varname_number 'fg=#{{ get $colors "11" }}'                       # Rosewater
+ble-face -s varname_readonly 'fg=#{{ get $colors "5" }}'                     # Peach
+ble-face -s varname_transform 'fg=#{{ get $colors "5" }}'                    # Peach
+ble-face -s varname_unset 'bg=#{{ get $colors "9" }},fg=#{{ get $colors "0" }}'             # Red background, Crust foreground for better contrast
+ble-face -s vbell_erase 'bg=#{{ get $colors "14" }}'                          # Surface1
