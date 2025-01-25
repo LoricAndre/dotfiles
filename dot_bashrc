@@ -26,8 +26,6 @@ if has bat; then
   export PAGER=bat
 fi
 
-export PATH=$HOME/bin:$HOME/.local/bin:/opt/texlive/2020/bin/x86_64-linux:$PATH:$HOME/.npm-packages/bin:/usr/lib/ruby/gems/2.7.0:$HOME/.gem/ruby/2.7.0:$HOME/.cargo/bin:$GOPATH/bin
-
 [ -f /usr/share/nvm/init-nvm.sh ] && source /usr/share/nvm/init-nvm.sh
 [ -f $NVM_DIR/nvm.sh ] && source $NVM_DIR/nvm.sh
 
@@ -43,31 +41,30 @@ fi
 [ -f "/usr/share/stderred/stderred.sh" ] && . "/usr/share/stderred/stderred.sh"
 [ -f "/usr/share/stderred/stderred32.sh" ] && . "/usr/share/stderred/stderred32.sh"
 
-# pnpm
-if has pnpm; then
-  export PNPM_HOME="/home/loric/.local/share/pnpm"
-  case ":$PATH:" in
-    *":$PNPM_HOME:"*) ;;
-    *) export PATH="$PNPM_HOME:$PATH" ;;
-  esac
+if has npm; then
+  [[ -d "$HOME/.npm-packages/bin" ]] && export PATH="$HOME/.npm-packages/bin:$PATH"
 fi
+if has pnpm; then
+  [[ -d "$PNPM_HOME" ]] && export PATH="$PNPM_HOME:$PATH"
+fi
+if has pulumi; then
+  [[ -d "$PULUMI_HOME" ]] && export PATH="$PULUMI_HOME/bin:$PATH"
+fi
+if has cargo; then
+  [[ -d "$CARGO_HOME/bin" ]] && export PATH="$CARGO_HOME/bin:$PATH"
+fi
+if has go; then
+  [[ -d "$GOPATH/bin" ]] && export PATH="$GOPATH/bin:$PATH"
+fi
+if has pyvenv; then
+  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+  eval "$(pyenv init -)"
+fi
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
 
 if has direnv; then
   eval "$(direnv hook bash)"
-fi
-
-if has pulumi; then
-  PULUMI_HOME="$HOME/.pulumi"
-  [ -d $PULUMI_HOME/bin ] && export PATH="$PULUMI_HOME/bin:$PATH"
-fi
-
-if has cargo; then
-  [ -n $CARGO_HOME ] && export PATH="$CARGO_HOME/bin:$PATH"
-fi
-
-if has pyvenv; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 fi
 
 [ -z "$GPG_TTY" ] && export GPG_TTY="$(tty)"
