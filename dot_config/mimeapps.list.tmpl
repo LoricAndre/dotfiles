@@ -1,23 +1,26 @@
+{{ $browser := (eq .browser "zen-browser") | ternary "zen.desktop" (printf "%s.desktop" .browser) }}
 [Default Applications]
-x-scheme-handler/http={{ .browser }}.desktop
-x-scheme-handler/https={{ .browser }}.desktop
-x-scheme-handler/chrome={{ .browser }}.desktop
-text/html={{ .browser }}.desktop
-application/x-extension-htm={{ .browser }}.desktop
-application/x-extension-html={{ .browser }}.desktop
-application/x-extension-shtml={{ .browser }}.desktop
-application/xhtml+xml={{ .browser }}.desktop
-application/x-extension-xhtml={{ .browser }}.desktop
-application/x-extension-xht={{ .browser }}.desktop
+x-scheme-handler/http={{ $browser }}
+x-scheme-handler/https={{ $browser }}
+x-scheme-handler/chrome={{ $browser }}
+text/html={{ $browser }}
+application/x-extension-htm={{ $browser }}
+application/x-extension-html={{ $browser }}
+application/x-extension-shtml={{ $browser }}
+application/xhtml+xml={{ $browser }}
+application/x-extension-xhtml={{ $browser }}
+application/x-extension-xht={{ $browser }}
+image/svg+xml={{ $browser }}
+application/pdf={{ $browser }}
 
 [Added Associations]
-x-scheme-handler/http={{ .browser }}.desktop;
-x-scheme-handler/https={{ .browser }}.desktop;
-x-scheme-handler/chrome={{ .browser }}.desktop;
-text/html={{ .browser }}.desktop;
-application/x-extension-htm={{ .browser }}.desktop;
-application/x-extension-html={{ .browser }}.desktop;
-application/x-extension-shtml={{ .browser }}.desktop;
-application/xhtml+xml={{ .browser }}.desktop;
-application/x-extension-xhtml={{ .browser }}.desktop;
-application/x-extension-xht={{ .browser }}.desktop;
+x-scheme-handler/http={{ $browser }};
+x-scheme-handler/https={{ $browser }};
+x-scheme-handler/chrome={{ $browser }};
+text/html={{ $browser }};
+application/x-extension-htm={{ $browser }};
+application/x-extension-html={{ $browser }};
+application/x-extension-shtml={{ $browser }};
+application/xhtml+xml={{ $browser }};
+application/x-extension-xhtml={{ $browser }};
+application/x-extension-xht={{ $browser }};
