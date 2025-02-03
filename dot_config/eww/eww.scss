@@ -1,0 +1,67 @@
+@use "theme" as *;
+
+* {
+	font: 10px "monospace";
+	padding: 0;
+	margin: 0;
+	background: transparent;
+}
+
+.vbar {
+  margin: 5px;
+}
+
+.widget {
+  button { all: unset; }
+  background: $background;
+	border-radius: 5px;
+	margin-top: 3px;
+	margin-bottom: 3px;
+	padding: 3px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.workspaces {
+  .workspace {
+    border: none;
+    background: $color8;
+    margin: 2px;
+    padding: 0;
+    &.focused {
+      color: $color5;
+    }
+  }
+}
+
+// menu {
+//   padding: 5px;
+//   background-color: $background;
+//   color: #fff;
+//
+//   menuitem {
+//     border-radius: 5px;
+//     padding: 8px 12px;
+//     background-color: transparent;
+//     transition: all .2s ease;
+//
+//     &:backdrop {
+//       background-color: $background;
+//     }
+//   }
+//
+//   menuitem arrow {
+//     min-width: 16px;
+//     min-height: 16px;
+//
+//     &:dir(ltr) {
+//       -gtk-icon-source: -gtk-icontheme('pan-end-symbolic');
+//       margin-left: 10px;
+//       margin-right: 0;
+//     }
+//   }
+//
+//   menuitem:hover {
+//     background-color: $color5;
+//   }
+// }

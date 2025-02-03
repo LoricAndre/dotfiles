@@ -177,7 +177,7 @@ fi
 
 if has eza; then
   alias ls=eza
-  alias ll="ls -lbhM --total-size --git"
+  alias ll="ls -lbhM --git"
   alias l=ls
   alias la="ll -a"
   alias tree="eza -T"

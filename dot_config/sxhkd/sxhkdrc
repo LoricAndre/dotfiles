@@ -4,13 +4,13 @@
 
 # terminal emulator
 super + Return
-	kitty
+	$bspwm_term
 
 super + s
   notify-send "Status" "$(fastfetch)" -u normal -t 3000
 
 super + b
-  firefox
+  $bspwm_browser
 
 ctrl + alt + l
   $HOME/bin/lock

@@ -2,13 +2,14 @@
 
 run_once() {
   for p in "$@"; do
-    pgrep -x $p >/dev/null || $p &
+    pgrep -x -f "$p" >/dev/null || $p &
   done
 }
 
 run() {
   for p in "$@"; do
-    pkill $p
+    pkill -f "$p"
+    while [ -v "$(pgrep $p)" ]; do sleep 0.05; done
     $p &
   done
 
@@ -16,11 +17,15 @@ run() {
 
 setxkbmap fr -option caps:escape
 
+xinput set-prop "$(xinput list --name-only| grep Touchpad)" "libinput Natural Scrolling Enabled" 1
 xinput set-prop "$(xinput list --name-only| grep Touchpad)" "libinput Tapping Enabled" 1
 
 xsetroot -cursor_name left_ptr
 
+source "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/variables.sh"
+
 run_once sxhkd pacwall dunst
+run "eww open bar"
 run picom
 
 xset s 900 3600
@@ -29,6 +34,7 @@ xss-lock -- $HOME/bin/lock
 autorandr --change
 bspc monitor -d 1 2 3 4 5 6 7 8 9 10
 bspc monitor -r
+bspc wm -o
 
 bspc config border_width 2
 bspc config window_gap 12
@@ -39,7 +45,7 @@ bspc config split_ratio 0.65
 bspc config borderless_monocle true
 bspc config gapless_monocle true
 
-bspc rule -a *:*:Picture-in-Picture state=floating
+bspc rule -a '*:*:Picture-in-Picture' state=floating
 bspc rule -a pavucontrol state=floating
 
 notify-send 'BSPWM' 'Config loaded'

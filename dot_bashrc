@@ -1,16 +1,9 @@
 # vi: ft=bash
 
-[[ $- == *i* ]] && [[ -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh --noattach && source ${XDG_CONFIG_HOME:-${HOME}/.config}/bash/ble-theme.sh
+# [[ $- == *i* ]] && [[ -f /usr/share/blesh/ble.sh ]] && source /usr/share/blesh/ble.sh --noattach && source ${XDG_CONFIG_HOME:-${HOME}/.config}/bash/ble-theme.sh
 
 source ${XDG_CONFIG_HOME:-${HOME}/.config}/bash/aliases.sh
-
-if has tmux; then
-  if [ -z "$TMUX" ] && (
-    [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "xterm-ghostty" ]
-  ) then
-    tmux attach || exec tmux new-session && exit;
-  fi
-fi
+source ${XDG_CONFIG_HOME:-${HOME}/.config}/bash/options.sh
 
 if has nvr; then
   [ -z "$EDITOR" ] && export EDITOR="nvr -sl --remote-wait"
@@ -83,5 +76,17 @@ fi
 if has starship; then
   eval "$(starship init bash)"
 fi
+
+[[ $- == *i* ]] && [[ -f /usr/share/bash-completion/bash_completion ]] && \
+    source /usr/share/bash-completion/bash_completion
+
+if has tmux; then
+  if [ -z "$TMUX" ] && (
+    [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "xterm-ghostty" ]
+  ) then
+    tmux attach || exec tmux new-session && exit;
+  fi
+fi
+
 
 [[ ${BLE_VERSION-} ]] && ble-attach

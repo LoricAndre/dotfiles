@@ -2,6 +2,24 @@
 
 {{- $colors := get .colors .theme }}
 
+ble-face -r region region_@
+ble-face -r disabled
+ble-face -r overwrite_mode
+ble-face -r vbell vbell_@
+ble-face -r syntax_@
+ble-face -r command_@
+ble-face -r filename_@
+ble-face -r varname_@
+ble-face -r argument_@
+ble-face -r prompt_status_line
+ble-face -r cmdinfo_cd_cdpath
+ble-face -r auto_complete
+ble-face -r menu_filter_fixed
+ble-face -r menu_filter_input
+ble-face -r menu_desc_default
+ble-face -r menu_desc_type
+ble-face -r menu_desc_quote
+
 ble-face -s argument_error 'bg=#{{ get $colors "1" }},fg=#{{ get $colors "0" }}'            # Red background, Crust foreground for better contrast
 ble-face -s argument_option 'fg=#{{ get $colors "15" }},italic'               # Flamingo
 ble-face -s auto_complete 'fg=#{{ get $colors "14" }},italic'                 # Surface1
