@@ -19,6 +19,7 @@
     "dock": "right"
   },
   "theme": "Catppuccin Macchiato",
+  "icon_theme": "Catppuccin Macchiato",
   "features": {
     "copilot": false
   },
@@ -41,17 +42,18 @@
   // "ui_font_family": "JetBrains Mono",
   "relative_line_numbers": true,
   "tab_size": 2,
-  "journal": {
-    // The path of the directory where journal entries are stored
-    "path": "~/notes/oxide",
-    "hour_format": "hour24"
-  },
+  // "journal": {
+  //   // The path of the directory where journal entries are stored
+  //   "path": "~/notes/oxide",
+  //   "hour_format": "hour24"
+  // },
   "tabs": {
     "file_icons": true,
     "git_status": true
   },
   "auto_install_extensions": {
     "catppuccin": true,
+    "catppuccin-icons": true,
     "docker-compose": true,
     "dockerfile": true,
     "env": true,

@@ -15,7 +15,12 @@
       "escape": "menu::Cancel",
       "ctrl-escape": "menu::Cancel",
       "ctrl-c": "menu::Cancel",
-      "shift-enter": "picker::ConfirmInput",
+      "shift-enter": [
+              "picker::ConfirmInput",
+              {
+                "secondary": true
+              }
+            ],
       "alt-enter": [
         "picker::ConfirmInput",
         {
@@ -68,13 +73,13 @@
       "g k": "editor::GoToDiagnostic",
       "ctrl-l": "editor::AddSelectionAbove",
       "ctrl-k": "editor::AddSelectionBelow",
-      "space shift-s": [
-        "workspace::Open",
+      "ctrl-shift-space": [
+        "projects::OpenRecent",
         {
           "create_new_window": true
         }
       ],
-      "space s": [
+      "ctrl-space": [
         "projects::OpenRecent",
         {
           "create_new_window": true
@@ -140,7 +145,7 @@
       ],
       "ctrl-alt-space": "editor::ShowCharacterPalette",
       "ctrl-;": "editor::ToggleLineNumbers",
-      "ctrl-'": "editor::ToggleHunkDiff",
+      "ctrl-'": "editor::ToggleSelectedDiffHunks",
       "ctrl-\"": "editor::ExpandAllHunkDiffs"
     }
   },
@@ -329,7 +334,7 @@
       "ctrl-m": "editor::MoveToEnclosingBracket",
       "ctrl-shift-[": "editor::Fold",
       "ctrl-shift-]": "editor::UnfoldLines",
-      "ctrl-space": "editor::ShowCompletions",
+      // "ctrl-space": "editor::ShowCompletions",
       "ctrl-.": "editor::ToggleCodeActions",
       "alt-ctrl-r": "editor::RevealInFileManager",
       "ctrl-alt-shift-c": "editor::DisplayCursorNames"
@@ -1131,7 +1136,7 @@
       "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
       "space z": "workspace::ToggleZoom",
       "space shift-s": [
-        "workspace::Open",
+        "projects::OpenRecent",
         {
           "create_new_window": false
         }
