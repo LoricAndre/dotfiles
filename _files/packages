@@ -84,6 +84,7 @@ efibootmgr
 egl-wayland
 eslint
 ethtool
+eww
 exfatprogs
 eza
 f2fs-tools
@@ -231,6 +232,7 @@ opencl-nvidia
 opencv
 openresolv
 openssh
+opentofu
 openvpn-update-resolv-conf-git
 openvpn-update-systemd-resolved
 oxygen-sounds
@@ -312,6 +314,7 @@ tailscale
 tailscale-systray-git
 teamviewer
 terraform
+terragrunt
 texinfo
 timeshift
 tldr

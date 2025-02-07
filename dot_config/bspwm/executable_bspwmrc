@@ -17,14 +17,15 @@ run() {
 
 setxkbmap fr -option caps:escape
 
-xinput set-prop "$(xinput list --name-only| grep Touchpad)" "libinput Natural Scrolling Enabled" 1
-xinput set-prop "$(xinput list --name-only| grep Touchpad)" "libinput Tapping Enabled" 1
+xinput set-prop "$(xinput list --name-only | grep Touchpad)" "libinput Natural Scrolling Enabled" 1
+xinput set-prop "$(xinput list --name-only | grep Touchpad)" "libinput Tapping Enabled" 1
 
 xsetroot -cursor_name left_ptr
 
 source "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/variables.sh"
 
 run_once sxhkd pacwall dunst
+run_once "nm-applet --indicator"
 run "eww open bar"
 run picom
 
