@@ -1,7 +1,7 @@
 {{- $colors := get .colors .theme }}
 
-hook: "swaybg -i '$W' -m center -c '#{{- get $colors "0" }}'"
-# hook: "hsetroot -solid '#{{- get $colors "0" }}' -center '$W' > /dev/null"
+# hook: "swaybg -i '$W' -m center -c '#{{- get $colors "0" }}'"
+hook: "hsetroot -solid '#{{- get $colors "0" }}' -center '$W' > /dev/null"
 attributes: {
     package: {
         implicit:   "color='#{{- get $colors "1" }}aa'"

@@ -25,14 +25,14 @@ Print
 super + d
 	rofi -show drun
 super + r
-	rofi -show run
+	kitty --class sk_launch $HOME/bin/sk_launch
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 super + @space
-  $HOME/bin/bspwm_cycle list
+  kitty --class sk_win $HOME/bin/sk_win
 
 super + shift + @space
   bspc node -d 10
@@ -43,7 +43,7 @@ super + shift + @space
 
 # quit/restart bspwm
 super + shift + {e,r}
-	bspc {quit,wm -r}
+	chezmoi apply --force; bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }q

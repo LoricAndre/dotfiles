@@ -21,6 +21,7 @@
   "theme": "Catppuccin Macchiato",
   "icon_theme": "Catppuccin Macchiato",
   "features": {
+    "inline_completion_provider": "zed",
     "copilot": false
   },
   "assistant": {

@@ -48,5 +48,8 @@ bspc config gapless_monocle true
 
 bspc rule -a '*:*:Picture-in-Picture' state=floating
 bspc rule -a pavucontrol state=floating
+bspc rule -a pavucontrol state=floating
+bspc rule -a 'sk_launch' state=floating rectangle=400x600+0x0
+bspc rule -a 'sk_win' state=floating rectangle=400x600+0x0
 
 notify-send 'BSPWM' 'Config loaded'

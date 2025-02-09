@@ -97,8 +97,8 @@
       "shift-backspace": "editor::Backspace",
       "delete": "editor::Delete",
       "ctrl-d": "editor::Delete",
-      "tab": "editor::Tab",
-      "shift-tab": "editor::TabPrev",
+      // "tab": "editor::Tab",
+      // "shift-tab": "editor::TabPrev",
       "ctrl-backspace": "editor::DeleteToPreviousWordStart",
       "ctrl-w": "editor::DeleteToPreviousWordStart",
       "ctrl-delete": "editor::DeleteToNextWordEnd",
@@ -170,6 +170,7 @@
   {
     "context": "Editor && mode == full && inline_completion",
     "bindings": {
+      "tab": "editor::AcceptInlineCompletion",
       "alt-]": "editor::NextInlineCompletion",
       "alt-[": "editor::PreviousInlineCompletion",
       "alt-right": "editor::AcceptPartialInlineCompletion"
@@ -445,7 +446,7 @@
     "bindings": {
       "enter": "editor::ConfirmCompletion",
       // "tab": "editor::ConfirmCompletion",
-      "tab": "editor::ContextMenuNext",
+      "tab": "editor::ComposeCompletion",
       "shift-tab": "editor::ContextMenuPrev"
     }
   },
