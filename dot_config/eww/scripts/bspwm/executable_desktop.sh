@@ -7,6 +7,6 @@ result() {
 }
 
 result
-bspc subscribe desktop | while read -r _; do
+bspc subscribe all | while read -r _; do
 	result
 done

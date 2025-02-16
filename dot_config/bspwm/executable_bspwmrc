@@ -15,6 +15,11 @@ run() {
 
 }
 
+autorandr --change
+bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor -r
+bspc wm -o
+
 setxkbmap fr -option caps:escape
 
 xinput set-prop "$(xinput list --name-only | grep Touchpad)" "libinput Natural Scrolling Enabled" 1
@@ -32,10 +37,6 @@ run picom
 xset s 900 3600
 xss-lock -- $HOME/bin/lock
 
-autorandr --change
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
-bspc monitor -r
-bspc wm -o
 
 bspc config border_width 2
 bspc config window_gap 12

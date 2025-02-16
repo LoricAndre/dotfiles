@@ -12,6 +12,9 @@ super + s
 super + b
   $bspwm_browser
 
+super + e
+  sh -c "$EDITOR"
+
 ctrl + alt + l
   $HOME/bin/lock
 
