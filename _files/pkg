@@ -27,7 +27,6 @@ progress
 ripgrep
 sops
 starship
-tldr
 tmux
 tmux-plugin-manager
 traceroute
@@ -96,3 +95,4 @@ opentofu
 terragrunt
 mold
 nodejs-lts-jod
+tealdeer

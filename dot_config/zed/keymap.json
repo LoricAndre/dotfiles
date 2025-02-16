@@ -53,6 +53,7 @@
     "context": "Editor && vim_mode == normal",
     "bindings": {
       "g c c": "editor::ToggleComments",
+      "space q": "pane::CloseActiveItem",
       "space g b": "branches::OpenRecent",
       "space g r": "editor::RevertSelectedHunks",
       "space g l": "editor::ToggleGitBlame",
