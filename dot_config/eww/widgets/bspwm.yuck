@@ -19,7 +19,7 @@
 				:width 25
 				:hexpand false
 				:vexpand false
-				:visible { ws.focusedNodeId != 0 }
+				:visible { ws.focusedNodeId != 0 && ws.name != "10" }
 				{ ws.name }
 			)
 		)
