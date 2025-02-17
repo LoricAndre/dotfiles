@@ -28,14 +28,14 @@ Print
 super + d
 	rofi -show drun
 super + r
-	kitty --class sk_launch $HOME/bin/sk_launch
+	kitty --class popup_term $HOME/bin/sk_launch
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
 
 super + @space
-  kitty --class sk_win $HOME/bin/sk_win
+  kitty --class popup_term $HOME/bin/sk_win
 
 super + shift + @space
   bspc node -d 10

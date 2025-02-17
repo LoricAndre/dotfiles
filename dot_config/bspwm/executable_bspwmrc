@@ -38,6 +38,14 @@ xset s 900 3600
 xss-lock -- $HOME/bin/lock
 
 
+dims=$(xrandr | sed -n 's/^.*current \([0-9]\+\) x \([0-9]\+\).*$/\1x\2/p')
+float_w=600
+float_h=800
+float_x=$(($(echo $dims | cut -d'x' -f1)/2 - float_w/2))
+float_y=$(($(echo $dims | cut -d'x' -f2)/2 - float_h/2))
+
+echo $float_x $float_y $float_w $float_h
+
 bspc config border_width 2
 bspc config window_gap 12
 
@@ -50,7 +58,6 @@ bspc config gapless_monocle true
 bspc rule -a '*:*:Picture-in-Picture' state=floating
 bspc rule -a pavucontrol state=floating
 bspc rule -a pavucontrol state=floating
-bspc rule -a 'sk_launch' state=floating rectangle=400x600+0x0
-bspc rule -a 'sk_win' state=floating rectangle=400x600+0x0
+bspc rule -a 'popup_term' state=floating "rectangle=${float_w}x${float_h}+${float_x}+${float_y}"
 
 notify-send 'BSPWM' 'Config loaded'

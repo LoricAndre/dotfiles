@@ -55,6 +55,7 @@ chwd
 cilium-cli
 cmake
 compsize
+conan
 coolercontrol
 cosmic-files
 cpio
