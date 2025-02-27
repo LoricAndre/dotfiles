@@ -60,7 +60,7 @@
     "bindings": {
       "g c c": "editor::ToggleComments",
       "space q": "pane::CloseActiveItem",
-      "space g b": "branches::OpenRecent",
+      "space g b": "git::Branch",
       "space g r": "editor::RevertSelectedHunks",
       "space g l": "editor::ToggleGitBlame",
       "space g g": [
@@ -165,21 +165,6 @@
         }
       ],
       "ctrl->": "assistant::QuoteSelection"
-    }
-  },
-  {
-    "context": "Editor && mode == full && inline_completion",
-    "bindings": {
-      "tab": "editor::AcceptInlineCompletion",
-      "alt-]": "editor::NextInlineCompletion",
-      "alt-[": "editor::PreviousInlineCompletion",
-      "alt-right": "editor::AcceptPartialInlineCompletion"
-    }
-  },
-  {
-    "context": "Editor && !inline_completion",
-    "bindings": {
-      "alt-\\": "editor::ShowInlineCompletion"
     }
   },
   {
@@ -502,8 +487,8 @@
       "alt-ctrl-n": "project_panel::NewDirectory",
       "ctrl-x": "project_panel::Cut",
       "ctrl-c": "project_panel::Copy",
-      "ctrl-alt-c": "project_panel::CopyPath",
-      "alt-ctrl-shift-c": "project_panel::CopyRelativePath",
+      "ctrl-alt-c": "workspace::CopyPath",
+      "alt-ctrl-shift-c": "workspace::CopyRelativePath",
       "f2": "project_panel::Rename",
       "enter": "project_panel::Rename",
       "backspace": "project_panel::Trash",
@@ -643,25 +628,25 @@
       "shift-w": [
         "vim::NextWordStart",
         {
-          "ignorePunctuation": true
+          "ignore_punctuation": true
         }
       ],
       "shift-e": [
         "vim::NextWordEnd",
         {
-          "ignorePunctuation": true
+          "ignore_punctuation": true
         }
       ],
       "shift-b": [
         "vim::PreviousWordStart",
         {
-          "ignorePunctuation": true
+          "ignore_punctuation": true
         }
       ],
       "g shift-e": [
         "vim::PreviousWordEnd",
         {
-          "ignorePunctuation": true
+          "ignore_punctuation": true
         }
       ],
       "/": "vim::Search",
@@ -761,55 +746,55 @@
       "g *": [
         "vim::MoveToNext",
         {
-          "partialWord": true
+          "partial_word": true
         }
       ],
       "g #": [
         "vim::MoveToPrev",
         {
-          "partialWord": true
+          "partial_word": true
         }
       ],
       "g down": [
         "vim::Down",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g up": [
         "vim::Up",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g $": [
         "vim::EndOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g end": [
         "vim::EndOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g 0": [
         "vim::StartOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g home": [
         "vim::StartOfLine",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g ^": [
         "vim::FirstNonWhitespace",
         {
-          "displayLines": true
+          "display_lines": true
         }
       ],
       "g ]": "editor::GoToDiagnostic",
@@ -1008,7 +993,7 @@
       "shift-p": [
         "vim::Paste",
         {
-          "preserveClipboard": true
+          "preserve_clipboard": true
         }
       ],
       "s": "vim::Substitute",
@@ -1019,13 +1004,13 @@
       "*": [
         "vim::MoveToNext",
         {
-          "partialWord": true
+          "partial_word": true
         }
       ],
       "#": [
         "vim::MoveToPrev",
         {
-          "partialWord": true
+          "partial_word": true
         }
       ],
       "ctrl-a": "vim::Increment",
@@ -1084,7 +1069,6 @@
       "ctrl-[": "vim::NormalBefore",
       "ctrl-x ctrl-o": "editor::ShowCompletions",
       "ctrl-x ctrl-a": "assistant::InlineAssist", // zed specific
-      "ctrl-x ctrl-c": "editor::ShowInlineCompletion", // zed specific
       "ctrl-x ctrl-l": "editor::ToggleCodeActions", // zed specific
       "ctrl-x ctrl-z": "editor::Cancel",
       "ctrl-w": "editor::DeleteToPreviousWordStart",
@@ -1131,7 +1115,7 @@
       "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
       "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
       "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
-      "space g b": "branches::OpenRecent",
+      "space g b": "git::Branch",
       "space f": "file_finder::Toggle",
       "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
       "space z": "workspace::ToggleZoom",
