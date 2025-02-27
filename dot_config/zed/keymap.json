@@ -16,11 +16,11 @@
       "ctrl-escape": "menu::Cancel",
       "ctrl-c": "menu::Cancel",
       "shift-enter": [
-              "picker::ConfirmInput",
-              {
-                "secondary": true
-              }
-            ],
+        "picker::ConfirmInput",
+        {
+          "secondary": true
+        }
+      ],
       "alt-enter": [
         "picker::ConfirmInput",
         {
@@ -46,7 +46,13 @@
       "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
       "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
       "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"]
+      "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "ctrl-space": [
+        "projects::OpenRecent",
+        {
+          "create_new_window": true
+        }
+      ]
     }
   },
   {
@@ -80,12 +86,6 @@
           "create_new_window": true
         }
       ],
-      "ctrl-space": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": true
-        }
-      ],
       "space r": "task::Spawn",
       "space a": "workspace::NewSearch"
     }
@@ -105,7 +105,6 @@
       "ctrl-delete": "editor::DeleteToNextWordEnd",
       "ctrl-x": "editor::Cut",
       "ctrl-c": "editor::Copy",
-      "ctrl-v": "editor::Paste",
       "ctrl-z": "editor::Undo",
       "ctrl-shift-z": "editor::Redo",
       "up": "editor::MoveUp",
@@ -503,7 +502,6 @@
       "alt-ctrl-n": "project_panel::NewDirectory",
       "ctrl-x": "project_panel::Cut",
       "ctrl-c": "project_panel::Copy",
-      "ctrl-v": "project_panel::Paste",
       "ctrl-alt-c": "project_panel::CopyPath",
       "alt-ctrl-shift-c": "project_panel::CopyRelativePath",
       "f2": "project_panel::Rename",

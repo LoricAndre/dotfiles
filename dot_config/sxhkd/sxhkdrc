@@ -28,14 +28,16 @@ Print
 super + d
 	rofi -show drun
 super + r
-	kitty --class popup_term $HOME/bin/sk_launch
+	rofi -show run
+super + w
+  rofi -show window
+
+super + space
+  [ -n "$(xdo id -N scratchpad)" ] && bspc node $(xdo id -N scratchpad) -g hidden && sleep 0.1 && bspc node $(xdo id -N scratchpad) -f
 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
-
-super + @space
-  kitty --class popup_term $HOME/bin/sk_win
 
 super + shift + @space
   bspc node -d 10
@@ -85,8 +87,8 @@ super + {_,shift + }{j,k,l,m}
 	bspc node -{f,s} {west,south,north,east}
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
-	bspc node -f @{parent,brother,first,second}
+# super + {p,b,comma,period}
+#	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous window in the current desktop
 super + {_,shift + }c
@@ -107,7 +109,7 @@ super + {o,i}
 	bspc wm -h on
 
 # focus or send to the given desktop
-super + {_,shift + }{ampersand,eacute,quotedbl,apostrophe,parenleft,minus,egrave,underscore,ccedilla,agrave}
+super + {_,shift + }{comma,semicolon,colon,exclam,parenleft,minus,egrave,underscore,ccedilla,agrave}
 	bspc {desktop -f,node -d} '^{1-9,10}'
 
 #

@@ -2,7 +2,7 @@
 
 run_once() {
   for p in "$@"; do
-    pgrep -x -f "$p" >/dev/null || $p &
+    pgrep -x -f "$p" >/dev/null || eval $p &
   done
 }
 
@@ -10,13 +10,13 @@ run() {
   for p in "$@"; do
     pkill -f "$p"
     while [ -v "$(pgrep $p)" ]; do sleep 0.05; done
-    $p &
+    eval $p &
   done
 
 }
 
 autorandr --change
-bspc monitor -d 1 2 3 4 5 6 7 8 9 10
+bspc monitor -d ', ' ';󰈹 ' ':󱂬 ' '! ' 5 6 7 8 9 10
 bspc monitor -r
 bspc wm -o
 
@@ -31,6 +31,7 @@ source "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/variables.sh"
 
 run_once sxhkd pacwall dunst
 run_once "nm-applet --indicator"
+run_once "kitty --class scratchpad"
 run "eww open bar"
 run picom
 
@@ -39,12 +40,20 @@ xss-lock -- $HOME/bin/lock
 
 
 dims=$(xrandr | sed -n 's/^.*current \([0-9]\+\) x \([0-9]\+\).*$/\1x\2/p')
-float_w=600
-float_h=800
-float_x=$(($(echo $dims | cut -d'x' -f1)/2 - float_w/2))
-float_y=$(($(echo $dims | cut -d'x' -f2)/2 - float_h/2))
+screen_w=$(echo $dims | cut -d'x' -f1)
+screen_h=$(echo $dims | cut -d'x' -f2)
+scratchterm_w=600
+scratchterm_h=800
+scratchterm_x=$(($screen_w/2 - scratchterm_w/2))
+scratchterm_y=$(($screen_h/2 - scratchterm_h/2))
 
-echo $float_x $float_y $float_w $float_h
+scratchpad_w=$(($screen_w*85/100))
+scratchpad_h=$(($screen_h*85/100))
+scratchpad_x=$(($screen_w/2 - scratchpad_w/2))
+scratchpad_y=$(($screen_h/2 - scratchpad_h/2))
+
+echo $screen_h $screen_w
+echo $scratchpad_h $scratchpad_w $scratchpad_x $scratchpad_y
 
 bspc config border_width 2
 bspc config window_gap 12
@@ -59,5 +68,6 @@ bspc rule -a '*:*:Picture-in-Picture' state=floating
 bspc rule -a pavucontrol state=floating
 bspc rule -a pavucontrol state=floating
 bspc rule -a 'popup_term' state=floating "rectangle=${float_w}x${float_h}+${float_x}+${float_y}"
+bspc rule -a 'scratchpad' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
 
 notify-send 'BSPWM' 'Config loaded'

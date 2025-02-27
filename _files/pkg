@@ -51,13 +51,11 @@ picom
 zinit
 piper
 pueue
-zui-bin
 picom
 terraform
 okular
 coolercontrol
 nerdfix
-zui-bin
 cups
 system-config-printer
 brscan5
@@ -96,3 +94,4 @@ terragrunt
 mold
 nodejs-lts-jod
 tealdeer
+obsidian
