@@ -64,8 +64,8 @@
       "space g r": "editor::RevertSelectedHunks",
       "space g l": "editor::ToggleGitBlame",
       "space g g": [
-        "workspace::SendKeystrokes",
-        ": center term enter lazygit && exit enter"
+        "task::Spawn",
+        { "task_name": "git: lazygit" }
       ],
       "space g s": ["task::Spawn", { "task_name": "git: stage current file" }],
       "space g shift-s": ["task::Spawn", { "task_name": "git: stage all" }],

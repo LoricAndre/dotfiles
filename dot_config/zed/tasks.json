@@ -53,6 +53,12 @@
     "command": "git pull",
     "reveal": "always",
     "hide": "on_success"
+  },
+  {
+    "label": "git: lazygit",
+    "command": "lazygit",
+    "reveal": "always",
+    "hide": "on_success"
   }
   // {
   //   "label": "dbg : print current relative file path",
