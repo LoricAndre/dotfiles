@@ -33,7 +33,10 @@ super + w
   rofi -show window
 
 super + space
-  [ -n "$(xdo id -N scratchpad)" ] && bspc node $(xdo id -N scratchpad) -g hidden && sleep 0.1 && bspc node $(xdo id -N scratchpad) -f
+  $HOME/bin/bspc-scratch scratchpad
+
+super + n
+  $HOME/bin/bspc-scratch obsidian
 
 # make sxhkd reload its configuration files:
 super + Escape
