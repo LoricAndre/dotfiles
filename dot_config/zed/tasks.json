@@ -58,6 +58,7 @@
     "label": "git: lazygit",
     "command": "lazygit",
     "reveal": "always",
+    "reveal_target": "center",
     "hide": "on_success"
   }
   // {
