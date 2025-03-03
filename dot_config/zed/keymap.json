@@ -63,11 +63,14 @@
       "space g b": "git::Branch",
       "space g r": "git::Restore",
       "space g l": "editor::ToggleGitBlame",
-      "space g z": ["task::Spawn", { "task_name": "git: lazygit" }],
+      "space g z": [
+        "task::Spawn",
+        { "task_name": "git: lazygit" }
+      ],
       "space g g": "git_panel::ToggleFocus",
-      "space g c": "git::ShowCommitEditor",
-      "space e": "project_panel::ToggleFocus",
-      "space g s": "git::ToggleStaged",
+      "space g s": ["task::Spawn", { "task_name": "git: stage current file" }],
+      "space g shift-s": ["task::Spawn", { "task_name": "git: stage all" }],
+      "space g c": ["task::Spawn", { "task_name": "git: commit" }],
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
@@ -85,7 +88,8 @@
         }
       ],
       "space r": "task::Spawn",
-      "space a": "workspace::NewSearch"
+      "space a": "workspace::NewSearch",
+      "space e": "project_panel::ToggleFocus"
     }
   },
   {

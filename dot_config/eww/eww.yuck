@@ -64,16 +64,21 @@
 )
 (defvar battery-icon `{"Charging": "󰂄", "Plugged": "", "Full": "", "Discharging": "󰁾" }`)
 
-(defwidget battery [?bat]
-	(box
-			:orientation "vertical"
-			:class "widget battery"
-			:tooltip { EWW_BATTERY[bat?:"BAT0"].status }
-		(label
-			:text { battery-icon[EWW_BATTERY[bat?:"BAT0"].status]?:"" }
-		)
-		(label
-			:text "${ EWW_BATTERY[bat?:"BAT0"].capacity }%"
-		)
-	)
+(defwidget battery []
+  (box
+    (for bat in { jq(EWW_BATTERY, "keys_unsorted") }
+   	(box
+   			:orientation "vertical"
+   			:class "widget battery"
+   			:tooltip { EWW_BATTERY[bat?:"BAT0"].status }
+   			:visible { bat =~ '^BAT[0-9]+$' }
+    		(label
+   			:text { battery-icon[EWW_BATTERY[bat?:"BAT0"].status]?:"" }
+    		)
+    		(label
+   			:text "${ EWW_BATTERY[bat?:"BAT0"].capacity }%"
+    		)
+   	)
+    )
+  )
 )
