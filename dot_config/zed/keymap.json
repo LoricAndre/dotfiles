@@ -1,10 +1,10 @@
 [
   {
     "bindings": {
-      "up": "menu::SelectPrev",
+      "up": "menu::SelectPrevious",
       "pageup": "menu::SelectFirst",
       "shift-pageup": "menu::SelectFirst",
-      "ctrl-p": "menu::SelectPrev",
+      "ctrl-p": "menu::SelectPrevious",
       "down": "menu::SelectNext",
       "pagedown": "menu::SelectLast",
       "shift-pagedown": "menu::SelectFirst",
@@ -43,10 +43,10 @@
       "f11": "zed::ToggleFullScreen",
       "ctrl-t": "terminal_panel::ToggleFocus",
       "ctrl-shift-t": "workspace::NewTerminal",
-      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-j": "workspace::ActivatePaneLeft",
+      "alt-m": "workspace::ActivatePaneRight",
+      "alt-l": "workspace::ActivatePaneUp",
+      "alt-k": "workspace::ActivatePaneDown",
       "ctrl-space": [
         "projects::OpenRecent",
         {
@@ -61,15 +61,12 @@
       "g c c": "editor::ToggleComments",
       "space q": "pane::CloseActiveItem",
       "space g b": "git::Branch",
-      "space g r": "editor::RevertSelectedHunks",
+      "space g r": "git::Restore",
       "space g l": "editor::ToggleGitBlame",
-      "space g g": [
-        "task::Spawn",
-        { "task_name": "git: lazygit" }
-      ],
-      "space g s": ["task::Spawn", { "task_name": "git: stage current file" }],
-      "space g shift-s": ["task::Spawn", { "task_name": "git: stage all" }],
-      "space g c": ["task::Spawn", { "task_name": "git: commit" }],
+      "space g z": ["task::Spawn", { "task_name": "git: lazygit" }],
+      "space g g": "git_panel::ToggleFocus",
+      "space e": "project_panel::ToggleFocus",
+      "space g s": "git::ToggleStaged",
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
@@ -88,6 +85,14 @@
       ],
       "space r": "task::Spawn",
       "space a": "workspace::NewSearch"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "bindings": {
+      "a": "git::StageAll",
+      "shift-a": "git::UnstageAll",
+      "c": "git::Commit"
     }
   },
   {
@@ -146,7 +151,7 @@
       "ctrl-alt-space": "editor::ShowCharacterPalette",
       "ctrl-;": "editor::ToggleLineNumbers",
       "ctrl-'": "editor::ToggleSelectedDiffHunks",
-      "ctrl-\"": "editor::ExpandAllHunkDiffs"
+      "ctrl-\"": "editor::ExpandAllDiffHunks"
     }
   },
   {
@@ -179,7 +184,7 @@
     "context": "AssistantPanel",
     "bindings": {
       "ctrl-g": "search::SelectNextMatch",
-      "ctrl-shift-g": "search::SelectPrevMatch"
+      "ctrl-shift-g": "search::SelectPreviousMatch"
     }
   },
   {
@@ -198,7 +203,7 @@
       "escape": "buffer_search::Dismiss",
       "tab": "buffer_search::FocusEditor",
       "enter": "search::SelectNextMatch",
-      "shift-enter": "search::SelectPrevMatch",
+      "shift-enter": "search::SelectPreviousMatch",
       "alt-enter": "search::SelectAllMatches",
       "ctrl-f": "search::FocusSearch",
       "ctrl-h": "search::ToggleReplace"
@@ -254,14 +259,14 @@
   {
     "context": "Pane",
     "bindings": {
-      "ctrl-pageup": "pane::ActivatePrevItem",
+      "ctrl-pageup": "pane::ActivatePreviousItem",
       "ctrl-pagedown": "pane::ActivateNextItem",
       "ctrl-w": "editor::DeleteToPreviousWordStart",
       "alt-ctrl-t": "pane::CloseInactiveItems",
       "alt-ctrl-shift-w": "workspace::CloseInactiveTabsAndPanes",
       "ctrl-shift-f": "project_search::ToggleFocus",
       "ctrl-alt-g": "search::SelectNextMatch",
-      "ctrl-alt-shift-g": "search::SelectPrevMatch",
+      "ctrl-alt-shift-g": "search::SelectPreviousMatch",
       "ctrl-alt-shift-h": "search::ToggleReplace",
       "alt-enter": "search::SelectAllMatches",
       "alt-c": "search::ToggleCaseSensitive",
@@ -432,7 +437,7 @@
       "enter": "editor::ConfirmCompletion",
       // "tab": "editor::ConfirmCompletion",
       "tab": "editor::ComposeCompletion",
-      "shift-tab": "editor::ContextMenuPrev"
+      "shift-tab": "editor::ContextMenuPrevious"
     }
   },
   {
@@ -444,8 +449,8 @@
   {
     "context": "Editor && (showing_code_actions || showing_completions)",
     "bindings": {
-      "up": "editor::ContextMenuPrev",
-      "ctrl-p": "editor::ContextMenuPrev",
+      "up": "editor::ContextMenuPrevious",
+      "ctrl-p": "editor::ContextMenuPrevious",
       "down": "editor::ContextMenuNext",
       "ctrl-n": "editor::ContextMenuNext",
       "pageup": "editor::ContextMenuFirst",
@@ -468,7 +473,7 @@
       "alt-enter": "editor::OpenExcerpts",
       "shift-enter": "editor::ExpandExcerpts",
       "ctrl-f8": "editor::GoToHunk",
-      "ctrl-shift-f8": "editor::GoToPrevHunk",
+      "ctrl-shift-f8": "editor::GoToPreviousHunk",
       "ctrl-enter": "assistant::InlineAssist"
     }
   },
@@ -543,15 +548,15 @@
   {
     "context": "FileFinder",
     "bindings": {
-      "ctrl-shift-p": "file_finder::SelectPrev"
+      "ctrl-shift-p": "file_finder::SelectPrevious"
     }
   },
   {
     "context": "TabSwitcher",
     "bindings": {
-      "ctrl-up": "menu::SelectPrev",
+      "ctrl-up": "menu::SelectPrevious",
       "ctrl-down": "menu::SelectNext",
-      "ctrl-shift-tab": "menu::SelectPrev",
+      "ctrl-shift-tab": "menu::SelectPrevious",
       "ctrl-backspace": "tab_switcher::CloseSelectedItem"
     }
   },
@@ -577,19 +582,15 @@
     "context": "Editor && VimControl && !VimWaiting && !menu",
     "bindings": {
       "i": [
-        "vim::PushOperator",
+        "vim::PushObject",
         {
-          "Object": {
-            "around": false
-          }
+          "around": false
         }
       ],
       "a": [
-        "vim::PushOperator",
+        "vim::PushObject",
         {
-          "Object": {
-            "around": true
-          }
+          "around": true
         }
       ],
       "space f": "file_finder::Toggle",
@@ -657,40 +658,32 @@
         }
       ],
       "*": "vim::MoveToNext",
-      "#": "vim::MoveToPrev",
+      "#": "vim::MoveToPrevious",
       "n": "vim::MoveToNextMatch",
-      "shift-n": "vim::MoveToPrevMatch",
+      "shift-n": "vim::MoveToPreviousMatch",
       "%": "vim::Matching",
       "f": [
-        "vim::PushOperator",
+        "vim::PushFindForward",
         {
-          "FindForward": {
-            "before": false
-          }
+          "before": false
         }
       ],
       "t": [
-        "vim::PushOperator",
+        "vim::PushFindForward",
         {
-          "FindForward": {
-            "before": true
-          }
+          "before": true
         }
       ],
       "shift-f": [
-        "vim::PushOperator",
+        "vim::PushFindBackward",
         {
-          "FindBackward": {
-            "after": false
-          }
+          "after": false
         }
       ],
       "shift-t": [
-        "vim::PushOperator",
+        "vim::PushFindBackward",
         {
-          "FindBackward": {
-            "after": true
-          }
+          "after": true
         }
       ],
       ";": "vim::RepeatFind",
@@ -699,8 +692,8 @@
       "' '": "pane::GoBack",
       "ctrl-i": "pane::GoForward",
       "ctrl-]": "editor::GoToDefinition",
-      "escape": ["vim::SwitchMode", "Normal"],
-      "ctrl-[": ["vim::SwitchMode", "Normal"],
+      "escape": "vim::SwitchToNormalMode",
+      "ctrl-[": "vim::SwitchToNormalMode",
       "v": "vim::ToggleVisual",
       "shift-v": "vim::ToggleVisualLine",
       "ctrl-v": "vim::ToggleVisualBlock",
@@ -718,11 +711,11 @@
       "ctrl-y": "vim::LineUp",
       "g g": "vim::StartOfDocument",
       "tab": "pane::ActivateNextItem",
-      "shift-tab": "pane::ActivatePrevItem",
+      "shift-tab": "pane::ActivatePreviousItem",
       "g d": "editor::GoToDefinition",
       "g f": "editor::Format",
       "g shift-d": "editor::GoToTypeDefinition",
-      "g l": "editor::GoToPrevDiagnostic",
+      "g l": "editor::GoToPreviousDiagnostic",
       "space o": "outline_panel::Open",
       "space m": "search::SelectNextMatch",
       "g >": [
@@ -750,7 +743,7 @@
         }
       ],
       "g #": [
-        "vim::MoveToPrev",
+        "vim::MoveToPrevious",
         {
           "partial_word": true
         }
@@ -798,7 +791,7 @@
         }
       ],
       "g ]": "editor::GoToDiagnostic",
-      "g [": "editor::GoToPrevDiagnostic",
+      "g [": "editor::GoToPreviousDiagnostic",
       "shift-h": "vim::WindowTop",
       "shift-m": "vim::WindowMiddle",
       "shift-l": "vim::WindowBottom",
@@ -821,10 +814,10 @@
       "8": ["vim::Number", 8],
       "9": ["vim::Number", 9],
       // window related commands (ctrl-w X)
-      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-j": "workspace::ActivatePaneLeft",
+      "alt-m": "workspace::ActivatePaneRight",
+      "alt-l": "workspace::ActivatePaneUp",
+      "alt-k": "workspace::ActivatePaneDown",
       "-": "pane::RevealInProjectPanel"
     }
   },
@@ -840,12 +833,12 @@
     "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting",
     "bindings": {
       ".": "vim::Repeat",
-      "c": ["vim::PushOperator", "Change"],
+      "c": "vim::PushChange",
       "shift-c": "vim::ChangeToEndOfLine",
-      "d": ["vim::PushOperator", "Delete"],
+      "d": "vim::PushDelete",
       "shift-d": "vim::DeleteToEndOfLine",
       "shift-j": "vim::JoinLines",
-      "y": ["vim::PushOperator", "Yank"],
+      "y": "vim::PushYank",
       "shift-y": ["workspace::SendKeystrokes", "y $"],
       "i": "vim::InsertBefore",
       "shift-i": "vim::InsertFirstNonWhitespace",
@@ -867,13 +860,13 @@
       ],
       "u": "editor::Undo",
       "ctrl-r": "editor::Redo",
-      "r": ["vim::PushOperator", "Replace"],
+      "r": "vim::PushReplace",
       "s": "vim::Substitute",
       "shift-s": "vim::SubstituteLine",
       "> >": "vim::Indent",
       "< <": "vim::Outdent",
       "ctrl-pagedown": "pane::ActivateNextItem",
-      "ctrl-pageup": "pane::ActivatePrevItem",
+      "ctrl-pageup": "pane::ActivatePreviousItem",
       // tree-sitter related commands
       ") x": "editor::SelectLargerSyntaxNode",
       "( x": "editor::SelectSmallerSyntaxNode"
@@ -903,12 +896,7 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == c",
     "bindings": {
-      "s": [
-        "vim::PushOperator",
-        {
-          "ChangeSurrounds": {}
-        }
-      ]
+      "s": ["vim::PushChangeSurrounds", {}]
     }
   },
   {
@@ -920,7 +908,7 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == d",
     "bindings": {
-      "s": ["vim::PushOperator", "DeleteSurrounds"]
+      "s": "vim::PushDeleteSurrounds"
     }
   },
   {
@@ -932,12 +920,7 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == y",
     "bindings": {
-      "s": [
-        "vim::PushOperator",
-        {
-          "AddSurrounds": {}
-        }
-      ]
+      "s": ["vim::PushAddSurrounds", {}]
     }
   },
   {
@@ -953,7 +936,7 @@
       "shift-w": [
         "vim::Word",
         {
-          "ignorePunctuation": true
+          "ignore_punctuation": true
         }
       ],
       "t": "vim::Tag",
@@ -1008,7 +991,7 @@
         }
       ],
       "#": [
-        "vim::MoveToPrev",
+        "vim::MoveToPrevious",
         {
           "partial_word": true
         }
@@ -1030,26 +1013,22 @@
       "shift-i": "vim::InsertBefore",
       "shift-a": "vim::InsertAfter",
       "shift-j": "vim::JoinLines",
-      "r": ["vim::PushOperator", "Replace"],
-      "ctrl-c": ["vim::SwitchMode", "Normal"],
-      "escape": ["vim::SwitchMode", "Normal"],
-      "ctrl-[": ["vim::SwitchMode", "Normal"],
+      "r": "vim::PushReplace",
+      "ctrl-c": "vim::SwitchToNormalMode",
+      "escape": "vim::SwitchToNormalMode",
+      "ctrl-[": "vim::SwitchToNormalMode",
       ">": "vim::Indent",
       "<": "vim::Outdent",
       "i": [
-        "vim::PushOperator",
+        "vim::PushObject",
         {
-          "Object": {
-            "around": false
-          }
+          "around": false
         }
       ],
       "a": [
-        "vim::PushOperator",
+        "vim::PushObject",
         {
-          "Object": {
-            "around": true
-          }
+          "around": true
         }
       ]
     }
@@ -1076,10 +1055,10 @@
       "ctrl-d": "vim::Outdent",
       "ctrl-r \"": "editor::Paste",
       "ctrl-r +": "editor::Paste",
-      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"]
+      "alt-j": "workspace::ActivatePaneLeft",
+      "alt-m": "workspace::ActivatePaneRight",
+      "alt-l": "workspace::ActivatePaneUp",
+      "alt-k": "workspace::ActivatePaneDown"
     }
   },
   {
@@ -1096,8 +1075,8 @@
     "bindings": {
       "tab": "vim::Tab",
       "enter": "vim::Enter",
-      "escape": ["vim::SwitchMode", "Normal"],
-      "ctrl-[": ["vim::SwitchMode", "Normal"]
+      "escape": "vim::SwitchToNormalMode",
+      "ctrl-[": "vim::SwitchToNormalMode"
     }
   },
   {
@@ -1111,10 +1090,10 @@
     "context": "EmptyPane || SharedScreen",
     "bindings": {
       ":": "command_palette::Toggle",
-      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"],
+      "alt-j": "workspace::ActivatePaneLeft",
+      "alt-m": "workspace::ActivatePaneRight",
+      "alt-l": "workspace::ActivatePaneUp",
+      "alt-k": "workspace::ActivatePaneDown",
       "space g b": "git::Branch",
       "space f": "file_finder::Toggle",
       "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
@@ -1148,7 +1127,7 @@
       "escape": "project_panel::ToggleFocus",
       "j": "project_panel::CollapseSelectedEntry",
       "k": "menu::SelectNext",
-      "l": "menu::SelectPrev",
+      "l": "menu::SelectPrevious",
       "m": "project_panel::ExpandSelectedEntry",
       "o": "project_panel::OpenPermanent",
       "d": "project_panel::Delete",
@@ -1159,10 +1138,10 @@
       "shift-g": "menu::SelectLast",
       "g g": "menu::SelectFirst",
       "-": "project_panel::SelectParent",
-      "alt-j": ["workspace::ActivatePaneInDirection", "Left"],
-      "alt-m": ["workspace::ActivatePaneInDirection", "Right"],
-      "alt-l": ["workspace::ActivatePaneInDirection", "Up"],
-      "alt-k": ["workspace::ActivatePaneInDirection", "Down"]
+      "alt-j": "workspace::ActivatePaneLeft",
+      "alt-m": "workspace::ActivatePaneRight",
+      "alt-l": "workspace::ActivatePaneUp",
+      "alt-k": "workspace::ActivatePaneDown"
     }
   }
 ]
