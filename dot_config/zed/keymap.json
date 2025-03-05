@@ -98,14 +98,21 @@
       "shift-p": "git::Push",
       "f": "git::Fetch",
       "k": "menu::SelectNext",
-      "l": "menu::SelectPrevious"
+      "l": "menu::SelectPrevious",
+      "alt-k": "git_panel::FocusEditor"
     }
   },
   {
-    "context": "GitCommit > Editor",
+    "context": "(GitCommit > Editor) || (GitPanel > Editor)",
     "bindings": {
       "enter": "git::Commit",
       "ctrl-enter": "editor::Newline"
+    }
+  },
+  {
+    "context": "GitPanel > Editor",
+    "bindings": {
+      "alt-l": "git_panel::FocusChanges"
     }
   },
   {
