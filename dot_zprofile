@@ -38,3 +38,4 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 mkdir -p $(dirname $HISTFILE)
 
 export QT_STYLE_OVERRIDE=kvantum
+export GTK_USE_PORTAL=1
