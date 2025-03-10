@@ -3,6 +3,17 @@ git:
     showGraph: always
 os:
   editPreset: 'nvim-remote'
+keybinding:
+  universal:
+    prevItem-alt: l
+    nextItem-alt: k
+    scrollLeft: J
+    scrollRight: M
+    prevBlock-alt: j
+    nextBlock-alt: m
+    scrollUpMain-alt1: L
+    scrollDownMain-alt1: K
+    createRebaseOptionsMenu: <c-r>
 customCommands:
   - key: '<c-f>'
     description: 'fetch a remote branch as a new local branch'
@@ -16,43 +27,6 @@ customCommands:
         title: 'New Local Branch Name'
         initialValue: ''
     loadingText: 'fetching branch'
-  - key: "<c-v>"
-    context: "global"
-    description: "Create new conventional commit"
-    prompts:
-      - type: "input"
-        key: "type"
-        title: "Type of change"
-        suggestions:
-          command: |
-            echo "build"
-            echo "feat"
-            echo "fix"
-            echo "chore"
-            echo "ci"
-            echo "docs"
-            echo "perf"
-            echo "refactor"
-            echo "revert"
-            echo "style"
-            echo "test"
-      - type: "input"
-        title: "Scope - Add '(<scope>)'"
-        key: "scope"
-        suggestions:
-          command:
-            "find . -type d -d -not -path './.*' -mindepth 1 | cut -d'/' -f2-"
-      - type: "input"
-        title: "Breaking change - Add '!'"
-        key: "breaking"
-        initialValue: ""
-      - type: "input"
-        title: "Message"
-        key: "message"
-        initialValue: ""
-    command: "git commit --message '{{.Form.type}}({{.Form.scope}}){{.Form.breaking}}: {{.Form.message}}'"
-    showOutput: true
-    loadingText: "Creating conventional commit..."
   - key: '<c-P>'
     description: 'push tags'
     command: 'git push --tags'
