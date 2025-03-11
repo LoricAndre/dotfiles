@@ -117,7 +117,6 @@ grim
 grimblast-git
 grub
 grub-btrfs
-gst-plugin-pipewire
 gtk2
 gtk4-layer-shell
 guvcview
@@ -231,7 +230,6 @@ nvidia-settings
 nvidia-utils
 nvm
 obsidian
-obs-studio
 ocean-sound-theme
 okular
 openbsd-netcat
@@ -255,7 +253,7 @@ php
 picom
 pinta
 piper
-pipewire-alsa
+pipewire
 pipewire-jack
 pipewire-pulse
 planify
@@ -270,13 +268,14 @@ powershell-bin
 powertop
 progress
 pueue
+pulseaudio-alsa
 pv
+pwvucontrol
 python
 python-libnacl
 python-libtmux
 python-pip
 qbittorrent
-qemu-desktop
 qt5-wayland
 qt6-wayland
 rapidyaml
@@ -301,7 +300,6 @@ slock
 smartmontools
 s-nail
 snapper
-sniffnet
 sof-firmware
 sops
 spicetify-cli
@@ -365,7 +363,6 @@ wl-clipboard
 wmctrl
 wpa_supplicant
 xclip
-xdg-desktop-portal-gtk
 xdg-user-dirs-gtk
 xdo
 xdotool
