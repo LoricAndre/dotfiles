@@ -31,7 +31,7 @@ source "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/variables.sh"
 
 run_once sxhkd pacwall dunst obsidian
 run_once "nm-applet --indicator"
-run_once "kitty --class scratchpad"
+# run_once "kitty --class scratchpad"
 run "eww open bar"
 run picom
 
