@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-
-delay=1
-
-until $@; do
-  echo "Failed to run $@, retrying in $delay seconds..."
-  sleep $delay
-done
