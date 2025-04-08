@@ -1,5 +1,13 @@
 import 'variables.just'
 
+TARGET_DIR := env("dots_target_dir", home_dir())
+
+TEMPLATED_DIR := justfile_directory() / '.templated'
+BACKUPS_DIR := justfile_directory() / '.backups'
+JUST := just_executable() + ' --working-directory "' + justfile_directory() + '"' + ' --justfile "' + justfile() + '"'
+
+DEBUG := env("dots_debug", "false")
+
 set quiet
 set dotenv-load
 set shell := ["bash", "-c"]
@@ -15,7 +23,7 @@ cp dir:
 
 	mkdir -p '{{ TARGET_DIR }}'
 	if command -v rsync >/dev/null 2>&1; then
-		rsync -rLcgoXpb --backup-dir='{{ BACKUPS_DIR }}' '{{ TEMPLATED_DIR }}/{{ dir }}/.' '{{ TARGET_DIR }}'
+		rsync -rLcgoXpb --backup-dir='{{ BACKUPS_DIR }}/{{ dir }}' '{{ TEMPLATED_DIR }}/{{ dir }}/.' '{{ TARGET_DIR }}'
 	else
 		cp -ua '{{ TEMPLATED_DIR }}/{{ dir }}/.' '{{ TARGET_DIR }}'
 	fi
@@ -56,7 +64,6 @@ tpl dir:
 
 
 _apply dir: (clean dir) (tpl dir) (cp dir)
-	# echo '{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Done'
 
 apply *dirs: pre-hook
 	#!/usr/bin/env bash
@@ -79,7 +86,3 @@ apply *dirs: pre-hook
 
 env file:
 	ln -fs `realpath {{ file }}` .env
-
-@_dbg:
-	echo $FOO
-	echo $TARGET_DIR

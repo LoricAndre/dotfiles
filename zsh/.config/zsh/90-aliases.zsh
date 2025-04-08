@@ -3,6 +3,9 @@ alias parem="paru -Rscn"
 alias tz=trizen
 alias tza="tz -Sy"
 alias tzr="tz -Rscn"
+
+alias dots="just --working-directory $HOME/dots --justfile justfile"
+
 # f() {
 #   find $@ 2>/dev/null | fzf
 # }
@@ -56,7 +59,7 @@ alias dkc='docker-compose'
 alias dk='docker'
 
 n() {
-  if [[ -d $f ]]; then 
+  if [[ -d $f ]]; then
     cur=$(pwd)
     cd $f
     nvim
