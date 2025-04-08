@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+betterlockscreen -l dim \
+  --off 10 \
+  --color '#${color0}'

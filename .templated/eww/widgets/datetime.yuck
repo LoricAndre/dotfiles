@@ -1,0 +1,77 @@
+; vi: ft=yuck
+(defvar show-date false)
+(defpoll time-hours
+	:interval "1s"
+	:initial ""
+	:run-while { ! show-date }
+	`date '+%H'`)
+(defpoll time-minutes
+	:interval "1s"
+	:initial ""
+	:run-while { ! show-date }
+	`date '+%M'`)
+(defpoll time-seconds
+	:interval "1s"
+	:initial ""
+	:run-while { ! show-date }
+	`date '+%S'`)
+(defpoll date-month
+	:interval "60s"
+	:initial ""
+	:run-while show-date
+	`date '+%b'`)
+(defpoll date-dom
+	:interval "60s"
+	:initial ""
+	:run-while show-date
+	`date '+%d'`)
+(defpoll date-dow
+	:interval "60s"
+	:initial ""
+	:run-while show-date
+	`date '+%a'`)
+(defwidget clock []
+	(button
+		:onclick `${EWW_CMD} update show-date=true`
+		:tooltip "${ time-hours }:${ time-minutes }:${time-seconds }"
+		:class "widget clock"
+		(box
+			:orientation "vertical"
+			:halign "center"
+			:valign "center"
+			:spacing 3
+			:space-evenly false
+			(label :text { time-hours })
+			(label :text { time-minutes })
+			(label :text { time-seconds })
+		)
+	)
+)
+(defwidget date []
+	(button
+		:onclick `${EWW_CMD} update show-date=false`
+		:tooltip "${ date-dow } ${ date-dom }:${ date-month }"
+		:class "widget date"
+		(box
+			:orientation "vertical"
+			:halign "center"
+			:valign "center"
+			:spacing 3
+			:space-evenly false
+			(label :text { date-dow })
+			(label :text { date-dom })
+			(label :text {date-month})
+		)
+	)
+)
+(defwidget datetime []
+	(stack
+			:selected { show-date ? 1 : 0 }
+			:same-size true
+			:halign "center"
+			:valign "center"
+		(clock)
+		(date)
+	)
+)
+

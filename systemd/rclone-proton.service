@@ -1,0 +1,9 @@
+[Unit]
+Description=Proton Drive sync using Rclone
+
+[Service]
+ExecStartPre=/bin/mkdir -p %h/Documents/proton
+ExecStart=/sbin/rclone mount proton: %h/Documents/proton --vfs-cache-mode full
+
+[Install]
+WantedBy=default.target

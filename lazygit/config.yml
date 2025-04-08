@@ -1,0 +1,33 @@
+git:
+  log:
+    showGraph: always
+os:
+  editPreset: 'nvim-remote'
+keybinding:
+  universal:
+    prevItem-alt: l
+    nextItem-alt: k
+    scrollLeft: J
+    scrollRight: M
+    prevBlock-alt: j
+    nextBlock-alt: m
+    scrollUpMain-alt1: L
+    scrollDownMain-alt1: K
+    createRebaseOptionsMenu: <c-r>
+customCommands:
+  - key: '<c-f>'
+    description: 'fetch a remote branch as a new local branch'
+    command: "git fetch {{index .SelectedRemote.Name }} {{index .PromptResponses 0}}:{{index .PromptResponses 1}}"
+    context: 'remotes'
+    prompts:
+      - type: 'input'
+        title: 'Remote Branch Name'
+        initialValue: ''
+      - type: 'input'
+        title: 'New Local Branch Name'
+        initialValue: ''
+    loadingText: 'fetching branch'
+  - key: '<c-P>'
+    description: 'push tags'
+    command: 'git push --tags'
+    context: 'commits'

@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+
+list_path() {
+    echo "$PATH" | tr ':' '\n' | while read -r line; do
+        fd . -t x "$line" 2>/dev/null
+done
+}
+
+e=$(list_path | sort -u | sk --reverse --tac --delimiter '/' -n='-1' --with-nth='-1' --tiebreak='-score,begin')
+nohup "$e" >/dev/null 2>&1 &

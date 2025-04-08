@@ -1,0 +1,20 @@
+; vi: ft=yuck
+(defpoll ff-wifi
+	:interval "10s"
+	:initial-value "{}"
+	`fastfetch --format json -s wifi`)
+
+(defvar wifi-icons `{"connected": "󰖩"}`)
+(defwidget wifi []
+	(box
+		:orientation "vertical"
+		:class "widget wifi"
+		:tooltip { ff-wifi }
+		(label
+			:text { wifi-icons[ff-wifi[0]?.result[0]?.conn?.status]?:"" }
+		)
+		(label
+			:text { ff-wifi[0]?.result[0]?.conn?.ssid?:"" }
+		)
+	)
+)

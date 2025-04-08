@@ -1,0 +1,107 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "git_panel": {
+    "dock": "right"
+  },
+  "language_models": {
+    "anthropic": {
+      "version": "1"
+    }
+  },
+  "collaboration_panel": {
+    "dock": "right"
+  },
+  "outline_panel": {
+    "dock": "right"
+  },
+  "theme": "Catppuccin Macchiato",
+  "icon_theme": "Catppuccin Macchiato",
+  "features": {
+    "inline_completion_provider": "zed",
+    "copilot": false
+  },
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "provider": null
+  },
+  "telemetry": {
+    "diagnostics": true,
+    "metrics": true
+  },
+  "vim_mode": true,
+  // "ui_font_size": 15,
+  "buffer_font_size": 13,
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  // "ui_font_family": "JetBrains Mono",
+  "relative_line_numbers": false,
+  "tab_size": 2,
+  // "journal": {
+  //   // The path of the directory where journal entries are stored
+  //   "path": "~/notes/oxide",
+  //   "hour_format": "hour24"
+  // },
+  "tabs": {
+    "file_icons": true,
+    "git_status": true
+  },
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "catppuccin-icons": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "env": true,
+    "helm": true,
+    "html": true,
+    "javascript": true,
+    "log": true,
+    "lua": true,
+    "markdow-oxide": true,
+    "marksman": true,
+    "prisma": true,
+    "python": true,
+    "rust": true
+  },
+  "ensure_final_newline_on_save": false,
+  "format_on_save": "off",
+  "auto_signature_help": true,
+  // Different settings for specific languages.
+  "languages": {},
+  "auto_update": false,
+  "vim": {
+    "use_system_clipboard": "always",
+    "use_multiline_find": false,
+    "use_smartcase_find": true
+  },
+  "hover_popover_enabled": false,
+  "terminal": {
+    "dock": "bottom",
+    // "font_family": "JetBrainsMono Nerd Font Mono",
+    "line_height": "standard",
+    "copy_on_select": true,
+    "env": {
+      "EDITOR": "zeditor --wait",
+      "VISUAL": "zeditor --wait",
+      "ZED": "1"
+    },
+    "toolbar": {
+      "breadcrumbs": false
+    }
+  },
+  "jupyter": {
+    "enabled": true
+  },
+  "project_panel": {
+    "auto_fold_dirs": false
+  }
+}

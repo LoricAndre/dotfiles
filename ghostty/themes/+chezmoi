@@ -1,0 +1,44 @@
+# The basic colors
+foreground = #${color7}
+background = #${color0}
+selection-foreground = #${color0}
+selection-background = #${color15}
+
+# Cursor colors
+cursor-color = #${color15}
+cursor-text = #${color0}
+
+# The 16 terminal colors
+
+# black
+palette = 0=#${color0}
+palette = 8=#${color8}
+
+# red
+palette = 1=#${color1}
+palette = 9=#${color9}
+
+# green
+palette = 2=#${color2}
+palette = 10=#${color10}
+
+# yellow
+palette = 3=#${color3}
+palette = 11=#${color11}
+
+# blue
+palette = 4=#${color4}
+palette = 12=#${color12}
+
+# magenta
+palette = 5=#${color5}
+palette = 13=#${color13}
+
+# cyan
+palette = 6=#${color6}
+palette = 14=#${color14}
+
+# white
+palette = 7=#${color7}
+palette = 15=#${color15}
+

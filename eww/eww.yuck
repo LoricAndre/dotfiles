@@ -1,0 +1,84 @@
+; vi: ft=yuck
+
+(include "widgets/datetime.yuck")
+(include "widgets/bspwm.yuck")
+(include "widgets/net.yuck")
+
+(defvar bar-width "50px")
+
+(defwindow bar
+		:monitor 0
+		:geometry (geometry
+								:x "0%"
+								:y "0%"
+								:width "50px"
+								:height "100%"
+								:anchor "top left")
+		:stacking "fg"
+		:reserve (struts :distance "50px" :side "left")
+		:wm-ignore "false"
+	(bar)
+)
+(defwidget bar []
+  (centerbox
+			:orientation "vertical"
+			:height 100
+			:vexpand false
+			:class "vbar"
+			:halign "center"
+    (workspaces)
+		(center)
+    (bottom)
+	)
+)
+(defwidget bottom []
+	(box
+		:orientation "vertical"
+		:valign "end"
+		:spacing 0
+		:space-evenly false
+		(battery)
+		(wifi)
+		(datetime)
+		(tray)
+	)
+)
+
+
+
+(defwidget center []
+	(box
+		:orientation "vertical"
+		:vexpand true
+		:hexpand true
+		:height 600
+	)
+)
+
+(defwidget tray []
+	(systray
+		:class "widget"
+		:orientation "vertical"
+		:height 20
+	)
+)
+(defvar battery-icon `{"Charging": "󰂄", "Plugged": "", "Full": "", "Discharging": "󰁾" }`)
+
+(defwidget battery []
+  (box
+    (for bat in { jq(EWW_BATTERY, "keys_unsorted") }
+   	(box
+   			:orientation "vertical"
+   			:class "widget battery"
+   			:tooltip { EWW_BATTERY[bat?:"BAT0"].status }
+   			:visible { bat =~ '^BAT[0-9]+$' }
+    		(label
+   			:text { battery-icon[EWW_BATTERY[bat?:"BAT0"].status]?:"" }
+    		)
+    		(label
+   			:text "${ EWW_BATTERY[bat?:"BAT0"].capacity }%"
+    		)
+   	)
+    )
+  )
+)

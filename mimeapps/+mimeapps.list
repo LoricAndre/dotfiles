@@ -1,0 +1,25 @@
+[Default Applications]
+x-scheme-handler/http=${browser_desktop}
+x-scheme-handler/https=${browser_desktop}
+x-scheme-handler/chrome=${browser_desktop}
+text/html=${browser_desktop}
+application/x-extension-htm=${browser_desktop}
+application/x-extension-html=${browser_desktop}
+application/x-extension-shtml=${browser_desktop}
+application/xhtml+xml=${browser_desktop}
+application/x-extension-xhtml=${browser_desktop}
+application/x-extension-xht=${browser_desktop}
+image/svg+xml=${browser_desktop}
+application/pdf=${browser_desktop}
+
+[Added Associations]
+x-scheme-handler/http=${browser_desktop};
+x-scheme-handler/https=${browser_desktop};
+x-scheme-handler/chrome=${browser_desktop};
+text/html=${browser_desktop};
+application/x-extension-htm=${browser_desktop};
+application/x-extension-html=${browser_desktop};
+application/x-extension-shtml=${browser_desktop};
+application/xhtml+xml=${browser_desktop};
+application/x-extension-xhtml=${browser_desktop};
+application/x-extension-xht=${browser_desktop};

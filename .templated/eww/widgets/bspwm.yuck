@@ -1,0 +1,27 @@
+; vi: ft=yuck
+
+(deflisten bspwm-desktops
+	:initial "{}"
+	"scripts/bspwm/desktop.sh")
+
+(defwidget workspaces []
+	(box
+		:orientation "vertical"
+		:vexpand false
+		:valign "start"
+		:class "workspaces"
+		(for ws in { bspwm-desktops.tree.desktops }
+			(button
+				:onclick "bspc desktop -f ${ws.id}"
+				:class `workspace ${ ws.id == bspwm-desktops.focused.id ? "focused" : "" }`
+				:tooltip `${ ws.id }`
+				:height 25
+				:width 25
+				:hexpand false
+				:vexpand false
+				:visible { ws.name != "10" }
+				{ ws.name }
+			)
+		)
+	)
+)

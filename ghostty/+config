@@ -1,0 +1,5 @@
+theme = chezmoi
+font-family = ${font_family}
+font-size = ${font_size}
+window-decoration = false
+confirm-close-surface = false

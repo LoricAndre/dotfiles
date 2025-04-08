@@ -1,0 +1,81 @@
+profile zenbook {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,0 scale 1.667
+}
+
+profile rog {
+  output "Samsung Display Corp. ATNA40CU05-0  Unknown" mode 2880x1800@120 position 0,0 scale 1.667
+}
+
+profile uw-1 {
+  output "Samsung Electric Company S34C65xU HNTX403859" {
+    mode 3440x1440@60
+    position 0,0
+  }
+  output eDP-1 disable
+}
+profile uw-2 {
+  output "Samsung Electric Company S34C65xU HNTX403859" {
+    mode 3440x1440@60
+    position 0,0
+  }
+  output eDP-2 disable
+}
+
+profile m-1 {
+  output "Huawei Technologies Co., Inc. ZQE-CAA 0xC080F622" {
+    mode 3440x1440
+    position 0,0
+  }
+  output eDP-1 disable
+}
+profile m-2 {
+  output "Huawei Technologies Co., Inc. ZQE-CAA 0xC080F622" {
+    mode 3440x1440
+    position 0,0
+  }
+  output eDP-2 disable
+}
+
+profile massy {
+  output eDP-1 mode 2880x1800@90 position 0,0 scale 1.667
+  output "ViewSonic Corporation VX2458 Series VFA193000894" enable position 1727,0
+}
+
+profile gazaupouy {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
+  output "Ancor Communications Inc MX25AQ H2LMRS020029" mode 2560x1440@60 position 0,0
+}
+
+profile castelnau-1 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
+  output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 0,0
+}
+
+profile castelnau-tv {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,0 scale 1.667
+  output "Samsung Electric Company SyncMaster H1AK500000" mode 3840x2160@30 position 1727,0
+}
+
+profile castelnau-2 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1080 scale 1.667
+  output "Iiyama North America PL2793H 1188114602684" position 0,0
+}
+
+profile castelnau-3 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 1280,1440 scale 1.667
+  output "Iiyama North America PL2793Q 1189433502482" mode 2560x1440@60 position 1920,0
+  output "Iiyama North America PL2793H 1188114602684" mode 1920x1080@60 position 0,360
+}
+
+profile castelnau-david {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 1280,1440 scale 1.667
+  output "Iiyama North America PL2793Q 1189432803439" mode 2560x1440@60 position 0,0
+  # output "Iiyama North America PL2793Q 1189432803445" mode 2560x1440@60 position 2560,0
+}
+
+profile boujan-1 {
+  output "Samsung Display Corp. 0x4171 Unknown" mode 2880x1800@90 position 0,1440 scale 1.667
+  output "Iiyama North America PL2791Q 1153903222447" mode 2560x1440@60 position 0,0
+  output "Iiyama North America PL2793Q 1189432803445" mode 2560x1440@60 position 0,0
+  output "Iiyama North America PL2791Q 1153902621811" mode 2560x1440@60 position 2560,0
+}

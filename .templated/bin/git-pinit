@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+usage() {
+  cat <<EOS
+  Usage: 
+    git pinit <path>
+EOS
+}
+
+__dbg() {
+  [ -v DEBUG ] && echo "[DBG] $@" >&2 || true
+}
+
+cget="git config get --includes --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+cset="git config --file $(git config --get pclone.root)/$(git config --get pclone.conf)"
+
+root=$(git config get pclone.root)
+
+(("$#")) || (usage && exit 1)
+path=$(realpath $1)
+__dbg "path: $path"
+shift
+
+git_opts=$@
+
+mkdir -p $path
+pushd $path
+git init $git_opts
+[ -x $(which zoxide) ] && zoxide add .
+popd
+
+echo "Done"

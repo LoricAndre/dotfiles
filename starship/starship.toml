@@ -1,0 +1,69 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[](bold purple)'
+error_symbol = '[](bold red)'
+
+[username]
+show_always = true
+
+[git_metrics]
+disabled = false
+# added_style = 'bold blue'
+# format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
+ignore_submodules = true
+[git_status]
+ignore_submodules = true
+
+
+[kubernetes]
+disabled = false
+detect_files = ['Chart.yaml']
+detect_env_vars = ['KUBECONFIG']
+
+[time]
+disabled = false
+
+[direnv]
+disabled = false
+
+[custom.jj]
+command = '''
+jj log -r@ -l1 --ignore-working-copy --no-graph --color always  -T '
+  separate(" ",
+    branches.map(|x| if(
+        x.name().substr(0, 10).starts_with(x.name()),
+        x.name().substr(0, 10),
+        x.name().substr(0, 9) ++ "…")
+      ).join(" "),
+    tags.map(|x| if(
+        x.name().substr(0, 10).starts_with(x.name()),
+        x.name().substr(0, 10),
+        x.name().substr(0, 9) ++ "…")
+      ).join(" "),
+    surround("\"","\"",
+      if(
+         description.first_line().substr(0, 24).starts_with(description.first_line()),
+         description.first_line().substr(0, 24),
+         description.first_line().substr(0, 23) ++ "…"
+      )
+    ),
+    if(conflict, "conflict"),
+    if(divergent, "divergent"),
+    if(hidden, "hidden"),
+  )
+'
+'''
+detect_folders = [".jj"]
+symbol = "jj "
+
+[custom.jjstate]
+detect_folders = [".jj"]
+command = '''
+jj log -r@ -l1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" " ${1}m ${2}+ ${3}-" | sd " 0." ""
+'''
