@@ -39,7 +39,7 @@ local autocmds = {
     dots_dir .. '/*',
     function(ev)
       local module, found =
-        string.gsub(ev.match, '^' .. dots_dir .. '/([^/]+)/.*$', '%1')
+        string.gsub(ev.match, '^' .. dots_dir .. '/(%w[^/]*)/.*$', '%1')
       if found ~= 1 then
         return
       end

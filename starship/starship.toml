@@ -6,64 +6,85 @@ add_newline = false
 
 # Replace the '❯' symbol in the prompt with '➜'
 [character] # The name of the module we are configuring is 'character'
-success_symbol = '[](bold purple)'
+success_symbol = '[](bold green)'
 error_symbol = '[](bold red)'
 
 [username]
 show_always = true
 
-[git_metrics]
-disabled = false
-# added_style = 'bold blue'
-# format = '[+$added]($added_style)/[-$deleted]($deleted_style) '
-ignore_submodules = true
-[git_status]
-ignore_submodules = true
-
-
-[kubernetes]
-disabled = false
-detect_files = ['Chart.yaml']
-detect_env_vars = ['KUBECONFIG']
-
 [time]
 disabled = false
 
-[direnv]
-disabled = false
+[aws]
+disabled = true
 
 [custom.jj]
 command = '''
-jj log -r@ -l1 --ignore-working-copy --no-graph --color always  -T '
+jj log -r@ -n1 --ignore-working-copy --no-graph --color always  -T '
   separate(" ",
-    branches.map(|x| if(
-        x.name().substr(0, 10).starts_with(x.name()),
-        x.name().substr(0, 10),
-        x.name().substr(0, 9) ++ "…")
-      ).join(" "),
-    tags.map(|x| if(
-        x.name().substr(0, 10).starts_with(x.name()),
-        x.name().substr(0, 10),
-        x.name().substr(0, 9) ++ "…")
-      ).join(" "),
-    surround("\"","\"",
-      if(
-         description.first_line().substr(0, 24).starts_with(description.first_line()),
-         description.first_line().substr(0, 24),
-         description.first_line().substr(0, 23) ++ "…"
-      )
-    ),
+    bookmarks.map(|x| truncate_end(10, x.name(), "…")).join(" "),
+    tags.map(|x| truncate_end(10, x.name(), "…")).join(" "),
+    surround("\"", "\"", truncate_end(24, description.first_line(), "…")),
     if(conflict, "conflict"),
     if(divergent, "divergent"),
     if(hidden, "hidden"),
   )
 '
 '''
-detect_folders = [".jj"]
-symbol = "jj "
+when = "!command -v starship-jj && jj root --ignore-working-copy"
+symbol = "jj"
 
 [custom.jjstate]
-detect_folders = [".jj"]
+when = "!command -v starship-jj && jj root --ignore-working-copy"
 command = '''
-jj log -r@ -l1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" " ${1}m ${2}+ ${3}-" | sd " 0." ""
+jj log -r@ -n1 --no-graph -T "" --stat | tail -n1 | sd "(\d+) files? changed, (\d+) insertions?\(\+\), (\d+) deletions?\(-\)" ' ${1}m ${2}+ ${3}-' | sd " 0." ""
 '''
+
+[custom.starship_jj]
+command='''starship-jj --ignore-working-copy starship prompt'''
+format = "[$symbol](blue bold) $output "
+symbol = ""
+when = "command -v starship-jj && jj root --ignore-working-copy"
+
+[git_state]
+disabled = true
+
+[custom.git_state]
+when = "jj root --ignore-working-copy"
+command = "jj root >/dev/null 2>&1 || starship module git_state"
+description = "Only show git_state if we're not in a jj repo"
+
+[git_commit]
+disabled = true
+
+[custom.git_commit]
+when = "jj root --ignore-working-copy"
+command = "jj root >/dev/null 2>&1 || starship module git_commit"
+description = "Only show git_commit if we're not in a jj repo"
+
+[git_branch]
+disabled = true
+
+[custom.git_branch]
+when = "jj root --ignore-working-copy"
+command = "jj root >/dev/null 2>&1 || starship module git_branch"
+description = "Only show git_branch if we're not in a jj repo"
+
+[git_metrics]
+disabled = true
+ignore_submodules = true
+
+[custom.git_metrics]
+when = "jj root --ignore-working-copy"
+command = "starship module git_metrics"
+description = "Only show git_metrics if inside a git repo"
+
+[git_status]
+disabled = true
+ignore_submodules = true
+
+[custom.git_status]
+when = "jj root --ignore-working-copy"
+command = "starship module git_status"
+description = "Only show git_status if inside a git repo"
+
