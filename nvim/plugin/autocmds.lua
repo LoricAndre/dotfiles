@@ -37,17 +37,21 @@ local autocmds = {
   {
     'BufWritePost',
     dots_dir .. '/*',
-    function()
-      vim.notify('[chezmoi] Applying dotfiles changes...')
-      local ret = vim
-        .system({
-          'cp',
-          vim.fn.expand('~/.config/nvim/lazy-lock.json'),
-          dots_dir .. '/nvim',
-        })
-        :wait()
-      if ret.code ~= 0 then
-        vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
+    function(ev)
+      local module =
+        string.gsub(ev.match, '^' .. dots_dir .. '/([^/]+)/.*$', '%1')
+      vim.notify('[dots/' .. module .. '] Applying dotfiles changes...')
+      if module == 'nvim' then
+        local ret = vim
+          .system({
+            'cp',
+            vim.fn.expand('~/.config/nvim/lazy-lock.json'),
+            dots_dir .. '/nvim',
+          })
+          :wait()
+        if ret.code ~= 0 then
+          vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
+        end
       end
       vim.system(
         {
@@ -57,14 +61,18 @@ local autocmds = {
           '--justfile',
           'justfile',
           'apply',
+          module,
         },
         nil,
         function(out)
           if out.code == 0 then
-            vim.notify('[dots] Applied dotfiles changes')
+            vim.notify('[dots/' .. module .. '] Applied dotfiles changes')
           else
             vim.notify(
-              '[dots] Failed to apply dotfiles changes: ' .. out.stderr,
+              '[dots/'
+                .. module
+                .. '] Failed to apply dotfiles changes: '
+                .. out.stderr,
               vim.log.levels.WARN
             )
           end
