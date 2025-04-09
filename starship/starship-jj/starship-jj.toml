@@ -1,7 +1,7 @@
 module_separator = " "
 
 [bookmarks]
-search_depth = 100
+search_depth = 10
 exclude = []
 
 [[module]]
@@ -12,7 +12,7 @@ behind_symbol = "⇡"
 
 [[module]]
 type = "Commit"
-max_length = 24
+max_length = 16
 
 [[module]]
 type = "State"
@@ -20,32 +20,32 @@ separator = " "
 
 [module.conflict]
 disabled = false
-text = "(CONFLICT)"
+text = "𐔧"
 color = "Red"
 
 [module.divergent]
 disabled = false
-text = "(DIVERGENT)"
+text = "󰓁"
 color = "Cyan"
 
 [module.empty]
 disabled = false
-text = "(EMPTY)"
+text = "󰟢"
 color = "Yellow"
 
 [module.immutable]
 disabled = false
-text = "(IMMUTABLE)"
+text = ""
 color = "Yellow"
 
 [module.hidden]
 disabled = false
-text = "(HIDDEN)"
+text = ""
 color = "Yellow"
 
 [[module]]
 type = "Metrics"
-template = "[{changed} {added}{removed}]"
+template = "[{changed}{added}{removed}]"
 color = "Magenta"
 
 [module.changed_files]
@@ -62,4 +62,3 @@ color = "Green"
 prefix = "-"
 suffix = ""
 color = "Red"
-

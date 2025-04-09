@@ -39,4 +39,4 @@ export GPG_TTY="$(tty)"
 
 export SKIM_CTRL_R_OPTS='--preview="echo {4..} | bat --plain --language zsh --color=always" --bind tab:accept'
 
-source /usr/share/skim/key-bindings.zsh
+[ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh || true

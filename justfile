@@ -51,7 +51,7 @@ tpl dir:
 
 	echo '{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Templating files'
 
-	find '{{ dir }}' -type f -not -name 'dots.env' | while read f; do
+	find '{{ dir }}' -type f -not -name 'dots.env' -not -name '*.dots.sh' | while read f; do
 		if [[ "$f" =~ ^.*/\+[^/]*$ ]]; then
 			{{ DEBUG }} && echo "{{ CYAN }}{{ BOLD }} > {{ NORMAL }} Templating $f"
 			{{ JUST }} _tpl "$f"
@@ -76,13 +76,51 @@ apply *dirs: pre-hook
 	fi
 
 	for dir in $DIRS; do
-		(
-			set -a
-			[ -f "$dir/dots.env" ] && source "$dir/dots.env"
-			set +a
-			{{ JUST }} _apply "$dir"
-		)
+		if [ ! -f "$dir/.disabled "]; then
+			(
+				set -a
+				[ -f "$dir/dots.env" ] && source "$dir/dots.env"
+				set +a
+				{{ JUST }} _apply "$dir"
+			)
+		fi
+	done
+
+_install-cli +pkgs:
+	#!/usr/bin/env bash
+	set -euo pipefail
+
+	pkgs=""
+	for pkg in {{ pkgs }}; do
+		if ! command -v "$pkg" >/dev/null 2>&1; then
+			pkgs="$pkgs $pkg"
+		fi
+	done
+
+	[ -z "$pkgs" ] || paru -S --needed --noconfirm $pkgs
+
+install *dirs:
+	#!/usr/bin/env bash
+	set -euo pipefail
+
+	if [ -n '{{ dirs }}' ]; then
+		DIRS='{{ dirs }}'
+	else
+		DIRS=`find . -maxdepth 1 -type d -not -name '.*' -printf '%f\n' | sort`
+	fi
+
+	for dir in $DIRS; do
+		if [ -f "$dir/install.dots.sh" ] && [ ! -f "$dir/.disabled" ]; then
+			echo "{{ CYAN }}{{ BOLD }}[${dir}]{{ NORMAL }} Running install script"
+			. "$dir/install.dots.sh"
+		fi
 	done
 
 env file:
 	ln -fs `realpath {{ file }}` .env
+
+disable dir:
+	[ -f '{{ dir }}/.disabled' ] || touch '{{ dir }}/.disabled'
+
+enable dir:
+	[ -f '{{ dir }}/.disabled' ] && rm '{{ dir }}/.disabled' || true

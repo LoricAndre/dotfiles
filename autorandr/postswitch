@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-bspc wm -r
+command -v bspc >/dev/null 2>&1 && bspc wm -r

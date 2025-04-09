@@ -1,0 +1,10 @@
+just _install-cli bspwm sxhkd xss-lock betterlockscreen xdo hsetroot
+
+pkgs=""
+for pkg in xset xinput xsetroot; do
+	if ! command -v $pkg >/dev/null 2>&1; then
+		pkgs="$pkgs $pkg"
+	fi
+done
+
+[ -z "$pkgs" ] || paru -S --needed --noconfirm "$pkgs"

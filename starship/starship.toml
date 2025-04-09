@@ -50,7 +50,7 @@ when = "command -v starship-jj && jj root --ignore-working-copy"
 disabled = true
 
 [custom.git_state]
-when = "jj root --ignore-working-copy"
+when = "! jj root --ignore-working-copy"
 command = "jj root >/dev/null 2>&1 || starship module git_state"
 description = "Only show git_state if we're not in a jj repo"
 
@@ -58,7 +58,7 @@ description = "Only show git_state if we're not in a jj repo"
 disabled = true
 
 [custom.git_commit]
-when = "jj root --ignore-working-copy"
+when = "! jj root --ignore-working-copy"
 command = "jj root >/dev/null 2>&1 || starship module git_commit"
 description = "Only show git_commit if we're not in a jj repo"
 
@@ -66,7 +66,7 @@ description = "Only show git_commit if we're not in a jj repo"
 disabled = true
 
 [custom.git_branch]
-when = "jj root --ignore-working-copy"
+when = "! jj root --ignore-working-copy"
 command = "jj root >/dev/null 2>&1 || starship module git_branch"
 description = "Only show git_branch if we're not in a jj repo"
 
@@ -75,7 +75,7 @@ disabled = true
 ignore_submodules = true
 
 [custom.git_metrics]
-when = "jj root --ignore-working-copy"
+when = "! jj root --ignore-working-copy"
 command = "starship module git_metrics"
 description = "Only show git_metrics if inside a git repo"
 
@@ -84,7 +84,7 @@ disabled = true
 ignore_submodules = true
 
 [custom.git_status]
-when = "jj root --ignore-working-copy"
+when = "! jj root --ignore-working-copy"
 command = "starship module git_status"
 description = "Only show git_status if inside a git repo"
 

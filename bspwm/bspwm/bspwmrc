@@ -15,7 +15,7 @@ run() {
 
 }
 
-autorandr --change
+command -v autorandr >/dev/null 2>&1 && autorandr --change
 bspc monitor -d ', ' ';󰈹 ' ':󱂬 ' '! ' 5 6 7 8 9 10
 bspc monitor -r
 bspc wm -o
