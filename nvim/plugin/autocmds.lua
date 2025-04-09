@@ -38,8 +38,11 @@ local autocmds = {
     'BufWritePost',
     dots_dir .. '/*',
     function(ev)
-      local module =
+      local module, found =
         string.gsub(ev.match, '^' .. dots_dir .. '/([^/]+)/.*$', '%1')
+      if found ~= 1 then
+        return
+      end
       vim.notify('[dots/' .. module .. '] Applying dotfiles changes...')
       if module == 'nvim' then
         local ret = vim
