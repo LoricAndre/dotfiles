@@ -1,3 +1,5 @@
+# vi: ft=bash
+
 just _install-cli bspwm sxhkd xss-lock betterlockscreen xdo hsetroot
 
 pkgs=""

@@ -13,6 +13,7 @@ set dotenv-load
 set shell := ["bash", "-c"]
 
 alias a := apply
+alias i := install
 
 cp dir:
 	#!/usr/bin/env bash
@@ -51,7 +52,7 @@ tpl dir:
 
 	echo '{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Templating files'
 
-	find '{{ dir }}' -type f -not -name 'dots.env' -not -name '*.dots.sh' | while read f; do
+	find '{{ dir }}' -type f -not -name 'dots.env' -not -path '*/dots.hooks/*' | while read f; do
 		if [[ "$f" =~ ^.*/\+[^/]*$ ]]; then
 			{{ DEBUG }} && echo "{{ CYAN }}{{ BOLD }} > {{ NORMAL }} Templating $f"
 			{{ JUST }} _tpl "$f"
@@ -64,6 +65,12 @@ tpl dir:
 
 
 _apply dir: (clean dir) (tpl dir) (cp dir)
+	#!/usr/bin/env bash
+	set -euo pipefail
+	if [ -f "{{ dir }}/dots.hooks/apply" ] && [ ! -f "{{ dir }}/.disabled" ]; then
+		echo "{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Running apply hook"
+		. "{{ dir }}/dots.hooks/apply"
+	fi
 
 apply *dirs: pre-hook
 	#!/usr/bin/env bash
@@ -110,9 +117,9 @@ install *dirs:
 	fi
 
 	for dir in $DIRS; do
-		if [ -f "$dir/install.dots.sh" ] && [ ! -f "$dir/.disabled" ]; then
-			echo "{{ CYAN }}{{ BOLD }}[${dir}]{{ NORMAL }} Running install script"
-			. "$dir/install.dots.sh"
+		if [ -f "$dir/dots.hooks/install" ] && [ ! -f "$dir/.disabled" ]; then
+			echo "{{ CYAN }}{{ BOLD }}[${dir}]{{ NORMAL }} Running install hook"
+			. "$dir/dots.hooks/install"
 		fi
 	done
 

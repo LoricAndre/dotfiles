@@ -1,5 +1,5 @@
 configuration{
-    modi: "run,drun,window,calc";
+    modi: "run,drun,window,calc,power:rofi-power-menu";
     icon-theme: "Oranchelo";
     show-icons: true;
     terminal: "${terminal}";
@@ -11,7 +11,8 @@ configuration{
     display-run: "   Run ";
     display-window: "   Window";
     display-Network: " 󰤨  Network";
-    display-Network: " 󰪚  Calc";
+    display-calc: " 󰪚  Calc";
+    display-power: " 󰪚  Power";
     sidebar-mode: true;
 }
 

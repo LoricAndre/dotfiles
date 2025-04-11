@@ -1,0 +1,4 @@
+# vi: ft=bash
+
+bspc wm -r
+pkill -USR1 -x sxhkd
