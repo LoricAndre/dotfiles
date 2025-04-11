@@ -76,7 +76,7 @@ apply *dirs: pre-hook
 	fi
 
 	for dir in $DIRS; do
-		if [ ! -f "$dir/.disabled "]; then
+		if [ ! -f "$dir/.disabled" ]; then
 			(
 				set -a
 				[ -f "$dir/dots.env" ] && source "$dir/dots.env"
