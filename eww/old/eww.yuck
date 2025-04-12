@@ -14,7 +14,7 @@
 								:width "50px"
 								:height "100%"
 								:anchor "top left")
-		:stacking "fg"
+		:stacking "bg"
 		:reserve (struts :distance "50px" :side "left")
 		:wm-ignore "false"
 	(bar)

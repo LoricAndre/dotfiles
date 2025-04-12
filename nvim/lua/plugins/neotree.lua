@@ -2,9 +2,9 @@ return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-tree/nvim-web-devicons', -- not strictly required, but recommended
-    'MunifTanjim/nui.nvim',
+    { 'nvim-lua/plenary.nvim', lazy = true },
+    { 'nvim-tree/nvim-web-devicons', lazy = true }, -- not strictly required, but recommended
+    { 'MunifTanjim/nui.nvim', lazy = true },
     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   opts = {
@@ -31,6 +31,44 @@ return {
           staged = '',
           conflict = '',
         },
+      },
+    },
+    filesystem = {
+      components = {
+        icon = function(config, node, state)
+          local icon = config.default or ' '
+          local padding = config.padding or ' '
+          local highlights = require('neo-tree.ui.highlights')
+          local highlight = config.highlight or highlights.FILE_ICON
+          local has_devicons, web_devicons = pcall(require, 'nvim-web-devicons')
+
+          if node.type == 'directory' then
+            highlight = highlights.DIRECTORY_ICON
+            if has_devicons and node.name:sub(1, #'dots.') == 'dots.' then
+              icon = web_devicons.get_icon_by_filetype('conf')
+            elseif node:is_expanded() then
+              icon = config.folder_open or '-'
+            else
+              icon = config.folder_closed or '+'
+            end
+          elseif node.type == 'file' then
+            if has_devicons then
+              if node.name:sub(1, #'dots.') == 'dots.' then
+                icon = web_devicons.get_icon_by_filetype('conf')
+                _, highlight = web_devicons.get_icon(node.name, node.ext)
+              else
+                local devicon, hl = web_devicons.get_icon(node.name, node.ext)
+                icon = devicon or icon
+                highlight = hl or highlight
+              end
+            end
+          end
+
+          return {
+            text = icon .. padding,
+            highlight = highlight,
+          }
+        end,
       },
     },
   },

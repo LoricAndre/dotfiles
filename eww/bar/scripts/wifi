@@ -1,0 +1,16 @@
+#!/bin/sh
+
+symbol() {
+if [ $(cat /sys/class/net/w*/operstate) = down ]; then
+	echo "󰖪"
+else
+	echo "󰖩"
+fi
+}
+
+name() {
+	nmcli | grep "^wl" | sed 's/\ connected\ to\ /Connected to /g' | cut -d ':' -f2
+}
+
+[ "$1" = "icon" ] && symbol && exit
+[ "$1" = "name" ] && name && exit

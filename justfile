@@ -69,7 +69,9 @@ _apply dir: (clean dir) (tpl dir) (cp dir)
 	set -euo pipefail
 	if [ -f "{{ dir }}/dots.hooks/apply" ] && [ ! -f "{{ dir }}/.disabled" ]; then
 		echo "{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Running apply hook"
-		. "{{ dir }}/dots.hooks/apply"
+		cd '{{ dir }}/dots.hooks'
+		. ../dots.env
+		. apply
 	fi
 
 apply *dirs: pre-hook

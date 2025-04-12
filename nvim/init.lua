@@ -5,6 +5,8 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_fzf = 1
 vim.g.loaded_skim = 1
 
+require('env')
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 ---@diagnostic disable-next-line: undefined-field

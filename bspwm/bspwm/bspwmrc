@@ -16,7 +16,7 @@ run() {
 }
 
 command -v autorandr >/dev/null 2>&1 && autorandr --change
-bspc monitor -d ', ' ';󰈹 ' ':󱂬 ' '! ' 5 6 7 8 9 10
+bspc monitor -d '' '󰈹' '󱂬' '' 5 6 7 8 9 10
 bspc monitor -r
 bspc wm -o
 
@@ -33,7 +33,7 @@ run_once sxhkd pacwall dunst
 ps aux | grep obsidian | grep '/usr/lib/electron' || obsidian
 run_once "nm-applet --indicator"
 # run_once "kitty --class scratchpad"
-run "eww open bar"
+run "eww -c $HOME/.config/eww/bar open bar"
 run "caffeine-indicator"
 run_once "blueman-applet"
 run picom
@@ -55,6 +55,11 @@ scratchpad_w=$(($screen_w*85/100))
 scratchpad_h=$(($screen_h*85/100))
 scratchpad_x=$(($screen_w/2 - scratchpad_w/2))
 scratchpad_y=$(($screen_h/2 - scratchpad_h/2))
+
+float_w=$(($screen_w*55/100))
+float_h=$(($screen_h*55/100))
+float_x=$(($screen_w/2 - float_w/2))
+float_y=$(($screen_h/2 - float_h/2))
 
 echo $screen_h $screen_w
 echo $scratchpad_h $scratchpad_w $scratchpad_x $scratchpad_y

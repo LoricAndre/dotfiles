@@ -7,7 +7,7 @@ super + Return
 	$bspwm_term
 
 super + s
-  notify-send "Status" "$(fastfetch)" -u normal -t 3000
+  eww -c $HOME/.config/eww/dashboard active-windows | grep 'dashboard' && eww -c $HOME/.config/eww/dashboard close dashboard || eww -c $HOME/.config/eww/dashboard open dashboard
 
 super + b
   $bspwm_browser

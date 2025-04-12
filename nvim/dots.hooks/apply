@@ -1,0 +1,4 @@
+nvr --serverlist | while read s; do
+	nvr --servername "$s" -c "source $dots_target_dir/lua/env.lua"
+	nvr --servername "$s" -c "colorscheme $dots_nvim_theme"
+done

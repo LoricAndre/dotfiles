@@ -1,0 +1,2 @@
+echo $dots_target_dir
+chmod +x $dots_target_dir/*

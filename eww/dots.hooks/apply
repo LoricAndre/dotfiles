@@ -1,0 +1,2 @@
+eww -c $HOME/.config/eww/bar open bar --restart
+eww -c $HOME/.config/eww/dashboard daemon --restart

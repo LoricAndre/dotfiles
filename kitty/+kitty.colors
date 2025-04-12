@@ -1,8 +1,8 @@
 # vim:ft=kitty
 
 # The basic colors
-foreground              #${color7}
-background              #${color0}
+foreground              #${foreground}
+background              #${background}
 selection_foreground    #${color0}
 selection_background    #${color15}
 
