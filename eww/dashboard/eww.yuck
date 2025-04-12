@@ -11,6 +11,7 @@
 
 ;; Systray Variables
 (defpoll ram-usage 			:interval "1s"  "~/.config/eww/dashboard/scripts/sys_info --mem")
+(defpoll cpu-usage 			:interval "1s"  "~/.config/eww/dashboard/scripts/sys_info --cpu")
 (defpoll battery-capacity 	:interval "1s"  "~/.config/eww/dashboard/scripts/sys_info --bat")
 (defpoll current-brightness :interval "1s"  "~/.config/eww/dashboard/scripts/sys_info --bri")
 (defpoll current-volume 	:interval "1s"  "~/.config/eww/dashboard/scripts/sys_info --vol")

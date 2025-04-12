@@ -41,7 +41,7 @@ get_cpu() {
 
 ## Get Used memory
 get_mem() {
-	printf "%.0f\n" $(free -m | grep Mem | awk '{print ($3/$2)*100}')
+	free -m | grep '^Mem' | awk '{print ($3/$2)*100}' | cut -d'.' -f1
 }
 
 ## Get Battery Capacity
@@ -52,12 +52,12 @@ get_bat(){
 
 ## Get Current Brightness
 get_bright(){
-	brightnessctl -m -d amdgpu_bl0 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'
+	brightnessctl -m | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'
 }
 
 ## Get Current Volume
 get_vol(){
-	amixer -D pulse sget Master | grep 'Left:' | awk -F'[][]' '{ print $2 }' | tr -d '%'
+	pactl get-sink-volume @DEFAULT_SINK@ | sed -n 's/^.*\/ \+\([0-9]\+\)% \+\/.*$/\1/p'
 }
 
 ## Execute accordingly

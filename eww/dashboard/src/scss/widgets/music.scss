@@ -13,21 +13,21 @@
 }
 
 .artist {
-	font-family: Cartograph CF;
+	font-family: monospace;
 	font-style: italic;
 	font-weight: bold;
 	color: $foreground;
 	font-size : 1.2em;
 }
 .song{
-	font-family: Cartograph CF;
+	font-family: monospace;
 	font-style: italic;
 	font-size: 1.1em;
 	color: $foreground;
 	margin-top: -5px;
 }
 .btn_prev, .btn_play, .btn_next {
-	font-family: JetBrainsMono Nerd Font;
+	font-family: monospace;
 }
 .btn_prev {
 	color: $foreground;
@@ -47,14 +47,14 @@
 	border-radius: 10px;
 	background-color: $foreground;
 }
-  
+
 .metric-player scale trough  {
 	all: unset;
 	background-color: $background;
 	border:2px solid $foreground;
 	border-radius: 50px;
   }
-  
+
 .metric-player scale trough  {
 	min-width: 200px;
 	min-height: 10px;

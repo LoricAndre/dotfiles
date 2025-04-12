@@ -1,6 +1,10 @@
 ${DOLLAR}foreground: #${foreground};
 ${DOLLAR}background: #${background};
 
+${DOLLAR}foreground-alt: #${color15};
+${DOLLAR}background-alt: #${color8};
+${DOLLAR}background-alt2: #${color8};
+
 
 // black
 ${DOLLAR}color0: #${color0};
@@ -39,7 +43,9 @@ ${DOLLAR}gray: ${DOLLAR}color8;
 ${DOLLAR}red: ${DOLLAR}color1;
 ${DOLLAR}green: ${DOLLAR}color2;
 ${DOLLAR}yellow: ${DOLLAR}color3;
+${DOLLAR}orange: ${DOLLAR}color11;
 ${DOLLAR}blue: ${DOLLAR}color4;
+${DOLLAR}blue2: ${DOLLAR}color12;
 ${DOLLAR}magenta: ${DOLLAR}color5;
 ${DOLLAR}cyan: ${DOLLAR}color6;
 ${DOLLAR}white: ${DOLLAR}color7;

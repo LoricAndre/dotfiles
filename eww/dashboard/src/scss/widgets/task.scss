@@ -13,12 +13,12 @@
 	padding: 0 1rem 1rem 0;
 }
 .appointment-label{
-	font-family: Comic Mono;
+	font-family: monospace;
 	font-size: 1.3em;
 }
 .appointment-text,
 .appointment-text-time{
-	font-family: Cartograph CF;
+	font-family: monospace;
 	font-style: italic;
 	font-weight: bold;
 	font-size: 1.3em;
@@ -28,27 +28,27 @@
 	padding: 0 1rem 1rem 0;
 }
 .tasklabel{
-	font-family: "JetBrainsMono Nerd Font";
+	font-family: monospace;
 	font-size: 1.5em;
 }
 .tasklabel-mem{
-	font-family: "JetBrainsMono Nerd Font";
+	font-family: monospace;
 	font-size: 1.6em;
 }
-.tasklabel-todo,
+.tasklabel-cpu,
 .tasklabel-time{
-	font-family: "JetBrainsMono Nerd Font";
+	font-family: monospace;
 	font-size: 1.3em;
 	font-weight: bold;
 }
-.todo, .uptime{
-	font-family: Cartograph CF;
+.cpu, .uptime{
+	font-family: monospace;
 	font-style: italic;
 	font-size: 1em;
 }
 .mem-usage,
 .disk-usage{
-	font-family: Cartograph CF;
+	font-family: monospace;
 	font-style: italic;
 	font-size: 1em;
 }
@@ -58,7 +58,7 @@
 	.poweroff,
 	.reboot,
 	.close{
-		font-family: "Font Awesome 5 Pro";
+		font-family: monospace;
 		font-size: 1.6em;
 		font-weight: bold;
 	}
@@ -70,12 +70,12 @@
 		font-size: 2.1em;
 	}
 	.lock{
-		font-family: "feather";
+		font-family: monospace;
 		font-size: 1.6em;
 		font-weight: bold;
 	}
 	.exit{
-		font-family: "Font Awesome 5 Pro";
+		font-family: monospace;
 		font-size: 1.8em;
 		font-weight: bold;
 	}

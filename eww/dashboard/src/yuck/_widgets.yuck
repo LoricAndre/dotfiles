@@ -1,3 +1,4 @@
+; vi: ft=yuck
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;								Widgets Section's								  ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -22,7 +23,7 @@
 (defwidget radialmeter [value text ?class ?labelclass]
     (circular-progress :value value
         :class "radial ${class}"
-        :start-angle 0
+        :start-at 0
         :thickness 12
         (label :text text
             :class "radial-label ${labelclass}"
@@ -41,7 +42,7 @@
             	:class "radial-brightness-box"
 				:tooltip "Current Brightness: ${current-brightness}%"
 (radialmeter 	:value current-brightness
-            	:text ""
+            	:text "󰃠"
             	:labelclass "brightness-radial-label"
             	:class "brightness-radial")
 		)
@@ -75,7 +76,7 @@
             	:class "radial-bat-box"
 				:tooltip "Battery Capacity: ${battery-capacity}%"
 (radialmeter 	:value battery-capacity
-            	:text ""
+            	:text "󰁹"
             	:labelclass "bat-radial-label"
             	:class "bat-radial")
 		)
@@ -92,7 +93,7 @@
             	:class "radial-ram-box"
 				:tooltip "Ram Usage: ${ram-usage}%"
 (radialmeter 	:value ram-usage
-            	:text ""
+            	:text "󰍛"
             	:labelclass "ram-radial-label"
             	:class "ram-radial")
 		)
@@ -116,6 +117,7 @@
 			:space-evenly "false"
 			:valign "center"
 			:halign "center"
+      :show-truncated "false"
 	(box 	:orientation "h"
 			:class "date"
 			:space-evenly "false"
@@ -156,9 +158,9 @@
 		 	:space-evenly "false"
 			:halign "center"
 			:spacing 35
-			(button :class "btn_prev" :onclick "~/.config/eww/dashboard/scripts/music previous" "ﭣ")
+			(button :class "btn_prev" :onclick "~/.config/eww/dashboard/scripts/music previous" "󰒮")
 			(button :class "btn_play" :onclick "~/.config/eww/dashboard/scripts/music toggle" playpause)
-			(button :class "btn_next" :onclick "~/.config/eww/dashboard/scripts/music next" "ﭡ"))
+			(button :class "btn_next" :onclick "~/.config/eww/dashboard/scripts/music next" "󰒭"))
 	(box    :orientation "h"
 			:class "metric-player"
 			:space-evenly "false"
@@ -186,36 +188,15 @@
 		 	:space-evenly "false"
 	(label 	:class "quote-text"
 			:halign "center"
-			:wrap "true"
+			:wrap true
+      :width 20
+      :show-truncated "false"
 			:text "\"${quote_text}\"")
 	(label 	:class "quote-author"
 			:halign "center"
 			:wrap "true"
 			:text quote_author)
 		)
-	)
-)
-
-;; Applications Widgets
-(defwidget app[]
-	(box	:orientation "v"
-			:class "applications"
-			:space-evenly "false"
-			:spacing 12
-	(button :class "app-firefox"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --firefox" "")
-	(button :class "app-reddit"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --reddit" "")
-	(button :class "app-telegram"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --telegram" "")
-	(button :class "app-code"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --code" "﬏")
-	(button :class "app-discord"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --discord" "")
-	(button :class "app-github"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --github" "")
-	(button :class "app-spotify"
-			:onclick "~/.config/eww/dashboard/scripts/open_apps --spotify" "阮")
 	)
 )
 
@@ -265,20 +246,20 @@
 			:text next_appointment_time))
 	(box 	:class "task-list-box"
 			:orientation "v"
-	(box 	:class "todo"
+	(box 	:class "cpu"
 		 	:orientation "h"
 		 	:space-evenly "false"
 			:spacing 20
-	(label 	:class "tasklabel-todo"
-			:text "")
-	(label  :class "todo-text"
-			:text "${todo-apri-num} high priority, ${todo-total} total"))
+	(label 	:class "tasklabel-cpu"
+			:text "󰻠")
+	(label  :class "cpu"
+			:text "${cpu-usage}%"))
 	(box 	:class "uptime"
 		 	:orientation "h"
 		 	:space-evenly "false"
 			:spacing 20
 		(label 	:class "tasklabel-time"
-				:text "")
+				:text "󱩸")
 		(label  :class "uptime-text"
 				:text "${uptime} uptime"))
 		(box	:class "mem-usage"
@@ -286,7 +267,7 @@
 				:space-evenly "false"
 				:spacing 20
 		(label 	:class "tasklabel-mem"
-				:text "﫭")
+				:text "󰍛")
 		(label  :class "mem-usage"
 				:text "${mem-usage} used"))
 
@@ -295,7 +276,7 @@
 			:space-evenly "false"
 			:spacing 20
 		(label 	:class "tasklabel"
-				:text "")
+				:text "󰨣")
 		(label  :class "disk-usage"
 				:text "${disk-usage} free")))
 
@@ -304,13 +285,13 @@
 			:class "powermenu"
 			:spacing 45
 			(button :class "poweroff"
-			:onclick "systemctl poweroff" "")
+			:onclick "systemctl poweroff" "󰐥")
 			(button :class "reboot"
-			:onclick "systemctl reboot" "")
+			:onclick "systemctl reboot" "󰑐")
 			(button :class "lock"
-			:onclick "betterlockscreen -l" "")
+			:onclick "betterlockscreen -l" "󰌾")
 			(button :class "exit"
-			:onclick "bspc quit" "")
+			:onclick "bspc quit" "󰿅")
 			(button :class "close"
 			:onclick "$HOME/.local/bin/eww -c $HOME/.config/eww/dashboard close-all" ""))
 	)
@@ -344,8 +325,5 @@
 			(clock))
     (music))
 	(task))
-	(box :orientation "v"
-	     :space-evenly "false"
-			(app))
 	)
 )

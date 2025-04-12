@@ -70,8 +70,8 @@ _apply dir: (clean dir) (tpl dir) (cp dir)
 	if [ -f "{{ dir }}/dots.hooks/apply" ] && [ ! -f "{{ dir }}/.disabled" ]; then
 		echo "{{ CYAN }}{{ BOLD }}[{{ dir }}]{{ NORMAL }} Running apply hook"
 		cd '{{ dir }}/dots.hooks'
-		. ../dots.env
-		. apply
+		. ../dots.env >/dev/null
+		. apply >/dev/null 2>&1
 	fi
 
 apply *dirs: pre-hook

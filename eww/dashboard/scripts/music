@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # ╔╦╗ ╦ ╦ ╔═╗ ╦ ╔═╗
-# ║║║ ║ ║ ╚═╗ ║ ║  
+# ║║║ ║ ║ ╚═╗ ║ ║
 # ╩ ╩ ╚═╝ ╚═╝ ╩ ╚═╝
 
 # author	Niraj
@@ -12,9 +12,9 @@
 # └─┘└─┘┘└┘└  ┴└─┘└─┘┴└─┴ ┴ ┴ ┴└─┘┘└┘└─┘
 
 # uncomment your music players below.
-# 
+#
 
-Control="MPD"
+Control=""
 [ -n "$(pgrep spotify)" ] && Control="spotify"
 # [ -n "$(pgrep rhythmbox)" ] && Control="rhythmbox"
 # [ -n "$(pgrep audacious)" ] && Control="audacious"
@@ -86,7 +86,7 @@ echo "$playlist"
 ########################## Cover ##########################
 cover() {
 albumart="$(playerctl --player=$Control metadata mpris:artUrl | sed -e 's/open.spotify.com/i.scdn.co/g')"
-[ $(playerctl --player=$Control metadata mpris:artUrl) ] && curl -s "$albumart" --output $Cover || cp $bkpCover $Cover 
+[ $(playerctl --player=$Control metadata mpris:artUrl) ] && curl -s "$albumart" --output $Cover || cp $bkpCover $Cover
 echo "$Cover"
 }
 
@@ -129,7 +129,7 @@ echo "$artist"
 ########################## Album ##########################
 mpcalbum() {
 album=$(mpc -f %album% current)
-[ -z "$album" ] && album="Album" 
+[ -z "$album" ] && album="Album"
 echo "$album"
 }
 
@@ -149,7 +149,7 @@ echo "$time"
 ########################## Length ##########################
 mpclength() {
 length=$(mpc status %totaltime%)
-[ -z "$length" ] && length="0:00" 
+[ -z "$length" ] && length="0:00"
 echo "$length"
 }
 
@@ -174,7 +174,7 @@ echo "$status"
 ########################## Percent ##########################
 mpcperc() {
 perc=$(mpc status %percenttime%)
-[ -z "$perc" ] && perc="0" 
+[ -z "$perc" ] && perc="0"
 echo "$perc"
 }
 
@@ -199,7 +199,7 @@ printf "$lyrics" | less
 
 # ┬ ┬┌─┐┬  ┌─┐
 # ├─┤├┤ │  ├─┘
-# ┴ ┴└─┘┴─┘┴  
+# ┴ ┴└─┘┴─┘┴
 
 doc() {
 echo "Usage:
@@ -229,7 +229,7 @@ Options:
 
 case $Control in
 	MPD)
-	case $1 in 
+	case $1 in
 		next)		mpc -q next		;;
 		previous)	mpc -q prev		;;
 		toggle)		mpc -q toggle		;;
@@ -250,7 +250,7 @@ case $Control in
 	esac
 	;;
 	*)
-	case $1 in 
+	case $1 in
 		next)		playerctl --player=$Control next	;;
 		previous)	playerctl --player=$Control previous	;;
 		toggle)		playerctl --player=$Control play-pause	;;

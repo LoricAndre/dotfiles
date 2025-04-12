@@ -3,8 +3,19 @@
 ////			    AESTHETIC DASHBOARD 			   ////
 ///////////////////////////////////////////////////////////
 
-@import "src/scss/variables";
-@import "src/scss/index";
+@import "theme";
+
+*{
+	all: unset;
+}
+
+.dashboard{
+	padding: 1rem;
+}
+
+button:hover{
+	color: $blue;
+}
 
 @import "src/scss/widgets/profile";
 @import "src/scss/widgets/clock";
