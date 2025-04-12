@@ -35,6 +35,15 @@
 (defpoll battery-cappacity	:interval "1s"	"scripts/battery percent")
 
 ;; Wifi Widgets ;;
+(defwidget bluetooth []
+	(box		:orientation "v"
+				:tooltip bluetooth-name
+	(button		:onclick "scripts/popup bluetooth"
+				:class "bluetooth-icon" bluetooth-icon)))
+(defpoll bluetooth-icon :interval "1s" "scripts/bluetooth icon")
+(defpoll bluetooth-name :interval "1s" "scripts/bluetooth name")
+
+;; Wifi Widgets ;;
 (defwidget wifi []
 	(box		:orientation "v"
 				:tooltip wifi-name
@@ -94,6 +103,7 @@
 		 :space-evenly false
 		 :class "control"
 (bat)
+(bluetooth)
 (wifi)
 (bright)
 (volum)))

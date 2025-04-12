@@ -1,0 +1,16 @@
+#!/bin/sh
+
+symbol() {
+if bluetoothctl info | grep 'Connected: yes' >/dev/null 2>&1; then
+	echo "󰂯"
+else
+	echo "󰂲"
+fi
+}
+
+name() {
+	bluetoothctl info | grep 'Connected: yes' >/dev/null 2>&1 && bluetoothctl info | sed -n 's/^\s\+Name: \(.*\)$/Connected to \1/p' || echo 'Bluetooth not connected'
+}
+
+[ "$1" = "icon" ] && symbol && exit
+[ "$1" = "name" ] && name && exit

@@ -68,11 +68,15 @@ $font: "monospace";
   font-family: $font;
   font-size: 1.2em;
   padding-right: .5rem;
-  color: $blue;
+  color: $white;
 }
 .wifi-icon{
   margin-bottom: .2rem;
   color: $magenta;
+}
+.bluetooth-icon{
+  margin-bottom: .2rem;
+  color: $blue;
 }
 .brightness-icon{
   margin: .2rem 0 .2rem 0;
