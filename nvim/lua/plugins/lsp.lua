@@ -55,6 +55,9 @@ return {
             vim.keymap.set({ 'n', 'v' }, 'gl', function()
               vim.diagnostic.jump({ count = 1, float = true })
             end)
+            vim.keymap.set({ 'n' }, '<leader>cn', function()
+              vim.lsp.buf.rename()
+            end)
             -- vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() vim.lsp.buf.format({async = true, id = client, bufnr = bufnr}) end)
           end,
           capabilities = capabilities,
