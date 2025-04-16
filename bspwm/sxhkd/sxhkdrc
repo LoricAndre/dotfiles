@@ -51,7 +51,7 @@ super + shift + @space
 
 # quit/restart bspwm
 super + shift + {e,r}
-	chezmoi apply --force; bspc {quit,wm -r}
+	bspc {quit,wm -r}
 
 # close and kill
 super + {_,shift + }q

@@ -48,6 +48,7 @@ return {
           capabilities = blink.get_lsp_capabilities(capabilities)
         end
         return require('lspconfig')[server].setup({
+          ---@diagnostic disable-next-line: unused-local
           on_attach = function(client, bufnr)
             vim.keymap.set({ 'n', 'v' }, 'gh', function()
               vim.diagnostic.jump({ count = -1, float = true })

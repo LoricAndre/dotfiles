@@ -2,7 +2,6 @@
 
 if [ "$1" = "focus" ]; then
 	name=$(bspc query -D -d $2 --names)
-	notify-send "[bspwm] Focus desktop $name"
 	bspc desktop -f $2
 	exit
 fi
