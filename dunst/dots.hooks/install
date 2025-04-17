@@ -1,1 +1,1 @@
-just _install-cli dunst
+$DOTS_DIR/bin/dots _install dunst

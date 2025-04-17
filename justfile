@@ -15,6 +15,8 @@ set shell := ["bash", "-c"]
 alias a := apply
 alias i := install
 
+default: apply
+
 cp dir:
 	#!/usr/bin/env bash
 
@@ -125,8 +127,8 @@ install *dirs:
 		fi
 	done
 
-env file:
-	ln -fs `realpath {{ file }}` .env
+@env file:
+	ln -fs `realpath --relative-to {{ justfile_directory() }} {{ file }}` .env
 
 disable dir:
 	[ -f '{{ dir }}/.disabled' ] || touch '{{ dir }}/.disabled'

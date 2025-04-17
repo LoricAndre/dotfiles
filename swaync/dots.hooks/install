@@ -1,1 +1,1 @@
-just _install-cli swaync
+$DOTS_DIR/bin/dots _install swaync

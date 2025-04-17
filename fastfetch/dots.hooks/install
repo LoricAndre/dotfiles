@@ -1,1 +1,1 @@
-just _install-cli fastfetch
+$DOTS_DIR/bin/dots _install fastfetch

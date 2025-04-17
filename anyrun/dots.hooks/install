@@ -1,1 +1,1 @@
-just _install-cli anyrun
+$DOTS_DIR/bin/dots _install anyrun

@@ -1,1 +1,1 @@
-just _install-cli kanshi
+$DOTS_DIR/bin/dots _install kanshi

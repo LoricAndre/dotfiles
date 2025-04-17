@@ -1,1 +1,1 @@
-just _install-cli ghostty
+$DOTS_DIR/bin/dots _install ghostty

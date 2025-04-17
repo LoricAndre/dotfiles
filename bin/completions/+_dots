@@ -1,0 +1,35 @@
+#compdef _list_modules dots
+
+_dots() {
+	local line state
+
+	_arguments -C '1: :->subcmd' '*::arg:->args'
+
+	case "${DOLLAR}state" in
+		subcmd)
+			_values 'dots subcommand' \
+				'apply[apply changes]' \
+				'install[run install hooks]' \
+				'env[set env vars to file]' \
+				'enable[enable module]' \
+				'disable[disable module]'
+		;;
+		args)
+			case ${DOLLAR}line[1] in
+				'apply'|'a'|'install'|'enable'|'disable')
+					_list_modules
+				;;
+				'env')
+					_files -W '${PWD}/.data' -P '${PWD}/.data/'
+				;;
+			esac
+		;;
+	esac
+}
+
+_list_modules() {
+	local output=`find ${PWD} -maxdepth 1 -type d -not -name '.*' -exec basename \{\} \;`
+	local -a mods=(${DOLLAR}{(f)output})
+	_values "modules" "${DOLLAR}mods[@]"
+	# `find ${PWD} -maxdepth 1 -type d -not -name '.*' -exec basename \{\} \;`
+}

@@ -1,1 +1,1 @@
-just _install-cli kitty
+$DOTS_DIR/bin/dots _install kitty

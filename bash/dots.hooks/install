@@ -1,1 +1,1 @@
-just _install-cli bash
+$DOTS_DIR/bin/dots _install bash

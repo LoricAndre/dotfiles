@@ -1,1 +1,1 @@
-just _install-cli pacwall
+$DOTS_DIR/bin/dots _install pacwall

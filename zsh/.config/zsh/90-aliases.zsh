@@ -4,8 +4,6 @@ alias tz=trizen
 alias tza="tz -Sy"
 alias tzr="tz -Rscn"
 
-alias dots="just --working-directory $HOME/dots --justfile justfile"
-
 # f() {
 #   find $@ 2>/dev/null | fzf
 # }

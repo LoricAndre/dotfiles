@@ -7,6 +7,10 @@ local M = {}
 ---@return string
 function M.lsp_clients_str(bufnr, sep, prefix)
   local clients = vim.lsp.get_clients({ bufnr = bufnr })
+  local has_devicons, devicons = pcall(require, 'nvim-web-devicons')
+  if not prefix and has_devicons then
+    prefix = devicons.get_icon(vim.api.nvim_buf_get_name(bufnr)) .. ' '
+  end
   local res
   for _, c in ipairs(clients) do
     if not res then

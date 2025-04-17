@@ -1,1 +1,1 @@
-just _install-cli just
+$DOTS_DIR/bin/dots _install just

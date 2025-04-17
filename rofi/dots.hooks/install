@@ -1,4 +1,4 @@
-just _install-cli rofi rofi-power-menu
+$DOTS_DIR/bin/dots _install rofi rofi-power-menu
 
 if [[ "$(gcc --print-file-name=rofi/calc.so)" == "rofi/calc.so" ]]; then
 	paru -S --needed --noconfirm "rofi-calc"

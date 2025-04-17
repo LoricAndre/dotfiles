@@ -58,11 +58,7 @@ local autocmds = {
       end
       vim.system(
         {
-          'just',
-          '--working-directory',
-          dots_dir,
-          '--justfile',
-          'justfile',
+          dots_dir .. '/bin/dots',
           'apply',
           module,
         },

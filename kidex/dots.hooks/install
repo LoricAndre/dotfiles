@@ -1,1 +1,1 @@
-just _install-cli kidex
+$DOTS_DIR/bin/dots _install kidex

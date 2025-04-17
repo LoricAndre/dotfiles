@@ -1,4 +1,4 @@
-just _install-cli zsh
+$DOTS_DIR/bin/dots _install zsh
 
 if ! command -v uu-coreutils >/dev/null 2>&1; then
 	paru -S --needed --noconfirm uutils-coreutils

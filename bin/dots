@@ -1,0 +1,156 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+DOTS_DIR="$HOME/dots"
+TEMPLATED_DIR="$DOTS_DIR/.templated"
+BACKUPS_DIR="$DOTS_DIR/.backups"
+DEFAULT_TARGET_DIR="$HOME"
+
+set -a
+. "$DOTS_DIR/.env"
+. "$DOTS_DIR/dots.env"
+set +a
+
+
+err() {
+  echo -e "\e[1;31m[ERR]\e[0m $@"
+}
+
+warn() {
+  echo -e "\e[1;93m[WRN]\e[0m $@"
+}
+
+info() {
+  echo -e "\e[1m[INF]\e[0m $@"
+}
+
+# just --working-directory ${PWD} --justfile justfile ${DOLLAR}@
+cleanTemplatedDir() {
+	rm -r "$TEMPLATED_DIR/$1" 2>/dev/null || true
+}
+
+tplFile() {
+	mkdir -p `dirname "$TEMPLATED_DIR/$1/$2"`
+	target_file=$(echo "$TEMPLATED_DIR/$1/$2" | sed -n 's#^\(.*\)/+\([^/]\+\)$#\1/\2#p')
+	DOLLAR='$' envsubst < "$2" > "$target_file"
+	chown --reference="$2" "$target_file"
+	chmod --reference="$2" "$target_file"
+}
+
+tplDir() {
+	find . -type f -not -name 'dots.env' -not -path '*/dots.hooks/*' | while read f; do
+		if [[ "$f" =~ ^.*/\+[^/]*$ ]]; then
+			tplFile "$1" "$f"
+		else
+			mkdir -p `dirname "$TEMPLATED_DIR/$1/$f"`
+			cp "$f" "$TEMPLATED_DIR/$1/$f"
+		fi
+	done
+}
+
+copyDir() {
+	target_dir="${dots_target_dir:-$DEFAULT_TARGET_DIR}"
+	mkdir -p "$target_dir"
+
+	if command -v rsync >/dev/null 2>&1; then
+		rsync -rLcgoXpb --backup-dir="$BACKUPS_DIR/$1" "$TEMPLATED_DIR/$1/." "$target_dir"
+	else
+		cp -ua "$TEMPLATED_DIR/$1/." "$target_dir"
+	fi
+}
+
+applyDir() {
+	cd "$DOTS_DIR/$1"
+
+	set -a
+	[ -f "dots.env" ] && . dots.env
+	set +a
+
+	cleanTemplatedDir "$1"
+	info "[$1] Templating files"
+	tplDir "$1"
+	info "[$1] Copying files"
+	copyDir "$1"
+
+	if [ -f "dots.hooks/apply" ] && [ ! -f ".disabled" ]; then
+		info "[$1] Running apply hook"
+		cd "dots.hooks"
+		. apply >/dev/null 2>&1
+	fi
+}
+
+installDir() {
+	cd "$DOTS_DIR/$1"
+	if [ -f "dots.hooks/install" ] && [ ! -f ".disabled" ]; then
+		info "[$1]" "Running install hook"
+		set -a
+		[ -f "dots.env" ] && . dots.env
+		set +a
+		. dots.hooks/install
+	fi
+}
+
+disable() {
+	[ -f "$DOTS_DIR/$1/.disabled" ] || touch "$DOTS_DIR/$1/.disabled"
+}
+enable() {
+	rm "$DOTS_DIR/$1/.disabled" 2>/dev/null || true
+}
+
+setEnv() {
+	ln -fs `realpath --relative-to "$DOTS_DIR" "$1"` "$DOTS_DIR/.env"
+}
+
+runMany() {
+	op="$1"
+	shift
+	if [[ $# -gt 0 ]]; then
+		DIRS="$@"
+	else
+		DIRS=`find "$DOTS_DIR" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n'`
+	fi
+
+	for dir in $DIRS; do
+		if [ ! -f "$dir/.disabled" ]; then
+			($op "$dir")
+		fi
+	done
+}
+
+_installCli() {
+	pkgs=""
+	for pkg in $@; do
+		if ! command -v "$pkg" >/dev/null 2>&1; then
+			pkgs="$pkgs $pkg"
+		fi
+	done
+
+	[ -z "$pkgs" ] || paru -S --needed --noconfirm $pkgs
+}
+
+case "$1" in
+	apply)
+		shift
+		runMany applyDir $@
+		;;
+	install)
+		shift
+		runMany installDir $@
+		;;
+	env)
+		setEnv "$2"
+		;;
+	enable)
+		shift
+		enable $@
+		;;
+	disable)
+		shift
+		disable $@
+		;;
+	_install)
+		shift
+		_installCli $@
+	;;
+esac

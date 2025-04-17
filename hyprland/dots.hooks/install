@@ -1,1 +1,1 @@
-just _install-cli hyprland hypridle hyprpaper hyprlock
+$DOTS_DIR/bin/dots _install hyprland hypridle hyprpaper hyprlock

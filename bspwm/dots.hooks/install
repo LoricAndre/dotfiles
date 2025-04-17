@@ -1,6 +1,6 @@
 # vi: ft=bash
 
-just _install-cli bspwm sxhkd xss-lock betterlockscreen xdo hsetroot
+$DOTS_DIR/bin/dots _install bspwm sxhkd xss-lock betterlockscreen xdo hsetroot
 
 pkgs=""
 for pkg in xset xinput xsetroot; do

@@ -1,1 +1,1 @@
-just _install-cli direnv
+$DOTS_DIR/bin/dots _install direnv

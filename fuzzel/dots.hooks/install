@@ -1,1 +1,1 @@
-just _install-cli fuzzel
+$DOTS_DIR/bin/dots _install fuzzel

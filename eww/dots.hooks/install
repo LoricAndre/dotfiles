@@ -1,1 +1,1 @@
-just _install-cli eww
+$DOTS_DIR/bin/dots _install eww

@@ -1,1 +1,1 @@
-just _install-cli picom
+$DOTS_DIR/bin/dots _install picom
