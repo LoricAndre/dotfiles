@@ -3,3 +3,5 @@ $DOTS_DIR/bin/dots _install zsh
 if ! command -v uu-coreutils >/dev/null 2>&1; then
 	paru -S --needed --noconfirm uutils-coreutils
 fi
+
+bash -c "$(curl --fail --show-error --silent --location https://raw.githubusercontent.com/zdharma-continuum/zinit/HEAD/scripts/install.sh)"

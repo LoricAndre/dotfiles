@@ -189,12 +189,12 @@
 	(label 	:class "quote-text"
 			:halign "center"
 			:wrap true
-      :width 20
       :show-truncated "false"
 			:text "\"${quote_text}\"")
 	(label 	:class "quote-author"
 			:halign "center"
 			:wrap "true"
+      :show-truncated "false"
 			:text quote_author)
 		)
 	)

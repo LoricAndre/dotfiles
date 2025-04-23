@@ -7,7 +7,7 @@ return {
       function()
         require('oil').open_float(vim.fn.expand('%:p:h'))
       end,
-      desc = 'Open oil in a floating window',
+      desc = '[oil] open oil in a floating window',
     },
   },
   opts = {

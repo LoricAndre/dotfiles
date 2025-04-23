@@ -33,7 +33,7 @@ return {
       function()
         Snacks.terminal.toggle()
       end,
-      desc = 'Toggle terminal',
+      desc = '[snk] toggle terminal',
       mode = { 'n', 't' },
     },
   },

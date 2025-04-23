@@ -113,9 +113,10 @@ runMany() {
 
 	for dir in $DIRS; do
 		if [ ! -f "$dir/.disabled" ]; then
-			($op "$dir")
+			($op "$dir") &
 		fi
 	done
+	wait $(jobs -p)
 }
 
 _installCli() {
@@ -130,11 +131,11 @@ _installCli() {
 }
 
 case "$1" in
-	apply)
+	a|apply)
 		shift
 		runMany applyDir $@
 		;;
-	install)
+	i|install)
 		shift
 		runMany installDir $@
 		;;
@@ -153,4 +154,6 @@ case "$1" in
 		shift
 		_installCli $@
 	;;
+	*)
+		echo "Usage: dots <apply|install|env|enable|disable|_install> [modules|path]"
 esac

@@ -30,7 +30,7 @@ return {
           })
         end,
         mode = '',
-        desc = 'Format buffer',
+        desc = '[cfm] format buffer',
       },
     },
     -- This will provide type hinting with LuaLS

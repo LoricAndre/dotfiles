@@ -29,21 +29,21 @@ return {
       function()
         Snacks.lazygit()
       end,
-      desc = 'LazyGit',
+      desc = '[git] open lazygit',
     },
     {
       '<leader>d',
       function()
         Snacks.bufdelete()
       end,
-      desc = 'Close buffer',
+      desc = '[snk] delete buffer',
     },
     {
       '<leader>N',
       function()
         Snacks.notifier.show_history()
       end,
-      desc = 'Close buffer',
+      desc = '[snk] show notification history',
       silent = true,
     },
   },

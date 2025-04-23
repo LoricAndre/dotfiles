@@ -73,6 +73,10 @@ return {
     },
   },
   keys = {
-    { '<leader>e', '<CMD>Neotree reveal toggle<CR>' },
+    {
+      '<leader>e',
+      '<CMD>Neotree reveal toggle<CR>',
+      desc = '[ntr] toggle neotree',
+    },
   },
 }

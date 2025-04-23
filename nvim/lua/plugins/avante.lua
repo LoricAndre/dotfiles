@@ -69,8 +69,8 @@ return {
     'ibhagwan/fzf-lua',
   },
   keys = {
-    { '<leader>aa', '<CMD>AvanteFocus<CR>' },
-    { '<leader>ac', '<CMR>AvanteChat<CR>' },
-    { '<leader>at', '<CMD>AvanteToggle<CR>' },
+    { '<leader>aa', '<CMD>AvanteFocus<CR>', desc = '[llm] focus avante' },
+    { '<leader>ac', '<CMR>AvanteChat<CR>', desc = '[llm] open avante chat' },
+    { '<leader>at', '<CMD>AvanteToggle<CR>', desc = '[llm] toggle avante' },
   },
 }

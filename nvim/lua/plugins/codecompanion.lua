@@ -87,8 +87,16 @@ return {
     }
   end,
   keys = {
-    { '<leader>aa', '<CMD>CodeCompanion<CR>' },
-    { '<leader>ac', '<CMD>CodeCompanionChat<CR>' },
+    {
+      '<leader>aa',
+      '<CMD>CodeCompanion<CR>',
+      desc = '[llm] open code companion prompt',
+    },
+    {
+      '<leader>ac',
+      '<CMD>CodeCompanionChat<CR>',
+      desc = '[llm] open code companion chat',
+    },
   },
   cmd = {
     'CodeCompanion',

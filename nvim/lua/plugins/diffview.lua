@@ -9,9 +9,24 @@ return {
     'DiffviewFileHistory',
   },
   keys = {
-    { '<leader>gd', '<CMD>DiffviewOpen<CR>', mode = { 'n', 'v' } },
-    { '<leader>gm', '<CMD>DiffviewFileHistory<CR>', mode = { 'n', 'v' } },
-    { '<leader>gc', '<CMD>DiffviewClose<CR>', mode = { 'n', 'v' } },
+    {
+      '<leader>gd',
+      '<CMD>DiffviewOpen<CR>',
+      mode = { 'n', 'v' },
+      desc = '[git] open diff view',
+    },
+    {
+      '<leader>gm',
+      '<CMD>DiffviewFileHistory<CR>',
+      mode = { 'n', 'v' },
+      desc = '[git] open file history',
+    },
+    {
+      '<leader>gc',
+      '<CMD>DiffviewClose<CR>',
+      mode = { 'n', 'v' },
+      desc = '[git] close diff view',
+    },
   },
   opts = {},
 }

@@ -1,0 +1,23 @@
+return {
+  'neomake/neomake',
+  enabled = false,
+  cmd = {
+    'Neomake',
+    'NeomakeSh',
+    'NeomakeInfo',
+    'NeomakeListJobs',
+    'NeomakeCancelJob',
+    'NeomakeCancelJobs',
+    'NeomakeClean',
+    'NeomakeToggle',
+    'NeomakeToggleBuffer',
+    'NeomakeToggleTab',
+    'NeomakeDisable',
+    'NeomakeDisableBuffer',
+    'NeomakeDisableTab',
+    'NeomakeEnable',
+    'NeomakeEnableBuffer',
+    'NeomakeEnableTab',
+    'NeomakeStatus',
+  },
+}

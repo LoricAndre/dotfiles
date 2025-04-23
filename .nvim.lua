@@ -1,1 +1,1 @@
-vim.o.makeprg = "just"
+vim.o.makeprg = "dots"
