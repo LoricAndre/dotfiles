@@ -1,5 +1,3 @@
-$DOTS_DIR/bin/dots _install lazyjj
-
 if ! command -v jj >/dev/null 2>&1; then
 	paru -S jujutsu --needed --noconfirm
 fi

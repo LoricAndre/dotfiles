@@ -11,7 +11,7 @@ openssh
 pass
 progress
 ripgrep
-skim-git
+skim
 starship
 traceroute
 ttf-jetbrains-mono-nerd

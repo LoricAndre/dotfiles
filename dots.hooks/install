@@ -5,14 +5,20 @@ set -euo pipefail
 pacmanArgs="--needed"
 [[ -v PACMAN_NONINTERACTIVE ]] && pacmanArgs="$pacmanArgs --noconfirm" || echo 'Running in interactive mode'
 
-if ! command -v paru >/dev/null 2>&1; then
+# Chaotic AUR
+if ! grep -q 'chaotic-mirrorlist' /etc/pacman.conf; then
+	sudo pacman-key --init
+	sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+	sudo pacman-key --lsign-key 3056513887B78AEB
 	sudo pacman -Syu $pacmanArgs
-	sudo pacman -S $pacmanArgs base-devel git rustup
-	rustup default stable
-	git clone https://aur.archlinux.org/paru.git /tmp/paru
-	makepkg -si $pacmanArgs -D /tmp/paru
+
+	sudo pacman -U $pacmanArgs 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
+	sudo pacman -U $pacmanArgs 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+	echo -e "[chaotic-aur]\nInclude = /etc/pacman.d/chaotic-mirrorlist" | sudo tee --append /etc/pacman.conf
 fi
 
-paru -S $pacmanArgs $(cat .packages/* | tr '\n' ' ')
-
+sudo pacman -Syu $pacmanArgs
+sudo pacman -S $pacmanArgs paru rustup
 rustup default stable
+
+paru -S $pacmanArgs $(cat .packages/* | tr '\n' ' ')
