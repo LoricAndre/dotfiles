@@ -1,6 +1,8 @@
 # vi: ft=bash
 
-nvr --serverlist | while read s; do
-	nvr --servername "$s" -c "source $dots_target_dir/lua/env.lua" &
-	nvr --servername "$s" -c "colorscheme $dots_nvim_theme" &
-done
+if command -v nvr >/dev/null 2>&1; then
+	nvr --serverlist | while read s; do
+		nvr --servername "$s" -c "source $dots_target_dir/lua/env.lua" &
+		nvr --servername "$s" -c "colorscheme $dots_nvim_theme" &
+	done
+fi

@@ -38,36 +38,37 @@ return {
     { 'neovim/nvim-lspconfig', lazy = true },
   },
   event = 'FileType',
-  opts = {
-    ensure_installed = build_servers_to_install(),
-    handlers = {
-      function(server)
-        local has_blink, blink = pcall(require, 'blink.cmp')
-        local capabilities = vim.lsp.protocol.make_client_capabilities()
-        if has_blink then
-          capabilities = blink.get_lsp_capabilities(capabilities)
-        end
-        return require('lspconfig')[server].setup({
-          ---@diagnostic disable-next-line: unused-local
-          on_attach = function(client, bufnr)
-            vim.keymap.set({ 'n', 'v' }, 'gh', function()
-              vim.diagnostic.jump({ count = -1, float = true })
-            end)
-            vim.keymap.set({ 'n', 'v' }, 'gl', function()
-              vim.diagnostic.jump({ count = 1, float = true })
-            end)
-            vim.keymap.set({ 'n' }, '<leader>cn', function()
-              vim.lsp.buf.rename()
-            end)
-            -- vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() vim.lsp.buf.format({async = true, id = client, bufnr = bufnr}) end)
-          end,
-          capabilities = capabilities,
-        })
-      end,
-    },
-  },
-  config = function(_, opts)
+  config = function()
+    local has_blink, blink = pcall(require, 'blink.cmp')
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    if has_blink then
+      capabilities = blink.get_lsp_capabilities(capabilities)
+    end
     require('mason').setup()
-    require('mason-lspconfig').setup(opts)
+    ---@diagnostic disable-next-line: missing-fields
+    require('mason-lspconfig').setup({
+      ensure_installed = build_servers_to_install(),
+    })
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        vim.keymap.set({ 'n', 'v' }, 'gh', function()
+          vim.diagnostic.jump({ count = -1, float = true })
+        end)
+        vim.keymap.set({ 'n', 'v' }, 'gl', function()
+          vim.diagnostic.jump({ count = 1, float = true })
+        end)
+        vim.keymap.set({ 'n' }, '<leader>cn', function()
+          vim.lsp.buf.rename()
+        end)
+        -- vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() vim.lsp.buf.format({async = true, id = client, bufnr = bufnr}) end)
+        if client:supports_method('textDocument/documentColor') then
+          vim.lsp.document_color.enable(true, bufnr, {
+            style = 'virtual',
+          })
+        end
+      end,
+    })
+    vim.lsp.enable(build_servers_to_install())
   end,
 }

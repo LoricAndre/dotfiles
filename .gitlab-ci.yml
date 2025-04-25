@@ -1,0 +1,23 @@
+build:
+  image: docker:20.10.16
+  stage: build
+  services:
+    - docker:20.10.16-dind
+  variables:
+    IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHORT_SHA
+    LATEST_TAG: $CI_REGISTRY_IMAGE:latest
+  script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+    - docker buildx create --name=container --driver=docker-container --use --bootstrap      
+    - |
+      docker buildx build \
+        --cache-from "type=registry,ref=$CI_REGISTRY_IMAGE" \
+        --cache-to "type=registry,ref=$CI_REGISTRY_IMAGE" \
+        --build-arg BUILDKIT_INLINE_CACHE=1 \
+        --pull \
+        --tag $IMAGE_TAG \
+        --tag $LATEST_TAG \
+        --load \
+        .
+    - docker push $IMAGE_TAG
+    - docker push $LATEST_TAG

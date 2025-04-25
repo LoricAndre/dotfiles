@@ -23,7 +23,7 @@ vim.opt.diffopt = {
 -- vim.o.messagesopt = 'wait:0,history:1000'
 -- Cursor
 vim.o.cursorline = true
-vim.o.cursorcolumn = true
+-- vim.o.cursorcolumn = true
 -- Folds
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true

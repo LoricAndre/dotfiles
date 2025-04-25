@@ -1,0 +1,18 @@
+# vi: ft=bash
+
+set -euo pipefail
+
+pacmanArgs="--needed"
+[[ -v PACMAN_NONINTERACTIVE ]] && pacmanArgs="$pacmanArgs --noconfirm" || echo 'Running in interactive mode'
+
+if ! command -v paru >/dev/null 2>&1; then
+	sudo pacman -Syu $pacmanArgs
+	sudo pacman -S $pacmanArgs base-devel git rustup
+	rustup default stable
+	git clone https://aur.archlinux.org/paru.git /tmp/paru
+	makepkg -si $pacmanArgs -D /tmp/paru
+fi
+
+paru -S $pacmanArgs $(cat .packages/* | tr '\n' ' ')
+
+rustup default stable

@@ -1,0 +1,27 @@
+# vi: ft=bash
+
+set -euo pipefail
+
+export GOPATH=$HOME/.local/share/go
+
+if command -v paru >/dev/null 2>&1; then
+	paru -Syu --noconfirm
+elif command -v pacman >/dev/null 2>&1; then
+	sudo pacman -Syu --noconfirm
+fi
+
+if command -v rustup >/dev/null 2>&1; then
+	rustup update
+fi
+
+if command -v cargo >/dev/null 2>&1; then
+	cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
+fi
+
+if command -v gem >/dev/null 2>&1; then
+	sudo gem update --system
+fi
+
+if command -v npm >/dev/null 2>&1; then
+	sudo npm upgrade --global
+fi

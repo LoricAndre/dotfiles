@@ -79,6 +79,7 @@ bspc rule -a Blueman-manager state=floating
 bspc rule -a 'popup_term' state=floating "rectangle=${float_w}x${float_h}+${float_x}+${float_y}"
 bspc rule -a 'scratchpad' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
 bspc rule -a 'obsidian' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
+bspc rule -a 'teams-for-linux' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
 
 xdo lower -N Eww
 

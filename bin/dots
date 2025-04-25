@@ -8,8 +8,8 @@ BACKUPS_DIR="$DOTS_DIR/.backups"
 DEFAULT_TARGET_DIR="$HOME"
 
 set -a
-. "$DOTS_DIR/.env"
-. "$DOTS_DIR/dots.env"
+[ -f "$DOTS_DIR/.env" ] && . "$DOTS_DIR/.env"
+[ -f "$DOTS_DIR/dots.env" ] && . "$DOTS_DIR/dots.env"
 set +a
 
 
@@ -91,6 +91,17 @@ installDir() {
 	fi
 }
 
+upgradeDir() {
+	cd "$DOTS_DIR/$1"
+	if [ -f "dots.hooks/upgrade" ] && [ ! -f ".disabled" ]; then
+		info "[$1]" "Running upgrade hook"
+		set -a
+		[ -f "dots.env" ] && . dots.env
+		set +a
+		. dots.hooks/upgrade
+	fi
+}
+
 disable() {
 	[ -f "$DOTS_DIR/$1/.disabled" ] || touch "$DOTS_DIR/$1/.disabled"
 }
@@ -113,7 +124,7 @@ runMany() {
 
 	for dir in $DIRS; do
 		if [ ! -f "$dir/.disabled" ]; then
-			($op "$dir") &
+			$op "$dir"
 		fi
 	done
 	wait $(jobs -p)
@@ -137,7 +148,17 @@ case "$1" in
 		;;
 	i|install)
 		shift
+		if [[ $# -eq 0 ]]; then
+			installDir .
+		fi
 		runMany installDir $@
+		;;
+	u|upgrade)
+		shift
+		if [[ $# -eq 0 ]]; then
+			upgradeDir .
+		fi
+		runMany upgradeDir $@
 		;;
 	env)
 		setEnv "$2"

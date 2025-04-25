@@ -1,0 +1,8 @@
+.templated/
+.backups/
+.git/
+.jj/
+.gitignore
+Dockerfile
+README.md
+.nvim.lua
