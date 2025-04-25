@@ -1,2 +1,1 @@
-$DOTS_DIR/bin/dots _install tmux
-[ -f '/usr/share/tmux-plugin-manager/tpm' ] || paru -S --needed --noconfirm tmux-plugin-manager
+$DOTS_DIR/bin/dots _install tmux sesh
