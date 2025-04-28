@@ -1,6 +1,6 @@
 #!/bin/sh
 
-bat=/sys/class/power_supply/BAT0/
+bat=$(find /sys/class/power_supply -name 'BAT*' | head -n1)
 per="$(cat "$bat/capacity")"
 
 icon() {
