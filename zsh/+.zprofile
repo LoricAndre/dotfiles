@@ -37,6 +37,7 @@ export GTK_USE_PORTAL="$GTK_USE_PORTAL"
 alias wget=wget --hsts-file="${DOLLAR}XDG_DATA_HOME/wget-hsts"
 
 export NEWT_COLORS="$NEWT_COLORS"
+export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS"
 
 export ZDOTDIR="${DOLLAR}XDG_CONFIG_HOME/zsh"
 autoload -Uz compinit && compinit -d "${DOLLAR}XDG_CACHE_HOME/zsh/zcompdump-${DOLLAR}ZSH_VERSION"

@@ -41,6 +41,7 @@ alias wget=wget --hsts-file="${DOLLAR}XDG_DATA_HOME/wget-hsts"
 
 export QT_STYLE_OVERRIDE="$QT_STYLE_OVERRIDE"
 export NEWT_COLORS="$NEWT_COLORS"
+export SKIM_DEFAULT_OPTIONS="$SKIM_DEFAULT_OPTIONS"
 
 
 export HISTFILE="${DOLLAR}XDG_STATE_HOME/bash/history"
