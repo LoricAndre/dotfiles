@@ -51,16 +51,27 @@ return {
     })
     vim.lsp.config('*', {
       capabilities = capabilities,
-      on_attach = function(client, bufnr)
+    })
+    vim.lsp.enable(build_servers_to_install())
+    local aug = vim.api.nvim_create_augroup('custom_lsp', { clear = true })
+    vim.api.nvim_create_autocmd('LspAttach', {
+      group = aug,
+      callback = function(ev)
+        local bufnr = ev.buf
+        local client = vim.lsp.get_client_by_id(ev.data.client_id)
+        if not client then
+          vim.notify('Failed to setup client attach cb', vim.log.levels.WARN)
+          return
+        end
         vim.keymap.set({ 'n', 'v' }, 'gh', function()
           vim.diagnostic.jump({ count = -1, float = true })
-        end)
+        end, { desc = '[lsp] jump to previous diagnostic' })
         vim.keymap.set({ 'n', 'v' }, 'gl', function()
           vim.diagnostic.jump({ count = 1, float = true })
-        end)
+        end, { desc = '[lsp] jump to next diagnostic' })
         vim.keymap.set({ 'n' }, '<leader>cn', function()
           vim.lsp.buf.rename()
-        end)
+        end, { desc = '[lsp] rename' })
         -- vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() vim.lsp.buf.format({async = true, id = client, bufnr = bufnr}) end)
         if client:supports_method('textDocument/documentColor') then
           vim.lsp.document_color.enable(true, bufnr, {
@@ -69,6 +80,5 @@ return {
         end
       end,
     })
-    vim.lsp.enable(build_servers_to_install())
   end,
 }
