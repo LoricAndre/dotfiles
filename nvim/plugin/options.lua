@@ -35,3 +35,14 @@ vim.g.netrw_banner = 0
 vim.g.netrw_list_hide = '^\\..*$,'
 
 vim.o.exrc = true
+
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('nightly_ui', { clear = true }),
+  callback = function()
+    local has_nightly_ui, nightly_ui = pcall(require, 'vim._extui')
+    if has_nightly_ui then
+      nightly_ui.enable({})
+      vim.o.cmdheight = 0
+    end
+  end,
+})

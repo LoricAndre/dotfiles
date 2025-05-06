@@ -9,9 +9,9 @@ return {
     indent = { enabled = true },
     input = { enabled = true },
     lazygit = { enabled = true },
-    notifier = {
-      style = 'minimal',
-    },
+    -- notifier = {
+    --   style = 'minimal',
+    -- },
     quickfile = { enabled = true },
     scope = { enabled = true },
     statuscolumn = { enabled = true },

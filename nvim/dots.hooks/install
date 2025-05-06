@@ -1,10 +1,10 @@
 pkgs=""
 
 if ! command -v nvim >/dev/null 2>&1; then
-	pkgs="$pkgs neovim-nightly-bin"
+	pkgs="$pkgs neovim-git"
 fi
 if ! command -v nvr >/dev/null 2>&1; then
 	pkgs="$pkgs neovim-remote"
 fi
 
-paru -S --needed --noconfirm neovim-nightly-bin
+paru -S --needed --noconfirm $pkgs

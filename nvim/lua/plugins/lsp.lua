@@ -73,7 +73,10 @@ return {
           vim.lsp.buf.rename()
         end, { desc = '[lsp] rename' })
         -- vim.keymap.set({ 'n', 'v' }, '<leader>cf', function() vim.lsp.buf.format({async = true, id = client, bufnr = bufnr}) end)
-        if client:supports_method('textDocument/documentColor') then
+        if
+          client:supports_method('textDocument/documentColor')
+          and vim.lsp.document_color ~= nil
+        then
           vim.lsp.document_color.enable(true, bufnr, {
             style = 'virtual',
           })
