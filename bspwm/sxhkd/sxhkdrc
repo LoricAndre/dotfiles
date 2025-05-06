@@ -33,13 +33,15 @@ super + w
   rofi -show window
 
 super + space
-  $HOME/bin/bspc-scratch scratchpad
+  $HOME/.local/bin/bspc-scratch scratchpad
 
+#super + n
+#  $HOME/bin/bspc-scratch obsidian
 super + n
-  $HOME/bin/bspc-scratch obsidian
+  $HOME/.local/bin/bspc-scratch Capacities
 
 super + c
-  $HOME/bin/bspc-scratch teams-for-linux
+  $HOME/.local/bin/bspc-scratch "Microsoft Teams"
 
 # make sxhkd reload its configuration files:
 super + Escape

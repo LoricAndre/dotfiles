@@ -1,0 +1,6 @@
+$DOTS_DIR/bin/dots _install nushell
+
+if ! command -v nu_plugin_skim >/dev/null 2>&1; then
+	cargo install nu_plugin_skim
+fi
+

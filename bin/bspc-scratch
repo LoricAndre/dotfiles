@@ -2,7 +2,8 @@
 
 set -euo pipefail
 
-node_id=$(xdo id -N "$1")
+node_id=$(xdo id -N "$1" | sort | head -n1)
+echo "$node_id"
 if [ -n "$node_id" ]; then
   bspc node $node_id -g hidden
   if command -v picom-trans >/dev/null; then

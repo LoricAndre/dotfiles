@@ -1,8 +1,10 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/jesseduffield/lazygit/master/schema/config.json
 git:
   log:
     showGraph: always
 os:
   editPreset: 'nvim-remote'
+  openLink: "xdg-open {{link}}"
 keybinding:
   universal:
     prevItem-alt: l
@@ -31,3 +33,21 @@ customCommands:
     description: 'push tags'
     command: 'git push --tags'
     context: 'commits'
+gui:
+  spinner:
+    frames:
+      - "⠈⠁"
+      - "⠈⠑"
+      - "⠈⠱"
+      - "⠈⡱"
+      - "⢀⡱"
+      - "⢄⡱"
+      - "⢄⡱"
+      - "⢆⡱"
+      - "⢎⡱"
+      - "⢎⡰"
+      - "⢎⡠"
+      - "⢎⡀"
+      - "⢎⠁"
+      - "⠎⠁"
+      - "⠊⠁"

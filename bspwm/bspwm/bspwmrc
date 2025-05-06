@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+export SXHKD_SHELL="/bin/sh"
+
 run_once() {
   for p in "$@"; do
     pgrep -x -f "$p" >/dev/null || eval $p &
@@ -28,20 +30,6 @@ xinput set-prop "$(xinput list --name-only | grep Touchpad)" "libinput Tapping E
 xsetroot -cursor_name left_ptr
 
 source "${XDG_CONFIG_HOME:-${HOME}/.config}/bspwm/variables.sh"
-
-run_once sxhkd pacwall dunst
-ps aux | grep obsidian | grep '/usr/lib/electron' || obsidian
-run_once "nm-applet --indicator"
-# run_once "kitty --class scratchpad"
-run "eww -c $HOME/.config/eww/bar open bar"
-run "caffeine-indicator"
-run_once "blueman-applet"
-run picom
-
-xset s 900 3600
-xss-lock -- $HOME/bin/lock
-
-pkill -USR1 -x sxhkd
 
 dims=$(xrandr | sed -n 's/^.*current \([0-9]\+\) x \([0-9]\+\).*$/\1x\2/p')
 screen_w=$(echo $dims | cut -d'x' -f1)
@@ -79,8 +67,25 @@ bspc rule -a Blueman-manager state=floating
 bspc rule -a 'popup_term' state=floating "rectangle=${float_w}x${float_h}+${float_x}+${float_y}"
 bspc rule -a 'scratchpad' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
 bspc rule -a 'obsidian' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
-bspc rule -a 'teams-for-linux' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
+bspc rule -a 'Capacities' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
+bspc rule -a 'Microsoft Teams' hidden=true state=floating sticky=true "rectangle=${scratchpad_w}x${scratchpad_h}+${scratchpad_x}+${scratchpad_y}"
 
 xdo lower -N Eww
+
+run_once sxhkd pacwall dunst
+# ps aux | grep obsidian | grep '/usr/lib/electron' || obsidian
+run_once capacities
+run_once "nm-applet --indicator"
+# run_once "kitty --class scratchpad"
+run "eww -c $HOME/.config/eww/bar open bar"
+run "caffeine-indicator"
+run_once "blueman-applet"
+run picom
+
+xset s 900 3600
+xss-lock -- $HOME/bin/lock
+
+pkill -USR1 -x sxhkd
+
 
 notify-send 'BSPWM' 'Config loaded'
