@@ -69,9 +69,9 @@
         { "task_name": "git: lazygit" }
       ],
       "space g g": "git_panel::ToggleFocus",
-      "space g s": ["task::Spawn", { "task_name": "git: stage current file" }],
-      "space g shift-s": ["task::Spawn", { "task_name": "git: stage all" }],
       "space g c": "git::Commit",
+      "space g shift-p": "git::Push",
+      "space g p": "git::Pull",
       "g d": "editor::GoToDefinition",
       "g shift-d": "editor::GoToDefinitionSplit",
       "g r": "editor::FindAllReferences",
