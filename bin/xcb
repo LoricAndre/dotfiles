@@ -1,7 +1,17 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-if [ -t 0 ]; then
-  xclip -out -selection clipboard
+set -euo pipefail
+
+if [ -v WAYLAND_DISPLAY ]; then
+  if [ -t 0 ]; then
+    wl-paste
+  else
+    wl-copy
+  fi
 else
-  xclip -in -selection clipboard
+  if [ -t 0 ]; then
+    xclip -out -selection clipboard
+  else
+    xclip -in -selection clipboard
+  fi
 fi
