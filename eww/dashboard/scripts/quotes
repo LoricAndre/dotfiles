@@ -7,10 +7,10 @@ echo $uri | jq '.quote.content' |  cut -d "\"" -f 2 > "$HOME/.cache/eww.quote"
 echo $uri | jq '.quote.author.name' |  cut -d "\"" -f 2 > "$HOME/.cache/eww.author"
 }
 
-quote=$(cat $HOME/.cache/eww.quote)
-author=$(cat $HOME/.cache/eww.author)
+[ -f "$HOME/.cache/eww.quote" ] && quote=$(cat $HOME/.cache/eww.quote)
+[ -f "$HOME/.cache/eww.author" ] && author=$(cat $HOME/.cache/eww.author)
 
-if [ "$quote" = "" ] ; then
+if [[ ! -v quote ]] ; then
 	  quote="Bad programmers worry about the code. Good programmers worry about data structures and their relationships."
     author="Linus Torvalds"
 fi
