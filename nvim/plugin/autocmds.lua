@@ -16,6 +16,9 @@ local autocmds = {
   { 'BufWinEnter', '?*', 'silent! loadview 1' },
   { 'BufWinLeave', '?*', 'silent! mkview 1' },
   { 'BufEnter', 'term://*', 'startinsert' },
+  { 'BufNew', 'term://*', 'startinsert' },
+  { 'TermOpen', '*', 'startinsert' },
+  { 'BufWinEnter', 'term://*', 'startinsert' },
   { 'BufLeave', 'term://*', 'stopinsert' },
   -- {
   -- 	"BufWritePost",

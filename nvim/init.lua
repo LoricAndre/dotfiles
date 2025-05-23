@@ -38,7 +38,6 @@ require('lazy').setup({
     { import = 'plugins' },
     { import = 'plugins.colorschemes' },
     { import = 'plugins.langs' },
-    { import = 'plugins.snacks' },
   },
   checker = { enabled = true },
 })
