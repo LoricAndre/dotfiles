@@ -65,15 +65,19 @@ local autocmds = {
         nil,
         function(out)
           if out.code == 0 then
-            vim.notify('[dots/' .. module .. '] Applied dotfiles changes')
+            vim.schedule(function()
+              vim.notify('[dots/' .. module .. '] Applied dotfiles changes')
+            end)
           else
-            vim.notify(
-              '[dots/'
-                .. module
-                .. '] Failed to apply dotfiles changes: '
-                .. out.stderr,
-              vim.log.levels.WARN
-            )
+            vim.schedule(function()
+              vim.notify(
+                '[dots/'
+                  .. module
+                  .. '] Failed to apply dotfiles changes: '
+                  .. out.stderr,
+                vim.log.levels.WARN
+              )
+            end)
           end
         end
       )
