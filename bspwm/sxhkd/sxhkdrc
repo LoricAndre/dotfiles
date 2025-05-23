@@ -41,7 +41,7 @@ super + n
   $HOME/.local/bin/bspc-scratch Capacities
 
 super + c
-  $HOME/.local/bin/bspc-scratch "Microsoft Teams"
+  $HOME/.local/bin/bspc-scratch "teams-for-linux"
 
 # make sxhkd reload its configuration files:
 super + Escape
