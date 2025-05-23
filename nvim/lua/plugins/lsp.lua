@@ -44,15 +44,16 @@ return {
     if has_blink then
       capabilities = blink.get_lsp_capabilities(capabilities)
     end
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+    })
+
     require('mason').setup()
     ---@diagnostic disable-next-line: missing-fields
     require('mason-lspconfig').setup({
       ensure_installed = build_servers_to_install(),
     })
-    vim.lsp.config('*', {
-      capabilities = capabilities,
-    })
-    vim.lsp.enable(build_servers_to_install())
+
     local aug = vim.api.nvim_create_augroup('custom_lsp', { clear = true })
     vim.api.nvim_create_autocmd('LspAttach', {
       group = aug,
