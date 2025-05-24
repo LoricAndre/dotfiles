@@ -1,1 +1,5 @@
 $DOTS_DIR/bin/dots _install hyprland hypridle hyprpaper hyprlock
+
+hyprpm update
+hyprpm add https://github.com/shezdy/hyprsplit
+hyprpm enable hyprsplit
