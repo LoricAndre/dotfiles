@@ -1,38 +1,71 @@
 return {
-  'nvim-treesitter/nvim-treesitter',
-  dependencies = {
-    {
-      'RRethy/nvim-treesitter-textsubjects',
-      lazy = true,
-      after = 'nvim-treesitter',
-    },
+  {
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
+    lazy = false,
+    build = ':TSUpdate',
+    opts = {},
+    config = function(_, opts)
+      vim.o.foldmethod = 'expr'
+      vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+
+      local ts = require('nvim-treesitter')
+
+      local langs = { 'yaml', 'markdown', 'qf' }
+      ts.install(langs)
+      return ts.setup(opts)
+    end,
   },
-  build = ':TSUpdate',
-  event = 'FileType',
-  opts = {
-    ensure_installed = { 'yaml', 'markdown' },
-    auto_install = true,
-    highlight = { enable = true },
-    incremental_selection = {
-      enable = false,
+  {
+    'aaronik/treewalker.nvim',
+    opts = {
+      highlight = true,
+      highlight_duration = 250,
+      highlight_group = 'CursorLine',
+      jumplist = true,
     },
-    indent = { enable = true },
-    textsubjects = {
-      enable = true,
-      prev_selection = ',', -- (Optional) keymap to select the previous selection
-      keymaps = {
-        ['.'] = 'textsubjects-smart',
-        [';'] = 'textsubjects-container-outer',
-        ['i;'] = {
-          'textsubjects-container-inner',
-          desc = 'Select inside containers (classes, functions, etc.)',
-        },
+    keys = {
+      {
+        '<C-k>',
+        '<CMD>Treewalker Down<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] walk down' },
+      },
+      {
+        '<C-l>',
+        '<CMD>Treewalker Up<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] walk up' },
+      },
+      {
+        '<C-j>',
+        '<CMD>Treewalker Left<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] walk left' },
+      },
+      {
+        '<C-m>',
+        '<CMD>Treewalker Right<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] walk right' },
+      },
+      -- Mappings below are allowed by remapping the corresponding keys in kitty.conf
+      {
+        'ȡ', -- <C-S-k> = \u0221
+        '<CMD>Treewalker SwapDown<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] swap down' },
+      },
+      {
+        'Ȣ', -- <C-S-l> = \u0222
+        '<CMD>Treewalker SwapUp<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] swap up' },
+      },
+      {
+        'Ƞ', -- <C-S-j> = \u0220
+        '<CMD>Treewalker SwapLeft<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] swap left' },
+      },
+      {
+        'ȣ', -- <C-S-m> = \u0223
+        '<CMD>Treewalker SwapRight<CR>',
+        { mode = { 'n', 'v' }, desc = '[tw] swap right' },
       },
     },
   },
-  config = function(_, opts)
-    vim.o.foldmethod = 'expr'
-    vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-    return require('nvim-treesitter.configs').setup(opts)
-  end,
 }

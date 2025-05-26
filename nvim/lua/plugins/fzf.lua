@@ -110,34 +110,34 @@ return {
       end,
       desc = '[lsp] references',
     },
-    {
-      '<leader>cd',
-      function()
-        require('fzf-lua').lsp_definitions()
-      end,
-      desc = '[lsp] definitions',
-    },
-    {
-      '<leader>cD',
-      function()
-        require('fzf-lua').lsp_declarations()
-      end,
-      desc = '[lsp] declarations',
-    },
-    {
-      '<leader>ct',
-      function()
-        require('fzf-lua').lsp_typedefs()
-      end,
-      desc = '[lsp] type definition',
-    },
-    {
-      '<leader>ci',
-      function()
-        require('fzf-lua').lsp_implementations()
-      end,
-      desc = '[lsp] implementations',
-    },
+    -- {
+    --   '<leader>cd',
+    --   function()
+    --     require('fzf-lua').lsp_definitions()
+    --   end,
+    --   desc = '[lsp] definitions',
+    -- },
+    -- {
+    --   '<leader>cD',
+    --   function()
+    --     require('fzf-lua').lsp_declarations()
+    --   end,
+    --   desc = '[lsp] declarations',
+    -- },
+    -- {
+    --   '<leader>ct',
+    --   function()
+    --     require('fzf-lua').lsp_typedefs()
+    --   end,
+    --   desc = '[lsp] type definition',
+    -- },
+    -- {
+    --   '<leader>ci',
+    --   function()
+    --     require('fzf-lua').lsp_implementations()
+    --   end,
+    --   desc = '[lsp] implementations',
+    -- },
     {
       '<leader>cs',
       function()
@@ -159,19 +159,19 @@ return {
       end,
       desc = '[lsp] code actions',
     },
-    {
-      '<leader>ce',
-      function()
-        require('fzf-lua').diagnostics_document()
-      end,
-      desc = '[lsp] file diagnostics',
-    },
-    {
-      '<leader>cE',
-      function()
-        require('fzf-lua').diagnostics_workspace()
-      end,
-      desc = '[lsp] workspace diagnostics',
-    },
+    -- {
+    --   '<leader>ce',
+    --   function()
+    --     require('fzf-lua').diagnostics_document()
+    --   end,
+    --   desc = '[lsp] file diagnostics',
+    -- },
+    -- {
+    --   '<leader>cE',
+    --   function()
+    --     require('fzf-lua').diagnostics_workspace()
+    --   end,
+    --   desc = '[lsp] workspace diagnostics',
+    -- },
   },
 }

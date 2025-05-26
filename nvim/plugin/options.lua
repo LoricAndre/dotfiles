@@ -11,6 +11,7 @@ vim.opt.shortmess = 'atToOCFc'
 vim.opt.undofile = true
 vim.o.wildoptions = 'pum,fuzzy'
 vim.o.clipboard = 'unnamedplus'
+vim.o.scrolloff = 3
 vim.opt.diffopt = {
   'algorithm:minimal',
   'closeoff',
