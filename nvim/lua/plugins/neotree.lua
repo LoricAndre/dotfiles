@@ -33,6 +33,40 @@ return {
         },
       },
     },
+    git_status = {
+      window = {
+        mappings = {
+          ['A'] = 'git_add_all',
+          ['u'] = 'git_unstage_file',
+          ['a'] = 'git_add_file',
+          ['r'] = 'git_revert_file',
+          ['c'] = 'git_commit',
+          ['P'] = 'git_push',
+          ['p'] = function(state)
+            vim.system(
+              { 'git', 'pull', '--autostash' },
+              { text = true },
+              function(o)
+                vim.schedule(function()
+                  if o.code == 0 then
+                    vim.notify('Git: pulled ')
+                  else
+                    vim.notify('Git: failed to pull: ' .. o.stderr)
+                  end
+                end)
+              end
+            )
+          end,
+          ['d'] = function(state)
+            local path = state.tree:get_node().path
+            vim.cmd('DiffviewOpen -- ' .. path)
+          end,
+          ['gg'] = 'git_commit_and_push',
+          ['i'] = 'show_file_details', -- see `:h neo-tree-file-actions` for options to customize the window.
+          ['b'] = 'rename_basename',
+        },
+      },
+    },
     filesystem = {
       components = {
         icon = function(config, node, state)
@@ -77,6 +111,11 @@ return {
       '<leader>e',
       '<CMD>Neotree reveal toggle<CR>',
       desc = '[ntr] toggle neotree',
+    },
+    {
+      '<leader>gt',
+      '<CMD>Neotree git_status right toggle<CR>',
+      desc = '[ntr] toggle git panel',
     },
   },
 }
