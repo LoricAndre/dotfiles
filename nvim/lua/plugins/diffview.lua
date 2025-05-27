@@ -10,7 +10,7 @@ return {
   },
   keys = {
     {
-      '<leader>gd',
+      '<leader>go',
       '<CMD>DiffviewOpen<CR>',
       mode = { 'n', 'v' },
       desc = '[git] open diff view',

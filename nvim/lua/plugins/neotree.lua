@@ -57,9 +57,8 @@ return {
               end
             )
           end,
-          ['d'] = function(state)
-            local path = state.tree:get_node().path
-            vim.cmd('DiffviewOpen -- ' .. path)
+          ['d'] = function()
+            vim.cmd('DiffviewOpen')
           end,
           ['gg'] = 'git_commit_and_push',
           ['i'] = 'show_file_details', -- see `:h neo-tree-file-actions` for options to customize the window.
@@ -69,7 +68,7 @@ return {
     },
     filesystem = {
       components = {
-        icon = function(config, node, state)
+        icon = function(config, node)
           local icon = config.default or ' '
           local padding = config.padding or ' '
           local highlights = require('neo-tree.ui.highlights')

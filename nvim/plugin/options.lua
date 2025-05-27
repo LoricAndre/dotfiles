@@ -1,11 +1,11 @@
 vim.opt.termguicolors = true
-vim.opt.langmap = 'hjklm;mhjkl'
+vim.opt.langmap = 'hjklm;mhjkl,();[]'
 vim.opt.laststatus = 3
 vim.opt.completeopt = 'menu,menuone,popup,noselect,fuzzy'
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.splitkeep = 'screen'
-vim.opt.signcolumn = 'number'
+vim.opt.signcolumn = 'yes'
 vim.opt.number = true
 vim.opt.shortmess = 'atToOCFc'
 vim.opt.undofile = true

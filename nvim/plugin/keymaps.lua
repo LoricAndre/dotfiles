@@ -12,8 +12,8 @@ vim.keymap.set('n', '<Esc>', '<CMD>noh<CR><Esc>')
 vim.keymap.set('v', '>', '>gv')
 vim.keymap.set('v', '<', '<gv')
 
-vim.keymap.set('n', '(', '[')
-vim.keymap.set('n', ')', ']')
+-- vim.keymap.set('n', '(', '[', { noremap = false })
+-- vim.keymap.set('n', ')', ']', { noremap = false })
 
 vim.keymap.set('n', '<leader>q', function()
   local win = vim.api.nvim_get_current_win()
