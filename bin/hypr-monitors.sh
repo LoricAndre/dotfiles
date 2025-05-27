@@ -15,7 +15,7 @@ handle_title_change() {
   title="$(echo $args | cut -d',' -f2-)"
   echo "Window $addr title changed to $title ($args)"
   case $title in
-    "Extension: "*) 
+    "Extension: "*)
       hyprctl --batch "\
             dispatch setfloating address:0x$addr; \
             dispatch resizewindowpixel exact 20% 50%, address:0x$addr; \
@@ -28,8 +28,8 @@ handle() {
   case $1 in
     # monitoradded*) handle_mon $1;;
     "monitorremoved>>eDP-1") echo 'kanshi removed the internal monitor, nothing to do' ;;
-    monitorremoved*) handle_mon "$1";;
-    windowtitlev2*) handle_title_change "$1" ;;
+    "monitorremoved>>"*) handle_mon "$1";;
+    "windowtitlev2>>"*) handle_title_change "$1" ;;
     # focusedmon*) do_something_else ;;
   esac
 }

@@ -11,7 +11,12 @@ profile uw-1 {
     mode 3440x1440@60
     position 0,0
   }
-  output eDP-1 disable
+  output eDP-1 {
+    enable
+    mode 2880x1800@90.00
+    position 760,1440
+    scale 1.5
+  }
 }
 profile uw-2 {
   output "Samsung Electric Company S34C65xU HNTX403859" {
