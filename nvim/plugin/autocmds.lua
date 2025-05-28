@@ -20,6 +20,15 @@ local autocmds = {
   { 'TermOpen', '*', 'startinsert' },
   { 'BufWinEnter', 'term://*', 'startinsert' },
   { 'BufLeave', 'term://*', 'stopinsert' },
+  {
+    'FileType',
+    {
+      pattern = { 'sql', 'mysql', 'psql' },
+      callback = function()
+        vim.bo.commentstring('-- %s')
+      end,
+    },
+  },
   -- {
   -- 	"BufWritePost",
   -- 	chezmoi_dir .. "/*",

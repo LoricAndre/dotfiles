@@ -18,6 +18,8 @@ return {
         sources = {
           per_filetype = {
             sql = { 'dadbod' },
+            mysql = { 'dadbod' },
+            plsql = { 'dadbod' },
           },
         },
       },
@@ -37,7 +39,7 @@ return {
   config = function(_, opts)
     local has_blink, blink = pcall(require, 'blink.cmp')
     if has_blink then
-      blink.add_provider(
+      blink.add_source_provider(
         'dadbod',
         { name = 'Dadbod', module = 'vim_dadbod_completion.blink' }
       )
