@@ -38,6 +38,30 @@ tplFile() {
 	chmod --reference="$2" "$target_file"
 }
 
+diffDir() {
+	mkdir -p "$TEMPLATED_DIR/$1"
+	target_dir="${dots_target_dir:-$DEFAULT_TARGET_DIR}"
+	for f in `find "$TEMPLATED_DIR/$1" -type f`; do
+		p=`realpath --relative-to "$TEMPLATED_DIR/$1" "$f"`
+		if [ -f "$target_dir/$p" ]; then
+			d=`diff "$f" "$target_dir/$p" || true`
+			if [[ -n "$d" ]]; then
+				while true; do
+					read -p "`realpath $target_dir/$p` has been edited manually. Overwrite [(y)es/(N)o/(d)iff] ? " -n 1 -r
+					echo
+					if [[ $REPLY =~ ^[Yy]$ ]]; then
+						break
+					elif [[ $REPLY =~ ^[dD]$ ]]; then
+						echo "$d"
+					else
+						exit 2
+					fi
+				done
+			fi
+		fi
+	done
+}
+
 tplDir() {
 	find . -type f -not -name 'dots.env' -not -path '*/dots.hooks/*' | while read f; do
 		if [[ "$f" =~ ^.*/\+[^/]*$ ]]; then
@@ -67,6 +91,13 @@ applyDir() {
 	[ -f "dots.env" ] && . dots.env
 	set +a
 
+	if [ -f "dots.hooks/pre_apply" ] && [ ! -f ".disabled" ]; then
+		info "[$1] Running pre-apply hook"
+		cd "dots.hooks"
+		. pre_apply >/dev/null 2>&1
+	fi
+
+	diffDir "$1"
 	cleanTemplatedDir "$1"
 	info "[$1] Templating files"
 	tplDir "$1"

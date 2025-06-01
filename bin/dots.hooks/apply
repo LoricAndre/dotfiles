@@ -1,3 +1,3 @@
 echo $dots_target_dir
-chmod +x $dots_target_dir/*
-chmod +x $dots_target_dir/completions/*
+chmod +x $dots_target_dir/* || true
+chmod +x $dots_target_dir/completions/* || true
