@@ -50,17 +50,32 @@ return {
     return {
       strategies = {
         chat = {
-          adapter = 'mistral',
-          slash_commands = {
+          adapter = 'copilot',
+          model = 'claude-sonnet-4-20250514',
+          tools = {
+            editor = {
+              opts = {
+                require_approval = false,
+              },
+            },
             files = {
-              description = 'Add files to context',
-              callback = CodeCompanionAddFiles,
+              opts = {
+                require_approval = false,
+              },
             },
           },
         },
         inline = {
-          adapter = 'mistral',
+          adapter = 'copilot',
+          model = 'claude-sonnet-4-20250514',
         },
+        cmd = {
+          adapter = 'copilot',
+          model = 'claude-sonnet-4-20250514',
+        },
+      },
+      opts = {
+        log_level = 'DEBUG',
       },
       adapters = {
         mistral = function()
