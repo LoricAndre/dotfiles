@@ -8,8 +8,3 @@ if ! command -v nvr >/dev/null 2>&1; then
 fi
 
 paru -S --needed --noconfirm $pkgs
-
-qf_queries_dir="$dots_target_dir/queries/qf"
-[ -d "$qf_queries_dir" ] || mkdir -p "qf_queries_dir"
-wget https://github.com/OXY2DEV/tree-sitter-qf/raw/refs/heads/main/queries/highlights.scm -O "$qf_queries_dir/highlights.scm"
-wget https://github.com/OXY2DEV/tree-sitter-qf/raw/refs/heads/main/queries/injections.scm -O "$qf_queries_dir/injections.scm"
