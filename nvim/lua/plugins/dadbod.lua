@@ -14,12 +14,16 @@ return {
     },
     {
       'blink.cmp',
+      lazy = true,
       opts = {
         sources = {
           per_filetype = {
             sql = { 'dadbod' },
             mysql = { 'dadbod' },
             plsql = { 'dadbod' },
+          },
+          providers = {
+            dadbod = { module = 'vim_dadbod_completion.blink' },
           },
         },
       },
@@ -35,14 +39,5 @@ return {
   init = function()
     -- Your DBUI configuration
     vim.g.db_ui_use_nerd_fonts = 1
-  end,
-  config = function(_, opts)
-    local has_blink, blink = pcall(require, 'blink.cmp')
-    if has_blink then
-      blink.add_source_provider(
-        'dadbod',
-        { name = 'Dadbod', module = 'vim_dadbod_completion.blink' }
-      )
-    end
   end,
 }

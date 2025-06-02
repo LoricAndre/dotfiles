@@ -3,6 +3,7 @@ return {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
+    enabled = false,
     keys = {
       {
         -- Customize or remove this keymap to your liking

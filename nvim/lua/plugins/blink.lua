@@ -12,6 +12,9 @@ return {
       enabled = true,
     },
     completion = {
+      keyword = {
+        range = 'full',
+      },
       list = {
         selection = { preselect = false, auto_insert = true },
       },
@@ -27,13 +30,7 @@ return {
       },
     },
     sources = {
-      default = function()
-        local res = { 'lsp', 'path', 'snippets', 'buffer' }
-        if pcall(require, 'codecompanion') then
-          res[#res + 1] = 'codecompanion'
-        end
-        return res
-      end,
+      default = { 'lsp', 'path', 'snippets', 'buffer' },
     },
   },
 }

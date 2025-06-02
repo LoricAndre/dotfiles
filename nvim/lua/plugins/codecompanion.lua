@@ -120,7 +120,20 @@ return {
     'CodeCompanionCmd',
   },
   dependencies = {
-    'nvim-lua/plenary.nvim',
-    'nvim-treesitter/nvim-treesitter',
+    { 'nvim-lua/plenary.nvim', lazy = true },
+    { 'nvim-treesitter/nvim-treesitter', lazy = true },
+    {
+      'blink.cmp',
+      lazy = true,
+      opts = {
+        sources = {
+          per_filetype = {
+            codecompanion = {
+              'codecompanion',
+            },
+          },
+        },
+      },
+    },
   },
 }
