@@ -42,10 +42,10 @@ vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     local has_nightly_ui, nightly_ui = pcall(require, 'vim._extui')
     if has_nightly_ui then
-      nightly_ui.enable({
+      pcall(nightly_ui.enable, {
         enable = true,
         msg = {
-          pos = 'cmd',
+          pos = 'box',
           box = {
             timeout = 3000,
           },

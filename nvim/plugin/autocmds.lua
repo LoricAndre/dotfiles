@@ -22,12 +22,10 @@ local autocmds = {
   { 'BufLeave', 'term://*', 'stopinsert' },
   {
     'FileType',
-    {
-      pattern = { 'sql', 'mysql', 'psql' },
-      callback = function()
-        vim.bo.commentstring('-- %s')
-      end,
-    },
+    { 'sql', 'mysql', 'psql' },
+    function()
+      vim.bo.commentstring('-- %s')
+    end,
   },
   -- {
   -- 	"BufWritePost",
@@ -99,7 +97,7 @@ local autocmds = {
     'BufWritePre',
     '*',
     function(e)
-      vim.system({ 'mkdir', '-p', vim.fs.dirname(e.match) })
+      vim.system({ 'mkdir', '-p', vim.fs.dirname(e.match) }):wait()
     end,
   },
 }
