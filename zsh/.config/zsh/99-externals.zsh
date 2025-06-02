@@ -28,15 +28,16 @@ PULUMI_HOME="$HOME/.pulumi"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH" && eval "$(pyenv init -)"
 
-if [ -z "$TMUX" ] && (
-  [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "xterm-ghostty" ]
-)
-; then
-  tmux attach || exec tmux new-session && exit;
+if [ -z "$TMUX" ]; then
+  if [ "$TERM" = "xterm-kitty" ] || [ "$TERM" = "xterm-ghostty" ]; then
+    tmux attach || exec tmux new-session && exit;
+  fi
 fi
 
 export GPG_TTY="$(tty)"
 
 export SKIM_CTRL_R_OPTS='--preview="echo {4..} | bat --plain --language zsh --color=always" --bind tab:accept --tiebreak=index,begin'
 
-[ -f /usr/share/skim/key-bindings.zsh ] && source /usr/share/skim/key-bindings.zsh || true
+if [ -f /usr/share/skim/key-bindings.zsh ]; then
+  source /usr/share/skim/key-bindings.zsh
+fi
