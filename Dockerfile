@@ -9,6 +9,8 @@ WORKDIR /home/loric/dots
 
 COPY --chown=loric dots.hooks/ dots.hooks/
 COPY --chown=loric dots.env .
+COPY --chown=loric .env .
+COPY --chown=loric .data/ .data/
 COPY --chown=loric ./bin/dots ./bin/dots
 COPY --chown=loric .packages/shell .packages/shell
 COPY --chown=loric .packages/tools .packages/tools
