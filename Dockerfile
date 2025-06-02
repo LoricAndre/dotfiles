@@ -15,13 +15,21 @@ COPY --chown=loric ./bin/dots ./bin/dots
 COPY --chown=loric .packages/shell .packages/shell
 COPY --chown=loric .packages/tools .packages/tools
 
+COPY --chown=loric direnv/dots.env direnv/dots.env
 COPY --chown=loric direnv/dots.hooks/install direnv/dots.hooks/install
+COPY --chown=loric jj/dots.env jj/dots.env
 COPY --chown=loric jj/dots.hooks/install jj/dots.hooks/install
+COPY --chown=loric just/dots.env just/dots.env
 COPY --chown=loric just/dots.hooks/install just/dots.hooks/install
+COPY --chown=loric lazygit/dots.env lazygit/dots.env
 COPY --chown=loric lazygit/dots.hooks/install lazygit/dots.hooks/install
+COPY --chown=loric nvim/dots.env nvim/dots.env
 COPY --chown=loric nvim/dots.hooks/install nvim/dots.hooks/install
+COPY --chown=loric starship/dots.env starship/dots.env
 COPY --chown=loric starship/dots.hooks/install starship/dots.hooks/install
+COPY --chown=loric tmux/dots.env tmux/dots.env
 COPY --chown=loric tmux/dots.hooks/install tmux/dots.hooks/install
+COPY --chown=loric zsh/dots.env zsh/dots.env
 COPY --chown=loric zsh/dots.hooks/install zsh/dots.hooks/install
 
 ENV PACMAN_NONINTERACTIVE=1
