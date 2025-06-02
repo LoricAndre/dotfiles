@@ -29,7 +29,6 @@ COPY --chown=loric starship/dots.env starship/dots.env
 COPY --chown=loric starship/dots.hooks/install starship/dots.hooks/install
 COPY --chown=loric tmux/dots.env tmux/dots.env
 COPY --chown=loric tmux/dots.hooks/install tmux/dots.hooks/install
-COPY --chown=loric zsh/dots.env zsh/dots.env
 COPY --chown=loric zsh/dots.hooks/install zsh/dots.hooks/install
 
 ENV PACMAN_NONINTERACTIVE=1
