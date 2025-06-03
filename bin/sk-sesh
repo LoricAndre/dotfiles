@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 
-CMD="sesh list -tziH | grep -vF ' ___'"
-
-$CMD | sk --tmux 55%,60% \
+sesh list -tziH \
+	| grep -vF ' ___' \
+	| grep -vF ' _popup_' \
+	| sk --tmux 55%,60% \
 		--no-sort --ansi --prompt="󰣇 " \
     --preview-window=up:80% \
     --preview="tmux capture-pane -ep -t {2..} 2>/dev/null || eval eza --tree -L 2 {2..} --color=always" \
