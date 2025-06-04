@@ -1,1 +1,2 @@
-pacwall -u -g
+pacwall -u -g &
+sleep 1

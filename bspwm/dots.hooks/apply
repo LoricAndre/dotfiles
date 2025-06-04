@@ -1,4 +1,4 @@
 # vi: ft=bash
 
-bspc wm -r
-pkill -USR1 -x sxhkd
+bspc wm -r || true
+pkill -USR1 -x sxhkd || true
