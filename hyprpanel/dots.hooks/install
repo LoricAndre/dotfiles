@@ -1,0 +1,5 @@
+if ! command -v hyprpanel >/dev/null 2>&1; then
+	paru -S --needed --noconfirm ags-hyprpanel-git
+fi
+
+$DOTS_DIR/bin/dots _install swww
