@@ -127,6 +127,7 @@
   "theme.bar.floating": true,
   "theme.bar.layer": "overlay",
   "theme.bar.location": "top",
+  "theme.bar.margin_sides": "0px",
   "theme.bar.menus.background": "#${color0}",
   "theme.bar.menus.buttons.active": "#${color11}",
   "theme.bar.menus.buttons.default": "#${color5}",
