@@ -44,6 +44,13 @@ local autocmds = {
   -- 		vim.notify("[chezmoi] Applied dotfiles changes")
   -- 	end,
   -- },
+  { 'User',
+    'RocksInstallPost',
+    function(ev)
+      vim.system({'cp', "~/.config/nvim/rocks.toml", dots_dir .. '/nvim/rocks.toml' }):wait()
+      vim.system({'cp', "~/.config/nvim/rocks.toml", dots_dir .. '.templated/nvim/rocks.toml' }):wait()
+    end
+  },
   {
     'BufWritePost',
     dots_dir .. '/*',

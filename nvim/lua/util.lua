@@ -23,4 +23,22 @@ function M.lsp_clients_str(bufnr, sep, prefix)
   return res
 end
 
+function M.map(a)
+  local lhs = a[1]
+  local rhs = a[2]
+  local mode = a.mode or 'n'
+  local desc = a.desc or tostring(rhs)
+  return vim.keymap.set(mode, lhs, rhs, { desc = desc })
+end
+
+function M.lazy_cmds(plugin, cmds)
+  for _, cmd in pairs(cmds) do
+    vim.api.nvim_create_user_command(cmd, function(args) 
+      vim.cmd.packadd(plugin)
+      args.cmd = cmd
+      vim.cmd(args)
+    end, {})
+  end
+end
+
 return M

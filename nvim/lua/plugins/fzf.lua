@@ -41,7 +41,7 @@ function FzfLuaSmart(opts)
     make_entry.preprocess(opts)
     for _, buf_id in ipairs(vim.api.nvim_list_bufs()) do
       if
-        vim.api.nvim_buf_is_loaded(buf_id) and vim.fn.buflisted(buf_id) == 1
+          vim.api.nvim_buf_is_loaded(buf_id) and vim.fn.buflisted(buf_id) == 1
       then
         local p = vim.api.nvim_buf_get_name(buf_id)
         local exists, stats = pcall(vim.uv.fs_stat, p)
@@ -59,6 +59,7 @@ end
 
 return {
   'ibhagwan/fzf-lua',
+  enabled = false,
   opts = {
     'skim',
     -- fzf_bin = '/home/loric/src/skim/target/debug/sk',
