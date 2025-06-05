@@ -47,8 +47,7 @@ local autocmds = {
   { 'User',
     'RocksInstallPost',
     function(ev)
-      vim.system({'cp', "~/.config/nvim/rocks.toml", dots_dir .. '/nvim/rocks.toml' }):wait()
-      vim.system({'cp', "~/.config/nvim/rocks.toml", dots_dir .. '.templated/nvim/rocks.toml' }):wait()
+      vim.notify('[rocks] copied rocks.toml')
     end
   },
   {
@@ -71,6 +70,15 @@ local autocmds = {
           :wait()
         if ret.code ~= 0 then
           vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
+        end
+
+        local ret = vim.system({'cp', vim.fn.expand("~/.config/nvim/rocks.toml"), dots_dir .. '/nvim/rocks.toml' }):wait()
+        if ret.code ~= 0 then
+          vim.notify('[ERR] failed to copy rocks.toml: ' .. ret.stderr)
+        end
+        local ret = vim.system({'cp', vim.fn.expand("~/.config/nvim/rocks.toml"), dots_dir .. '/.templated/nvim/rocks.toml' }):wait()
+        if ret.code ~= 0 then
+          vim.notify('[ERR] failed to copy rocks.toml to templated: ' .. ret.stderr)
         end
       end
       vim.system(

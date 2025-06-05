@@ -15,8 +15,28 @@
 fzf-lua = { version = "0.0.1927", opt = true }
 "oil.nvim" = "2.15.0"
 "rocks-git.nvim" = "2.5.3"
+"mason-lspconfig.nvim" = "2.0.0"
+"indent-blankline.nvim" = "3.9.0"
+"lualine.nvim" = "scm"
 
 [plugins.vim-tmux-navigator]
 git = "christoomey/vim-tmux-navigator"
 rev = "v1.0"
 opt = true
+
+[plugins.nvim]
+git = "catppuccin/nvim"
+rev = "v1.10.0"
+
+[plugins."tokyonight.nvim"]
+git = "folke/tokyonight.nvim"
+rev = "v4.11.0"
+
+[plugins.nvim-autopairs]
+git = "windwp/nvim-autopairs"
+rev = "4d74e75913832866aa7de35e4202463ddf6efd1b"
+opt = true
+
+[plugins."blink.cmp"]
+git = "saghen/blink.cmp"
+rev = "v1.3.1"
