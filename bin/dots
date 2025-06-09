@@ -47,12 +47,16 @@ diffDir() {
 			d=`diff "$f" "$target_dir/$p" || true`
 			if [[ -n "$d" ]]; then
 				while true; do
-					read -p "`realpath $target_dir/$p` has been edited manually. Overwrite [(y)es/(N)o/(d)iff] ? " -n 1 -r
+					read -p "`realpath $target_dir/$p` has been edited manually. Overwrite [(y)es/(N)o/(d)iff/(c)opy over] ? " -n 1 -r
 					echo
 					if [[ $REPLY =~ ^[Yy]$ ]]; then
 						break
 					elif [[ $REPLY =~ ^[dD]$ ]]; then
 						echo "$d"
+					elif [[ $REPLY =~ ^[cC]$ ]]; then
+					  cp "$target_dir/$p" "$TEMPLATED_DIR/$1/$p"
+						cp "$target_dir/$p" "$DOTS_DIR/$1/$p"
+						break
 					else
 						exit 2
 					fi
