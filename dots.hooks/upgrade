@@ -15,6 +15,7 @@ if command -v rustup >/dev/null 2>&1; then
 fi
 
 if command -v cargo >/dev/null 2>&1; then
+	export PROJECT_NAME_FOR_VERSION_STRING="uu-coreutils" # Fix for https://github.com/uutils/coreutils/issues/7992
 	cargo install $(cargo install --list | egrep '^[a-z0-9_-]+ v[0-9.]+:$' | cut -f1 -d' ')
 fi
 
