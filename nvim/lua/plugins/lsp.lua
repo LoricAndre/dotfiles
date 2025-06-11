@@ -34,8 +34,8 @@ return {
   'williamboman/mason-lspconfig.nvim',
   dependencies = {
     { 'williamboman/mason.nvim', lazy = true },
-    { 'neovim/nvim-lspconfig', lazy = true },
-    { 'neovim/nvim-lspconfig', lazy = true },
+    { 'neovim/nvim-lspconfig',   lazy = true },
+    { 'neovim/nvim-lspconfig',   lazy = true },
   },
   event = 'FileType',
   config = function()
@@ -78,6 +78,7 @@ return {
           end, { desc = '[lsp] rename' })
         end
         if client:supports_method('textDocument/formatting') then
+          vim.g.autoformat = true
           vim.keymap.set('n', '<leader>cf', function()
             vim.lsp.buf.format({ async = true, id = client.id, bufnr = bufnr })
           end, { desc = '[lsp] format' })
@@ -91,11 +92,13 @@ return {
               group = aug,
               buffer = bufnr,
               callback = function()
-                vim.lsp.buf.format({
-                  bufnr = bufnr,
-                  id = client.id,
-                  timeout_ms = 1000,
-                })
+                if vim.g.autoformat or false then
+                  vim.lsp.buf.format({
+                    bufnr = bufnr,
+                    id = client.id,
+                    timeout_ms = 1000,
+                  })
+                end
               end,
             })
           end
@@ -126,8 +129,8 @@ return {
           end, { desc = '[lsp] diagnostics' })
         end
         if
-          client:supports_method('textDocument/documentColor')
-          and vim.lsp.document_color ~= nil
+            client:supports_method('textDocument/documentColor')
+            and vim.lsp.document_color ~= nil
         then
           vim.lsp.document_color.enable(true, bufnr, {
             style = 'virtual',

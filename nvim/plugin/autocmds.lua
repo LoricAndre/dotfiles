@@ -13,13 +13,13 @@ local autocmds = {
   --     vim.keymap.set('n', 'j', 't', { noremap = false, buffer = true })
   --   end,
   -- },
-  { 'BufWinEnter', '?*', 'silent! loadview 1' },
-  { 'BufWinLeave', '?*', 'silent! mkview 1' },
-  { 'BufEnter', 'term://*', 'startinsert' },
-  { 'BufNew', 'term://*', 'startinsert' },
-  { 'TermOpen', '*', 'startinsert' },
+  { 'BufWinEnter', '?*',       'silent! loadview 1' },
+  { 'BufWinLeave', '?*',       'silent! mkview 1' },
+  { 'BufEnter',    'term://*', 'startinsert' },
+  { 'BufNew',      'term://*', 'startinsert' },
+  { 'TermOpen',    '*',        'startinsert' },
   { 'BufWinEnter', 'term://*', 'startinsert' },
-  { 'BufLeave', 'term://*', 'stopinsert' },
+  { 'BufLeave',    'term://*', 'stopinsert' },
   {
     'FileType',
     { 'sql', 'mysql', 'psql' },
@@ -49,20 +49,22 @@ local autocmds = {
     dots_dir .. '/*',
     function(ev)
       local module, found =
-        string.gsub(ev.match, '^' .. dots_dir .. '/(%w[^/]*)/.*$', '%1')
+          string.gsub(ev.match, '^' .. dots_dir .. '/(%w[^/]*)/.*$', '%1')
       if found ~= 1 then
         return
       end
       vim.notify('[dots/' .. module .. '] Applying dotfiles changes...')
       if module == 'nvim' then
         local ret = vim
-          .system({
-            'cp',
-            vim.fn.expand('~/.config/nvim/lazy-lock.json'),
-            dots_dir .. '/nvim',
-          })
-          :wait()
-        if ret.code ~= 0 then
+            .system({
+              'cp',
+              vim.fn.expand('~/.config/nvim/lazy-lock.json'),
+              dots_dir .. '/nvim',
+            })
+            :wait()
+        if ret.code == 0 then
+          vim.notify('[dots/' .. module .. '] Copied lazy lock')
+        else
           vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
         end
       end
@@ -82,9 +84,9 @@ local autocmds = {
             vim.schedule(function()
               vim.notify(
                 '[dots/'
-                  .. module
-                  .. '] Failed to apply dotfiles changes: '
-                  .. out.stderr,
+                .. module
+                .. '] Failed to apply dotfiles changes: '
+                .. out.stderr,
                 vim.log.levels.WARN
               )
             end)
