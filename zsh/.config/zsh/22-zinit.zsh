@@ -16,3 +16,8 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-history-substring-search
+
+zinit light Aloxaf/fzf-tab
+zstyle ':fzf-tab:*' use-fzf-default-opts yes
+zstyle ':fzf-tab:*' fzf-command sk
+zstyle ':fzf-tab:*' fzf-flags --bind=enter:'accept(enter)' --bind='/':'accept(/)' --bind='alt-enter':'accept(alt-enter)'
