@@ -93,7 +93,7 @@ return {
       end,
     })
     local jjui = Terminal:new({
-      cmd = 'jjui',
+      cmd = 'jjui -r "present(@) | ancestors(immutable_heads().., 100) | present(trunk())"',
       hidden = true,
       direction = 'float',
       float_opts = {
