@@ -92,9 +92,37 @@ return {
         vim.cmd('startinsert!')
       end,
     })
+    local jjui = Terminal:new({
+      cmd = 'jjui',
+      hidden = true,
+      direction = 'float',
+      float_opts = {
+        width = math.floor(vim.o.columns * 0.70),
+        height = math.floor(vim.o.lines * 0.70),
+      },
+      -- function to run on opening the terminal
+      on_open = function(term)
+        vim.cmd('startinsert!')
+        vim.api.nvim_buf_set_keymap(
+          term.bufnr,
+          'n',
+          'q',
+          '<cmd>close<CR>',
+          { noremap = true, silent = true }
+        )
+      end,
+      -- function to run on closing the terminal
+      on_close = function(term)
+        vim.cmd('startinsert!')
+      end,
+    })
 
     function _G.lazygit_toggle()
       lazygit:toggle()
+    end
+
+    function _G.jjui_toggle()
+      jjui:toggle()
     end
   end,
   keys = {
@@ -130,6 +158,14 @@ return {
       function()
         _G.lazygit_toggle()
       end,
+      desc = '[git] toggle lazygit'
+    },
+    {
+      '<leader>gh',
+      function()
+        _G.jjui_toggle()
+      end,
+      desc = '[jj] toggle jjui'
     },
   },
 }

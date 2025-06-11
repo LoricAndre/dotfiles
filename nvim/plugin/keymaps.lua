@@ -20,27 +20,17 @@ vim.keymap.set('n', '<leader>q', function()
   local buf = vim.api.nvim_win_get_buf(0)
 
   local function bdel(b)
-    vim.bo.buflisted = false
-    vim.api.nvim_buf_delete(b, { unload = true })
+    vim.api.nvim_buf_delete(b, {})
   end
 
   local alt = vim.fn.bufnr('#')
   if alt ~= buf and vim.fn.buflisted(alt) == 1 then
     vim.api.nvim_win_set_buf(win, alt)
-    bdel(buf)
-    return
+    -- this will enter if unable to use the previous buffer
+  elseif not pcall(vim.cmd, 'bprevious') and buf ~= vim.api.nvim_win_get_buf(win) then
+    local new_buf = vim.api.nvim_create_buf(true, false)
+    vim.api.nvim_win_set_buf(win, new_buf)
   end
 
-  -- Try using previous buffer
-  ---@diagnostic disable-next-line: param-type-mismatch
-  local has_previous = pcall(vim.cmd, 'bprevious')
-  if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
-    bdel(buf)
-    return
-  end
-
-  -- Create new listed buffer
-  local new_buf = vim.api.nvim_create_buf(true, false)
-  vim.api.nvim_win_set_buf(win, new_buf)
   bdel(buf)
 end, { desc = 'close buffer' })
