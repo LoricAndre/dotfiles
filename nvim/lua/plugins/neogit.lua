@@ -7,6 +7,6 @@ return {
   },
   cmd = 'Neogit',
   keys = {
-    { '<leader>gn', function() require('neogit').open({ kind = 'split' }) end, desc = '[git] open neogit' }
+    { '<leader>gn', function() require('neogit').open({ kind = 'floating' }) end, desc = '[git] open neogit' }
   }
 }

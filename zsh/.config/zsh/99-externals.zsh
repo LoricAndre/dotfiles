@@ -41,3 +41,7 @@ export SKIM_CTRL_R_OPTS='--preview="echo {4..} | bat --plain --language zsh --co
 if [ -f /usr/share/skim/key-bindings.zsh ]; then
   source /usr/share/skim/key-bindings.zsh
 fi
+
+if command -v jj >/dev/null 2>&1; then
+  source <(COMPLETE=zsh jj)
+fi
