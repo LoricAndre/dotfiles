@@ -99,6 +99,9 @@ local autocmds = {
     'BufWritePre',
     '*',
     function(e)
+      if vim.tbl_contains({ 'oil' }, vim.bo.ft) then
+        return
+      end
       vim.system({ 'mkdir', '-p', vim.fs.dirname(e.match) }):wait()
     end,
   },
