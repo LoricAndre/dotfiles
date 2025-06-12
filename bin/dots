@@ -144,6 +144,15 @@ enable() {
 	rm "$DOTS_DIR/$1/.disabled" 2>/dev/null || true
 }
 
+addFile() {
+	path="$1"
+	dir="$2"
+	[ -f "$dir/dots.env" ] && . "$dir/dots.env"
+	target_dir="${dots_target_dir:-$DEFAULT_TARGET_DIR}"
+	relPath="$(realpath --relative-to "$target_dir" "$path")"
+	cp -r "$path" "$dir/$relPath"
+}
+
 setEnv() {
 	ln -fs `realpath --relative-to "$DOTS_DIR" "$1"` "$DOTS_DIR/.env"
 }
@@ -205,6 +214,10 @@ case "$1" in
 	disable)
 		shift
 		disable $@
+		;;
+	add)
+		shift
+		addFile $@
 		;;
 	_install)
 		shift
