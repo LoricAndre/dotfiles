@@ -37,20 +37,20 @@ vim.g.netrw_list_hide = '^\\..*$,'
 
 vim.o.exrc = true
 
--- vim.api.nvim_create_autocmd('VimEnter', {
---   group = vim.api.nvim_create_augroup('nightly_ui', { clear = true }),
---   callback = function()
---     local has_nightly_ui, nightly_ui = pcall(require, 'vim._extui')
---     if has_nightly_ui then
---       pcall(nightly_ui.enable, {
---         enable = true,
---         msg = {
---           pos = 'box',
---           box = {
---             timeout = 3000,
---           },
---         },
---       })
---     end
---   end,
--- })
+vim.api.nvim_create_autocmd('VimEnter', {
+  group = vim.api.nvim_create_augroup('nightly_ui', { clear = true }),
+  callback = function()
+    local has_nightly_ui, nightly_ui = pcall(require, 'vim._extui')
+    if has_nightly_ui then
+      pcall(nightly_ui.enable, {
+        enable = true,
+        msg = {
+          pos = 'cmd',
+          box = {
+            timeout = 3000,
+          },
+        },
+      })
+    end
+  end,
+})

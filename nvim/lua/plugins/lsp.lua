@@ -61,6 +61,11 @@ return {
     elseif has_coq then
       capabilities = coq.lsp_ensure_capabilities(capabilities)
     end
+    vim.lsp.config.qmlls = {
+      filetypes = { 'qml' },
+      cmd = { 'qmlls6', '-E' }
+    }
+    vim.lsp.enable('qmlls')
     vim.lsp.config('*', {
       capabilities = capabilities,
     })
@@ -81,14 +86,12 @@ return {
           vim.notify('Failed to setup client attach cb', vim.log.levels.WARN)
           return
         end
-        if client:supports_method('textDocument/diagnostic') then
-          vim.keymap.set({ 'n', 'v' }, 'gh', function()
-            vim.diagnostic.jump({ count = -1, float = true })
-          end, { desc = '[lsp] jump to previous diagnostic' })
-          vim.keymap.set({ 'n', 'v' }, 'gl', function()
-            vim.diagnostic.jump({ count = 1, float = true })
-          end, { desc = '[lsp] jump to next diagnostic' })
-        end
+        vim.keymap.set({ 'n', 'v' }, 'gh', function()
+          vim.diagnostic.jump({ count = -1, float = true })
+        end, { desc = '[lsp] jump to previous diagnostic' })
+        vim.keymap.set({ 'n', 'v' }, 'gl', function()
+          vim.diagnostic.jump({ count = 1, float = true })
+        end, { desc = '[lsp] jump to next diagnostic' })
         if client:supports_method('textDocument/rename') then
           vim.keymap.set({ 'n' }, '<leader>cn', function()
             vim.lsp.buf.rename()
@@ -140,11 +143,9 @@ return {
             vim.lsp.buf.implementation({ reuse_win = true })
           end, { desc = '[lsp] implementation' })
         end
-        if client:supports_method('workspace/diagnostic') then
-          vim.keymap.set({ 'n' }, '<leader>ce', function()
-            vim.diagnostic.setqflist()
-          end, { desc = '[lsp] diagnostics' })
-        end
+        vim.keymap.set({ 'n' }, '<leader>ce', function()
+          vim.diagnostic.setqflist()
+        end, { desc = '[lsp] diagnostics' })
         if
             client:supports_method('textDocument/documentColor')
             and vim.lsp.document_color ~= nil

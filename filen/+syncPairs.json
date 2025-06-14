@@ -1,0 +1,12 @@
+[
+	{
+		"local": "${HOME}/Documents",
+		"remote": "/Documents",
+		"syncMode": "twoWay"
+	},
+	{
+		"local": "${HOME}/Pictures",
+		"remote": "/Photos",
+		"syncMode": "twoWay"
+	}
+]

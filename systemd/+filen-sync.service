@@ -1,0 +1,9 @@
+[Unit]
+Description=Filen Sync Service
+
+[Service]
+WorkingDirectory=$HOME
+ExecStart=/sbin/filen-cli sync
+
+[Install]
+WantedBy=default.target
