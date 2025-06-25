@@ -11,8 +11,6 @@ return {
 
       local ts = require('nvim-treesitter')
 
-      local langs = { 'yaml', 'markdown', 'qf' }
-      ts.install(langs)
       return ts.setup(opts)
     end,
   },

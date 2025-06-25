@@ -40,9 +40,12 @@ return {
   event = 'FileType',
   config = function()
     local has_blink, blink = pcall(require, 'blink.cmp')
+    local has_coq, coq = pcall(require, 'coq')
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     if has_blink then
       capabilities = blink.get_lsp_capabilities(capabilities)
+    elseif has_coq then
+      capabilities = coq.lsp_ensure_capabilities(capabilities)
     end
     vim.lsp.config('*', {
       capabilities = capabilities,

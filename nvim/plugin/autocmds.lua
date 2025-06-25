@@ -1,4 +1,4 @@
-local chezmoi_dir = vim.fn.expand('~/.local/share/chezmoi')
+-- local chezmoi_dir = vim.fn.expand('~/.local/share/chezmoi')
 local dots_dir = vim.fn.expand('~/dots')
 
 local autocmds = {
@@ -53,7 +53,7 @@ local autocmds = {
       if found ~= 1 then
         return
       end
-      vim.notify('[dots/' .. module .. '] Applying dotfiles changes...')
+      -- vim.notify('[dots/' .. module .. '] Applying dotfiles changes...')
       if module == 'nvim' then
         local ret = vim
             .system({
@@ -62,10 +62,18 @@ local autocmds = {
               dots_dir .. '/nvim',
             })
             :wait()
-        if ret.code == 0 then
-          vim.notify('[dots/' .. module .. '] Copied lazy lock')
-        else
+        if ret.code ~= 0 then
           vim.notify('[ERR] failed to copy lazy-lock: ' .. ret.stderr)
+        end
+        ret = vim
+            .system({
+              'cp',
+              vim.fn.expand('~/.config/nvim/lazy-lock.json'),
+              dots_dir .. '/.templated/nvim',
+            })
+            :wait()
+        if ret.code ~= 0 then
+          vim.notify('[ERR] failed to copy templated lazy-lock: ' .. ret.stderr)
         end
       end
       vim.system(

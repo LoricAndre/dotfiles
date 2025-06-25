@@ -1,5 +1,6 @@
 return {
   'saghen/blink.cmp',
+  cond = function() return vim.g.completion == 'blink' end,
   version = '*',
   opts = {
     keymap = {

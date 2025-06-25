@@ -14,6 +14,7 @@ return {
     },
     {
       'blink.cmp',
+      cond = function() return vim.g.completion == 'blink' end,
       lazy = true,
       opts = {
         sources = {
@@ -28,6 +29,16 @@ return {
         },
       },
     },
+    {
+      'ms-jpq/coq.thirdparty',
+      lazy = true,
+      cond = function() return vim.g.completion == 'coq' end,
+      config = function()
+        require('coq_3p')({
+          { src = 'vim_dadbod_completion', short_name = 'DB' },
+        })
+      end
+    }
   },
   cmd = {
     'DBUI',
