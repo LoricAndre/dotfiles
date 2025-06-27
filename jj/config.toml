@@ -5,3 +5,11 @@ email = "gitlab.j3bzo@slmail.me"
 [ui]
 default-command = "log"
 diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+
+[aliases]
+push = ["util", "exec", "--", "bash", "-c", """
+set -xeuo pipefail
+jj bookmark set -r=@ $@
+jj git push
+""", ""]
+d = ["desc", "-m"]
