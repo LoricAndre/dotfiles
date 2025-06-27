@@ -13,7 +13,8 @@ local servers = {
   lua = 'lua_ls',
   python = { 'ruff', 'basedpyright' },
   rust = 'rust_analyzer',
-  terraform = 'terraformls',
+  -- terraform = 'terraformls',
+  terraform = 'tofu_ls',
   yaml = { 'yamlls', 'gitlab_ci_ls' },
 }
 local function build_servers_to_install()
@@ -38,6 +39,19 @@ return {
     { 'neovim/nvim-lspconfig',   lazy = true },
   },
   event = 'FileType',
+  cmd = {
+    'Mason',
+    'MasonUpdate',
+    'MasonInstall',
+    'MasonUninstall',
+    'MasonUninstallAll',
+    'MasonLog',
+    'LspStart',
+    'LspRestart',
+    'LspInstall',
+    'LspLog',
+    'LspInfo'
+  },
   config = function()
     local has_blink, blink = pcall(require, 'blink.cmp')
     local has_coq, coq = pcall(require, 'coq')
