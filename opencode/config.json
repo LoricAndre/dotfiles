@@ -1,0 +1,41 @@
+{
+	"$schema": "http://opencode.ai/config.json",
+	"theme": "catppuccin",
+	"model": "github-copilot/claude-sonnet-4",
+	"autoshare": false,
+	"autoupdate": true,
+	"provider": {
+		"github-copilot": {
+			"npm": "@ai-sdk/openai",
+			"options": {
+				"baseURL": "https://api.githubcopilot.com"
+			},
+			"models": {
+				"gpt-4o": {
+					"name": "gpt-4o"
+				},
+				"gpt-4.1": {
+					"name": "gpt-4.1"
+				},
+				"claude-sonnet-4": {
+					"name": "claude-sonnet-4"
+				},
+				"claude-3.7-sonnet": {
+					"name": "claude-3.7-sonnet"
+				},
+				"o1": {
+					"name": "o1"
+				},
+				"o3-mini": {
+					"name": "o3-mini"
+				},
+				"gemini-2.5-pro": {
+					"name": "gemini-2.5-pro"
+				},
+				"gemini-2.0-flash-001": {
+					"name": "gemini-2.0-flash-001"
+				}
+			}
+		}
+	}
+}

@@ -4,7 +4,7 @@ email = "gitlab.j3bzo@slmail.me"
 
 [ui]
 default-command = "log"
-diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
+merge-editor = ["meld", "$left", "$base", "$right", "-o", "$output"]
 
 [aliases]
 push = ["util", "exec", "--", "bash", "-c", """
