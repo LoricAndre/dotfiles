@@ -2,6 +2,10 @@
 
 set -euo pipefail
 
+if [ -v DEBUG ]; then
+	set -x
+fi
+
 DOTS_DIR="$HOME/dots"
 TEMPLATED_DIR="$DOTS_DIR/.templated"
 BACKUPS_DIR="$DOTS_DIR/.backups"

@@ -8,8 +8,30 @@ diff-editor = ["nvim", "-c", "DiffEditor $left $right $output"]
 
 [aliases]
 push = ["util", "exec", "--", "bash", "-c", """
-set -xeuo pipefail
-jj bookmark set -r=@ $@
-jj git push
+set -euo pipefail
+if [ -v DEBUG ]; then
+	set -x
+fi
+
+if [ $# -gt 0 ]; then
+	rev="$1"
+else
+	rev="$(jj show 'git_head()' -T 'bookmarks' --no-patch)"
+fi
+jj bookmark set -r=@ "$rev"
+jj git push --allow-new
 """, ""]
 d = ["desc", "-m"]
+pull = ["util", "exec", "--", "bash", "-c", """
+set -euo pipefail
+if [ -v DEBUG ]; then
+	set -x
+fi
+if [ $# -gt 0 ]; then
+	rev="$1"
+else
+	rev="$(jj show 'git_head()' -T 'bookmarks' --no-patch)"
+fi
+jj git fetch
+jj rebase -d "$rev"
+""", ""]
