@@ -1,0 +1,3 @@
+# vi: ft=bash
+
+tmux source "$dots_target_dir/tmux.conf"
