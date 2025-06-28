@@ -111,7 +111,7 @@ applyDir() {
 	if [ -f "dots.hooks/apply" ] && [ ! -f ".disabled" ]; then
 		info "[$1] Running apply hook"
 		cd "dots.hooks"
-		. apply >/dev/null 2>&1
+		. apply >/dev/null 2>&1 || warn "[$1] Apply hook failed with exit code $?"
 	fi
 }
 
@@ -163,7 +163,7 @@ runMany() {
 	if [[ $# -gt 0 ]]; then
 		DIRS="$@"
 	else
-		DIRS=`find "$DOTS_DIR" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n'`
+		DIRS=`find "$DOTS_DIR" -mindepth 1 -maxdepth 1 -type d -not -name '.*' -printf '%f\n' |	sort`
 	fi
 
 	for dir in $DIRS; do
@@ -171,7 +171,6 @@ runMany() {
 			$op "$dir"
 		fi
 	done
-	wait $(jobs -p)
 }
 
 _installCli() {
