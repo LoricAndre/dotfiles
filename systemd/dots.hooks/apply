@@ -1,1 +1,9 @@
 systemctl --user daemon-reload
+
+systemctl --user restart filen-sync
+systemctl --user restart dbus-saver
+systemctl --user restart grafana
+systemctl --user restart node-exporter
+systemctl --user restart prometheus
+systemctl --user restart rclone-proton
+

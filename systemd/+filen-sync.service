@@ -3,7 +3,7 @@ Description=Filen Sync Service
 
 [Service]
 WorkingDirectory=$HOME
-ExecStart=/sbin/filen-cli sync
+ExecStart=/sbin/filen-cli sync --continuous
 
 [Install]
 WantedBy=default.target
