@@ -174,7 +174,7 @@ genpw() {
   printf "%s" $(tr -dc 'A-Za-z0-9_-' </dev/urandom | head -c $1)
 }
 
-alias j=just
+alias j='just -g'
 
 git-fd-dirty() {
   fd '.git' "$1" -t d -H | xargs dirname | while read repo; do { pushd "$repo">/dev/null; git status >/dev/null 2>&1 || echo "$repo dirty" }; done
