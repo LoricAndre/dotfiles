@@ -1,5 +1,7 @@
-$DOTS_DIR/bin/dots _install hyprland hypridle hyprpaper hyprlock
+$DOTS_DIR/bin/dots _install hyprland hypridle hyprpaper hyprlock grimblast
 
-hyprpm update
-hyprpm add https://github.com/shezdy/hyprsplit
-hyprpm enable hyprsplit
+if [ -v $HYPRLAND_INSTANCE_SIGNATURE ]; then
+	hyprpm update
+	hyprpm add https://github.com/shezdy/hyprsplit
+	hyprpm enable hyprsplit
+fi
