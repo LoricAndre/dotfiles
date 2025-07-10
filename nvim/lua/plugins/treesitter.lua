@@ -28,7 +28,7 @@ return {
         vim.keymap.set(
           { 'n', 'v' },
           keys,
-          function() require('treewalker.movement')[act]() end,
+          function() require('treewalker')[act]() end,
           { buffer = true, desc = '[tw] ' .. act }
         )
       end
