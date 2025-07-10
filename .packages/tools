@@ -16,3 +16,4 @@ rustup
 sops
 terraform
 terragrunt
+git-credential-manager
