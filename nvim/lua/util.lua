@@ -13,12 +13,14 @@ function M.lsp_clients_str(bufnr, sep, prefix)
   end
   local res
   for _, c in ipairs(clients) do
-    if not res then
-      res = prefix
-    else
-      res = res .. sep
+    if c.name ~= 'GitHub Copilot' then
+      if not res then
+        res = prefix
+      else
+        res = res .. sep
+      end
+      res = res .. c.name
     end
-    res = res .. c.name
   end
   return res
 end
