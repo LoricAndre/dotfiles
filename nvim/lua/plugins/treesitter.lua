@@ -22,48 +22,34 @@ return {
       highlight_group = 'CursorLine',
       jumplist = true,
     },
-    keys = {
-      {
-        '<C-k>',
-        '<CMD>Treewalker Down<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] walk down' },
-      },
-      {
-        '<C-l>',
-        '<CMD>Treewalker Up<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] walk up' },
-      },
-      {
-        '<C-j>',
-        '<CMD>Treewalker Left<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] walk left' },
-      },
-      {
-        '<C-m>',
-        '<CMD>Treewalker Right<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] walk right' },
-      },
-      -- Mappings below are allowed by remapping the corresponding keys in kitty.conf
-      {
-        'ȡ', -- <C-S-k> = \u0221
-        '<CMD>Treewalker SwapDown<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] swap down' },
-      },
-      {
-        'Ȣ', -- <C-S-l> = \u0222
-        '<CMD>Treewalker SwapUp<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] swap up' },
-      },
-      {
-        'Ƞ', -- <C-S-j> = \u0220
-        '<CMD>Treewalker SwapLeft<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] swap left' },
-      },
-      {
-        'ȣ', -- <C-S-m> = \u0223
-        '<CMD>Treewalker SwapRight<CR>',
-        { mode = { 'n', 'v' }, desc = '[tw] swap right' },
-      },
-    },
+    event = 'VeryLazy',
+    config = function(_, opts)
+      local function tw_map(keys, act)
+        vim.keymap.set(
+          { 'n', 'v' },
+          keys,
+          function() require('treewalker.movement')[act]() end,
+          { buffer = true, desc = '[tw] ' .. act }
+        )
+      end
+
+      vim.api.nvim_create_autocmd('FileType', {
+        group = vim.api.nvim_create_augroup('custom_treewalker', { clear = true }),
+        callback = function()
+          local ok = pcall(vim.treesitter.get_parser)
+          if ok then
+            require('treewalker').setup(opts)
+            tw_map('<C-l>', 'move_up')
+            tw_map('<C-k>', 'move_down')
+            tw_map('<C-j>', 'move_out')
+            tw_map('<C-m>', 'move_in')
+            tw_map('ȡ', 'swap_down')
+            tw_map('Ȣ', 'swap_up')
+            tw_map('Ƞ', 'swap_left')
+            tw_map('ȣ', 'swap_right')
+          end
+        end
+      })
+    end,
   },
 }

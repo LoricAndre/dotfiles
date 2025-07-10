@@ -174,7 +174,24 @@ genpw() {
   printf "%s" $(tr -dc 'A-Za-z0-9_-' </dev/urandom | head -c $1)
 }
 
-alias j='just -g'
+j() {
+  # Create a temporary file to capture output.
+  tmpfile=$(mktemp)
+
+  # Tee writes unfiltered output to tmpfile, then we filter the stream with sed before displaying.
+  just "$@" 2>&1 | tee "$tmpfile" | sed '/error: Justfile does not contain recipe/d'
+
+  # Capture the exit code from the just command.
+  exit_code=${PIPESTATUS[0]}
+
+  # If the local just fails and the error indicates "does not contain recipe", retry with the global justfile.
+  if [[ $exit_code != 0 ]] && grep -q "does not contain recipe" "$tmpfile"; then
+    just -g "$@"
+  fi
+
+  # Clean up the temporary file.
+  rm -f "$tmpfile"
+}
 
 git-fd-dirty() {
   fd '.git' "$1" -t d -H | xargs dirname | while read repo; do { pushd "$repo">/dev/null; git status >/dev/null 2>&1 || echo "$repo dirty" }; done

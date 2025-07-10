@@ -6,5 +6,8 @@ fi
 if ! command -v nvr >/dev/null 2>&1; then
 	pkgs="$pkgs neovim-remote"
 fi
+if ! command -v tree-sitter >/dev/null 2>&1; then
+	pkgs="$pkgs tree-sitter-cli tree-sitter"
+fi
 
 paru -S --needed --noconfirm $pkgs
