@@ -1,0 +1,256 @@
+{
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  "modules-center": [],
+  "modules-right": [
+    "pulseaudio",
+    "bluetooth",
+    "network",
+    "cpu",
+    "memory",
+    "disk",
+    "battery",
+    "clock",
+    "tray",
+    "custom/swaync"
+  ],
+  "position": "left",
+  "battery": {
+    "justify": "center",
+    "format-plugged": "\n{capacity}%",
+    "format": "{icon}\n{capacity}%",
+    "format-full": "{icon}\n{capacity}%",
+    "format-icons": [
+      "󰁺",
+      "󰁼",
+      "󰁾",
+      "󰂀",
+      "󰂂"
+    ],
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format-charging": "󰂄\n{capacity}%",
+    "format-alt": "{icon}\n{time}",
+    "format-time": "{H}:{m}"
+  },
+  "clock": {
+    "justify": "center",
+    "format": "󰥔\n{:%H\n%M}",
+    "actions": {
+      "on-click-backward": "tz_down",
+      "on-scroll-down": "shift_down",
+      "on-click-forward": "tz_up",
+      "on-scroll-up": "shift_up",
+      "on-click-right": "mode"
+    },
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "format-alt": "{:%a\n%b\n%d}",
+    "calendar": {
+      "weeks-pos": "right",
+      "mode": "year",
+      "on-scroll": 1,
+      "mode-mon-col": 3,
+      "format": {
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "days": "<span color='#ecc6d9'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b><u>{}</u></b></span>",
+        "weeks": "<span color='#99ffdd'><b>W{}</b></span>"
+      }
+    }
+  },
+  "hyprland/workspaces": {
+    "window-rewrite": {
+      "class<org.qbittorrent.qBittorrent>": "",
+      "class<org.kde.kdeconnect.*>": "",
+      "title<(.* *)?btm.*>": "",
+      "class<zen>": "",
+      "title<Signal>": "󰍡",
+      "title<(.* *)? nvim>": "",
+      "class<dev.zed.Zed-Preview>": "",
+      "class<firefox>": "",
+      "class<Kitty>": "",
+      "title<(Open)?Lens.*>": "󱃾",
+      "class<Spotify>": "",
+      "title<.* - Gmail .*>": "󰊫",
+      "class<Code>": "󰨞",
+      "class<com.hunterwittenborn.Celeste>": "󰴋",
+      "title<Winetricks.*>": "󰡶",
+      "class<vlc>": "󰕼",
+      "class<Gimp-.*>": "",
+      "class<com.mitchellh.ghostty>": "",
+      "class<steam_app_[0-9]+>": "󰮂",
+      "class<org.gnome.Nautilus>": "",
+      "title<.[0-9]+. WhatsApp.*>": "°",
+      "class<librewolf>": "",
+      "class<discord>": "",
+      "class<com.obsproject.Studio|zoom>": "",
+      "class<jetbrains-idea(-ce)?>": "",
+      "title<.[0-9]+. Discord.*>": " °",
+      "class<lutris>": "🦦",
+      "class<Foot>": "",
+      "class<calibre-.*>": "",
+      "class<ONLYOFFICE Desktop Editors>": "󰈙",
+      "class<(Chromium)|(Chrome)>": "",
+      "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
+      "title<WhatsApp.*>": "",
+      "class<zen-alpha>": "",
+      "title<Discord.*>": "",
+      "class<com.github.weclaw1.ImageRoll|nomacs>": "",
+      "class<steam> title<Friends List>": "",
+      "class<steam.*>": "󰓓",
+      "class<obsidian>": "󱞁",
+      "class<firefox-nightly>": "",
+      "class<mpv>": "",
+      "class<io.github.whoozle.android-file-transfer>": ""
+    },
+    "all-outputs": false,
+    "window-rewrite-default": "",
+    "format-icons": {
+      "active": "",
+      "urgent": "!",
+      "default": ""
+    },
+    "justify": "center",
+    "format": "{icon}{name}\n{windows}",
+    "on-scroll-down": "hyprctl dispatch workspace e-1",
+    "format-window-separator": "\n",
+    "on-scroll-up": "hyprctl dispatch workspace e+1",
+    "ignore-workspaces": [
+      "^-\\d+$"
+    ]
+  },
+  "custom/swaync": {
+    "tooltip": "",
+    "on-click": "swaync-client -t -sw",
+    "format-icons": {
+      "inhibited-none": "",
+      "none": "",
+      "inhibited-notification": "",
+      "dnd-inhibited-notification": "",
+      "notification": "",
+      "dnd-inhibited-none": "",
+      "dnd-none": "",
+      "dnd-notification": ""
+    },
+    "exec-if": "swaync-client -v",
+    "on-click-right": "swaync-client -d -sw",
+    "justify": "center",
+    "exec": "swaync-client -swb",
+    "return-type": "json",
+    "format": "{icon}"
+  },
+  "river/tags": {
+    "justify": "center",
+    "window-rewrite": {
+      "class<org.qbittorrent.qBittorrent>": "",
+      "class<org.kde.kdeconnect.*>": "",
+      "title<(.* *)?btm.*>": "",
+      "title<Signal>": "󰍡",
+      "title<(.* *)? nvim>": "",
+      "class<dev.zed.Zed-Preview>": "",
+      "class<firefox>": "",
+      "class<Kitty>": "",
+      "title<(Open)?Lens.*>": "󱃾",
+      "class<Spotify>": "",
+      "title<.* - Gmail .*>": "󰊫",
+      "class<Code>": "󰨞",
+      "class<com.hunterwittenborn.Celeste>": "󰴋",
+      "title<Winetricks.*>": "󰡶",
+      "class<vlc>": "󰕼",
+      "class<Gimp-.*>": "",
+      "class<steam_app_[0-9]+>": "󰮂",
+      "class<org.gnome.Nautilus>": "",
+      "title<.[0-9]+. WhatsApp.*>": "°",
+      "class<librewolf>": "",
+      "class<discord>": "",
+      "class<com.obsproject.Studio|zoom>": "",
+      "class<jetbrains-idea(-ce)?>": "",
+      "title<.[0-9]+. Discord.*>": " °",
+      "class<lutris>": "🦦",
+      "class<Foot>": "",
+      "class<calibre-.*>": "",
+      "class<ONLYOFFICE Desktop Editors>": "󰈙",
+      "class<(Chromium)|(Chrome)>": "",
+      "title<(.* - )?(.[0-9]+. )?YouTube.*>": "",
+      "title<WhatsApp.*>": "",
+      "class<zen-alpha>": "",
+      "title<Discord.*>": "",
+      "class<com.github.weclaw1.ImageRoll|nomacs>": "",
+      "class<steam> title<Friends List>": "",
+      "class<steam.*>": "󰓓",
+      "class<obsidian>": "󱞁",
+      "class<firefox-nightly>": "",
+      "class<mpv>": "",
+      "class<io.github.whoozle.android-file-transfer>": ""
+    },
+    "all-outputs": false,
+    "window-rewrite-default": "",
+    "format-icons": {
+      "active": "",
+      "urgent": "!",
+      "default": ""
+    },
+    "format": "{icon}{name}\n{windows}",
+    "format-window-separator": "\n"
+  },
+  "disk": {
+    "justify": "center",
+    "interval": 30,
+    "format": "\n{percentage_used}%",
+    "path": "/"
+  },
+  "cpu": {
+    "justify": "center",
+    "format": "\n{usage}%"
+  },
+  "spacing": 12,
+  "tray": {
+    "justify": "center",
+    "spacing": 10
+  },
+  "pulseaudio": {
+    "format-source": "\n{volume}%",
+    "format-bluetooth": "{icon}\n{volume}%\n\n{format_source}",
+    "format-muted": "󰝟\n\n{format_source}",
+    "format-icons": {
+      "phone": "",
+      "portable": "",
+      "headset": "󰋎",
+      "car": "",
+      "default": [
+        "",
+        "",
+        ""
+      ],
+      "hands-free": "󰋎",
+      "headphone": ""
+    },
+    "justify": "center",
+    "format": "{icon}\n{volume}%\n\n{format_source}",
+    "format-bluetooth-muted": "󰝟\n{icon}\n\n{format_source}",
+    "on-click": "pavucontrol",
+    "format-source-muted": ""
+  },
+  "bluetooth": {
+    "on-click": "blueman-manager"
+  },
+  "network": {
+    "justify": "center",
+    "format-disconnected": "⚠",
+    "format-ethernet": "󰈁",
+    "tooltip-format": "{ifname}, {ipaddr}/{cidr} via {gwaddr} on {essid}",
+    "format-wifi": "󰤥\n{signalStrength}%",
+    "format-linked": "󰈂\n{ifname}",
+    "on-click": "kitty --class floaterm nmtui"
+  },
+  "memory": {
+    "justify": "center",
+    "format": "\n{}%",
+    "tooltip-format": "memory: {used} / {total} GiB used\nswap: {swapUsed} / {swapTotal} GiB used"
+  },
+  "layer": "top"
+}

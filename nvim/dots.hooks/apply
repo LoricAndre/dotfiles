@@ -1,9 +1,9 @@
 # vi: ft=bash
 
 if command -v nvr >/dev/null 2>&1; then
-	nvr --serverlist | grep '/run/user/[0-9]+/nvim\.[0-9]+\.[0-9]+' | while read s; do
+	nvr --serverlist | grep '/run/user/[0-9]\+/nvim\.[0-9]\+\.[0-9]\+' | while read s; do
 		nvr --servername "$s" -c "source $dots_target_dir/lua/env.lua" &
-		nvr --servername "$s" -c "colorscheme g:colorscheme" &
+		nvr --servername "$s" -c "execute 'colorscheme ' .. g:colorscheme" &
 	done
 	wait
 fi
