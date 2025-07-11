@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+state=$(bluetoothctl show | grep 'PowerState')
+if echo $state | grep -q 'on$'; then
+  bluetoothctl power off
+else
+  bluetoothctl power on
+fi
+

@@ -120,7 +120,7 @@
     "format-window-separator": "\n",
     "on-scroll-up": "hyprctl dispatch workspace e+1",
     "ignore-workspaces": [
-      "^-\\d+$"
+      "^-\\d+${DOLLAR}"
     ]
   },
   "custom/swaync": {
@@ -236,7 +236,17 @@
     "format-source-muted": ""
   },
   "bluetooth": {
-    "on-click": "blueman-manager"
+    "format-on": "󰂯",
+    "format-disabled": "󰂲",
+    "format-off": "󰂲",
+    "format-no-controller": "󰂲",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    "on-click": "blueman-manager",
+    "on-click-right": "${dots_target_dir}/scripts/bluetoothctl-toggle"
   },
   "network": {
     "justify": "center",
