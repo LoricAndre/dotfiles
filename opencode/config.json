@@ -5,37 +5,13 @@
 	"autoshare": false,
 	"autoupdate": true,
 	"provider": {
-		"github-copilot": {
-			"npm": "@ai-sdk/openai",
+		"localai": {
+			"npm": "@ai-sdk/openai-compatible",
+			"name": "Local AI",
 			"options": {
-				"baseURL": "https://api.githubcopilot.com"
+				"baseURL": "http://127.0.0.1:8080/v1"
 			},
-			"models": {
-				"gpt-4o": {
-					"name": "gpt-4o"
-				},
-				"gpt-4.1": {
-					"name": "gpt-4.1"
-				},
-				"claude-sonnet-4": {
-					"name": "claude-sonnet-4"
-				},
-				"claude-3.7-sonnet": {
-					"name": "claude-3.7-sonnet"
-				},
-				"o1": {
-					"name": "o1"
-				},
-				"o3-mini": {
-					"name": "o3-mini"
-				},
-				"gemini-2.5-pro": {
-					"name": "gemini-2.5-pro"
-				},
-				"gemini-2.0-flash-001": {
-					"name": "gemini-2.0-flash-001"
-				}
-			}
+			"models": {}
 		}
 	}
 }
