@@ -71,6 +71,7 @@
       "title<Signal>": "󰍡",
       "title<(.* *)? nvim>": "",
       "class<dev.zed.Zed-Preview>": "",
+      "class<dev.zed.Zed>": "",
       "class<firefox>": "",
       "class<Kitty>": "",
       "title<(Open)?Lens.*>": "󱃾",

@@ -2,4 +2,4 @@ default:
   just --list
 
 ln-hooks dir=".githooks":
-  cd "$(git rev-parse --show-toplevel)/.git" && ln -sf "../{{ dir }}" hooks
+  cd "$(git rev-parse --show-toplevel)/.git" && (rm -r hooks || true) && ln -sf "../{{ dir }}" hooks

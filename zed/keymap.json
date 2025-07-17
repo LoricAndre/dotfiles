@@ -66,7 +66,9 @@
       "space g l": "git::Blame",
       "space g z": [
         "task::Spawn",
-        { "task_name": "git: lazygit" }
+        {
+          "task_name": "git: lazygit"
+        }
       ],
       "space g g": "git_panel::ToggleFocus",
       "space g c": "git::Commit",
@@ -89,7 +91,7 @@
         }
       ],
       "space r": "task::Spawn",
-      "space a": "workspace::NewSearch",
+      "space s": "workspace::NewSearch",
       "space e": "project_panel::ToggleFocus"
     }
   },
@@ -367,15 +369,42 @@
   {
     "context": "Pane",
     "bindings": {
-      "alt-1": ["pane::ActivateItem", 0],
-      "alt-2": ["pane::ActivateItem", 1],
-      "alt-3": ["pane::ActivateItem", 2],
-      "alt-4": ["pane::ActivateItem", 3],
-      "alt-5": ["pane::ActivateItem", 4],
-      "alt-6": ["pane::ActivateItem", 5],
-      "alt-7": ["pane::ActivateItem", 6],
-      "alt-8": ["pane::ActivateItem", 7],
-      "alt-9": ["pane::ActivateItem", 8],
+      "alt-1": [
+        "pane::ActivateItem",
+        0
+      ],
+      "alt-2": [
+        "pane::ActivateItem",
+        1
+      ],
+      "alt-3": [
+        "pane::ActivateItem",
+        2
+      ],
+      "alt-4": [
+        "pane::ActivateItem",
+        3
+      ],
+      "alt-5": [
+        "pane::ActivateItem",
+        4
+      ],
+      "alt-6": [
+        "pane::ActivateItem",
+        5
+      ],
+      "alt-7": [
+        "pane::ActivateItem",
+        6
+      ],
+      "alt-8": [
+        "pane::ActivateItem",
+        7
+      ],
+      "alt-9": [
+        "pane::ActivateItem",
+        8
+      ],
       "alt-0": "pane::ActivateLastItem",
       "ctrl-alt--": "pane::GoBack",
       "ctrl-alt-_": "pane::GoForward",
@@ -396,15 +425,42 @@
       "ctrl-shift-s": "workspace::SaveAs",
       "ctrl-n": "workspace::NewFile",
       "ctrl-shift-n": "workspace::NewWindow",
-      "alt-1": ["workspace::ActivatePane", 0],
-      "alt-2": ["workspace::ActivatePane", 1],
-      "alt-3": ["workspace::ActivatePane", 2],
-      "alt-4": ["workspace::ActivatePane", 3],
-      "alt-5": ["workspace::ActivatePane", 4],
-      "alt-6": ["workspace::ActivatePane", 5],
-      "alt-7": ["workspace::ActivatePane", 6],
-      "alt-8": ["workspace::ActivatePane", 7],
-      "alt-9": ["workspace::ActivatePane", 8],
+      "alt-1": [
+        "workspace::ActivatePane",
+        0
+      ],
+      "alt-2": [
+        "workspace::ActivatePane",
+        1
+      ],
+      "alt-3": [
+        "workspace::ActivatePane",
+        2
+      ],
+      "alt-4": [
+        "workspace::ActivatePane",
+        3
+      ],
+      "alt-5": [
+        "workspace::ActivatePane",
+        4
+      ],
+      "alt-6": [
+        "workspace::ActivatePane",
+        5
+      ],
+      "alt-7": [
+        "workspace::ActivatePane",
+        6
+      ],
+      "alt-8": [
+        "workspace::ActivatePane",
+        7
+      ],
+      "alt-9": [
+        "workspace::ActivatePane",
+        8
+      ],
       "ctrl-alt-b": "workspace::ToggleLeftDock",
       "ctrl-b": "workspace::ToggleRightDock",
       "ctrl-j": "workspace::ToggleBottomDock",
@@ -429,7 +485,6 @@
       "ctrl-shift-p": "command_palette::Toggle",
       "ctrl-shift-m": "diagnostics::Deploy",
       "ctrl-shift-e": "project_panel::ToggleFocus",
-      "ctrl-?": "agent::ToggleFocus",
       "ctrl-alt-s": "workspace::SaveAll",
       "escape": "workspace::Unfollow",
       "alt-t": "task::Rerun",
@@ -599,16 +654,47 @@
       "ctrl-alt-space": "terminal::ShowCharacterPalette",
       "shift-ctrl-c": "terminal::Copy",
       "shift-ctrl-v": "terminal::Paste",
-      "up": ["terminal::SendKeystroke", "up"],
-      "pageup": ["terminal::SendKeystroke", "pageup"],
-      "down": ["terminal::SendKeystroke", "down"],
-      "pagedown": ["terminal::SendKeystroke", "pagedown"],
-      "escape": ["terminal::SendKeystroke", "escape"],
-      "enter": ["terminal::SendKeystroke", "enter"],
-      "ctrl-c": ["terminal::SendKeystroke", "ctrl-c"],
+      "up": [
+        "terminal::SendKeystroke",
+        "up"
+      ],
+      "pageup": [
+        "terminal::SendKeystroke",
+        "pageup"
+      ],
+      "down": [
+        "terminal::SendKeystroke",
+        "down"
+      ],
+      "pagedown": [
+        "terminal::SendKeystroke",
+        "pagedown"
+      ],
+      "escape": [
+        "terminal::SendKeystroke",
+        "escape"
+      ],
+      "enter": [
+        "terminal::SendKeystroke",
+        "enter"
+      ],
+      "ctrl-c": [
+        "terminal::SendKeystroke",
+        "ctrl-c"
+      ],
       "ctrl-shift-d": "pane::CloseActiveItem",
-      "ctrl-w": ["terminal::SendKeystroke", "ctrl-w"],
-      "ctrl-a": ["terminal::SendKeystroke", "ctrl-a"]
+      "ctrl-w": [
+        "terminal::SendKeystroke",
+        "ctrl-w"
+      ],
+      "ctrl-a": [
+        "terminal::SendKeystroke",
+        "ctrl-a"
+      ],
+      "alt-enter": [
+        "terminal::SendKeystroke",
+        "alt-enter"
+      ]
     }
   },
   {
@@ -627,7 +713,11 @@
         }
       ],
       "space f": "file_finder::Toggle",
-      "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
+      "space a": "agent::ToggleFocus",
+      "space space": [
+        "workspace::SendKeystrokes",
+        "ctrl-tab enter"
+      ],
       "space z": "workspace::ToggleZoom",
       ":": "command_palette::Toggle",
       "j": "vim::Left",
@@ -698,25 +788,29 @@
       "f": [
         "vim::PushFindForward",
         {
-          "before": false
+          "before": false,
+          "multiline": true
         }
       ],
       "t": [
         "vim::PushFindForward",
         {
-          "before": true
+          "before": true,
+          "multiline": true
         }
       ],
       "shift-f": [
         "vim::PushFindBackward",
         {
-          "after": false
+          "after": false,
+          "multiline": true
         }
       ],
       "shift-t": [
         "vim::PushFindBackward",
         {
-          "after": true
+          "after": true,
+          "multiline": true
         }
       ],
       ";": "vim::RepeatFind",
@@ -831,21 +925,51 @@
       // z commands
       "z t": "editor::ScrollCursorTop",
       "z z": "editor::ScrollCursorCenter",
-      "z .": ["workspace::SendKeystrokes", "z z ^"],
+      "z .": [
+        "workspace::SendKeystrokes",
+        "z z ^"
+      ],
       "z b": "editor::ScrollCursorBottom",
       "z c": "editor::Fold",
       "z o": "editor::UnfoldLines",
       "z f": "editor::FoldSelectedRanges",
       // Count support
-      "1": ["vim::Number", 1],
-      "2": ["vim::Number", 2],
-      "3": ["vim::Number", 3],
-      "4": ["vim::Number", 4],
-      "5": ["vim::Number", 5],
-      "6": ["vim::Number", 6],
-      "7": ["vim::Number", 7],
-      "8": ["vim::Number", 8],
-      "9": ["vim::Number", 9],
+      "1": [
+        "vim::Number",
+        1
+      ],
+      "2": [
+        "vim::Number",
+        2
+      ],
+      "3": [
+        "vim::Number",
+        3
+      ],
+      "4": [
+        "vim::Number",
+        4
+      ],
+      "5": [
+        "vim::Number",
+        5
+      ],
+      "6": [
+        "vim::Number",
+        6
+      ],
+      "7": [
+        "vim::Number",
+        7
+      ],
+      "8": [
+        "vim::Number",
+        8
+      ],
+      "9": [
+        "vim::Number",
+        9
+      ],
       // window related commands (ctrl-w X)
       "alt-j": "workspace::ActivatePaneLeft",
       "alt-m": "workspace::ActivatePaneRight",
@@ -872,7 +996,10 @@
       "shift-d": "vim::DeleteToEndOfLine",
       "shift-j": "vim::JoinLines",
       "y": "vim::PushYank",
-      "shift-y": ["workspace::SendKeystrokes", "y $"],
+      "shift-y": [
+        "workspace::SendKeystrokes",
+        "y $"
+      ],
       "i": "vim::InsertBefore",
       "shift-i": "vim::InsertFirstNonWhitespace",
       "a": "vim::InsertAfter",
@@ -916,7 +1043,10 @@
   {
     "context": "Editor && VimCount",
     "bindings": {
-      "0": ["vim::Number", 0]
+      "0": [
+        "vim::Number",
+        0
+      ]
     }
   },
   {
@@ -929,7 +1059,10 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == c",
     "bindings": {
-      "s": ["vim::PushChangeSurrounds", {}]
+      "s": [
+        "vim::PushChangeSurrounds",
+        {}
+      ]
     }
   },
   {
@@ -953,7 +1086,10 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == y",
     "bindings": {
-      "s": ["vim::PushAddSurrounds", {}]
+      "s": [
+        "vim::PushAddSurrounds",
+        {}
+      ]
     }
   },
   {
@@ -1129,22 +1265,14 @@
       "alt-k": "workspace::ActivatePaneDown",
       "space g b": "git::Branch",
       "space f": "file_finder::Toggle",
-      "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
+      "space a": "agent::ToggleFocus",
+      "space space": [
+        "workspace::SendKeystrokes",
+        "ctrl-tab enter"
+      ],
       "space z": "workspace::ToggleZoom",
-      "space shift-s": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": false
-        }
-      ],
-      "space s": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": false
-        }
-      ],
       "space r": "task::Spawn",
-      "space a": "workspace::NewSearch"
+      "space s": "workspace::NewSearch"
     }
   },
   {

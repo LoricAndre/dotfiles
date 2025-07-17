@@ -10,10 +10,17 @@
   "git_panel": {
     "dock": "right"
   },
-  "language_models": {
-    "anthropic": {
-      "version": "1"
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "cargo": {
+          "features": "all"
+        }
+      }
     }
+  },
+  "language_models": {
+    "anthropic": {}
   },
   "collaboration_panel": {
     "dock": "right"
@@ -24,16 +31,22 @@
   "theme": "Catppuccin Macchiato",
   "icon_theme": "Catppuccin Macchiato",
   "features": {
-    "inline_completion_provider": "zed",
-    "copilot": false
+    "edit_prediction_provider": null
   },
-  "assistant": {
+  "agent": {
     "default_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet-latest"
-    },
-    "version": "2",
-    "provider": null
+      "provider": "copilot_chat",
+      "model": "gpt-4.1"
+    }
+  },
+  "context_servers": {
+    "mcp-server-context7": {
+      "source": "extension",
+      "enabled": true,
+      "settings": {
+        "default_minimum_tokens": "10000"
+      }
+    }
   },
   "telemetry": {
     "diagnostics": true,
@@ -80,7 +93,6 @@
   "auto_update": false,
   "vim": {
     "use_system_clipboard": "always",
-    "use_multiline_find": false,
     "use_smartcase_find": true
   },
   "hover_popover_enabled": false,
@@ -98,10 +110,8 @@
       "breadcrumbs": false
     }
   },
-  "jupyter": {
-    "enabled": true
-  },
   "project_panel": {
-    "auto_fold_dirs": false
+    "auto_fold_dirs": false,
+    "dock": "right"
   }
 }
