@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+SCRIPT_PATH="$(realpath "$0")"
+
+list() {
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --ignore-class)
+        ignore_class="$2";
+        shift 2;
+        ;;
+    esac
+  done
+
+  clients="$(hyprctl clients -j)"
+  zed_wins=$(echo "$clients" | jq -r 'map(select((.class | startswith("dev.zed.Zed")) and (.workspace.name == "special:hidden"))) | sort_by(.focusHistoryID) | map("\(.address):\(.title)") | .[]')
+
+  current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | \"\(.address):\(.title)\"")
+  current_window_addr=$(echo "$current_window" | cut -d':' -f1)
+
+  echo -e "$zed_wins"
+  zoxide query -l | while read d; do
+    echo "checking for open windows for $d..." >2
+    if ! echo "$zed_wins\n$current_window" | grep -q ":$(basename "$d") — "; then
+      echo "not found, adding" >2
+      echo "$d"
+    fi
+  done
+}
+
+run() {
+  args=$@
+  while [ $# -gt 0 ]; do
+    case $1 in
+      --ignore-class)
+        ignore_class="$2";
+        shift 2
+        ;;
+    esac
+  done
+
+  clients="$(hyprctl clients -j)"
+  zed_wins=$(echo "$clients" | jq -r 'map(select((.class | startswith("dev.zed.Zed")) and (.workspace.name == "special:hidden"))) | sort_by(.focusHistoryID) | map("\(.address):\(.title)") | .[]')
+
+  current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | .address")
+  list $args | sk \
+      --preview 'tree {}' \
+      --delimiter ':' \
+      --bind "enter:execute(\"$SCRIPT_PATH\" swap $current_window {1} $@)+accept" \
+      --bind "ctrl-d:execute(zoxide remove {})+reload(\"$SCRIPT_PATH\" list $@)" \
+      --bind "alt-enter:execute(\"$SCRIPT_PATH\" swap 0x000000000 {1} $@)+accept"
+}
+
+swap() {
+  current_window="$1"
+  target="$2"
+
+  echo "$current_window -> $target"
+
+  current_ws=$(hyprctl activeworkspace -j | jq -r '.id' )
+
+  hyprctl dispatch movetoworkspacesilent special:hidden,"address:$current_window"
+
+  if [[ $target == 0x* ]]; then
+    echo "swapping $current_window with $target"
+    hyprctl dispatch movetoworkspace "$current_ws,address:$target"
+  else
+    echo "swapping $current_window with a new zed instance at $target"
+    zeditor "$target"
+  fi
+}
+
+
+if [ -z "$1" ]; then
+  run $@
+else
+  case $1 in
+    swap)
+      shift;
+      swap $@;
+      ;;
+    list)
+      shift;
+      list $@;
+      ;;
+    *)
+      run $@
+      ;;
+  esac
+fi

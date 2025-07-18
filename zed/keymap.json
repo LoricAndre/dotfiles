@@ -121,7 +121,9 @@
     "context": "(GitCommit > Editor) || (GitPanel > Editor)",
     "bindings": {
       "enter": "git::Commit",
-      "ctrl-enter": "editor::Newline"
+      "ctrl-enter": "editor::Newline",
+      "ctrl-s": "git::Push",
+      "ctrl-l": "git::Pull"
     }
   },
   {
@@ -1086,10 +1088,7 @@
   {
     "context": "Editor && vim_mode == normal && vim_operator == y",
     "bindings": {
-      "s": [
-        "vim::PushAddSurrounds",
-        {}
-      ]
+      "s":  "vim::PushAddSurrounds"
     }
   },
   {
