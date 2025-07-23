@@ -64,6 +64,7 @@
       "space g d": "git::Diff",
       "space g r": "git::Restore",
       "space g l": "git::Blame",
+      "space g a": "git::Add",
       "space g z": [
         "task::Spawn",
         {
@@ -99,7 +100,7 @@
     "context": "GitDiff > Editor",
     "bindings": {
       "space g s": "git::StageAndNext",
-      "space g shift-s": "git::StageAll",
+      "space g a": "git::StageAll",
       "space g u": "git::UnstageAndNext"
     }
   },
