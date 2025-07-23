@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "show_edit_predictions": false,
   "git_panel": {
     "dock": "right"
   },
@@ -15,6 +16,16 @@
       "initialization_options": {
         "cargo": {
           "features": "all"
+        }
+      }
+    },
+    "helm_ls": {
+      "settings": {
+        "helm-ls": {
+          "logLevel": "info",
+          "yamlls": {
+            "enabled": true
+          }
         }
       }
     }
