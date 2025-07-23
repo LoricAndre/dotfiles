@@ -13,13 +13,12 @@ list() {
   done
 
   clients="$(hyprctl clients -j)"
-  zed_wins=$(echo "$clients" | jq -r 'map(select((.class | startswith("dev.zed.Zed")) and (.workspace.name == "special:hidden"))) | sort_by(.focusHistoryID) | map("\(.address):\(.title)") | .[]')
+  zed_wins=$(echo "$clients" | jq -r 'map(select((.class | startswith("dev.zed.Zed")) and (.grouped != []))) | sort_by(.focusHistoryID) | map("\(. as $client | $client.grouped | map(. == $client.address) | index(true) + 1):\(.title)") | .[]')
 
-  current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | \"\(.address):\(.title)\"")
-  current_window_addr=$(echo "$current_window" | cut -d':' -f1)
+  current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | .title")
 
   echo -e "$zed_wins"
-  zoxide query -l | while read d; do
+  zoxide query -l | head -n 50 | while read d; do
     echo "checking for open windows for $d..." >2
     if ! echo "$zed_wins\n$current_window" | grep -q ":$(basename "$d") — "; then
       echo "not found, adding" >2
@@ -40,7 +39,6 @@ run() {
   done
 
   clients="$(hyprctl clients -j)"
-  zed_wins=$(echo "$clients" | jq -r 'map(select((.class | startswith("dev.zed.Zed")) and (.workspace.name == "special:hidden"))) | sort_by(.focusHistoryID) | map("\(.address):\(.title)") | .[]')
 
   current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | .address")
   list $args | sk \
@@ -57,15 +55,12 @@ swap() {
 
   echo "$current_window -> $target"
 
-  current_ws=$(hyprctl activeworkspace -j | jq -r '.id' )
-
-  hyprctl dispatch movetoworkspacesilent special:hidden,"address:$current_window"
-
-  if [[ $target == 0x* ]]; then
-    echo "swapping $current_window with $target"
-    hyprctl dispatch movetoworkspace "$current_ws,address:$target"
+  hyprctl dispatch focuswindow "address:$current_window"
+  if [[ $target =~ ^[0-9]$ ]]; then
+    echo "setting $target as group active window"
+    hyprctl dispatch changegroupactive $target
   else
-    echo "swapping $current_window with a new zed instance at $target"
+    echo "opening a new zed instance at $target"
     zeditor "$target"
   fi
 }
