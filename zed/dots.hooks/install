@@ -1,6 +1,7 @@
 $DOTS_DIR/bin/dots _install yaml-language-server
+
 if ! command -v zeditor >/dev/null 2>&1; then
-	paru -S --needed --noconfirm zed-preview-bin
+	paru -S --needed --noconfirm zed
 fi
 if ! (command -v helm-ls || command -v helm_ls) >/dev/null 2>&1; then
 	paru -S --needed --noconfirm helm-ls
