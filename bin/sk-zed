@@ -19,9 +19,9 @@ list() {
 
   echo -e "$zed_wins"
   zoxide query -l | head -n 50 | while read d; do
-    echo "checking for open windows for $d..." >2
+    echo "checking for open windows for $d..." >&2
     if ! echo "$zed_wins\n$current_window" | grep -q ":$(basename "$d") — "; then
-      echo "not found, adding" >2
+      echo "not found, adding" >&2
       echo "$d"
     fi
   done

@@ -27,7 +27,7 @@ calendar(){
 if [ "$1" = "launcher" ]; then
     rofi -show drun
 elif [ "$1" = "wifi" ]; then
-    kitty --class popup_term nmtui
+    kitty --single-instance --class popup_term nmtui
 elif [ "$1" = "bluetooth" ]; then
     blueman-manager
 elif [ "$1" = "audio" ]; then

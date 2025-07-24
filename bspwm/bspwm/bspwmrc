@@ -76,7 +76,7 @@ run_once sxhkd pacwall dunst
 # ps aux | grep obsidian | grep '/usr/lib/electron' || obsidian
 run_once capacities
 run_once "nm-applet --indicator"
-# run_once "kitty --class scratchpad"
+# run_once "kitty --single-instance --class scratchpad"
 run "eww -c $HOME/.config/eww/bar open bar"
 run "caffeine-indicator"
 run_once "blueman-applet"
