@@ -65,6 +65,8 @@
       "space g r": "git::Restore",
       "space g l": "git::Blame",
       "space g a": "git::Add",
+      "space g s": "git::StageFile",
+      "space g S": "git::StageAll",
       "space g z": [
         "task::Spawn",
         {

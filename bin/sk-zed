@@ -42,6 +42,7 @@ run() {
   list $args | sk \
       --preview 'tree {}' \
       --delimiter ':' \
+      --tiebreak 'index,score,end'
       --bind "enter:execute(\"$SCRIPT_PATH\" swap $current_window {1} $@)+accept" \
       --bind "ctrl-d:execute(zoxide remove {})+reload(\"$SCRIPT_PATH\" list $@)" \
       --bind "alt-enter:execute(\"$SCRIPT_PATH\" swap 0x000000000 {1} $@)+accept"
