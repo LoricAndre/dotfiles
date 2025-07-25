@@ -17,7 +17,7 @@ list() {
 
   current_window=$(echo "$clients" | jq -r "map(select((.class !=\"$ignore_class\"))) | min_by(.focusHistoryID) | .title")
 
-  echo -e "$zed_wins"
+  echo -e "$zed_wins" | grep -v ":$current_window"
   zoxide query -l | head -n 50 | while read d; do
     if ! echo "$zed_wins\n$current_window" | grep -q ":$(basename "$d") — "; then
       echo "$d"
