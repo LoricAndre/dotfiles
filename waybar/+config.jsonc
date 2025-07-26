@@ -110,6 +110,7 @@
     },
     "all-outputs": false,
     "window-rewrite-default": "",
+    "unique-icons": true,
     "format-icons": {
       "active": "",
       "urgent": "!",
