@@ -57,3 +57,5 @@
   path = "~/.config/git/localconfig"
 [credential "https://github.com"]
 	username = LoricAndre
+[core]
+	hooksPath = .githooks
