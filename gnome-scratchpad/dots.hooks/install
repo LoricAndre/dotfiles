@@ -1,0 +1,1 @@
+git clone https://github.com/jmacdonald/gnome-scratchpad.git "$HOME/.local/share/gnome-shell/extensions/scratchpad@wastedintelligence.com"

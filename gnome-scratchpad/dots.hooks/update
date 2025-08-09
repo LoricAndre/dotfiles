@@ -1,0 +1,3 @@
+cd "$HOME/.local/share/gnome-shell/extensions/scratchpad@wastedintelligence.com"
+git reset --hard
+git pull
