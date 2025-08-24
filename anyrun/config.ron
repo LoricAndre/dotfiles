@@ -4,16 +4,16 @@ Config(
   // Fraction(n): A fraction of the width or height of the full screen (depends on exclusive zones and the settings related to them) window respectively
 
   // The horizontal position, adjusted so that Relative(0.5) always centers the runner
-  x: Absolute(200),
+  x: Fraction(0.4),
 
   // The vertical position, works the same as `x`
   y: Fraction(0.5),
 
   // The width of the runner
-  width: Absolute(400),
+  width: Fraction(0.4),
 
   // The minimum height of the runner, the runner will expand to fit all the entries
-  height: Fraction(1),
+  height: Fraction(0.4),
 
   // Hide match and plugin info icons
   hide_icons: false,
