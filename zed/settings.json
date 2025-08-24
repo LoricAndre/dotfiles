@@ -136,5 +136,18 @@
       "**/helmfile.d/**/*.yml",
       "**/values*.yaml"
     ]
+  },
+  "windows": {
+    "terminal": {
+      "shell": {
+        "with_arguments": {
+          "program": "C:/Program Files/Git/bin/bash.exe",
+          "args": ["-l", "-i"]
+        }
+      },
+      "env": {
+        "GCM_CREDENTIAL_STORE": "wincredman"
+      }
+    }
   }
 }

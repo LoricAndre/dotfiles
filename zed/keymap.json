@@ -371,131 +371,131 @@
       "ctrl-alt-shift-c": "editor::DisplayCursorNames"
     }
   },
-  {
-    "context": "Pane",
-    "bindings": {
-      "alt-1": [
-        "pane::ActivateItem",
-        0
-      ],
-      "alt-2": [
-        "pane::ActivateItem",
-        1
-      ],
-      "alt-3": [
-        "pane::ActivateItem",
-        2
-      ],
-      "alt-4": [
-        "pane::ActivateItem",
-        3
-      ],
-      "alt-5": [
-        "pane::ActivateItem",
-        4
-      ],
-      "alt-6": [
-        "pane::ActivateItem",
-        5
-      ],
-      "alt-7": [
-        "pane::ActivateItem",
-        6
-      ],
-      "alt-8": [
-        "pane::ActivateItem",
-        7
-      ],
-      "alt-9": [
-        "pane::ActivateItem",
-        8
-      ],
-      "alt-0": "pane::ActivateLastItem",
-      "ctrl-alt--": "pane::GoBack",
-      "ctrl-alt-_": "pane::GoForward",
-      "ctrl-shift-t": "pane::ReopenClosedItem",
-      "ctrl-shift-f": "project_search::ToggleFocus"
-    }
-  },
-  {
-    "context": "Workspace",
-    "bindings": {
-      // Change the default action on `menu::Confirm` by setting the parameter
-      "alt-cmd-o": [
-        "projects::OpenRecent",
-        {
-          "create_new_window": true
-        }
-      ],
-      "ctrl-shift-s": "workspace::SaveAs",
-      "ctrl-n": "workspace::NewFile",
-      "ctrl-shift-n": "workspace::NewWindow",
-      "alt-1": [
-        "workspace::ActivatePane",
-        0
-      ],
-      "alt-2": [
-        "workspace::ActivatePane",
-        1
-      ],
-      "alt-3": [
-        "workspace::ActivatePane",
-        2
-      ],
-      "alt-4": [
-        "workspace::ActivatePane",
-        3
-      ],
-      "alt-5": [
-        "workspace::ActivatePane",
-        4
-      ],
-      "alt-6": [
-        "workspace::ActivatePane",
-        5
-      ],
-      "alt-7": [
-        "workspace::ActivatePane",
-        6
-      ],
-      "alt-8": [
-        "workspace::ActivatePane",
-        7
-      ],
-      "alt-9": [
-        "workspace::ActivatePane",
-        8
-      ],
-      "ctrl-alt-b": "workspace::ToggleLeftDock",
-      "ctrl-b": "workspace::ToggleRightDock",
-      "ctrl-j": "workspace::ToggleBottomDock",
-      "ctrl-alt-y": "workspace::CloseAllDocks",
-      "ctrl-shift-f": "pane::DeploySearch",
-      "ctrl-shift-h": [
-        "pane::DeploySearch",
-        {
-          "replace_enabled": true
-        }
-      ],
-      "ctrl-shift-t": "project_symbols::Toggle",
-      "ctrl-p": "file_finder::Toggle",
-      "ctrl-tab": "tab_switcher::Toggle",
-      "ctrl-shift-tab": [
-        "tab_switcher::Toggle",
-        {
-          "select_last": true
-        }
-      ],
-      "ctrl-e": "file_finder::Toggle",
-      "ctrl-shift-p": "command_palette::Toggle",
-      "ctrl-shift-m": "diagnostics::Deploy",
-      "ctrl-shift-e": "project_panel::ToggleFocus",
-      "ctrl-alt-s": "workspace::SaveAll",
-      "escape": "workspace::Unfollow",
-      "alt-t": "task::Rerun",
-      "alt-shift-t": "task::Spawn"
-    }
-  },
+  // {
+  //   "context": "Pane",
+  //   "bindings": {
+  //     "alt-1": [
+  //       "pane::ActivateItem",
+  //       0
+  //     ],
+  //     "alt-2": [
+  //       "pane::ActivateItem",
+  //       1
+  //     ],
+  //     "alt-3": [
+  //       "pane::ActivateItem",
+  //       2
+  //     ],
+  //     "alt-4": [
+  //       "pane::ActivateItem",
+  //       3
+  //     ],
+  //     "alt-5": [
+  //       "pane::ActivateItem",
+  //       4
+  //     ],
+  //     "alt-6": [
+  //       "pane::ActivateItem",
+  //       5
+  //     ],
+  //     "alt-7": [
+  //       "pane::ActivateItem",
+  //       6
+  //     ],
+  //     "alt-8": [
+  //       "pane::ActivateItem",
+  //       7
+  //     ],
+  //     "alt-9": [
+  //       "pane::ActivateItem",
+  //       8
+  //     ],
+  //     "alt-0": "pane::ActivateLastItem",
+  //     "ctrl-alt--": "pane::GoBack",
+  //     "ctrl-alt-_": "pane::GoForward",
+  //     "ctrl-shift-t": "pane::ReopenClosedItem",
+  //     "ctrl-shift-f": "project_search::ToggleFocus"
+  //   }
+  // },
+  // {
+  //   "context": "Workspace",
+  //   "bindings": {
+  //     // Change the default action on `menu::Confirm` by setting the parameter
+  //     "alt-cmd-o": [
+  //       "projects::OpenRecent",
+  //       {
+  //         "create_new_window": true
+  //       }
+  //     ],
+  //     "ctrl-shift-s": "workspace::SaveAs",
+  //     "ctrl-n": "workspace::NewFile",
+  //     "ctrl-shift-n": "workspace::NewWindow",
+  //     "alt-1": [
+  //       "workspace::ActivatePane",
+  //       0
+  //     ],
+  //     "alt-2": [
+  //       "workspace::ActivatePane",
+  //       1
+  //     ],
+  //     "alt-3": [
+  //       "workspace::ActivatePane",
+  //       2
+  //     ],
+  //     "alt-4": [
+  //       "workspace::ActivatePane",
+  //       3
+  //     ],
+  //     "alt-5": [
+  //       "workspace::ActivatePane",
+  //       4
+  //     ],
+  //     "alt-6": [
+  //       "workspace::ActivatePane",
+  //       5
+  //     ],
+  //     "alt-7": [
+  //       "workspace::ActivatePane",
+  //       6
+  //     ],
+  //     "alt-8": [
+  //       "workspace::ActivatePane",
+  //       7
+  //     ],
+  //     "alt-9": [
+  //       "workspace::ActivatePane",
+  //       8
+  //     ],
+  //     "ctrl-alt-b": "workspace::ToggleLeftDock",
+  //     "ctrl-b": "workspace::ToggleRightDock",
+  //     "ctrl-j": "workspace::ToggleBottomDock",
+  //     "ctrl-alt-y": "workspace::CloseAllDocks",
+  //     "ctrl-shift-f": "pane::DeploySearch",
+  //     "ctrl-shift-h": [
+  //       "pane::DeploySearch",
+  //       {
+  //         "replace_enabled": true
+  //       }
+  //     ],
+  //     "ctrl-shift-t": "project_symbols::Toggle",
+  //     "ctrl-p": "file_finder::Toggle",
+  //     "ctrl-tab": "tab_switcher::Toggle",
+  //     "ctrl-shift-tab": [
+  //       "tab_switcher::Toggle",
+  //       {
+  //         "select_last": true
+  //       }
+  //     ],
+  //     "ctrl-e": "file_finder::Toggle",
+  //     "ctrl-shift-p": "command_palette::Toggle",
+  //     "ctrl-shift-m": "diagnostics::Deploy",
+  //     "ctrl-shift-e": "project_panel::ToggleFocus",
+  //     "ctrl-alt-s": "workspace::SaveAll",
+  //     "escape": "workspace::Unfollow",
+  //     "alt-t": "task::Rerun",
+  //     "alt-shift-t": "task::Spawn"
+  //   }
+  // },
   // Bindings from Sublime Text
   {
     "context": "Editor",
