@@ -1,0 +1,8 @@
+[Unit]
+Description=Start waydroid session
+
+[Service]
+ExecStart=/usr/bin/waydroid session start
+
+[Install]
+WantedBy=default.target
