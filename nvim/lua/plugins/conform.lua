@@ -36,6 +36,7 @@ return {
     },
     -- This will provide type hinting with LuaLS
     ---@module "conform"
+    ---@diagnostic disable-next-line: undefined-doc-name
     ---@type conform.setupOpts
     opts = {
       -- Define your formatters
@@ -70,11 +71,11 @@ return {
       vim.api.nvim_create_autocmd('BufWritePre', {
         desc = 'Format on save',
         pattern = '*',
-        group = aug,
+        group = vim.api.nvim_create_augroup('custom_conform', { clear = true }),
         callback = function(args)
           if
-            not vim.api.nvim_buf_is_valid(args.buf)
-            or vim.bo[args.buf].buftype ~= ''
+              not vim.api.nvim_buf_is_valid(args.buf)
+              or vim.bo[args.buf].buftype ~= ''
           then
             return
           end
