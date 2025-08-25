@@ -76,7 +76,9 @@
       "space r": "task::Spawn",
       "space s": "workspace::NewSearch",
       "space e": "project_panel::ToggleFocus",
-      "shift-y": ["workspace::SendKeystrokes", "y $"]
+      "shift-y": ["workspace::SendKeystrokes", "y $"],
+      "tab": "pane::ActivateNextItem",
+      "shift-tab": "pane::ActivatePreviousItem"
     }
   },
   {
