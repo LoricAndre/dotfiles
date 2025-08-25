@@ -38,7 +38,7 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal",
+    "context": "(Editor && vim_mode == normal) || EmptyPane || SharedScreen",
     "bindings": {
       "g c c": "editor::ToggleComments",
       "space q": "pane::CloseActiveItem",
@@ -172,23 +172,6 @@
       "alt-enter": ["terminal::SendKeystroke", "alt-enter"]
     }
   },
-  // {
-  //   "context": "EmptyPane || SharedScreen",
-  //   "bindings": {
-  //     ":": "command_palette::Toggle",
-  //     "alt-j": "workspace::ActivatePaneLeft",
-  //     "alt-m": "workspace::ActivatePaneRight",
-  //     "alt-l": "workspace::ActivatePaneUp",
-  //     "alt-k": "workspace::ActivatePaneDown",
-  //     "space g b": "git::Branch",
-  //     "space f": "file_finder::Toggle",
-  //     "space a": "agent::ToggleFocus",
-  //     "space space": ["workspace::SendKeystrokes", "ctrl-tab enter"],
-  //     "space z": "workspace::ToggleZoom",
-  //     "space r": "task::Spawn",
-  //     "space s": "workspace::NewSearch"
-  //   }
-  // },
   {
     // netrw compatibility
     "context": "ProjectPanel && not_editing",
