@@ -7,6 +7,10 @@
           "secondary": true
         }
       ],
+      "ctrl-q": "pane::CloseActiveItem",
+      "alt-q": "pane::CloseActiveItem",
+      "ctrl-shift-q": "pane::CloseAllItems",
+      "alt-shift-q": "pane::CloseAllItems",
       "alt-enter": [
         "picker::ConfirmInput",
         {
@@ -74,6 +78,12 @@
       "space r": "task::Spawn",
       "space s": "workspace::NewSearch",
       "space e": "project_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "FileFinder || (FileFinder > Picker > Editor)",
+    "bindings": {
+      "ctrl-v": "menu::SecondaryConfirm" // vertical split
     }
   },
   {
@@ -1076,80 +1086,80 @@
   //     "a": "vim::Argument"
   //   }
   // },
-  // {
-  //   "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
-  //   "bindings": {
-  //     "u": "vim::ConvertToLowerCase",
-  //     "U": "vim::ConvertToUpperCase",
-  //     "o": "vim::OtherEnd",
-  //     "shift-o": "vim::OtherEnd",
-  //     "d": "vim::VisualDelete",
-  //     "x": "vim::VisualDelete",
-  //     "shift-d": "vim::VisualDelete",
-  //     "shift-x": "vim::VisualDelete",
-  //     "y": "vim::VisualYank",
-  //     "shift-y": "vim::VisualYank",
-  //     "p": "vim::Paste",
-  //     "shift-p": [
-  //       "vim::Paste",
-  //       {
-  //         "preserve_clipboard": true
-  //       }
-  //     ],
-  //     "s": "vim::Substitute",
-  //     "shift-s": "vim::SubstituteLine",
-  //     "shift-r": "vim::SubstituteLine",
-  //     "c": "vim::Substitute",
-  //     "~": "vim::ChangeCase",
-  //     "*": [
-  //       "vim::MoveToNext",
-  //       {
-  //         "partial_word": true
-  //       }
-  //     ],
-  //     "#": [
-  //       "vim::MoveToPrevious",
-  //       {
-  //         "partial_word": true
-  //       }
-  //     ],
-  //     "ctrl-a": "vim::Increment",
-  //     "ctrl-x": "vim::Decrement",
-  //     "g ctrl-a": [
-  //       "vim::Increment",
-  //       {
-  //         "step": true
-  //       }
-  //     ],
-  //     "g ctrl-x": [
-  //       "vim::Decrement",
-  //       {
-  //         "step": true
-  //       }
-  //     ],
-  //     "shift-i": "vim::InsertBefore",
-  //     "shift-a": "vim::InsertAfter",
-  //     "shift-j": "vim::JoinLines",
-  //     "r": "vim::PushReplace",
-  //     "ctrl-c": "vim::SwitchToNormalMode",
-  //     "escape": "vim::SwitchToNormalMode",
-  //     "ctrl-[": "vim::SwitchToNormalMode",
-  //     ">": "editor::Indent",
-  //     "<": "editor::Outdent",
-  //     "i": [
-  //       "vim::PushObject",
-  //       {
-  //         "around": false
-  //       }
-  //     ],
-  //     "a": [
-  //       "vim::PushObject",
-  //       {
-  //         "around": true
-  //       }
-  //     ]
-  //   }
-  // },
+  {
+    "context": "Editor && vim_mode == visual && !VimWaiting && !VimObject",
+    "bindings": {
+      //     "u": "vim::ConvertToLowerCase",
+      //     "U": "vim::ConvertToUpperCase",
+      //     "o": "vim::OtherEnd",
+      //     "shift-o": "vim::OtherEnd",
+      //     "d": "vim::VisualDelete",
+      //     "x": "vim::VisualDelete",
+      //     "shift-d": "vim::VisualDelete",
+      //     "shift-x": "vim::VisualDelete",
+      //     "y": "vim::VisualYank",
+      //     "shift-y": "vim::VisualYank",
+      //     "p": "vim::Paste",
+      //     "shift-p": [
+      //       "vim::Paste",
+      //       {
+      //         "preserve_clipboard": true
+      //       }
+      //     ],
+      //     "s": "vim::Substitute",
+      //     "shift-s": "vim::SubstituteLine",
+      //     "shift-r": "vim::SubstituteLine",
+      //     "c": "vim::Substitute",
+      //     "~": "vim::ChangeCase",
+      //     "*": [
+      //       "vim::MoveToNext",
+      //       {
+      //         "partial_word": true
+      //       }
+      //     ],
+      //     "#": [
+      //       "vim::MoveToPrevious",
+      //       {
+      //         "partial_word": true
+      //       }
+      //     ],
+      //     "ctrl-a": "vim::Increment",
+      //     "ctrl-x": "vim::Decrement",
+      //     "g ctrl-a": [
+      //       "vim::Increment",
+      //       {
+      //         "step": true
+      //       }
+      //     ],
+      //     "g ctrl-x": [
+      //       "vim::Decrement",
+      //       {
+      //         "step": true
+      //       }
+      //     ],
+      //     "shift-i": "vim::InsertBefore",
+      //     "shift-a": "vim::InsertAfter",
+      //     "shift-j": "vim::JoinLines",
+      //     "r": "vim::PushReplace",
+      //     "ctrl-c": "vim::SwitchToNormalMode",
+      //     "escape": "vim::SwitchToNormalMode",
+      //     "ctrl-[": "vim::SwitchToNormalMode",
+      ">": "editor::Indent",
+      "<": "editor::Outdent"
+      //     "i": [
+      //       "vim::PushObject",
+      //       {
+      //         "around": false
+      //       }
+      //     ],
+      //     "a": [
+      //       "vim::PushObject",
+      //       {
+      //         "around": true
+      //       }
+      //     ]
+    }
+  },
   // {
   //   "context": "Editor && vim_mode == visual",
   //   "bindings": {
@@ -1215,35 +1225,37 @@
       "space r": "task::Spawn",
       "space s": "workspace::NewSearch"
     }
+  },
+  {
+    //   // netrw compatibility
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      //     ":": "command_palette::Toggle",
+      "a": "project_panel::NewFile",
+      //     "r": "project_panel::Rename",
+      //     "/": "project_panel::NewSearchInDirectory",
+      "shift-a": "project_panel::NewDirectory",
+      //     "enter": "project_panel::OpenPermanent",
+      "escape": "project_panel::ToggleFocus",
+      "j": "project_panel::CollapseSelectedEntry",
+      "k": "menu::SelectNext",
+      "l": "menu::SelectPrevious",
+      "m": "project_panel::ExpandSelectedEntry",
+      //     "o": "project_panel::OpenPermanent",
+      "d": "project_panel::Delete",
+      //     "t": "project_panel::OpenPermanent",
+      //     "v": "project_panel::OpenPermanent",
+      "x": "project_panel::Cut",
+      "y": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "n": "project_panel::Duplicate"
+      //     "shift-g": "menu::SelectLast",
+      //     "g g": "menu::SelectFirst",
+      //     "-": "project_panel::SelectParent",
+      //     "alt-j": "workspace::ActivatePaneLeft",
+      //     "alt-m": "workspace::ActivatePaneRight",
+      //     "alt-l": "workspace::ActivatePaneUp",
+      //     "alt-k": "workspace::ActivatePaneDown"
+    }
   }
-  // {
-  //   // netrw compatibility
-  //   "context": "ProjectPanel && not_editing",
-  //   "bindings": {
-  //     ":": "command_palette::Toggle",
-  //     "a": "project_panel::NewFile",
-  //     "r": "project_panel::Rename",
-  //     "/": "project_panel::NewSearchInDirectory",
-  //     "shift-a": "project_panel::NewDirectory",
-  //     "enter": "project_panel::OpenPermanent",
-  //     "escape": "project_panel::ToggleFocus",
-  //     "j": "project_panel::CollapseSelectedEntry",
-  //     "k": "menu::SelectNext",
-  //     "l": "menu::SelectPrevious",
-  //     "m": "project_panel::ExpandSelectedEntry",
-  //     "o": "project_panel::OpenPermanent",
-  //     "d": "project_panel::Delete",
-  //     "t": "project_panel::OpenPermanent",
-  //     "v": "project_panel::OpenPermanent",
-  //     "x": "project_panel::Cut",
-  //     "p": "project_panel::Paste",
-  //     "shift-g": "menu::SelectLast",
-  //     "g g": "menu::SelectFirst",
-  //     "-": "project_panel::SelectParent",
-  //     "alt-j": "workspace::ActivatePaneLeft",
-  //     "alt-m": "workspace::ActivatePaneRight",
-  //     "alt-l": "workspace::ActivatePaneUp",
-  //     "alt-k": "workspace::ActivatePaneDown"
-  //   }
-  // }
 ]
