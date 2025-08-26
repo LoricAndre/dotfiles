@@ -2,4 +2,6 @@
 
 if [ -z "$(hyprctl monitors all | grep 'Monitor' | grep -v 'eDP-')" ]; then
   systemctl suspend-then-hibernate
+else
+  pidof hyprlock || hyprlock
 fi
