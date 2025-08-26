@@ -1,1 +1,14 @@
-just auto-apply
+#!/usr/bin/env bash
+for file in $(git diff-tree HEAD --name-only --no-commit-id -r); do
+  if [[ $file == .* ]] || [[ ! $file == */* ]]; then
+    echo "Skipping $file"
+  else
+    echo "Applying $file"
+    dir=$(realpath $file --relative-to $root | cut -d'/' -f1)
+    if [[ ! $dirs == *"$dir"* ]]; then
+      dirs="$dirs $dir"
+    fi
+  fi
+done
+echo "Applying $dirs"
+./bin/dots apply $dirs
