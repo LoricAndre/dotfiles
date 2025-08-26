@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-for file in $(git diff-tree HEAD --name-only --no-commit-id -r); do
+for file in $(git diff --cached --name-only --diff-filter=ACM); do
   if [[ $file == .* ]] || [[ ! $file == */* ]]; then
     echo "Skipping $file"
   else
     echo "Applying $file"
-    dir=$(realpath $file --relative-to $root | cut -d'/' -f1)
+    dir=$(realpath $file --relative-to $(pwd) | cut -d'/' -f1)
     if [[ ! $dirs == *"$dir"* ]]; then
       dirs="$dirs $dir"
     fi
   fi
 done
-echo "Applying $dirs"
 ./bin/dots apply $dirs

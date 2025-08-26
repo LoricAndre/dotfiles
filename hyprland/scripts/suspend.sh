@@ -1,7 +1,9 @@
 #!/bin/sh
 
-if [ -z "$(hyprctl monitors all | grep 'Monitor' | grep -v 'eDP-')" ]; then
-  systemctl suspend-then-hibernate
+if hyprctl monitors all | grep 'Monitor' | grep -vq 'eDP-'; then
+  echo "External monitor detected, suspending..."
+  systemctl suspend
 else
-  pidof hyprlock || hyprlock
+  echo "No external monitor detected, enabling deep sleep..."
+  systemctl suspend-then-hibernate
 fi
