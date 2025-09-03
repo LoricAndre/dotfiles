@@ -8,6 +8,9 @@
 // from the command palette or from `Zed` application menu.
 {
   "show_edit_predictions": false,
+  "preview_tabs": {
+    "enabled": false
+  },
   "git_panel": {
     "dock": "right"
   },
@@ -60,7 +63,7 @@
     "default_profile": "write",
     "default_model": {
       "provider": "copilot_chat",
-      "model": "gpt-4.1"
+      "model": "claude-sonnet-4"
     }
   },
   "context_servers": {

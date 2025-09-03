@@ -28,7 +28,7 @@ handle() {
   echo "Received $1"
   case $1 in
   # monitoradded*) handle_mon $1;;
-  "monitorremoved>>eDP*") echo 'kanshi removed the internal monitor, nothing to do' ;;
+  "monitorremoved>>eDP"*) echo 'kanshi removed the internal monitor, nothing to do' ;;
   "monitorremoved>>"*) handle_mon "$1" ;;
   "windowtitlev2>>"*) handle_title_change "$1" ;;
     # focusedmon*) do_something_else ;;
