@@ -21,48 +21,16 @@ local function open_last()
     end
   end
 end
+local function term_size(t)
+  if t.direction == 'horizontal' then
+    return math.floor(vim.o.lines * 0.25)
+  else
+    return math.floor(vim.o.columns * 0.35)
+  end
+end
 
 return {
   'akinsho/toggleterm.nvim',
-  -- dependencies = {
-  --   {
-  --     'ryanmsnyder/toggleterm-manager.nvim',
-  --     dependencies = {
-  --       'akinsho/nvim-toggleterm.lua',
-  --       'nvim-telescope/telescope.nvim',
-  --       'nvim-lua/plenary.nvim', -- only needed because it's a dependency of telescope
-  --     },
-  --     enabled = vim.g.picker == 'telescope',
-  --     keys = {
-  --       { '<leader>t', function() require('toggleterm-manager').open({}) end }
-  --     },
-  --     opts = {
-  --       mappings = {
-  --         i = {
-  --           ['<CR>'] = {
-  --             action = function(prompt_bufnr, exit_on_action)
-  --               -- get current telescope selection
-  --               local actions_state = require('telescope.actions.state')
-  --               local selection = actions_state.get_selected_entry()
-  --               if selection == nil then
-  --                 return
-  --               end
-  --
-  --               local terms = require('toggleterm.utils').list
-  --
-  --               -- get toggleterm's Terminal object
-  --               local term = selection.value
-  --
-  --               -- do something with the terminal
-  --               term:open()
-  --             end,
-  --             exit_on_action = true
-  --           }
-  --         }
-  --       }
-  --     }
-  --   }
-  -- },
   version = '*',
   cmd = {
     'ToggleTerm',
@@ -72,26 +40,33 @@ return {
     winbar = {
       enabled = true
     },
-    close_on_exit = true,
-    size = function(t)
-      if t.direction == 'horizontal' then
-        return vim.o.lines * 0.25
-      else
-        return vim.o.columns * 0.35
-      end
-    end,
+    start_in_insert = false,
+    size = term_size,
     on_create = function(t)
       vim.api.nvim_create_autocmd('BufEnter', {
         group = vim.api.nvim_create_augroup(
           'custom_toggleterm_' .. t.id,
           { clear = true }
         ),
-        command = 'startinsert',
+        callback = function()
+          vim.defer_fn(function()
+            if pcall(vim.api.nvim_set_current_win, t.window) then
+              vim.cmd.startinsert()
+            end
+          end, 100)
+        end,
         buffer = t.bufnr,
       })
-      vim.cmd.startinsert()
+      vim.keymap.set({ 'i', 't' }, 'Ȥ', function()
+        open_last()
+      end, {
+        buffer = t.bufnr
+      })
     end,
     on_open = function(t)
+      if t.hidden then
+        return
+      end
       if _G.term_hist == nil then
         _G.term_hist = {}
       end
@@ -101,19 +76,24 @@ return {
         end
       end
       _G.term_hist[#_G.term_hist + 1] = t.id
-      vim.notify('On open')
       local terms = require('toggleterm.terminal').get_all(true)
       for _, term in ipairs(terms) do
         if term.bufnr ~= t.bufnr then
-          vim.notify('Closing term' .. (term.display_name or term.bufnr))
           term:close()
         else
-          vim.notify('Not closing term' .. (term.display_name or term.bufnr))
         end
       end
-      vim.cmd.startinsert()
+      local size = term_size(t)
+      if t.direction == 'vertical' then
+        vim.api.nvim_win_set_width(t.window, size)
+      elseif t.direction == 'horizontal' then
+        vim.api.nvim_win_set_height(t.window, size)
+      end
     end,
     on_exit = function(t)
+      if t.hidden then
+        return
+      end
       for i, v in ipairs(_G.term_hist) do
         if v == t.id then
           _G.term_hist[i] = nil
@@ -146,10 +126,6 @@ return {
           { noremap = true, silent = true }
         )
       end,
-      -- function to run on closing the terminal
-      on_close = function(term)
-        vim.cmd('startinsert!')
-      end,
     })
     local jjui = Terminal:new({
       cmd = 'jjui -r "present(@) | ancestors(immutable_heads().., 100) | present(trunk())"',
@@ -169,10 +145,6 @@ return {
           '<cmd>close<CR>',
           { noremap = true, silent = true }
         )
-      end,
-      -- function to run on closing the terminal
-      on_close = function(term)
-        vim.cmd('startinsert!')
       end,
     })
 
