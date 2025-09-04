@@ -47,6 +47,7 @@ end
 return {
   'olimorris/codecompanion.nvim',
   opts = function()
+    require('util').sidebar.register_ft('codecompanion')
     return {
       strategies = {
         chat = {
@@ -77,21 +78,6 @@ return {
       opts = {
         log_level = 'DEBUG',
       },
-      adapters = {
-        mistral = function()
-          return require('codecompanion.adapters').extend('mistral', {
-            schema = {
-              model = {
-                default = 'codestral-latest',
-              },
-            },
-            env = {
-              url = 'https://codestral.mistral.ai',
-              api_key = 'cmd:pass show mistral-api-key',
-            },
-          })
-        end,
-      },
       display = {
         chat = {
           window = {
@@ -103,13 +89,8 @@ return {
   end,
   keys = {
     {
-      '<leader>aa',
-      '<CMD>CodeCompanion<CR>',
-      desc = '[llm] open code companion prompt',
-    },
-    {
-      '<leader>ac',
-      '<CMD>CodeCompanionChat<CR>',
+      '<leader>a',
+      function() require('util').sidebar.open('CodeCompanionChat') end,
       desc = '[llm] open code companion chat',
     },
   },
@@ -120,7 +101,7 @@ return {
     'CodeCompanionCmd',
   },
   dependencies = {
-    { 'nvim-lua/plenary.nvim', lazy = true },
+    { 'nvim-lua/plenary.nvim',           lazy = true },
     { 'nvim-treesitter/nvim-treesitter', lazy = true },
     {
       'blink.cmp',

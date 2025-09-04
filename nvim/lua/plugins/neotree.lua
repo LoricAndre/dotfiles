@@ -2,9 +2,9 @@ return {
   'nvim-neo-tree/neo-tree.nvim',
   branch = 'v3.x',
   dependencies = {
-    { 'nvim-lua/plenary.nvim', lazy = true },
+    { 'nvim-lua/plenary.nvim',       lazy = true },
     { 'nvim-tree/nvim-web-devicons', lazy = true }, -- not strictly required, but recommended
-    { 'MunifTanjim/nui.nvim', lazy = true },
+    { 'MunifTanjim/nui.nvim',        lazy = true },
     -- {"3rd/image.nvim", opts = {}}, -- Optional image support in preview window: See `# Preview Mode` for more information
   },
   opts = {
@@ -105,10 +105,17 @@ return {
       },
     },
   },
+  config = function(_, opts)
+    require('util').sidebar.register_ft('neo-tree')
+    return require('neo-tree').setup(opts)
+  end,
+  cmd = {
+    'Neotree'
+  },
   keys = {
     {
       '<leader>e',
-      '<CMD>Neotree reveal toggle<CR>',
+      function() require('util').sidebar.open('Neotree right') end,
       desc = '[ntr] toggle neotree',
     },
     {

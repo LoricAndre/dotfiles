@@ -24,8 +24,54 @@ end
 
 return {
   'akinsho/toggleterm.nvim',
+  -- dependencies = {
+  --   {
+  --     'ryanmsnyder/toggleterm-manager.nvim',
+  --     dependencies = {
+  --       'akinsho/nvim-toggleterm.lua',
+  --       'nvim-telescope/telescope.nvim',
+  --       'nvim-lua/plenary.nvim', -- only needed because it's a dependency of telescope
+  --     },
+  --     enabled = vim.g.picker == 'telescope',
+  --     keys = {
+  --       { '<leader>t', function() require('toggleterm-manager').open({}) end }
+  --     },
+  --     opts = {
+  --       mappings = {
+  --         i = {
+  --           ['<CR>'] = {
+  --             action = function(prompt_bufnr, exit_on_action)
+  --               -- get current telescope selection
+  --               local actions_state = require('telescope.actions.state')
+  --               local selection = actions_state.get_selected_entry()
+  --               if selection == nil then
+  --                 return
+  --               end
+  --
+  --               local terms = require('toggleterm.utils').list
+  --
+  --               -- get toggleterm's Terminal object
+  --               local term = selection.value
+  --
+  --               -- do something with the terminal
+  --               term:open()
+  --             end,
+  --             exit_on_action = true
+  --           }
+  --         }
+  --       }
+  --     }
+  --   }
+  -- },
   version = '*',
+  cmd = {
+    'ToggleTerm',
+    'TermSelect'
+  },
   opts = {
+    winbar = {
+      enabled = true
+    },
     close_on_exit = true,
     size = function(t)
       if t.direction == 'horizontal' then
@@ -55,6 +101,17 @@ return {
         end
       end
       _G.term_hist[#_G.term_hist + 1] = t.id
+      vim.notify('On open')
+      local terms = require('toggleterm.terminal').get_all(true)
+      for _, term in ipairs(terms) do
+        if term.bufnr ~= t.bufnr then
+          vim.notify('Closing term' .. (term.display_name or term.bufnr))
+          term:close()
+        else
+          vim.notify('Not closing term' .. (term.display_name or term.bufnr))
+        end
+      end
+      vim.cmd.startinsert()
     end,
     on_exit = function(t)
       for i, v in ipairs(_G.term_hist) do
@@ -67,6 +124,8 @@ return {
     end,
   },
   config = function(_, opts)
+    require('toggleterm').setup(opts)
+
     local Terminal = require('toggleterm.terminal').Terminal
     local lazygit = Terminal:new({
       cmd = 'lazygit',
@@ -134,17 +193,7 @@ return {
       mode = 'n',
     },
     {
-      '<C-t>',
-      function()
-        local tt = require('toggleterm.terminal')
-        local curr = tt.get(tt.get_focused_id())
-        if curr then
-          local t = tt.get_or_create_term(#tt.get_all(true) + 1)
-          t:open()
-          curr:close()
-        end
-      end,
-      mode = 't',
+      '<leader>t', '<CMD>TermSelect<CR>'
     },
     {
       '<C-a>',

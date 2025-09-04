@@ -45,9 +45,6 @@
       }
     }
   },
-  "language_models": {
-    "anthropic": {}
-  },
   "collaboration_panel": {
     "dock": "right"
   },
@@ -73,6 +70,12 @@
       "settings": {
         "default_minimum_tokens": "10000"
       }
+    },
+    "browsermcp": {
+      "source": "custom",
+      "enabled": true,
+      "command": "npx",
+      "args": ["@browsermcp/mcp@latest"]
     }
   },
   "telemetry": {
