@@ -21,10 +21,11 @@ local function open_last()
     end
   end
 end
+
 local function term_size(t)
   if t.direction == 'horizontal' then
     return math.floor(vim.o.lines * 0.25)
-  else
+  elseif t.direction == 'vertical' then
     return math.floor(vim.o.columns * 0.35)
   end
 end
@@ -42,7 +43,10 @@ return {
     },
     start_in_insert = false,
     size = term_size,
-    on_create = function(t)
+    on_open = function(t)
+      if t.hidden then
+        return
+      end
       vim.api.nvim_create_autocmd('BufEnter', {
         group = vim.api.nvim_create_augroup(
           'custom_toggleterm_' .. t.id,
@@ -58,15 +62,39 @@ return {
         buffer = t.bufnr,
       })
       vim.keymap.set({ 'i', 't' }, 'Ȥ', function()
-        open_last()
+        local terms = require('toggleterm.terminal').get_all(true)
+        local found = false
+        for _, term in ipairs(terms) do
+          if found then
+            focus_term(term.id)
+            return
+          end
+          if term.id == t.id then
+            found = true
+          end
+        end
+        if #terms > 0 then
+          focus_term(terms[1].id)
+        end
       end, {
         buffer = t.bufnr
       })
-    end,
-    on_open = function(t)
-      if t.hidden then
-        return
-      end
+      vim.keymap.set({ 'i', 't' }, 'ȥ', function()
+        local terms = require('toggleterm.terminal').get_all(true)
+        local prev_id = nil
+        for _, term in ipairs(terms) do
+          if term.id == t.id and prev_id ~= nil then
+            focus_term(prev_id)
+            return
+          end
+          prev_id = term.id
+        end
+        if #terms > 0 then
+          focus_term(terms[#terms].id)
+        end
+      end, {
+        buffer = t.bufnr
+      })
       if _G.term_hist == nil then
         _G.term_hist = {}
       end
@@ -90,7 +118,7 @@ return {
         vim.api.nvim_win_set_height(t.window, size)
       end
     end,
-    on_exit = function(t)
+    on_close = function(t)
       if t.hidden then
         return
       end
@@ -100,7 +128,6 @@ return {
         end
       end
       open_last()
-      t:close()
     end,
   },
   config = function(_, opts)

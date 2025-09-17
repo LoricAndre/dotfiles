@@ -1,8 +1,13 @@
 return {
   'stevearc/overseer.nvim',
   opts = {
-    strategy = 'toggleterm',
-    dap = false
+    strategy = {
+      'toggleterm',
+      close_on_exit = true,
+      quit_on_exit = 'never',
+      open_on_start = true
+    },
+    dap = false,
   },
   cmd = {
     'OverseerOpen',

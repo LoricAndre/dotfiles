@@ -113,6 +113,15 @@ local autocmds = {
       vim.system({ 'mkdir', '-p', vim.fs.dirname(e.match) }):wait()
     end,
   },
+  {
+    { 'WinEnter', 'BufWinEnter', 'TermOpen' },
+    '*',
+    function(args)
+      if vim.startswith(vim.api.nvim_buf_get_name(args.buf), 'term://') then
+        vim.cmd('startinsert')
+      end
+    end,
+  }
 }
 
 local group = vim.api.nvim_create_augroup('custom_autocmds', { clear = true })

@@ -12,6 +12,7 @@ application/x-extension-xht=${browser_desktop}
 image/svg+xml=${browser_desktop}
 application/pdf=${browser_desktop}
 x-scheme-handler/mailto=${browser_desktop}
+x-scheme-handler/terminal=${terminal}.desktop
 
 [Added Associations]
 x-scheme-handler/http=${browser_desktop};

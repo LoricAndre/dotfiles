@@ -6,10 +6,10 @@ return {
       {
         'github/copilot.vim',
         cmd = { 'Copilot' },
-      }, -- or zbirenbaum/copilot.lua
+      },                                                           -- or zbirenbaum/copilot.lua
       { 'nvim-lua/plenary.nvim', branch = 'master', lazy = true }, -- for curl, log and async functions
     },
-    build = 'make tiktoken', -- Only on MacOS or Linux
+    build = 'make tiktoken',                                       -- Only on MacOS or Linux
     opts = {
       window = {
         layout = 'float',

@@ -30,6 +30,15 @@ profile uw-2 {
     scale 1.5
   }
 }
+profile uw-3 {
+  output "Samsung Electric Company S34C65xV HNTY502266" {
+    mode 3440x1440@100
+    position 0,0
+  }
+  output eDP-2 {
+    disable
+  }
+}
 
 profile m-1 {
   output "Huawei Technologies Co., Inc. ZQE-CAA 0xC080F622" {

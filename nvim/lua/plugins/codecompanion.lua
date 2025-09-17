@@ -52,7 +52,7 @@ return {
       strategies = {
         chat = {
           adapter = 'copilot',
-          model = 'claude-sonnet-4-20250514',
+          model = 'gpt-4.1',
           tools = {
             editor = {
               opts = {
@@ -64,15 +64,20 @@ return {
                 require_approval = false,
               },
             },
+            opts = {
+              default_tools = {
+                'meta_agent'
+              }
+            }
           },
         },
         inline = {
           adapter = 'copilot',
-          model = 'claude-sonnet-4-20250514',
+          model = 'gpt-4.1',
         },
         cmd = {
           adapter = 'copilot',
-          model = 'claude-sonnet-4-20250514',
+          model = 'gpt-4.1',
         },
       },
       opts = {
@@ -85,6 +90,9 @@ return {
           },
         },
       },
+      extensions = {
+        reasoning = { callback = 'codecompanion._extensions.reasoning', opts = { enabled = true } }
+      }
     }
   end,
   keys = {
@@ -101,8 +109,9 @@ return {
     'CodeCompanionCmd',
   },
   dependencies = {
-    { 'nvim-lua/plenary.nvim',           lazy = true },
-    { 'nvim-treesitter/nvim-treesitter', lazy = true },
+    { 'lazymaniac/codecompanion-reasoning.nvim', opts = {},  lazy = true },
+    { 'nvim-lua/plenary.nvim',                   lazy = true },
+    { 'nvim-treesitter/nvim-treesitter',         lazy = true },
     {
       'blink.cmp',
       lazy = true,

@@ -8,29 +8,52 @@ return {
     'TmuxNavigatePrevious',
     'TmuxNavigatorProcessList',
   },
+  init = function()
+    vim.g.tmux_navigator_no_mappings = 1
+  end,
   keys = {
     {
       '<M-h>',
       '<cmd>TmuxNavigateLeft<cr>',
-      mode = { 'n', 't' },
       desc = '[tmx] navigate left',
     },
     {
       '<M-j>',
       '<cmd>TmuxNavigateDown<cr>',
-      mode = { 'n', 't' },
       desc = '[tmx] navigate down',
     },
     {
       '<M-k>',
       '<cmd>TmuxNavigateUp<cr>',
-      mode = { 'n', 't' },
       desc = '[tmx] navigate up',
     },
     {
       '<M-l>',
       '<cmd>TmuxNavigateRight<cr>',
-      mode = { 'n', 't' },
+      desc = '[tmx] navigate right',
+    },
+    {
+      '<M-h>',
+      '<C-\\><C-n><cmd>TmuxNavigateLeft<cr>',
+      mode = 't',
+      desc = '[tmx] navigate left',
+    },
+    {
+      '<M-j>',
+      '<C-\\><C-n><cmd>TmuxNavigateDown<cr>',
+      mode = 't',
+      desc = '[tmx] navigate down',
+    },
+    {
+      '<M-k>',
+      '<C-\\><C-n><cmd>TmuxNavigateUp<cr>',
+      mode = 't',
+      desc = '[tmx] navigate up',
+    },
+    {
+      '<M-l>',
+      '<C-\\><C-n><cmd>TmuxNavigateRight<cr>',
+      mode = 't',
       desc = '[tmx] navigate right',
     },
   },

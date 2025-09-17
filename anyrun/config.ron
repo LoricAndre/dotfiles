@@ -42,6 +42,6 @@ Config(
   plugins: [
     "libapplications.so",
     "libshell.so",
-    "librink.so",
+    // "librink.so",
   ],
 )
